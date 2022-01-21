@@ -8,6 +8,9 @@ import java.sql.Date;
 
 public class Professor {
 	private String professorId;
+	private String department;
+	private Date doj;
+	private String position;
 	/**
 	 * @return the professorId
 	 */
@@ -56,8 +59,6 @@ public class Professor {
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	private String department;
-	private Date doj;
-	private String position;
+	
 }
 

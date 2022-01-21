@@ -2,6 +2,8 @@ package com.crs.flipkart.bean;
 
 public class Grade {
 	private String courseId;
+	private String studentId;
+	private float grades;
 	/**
 	 * @return the courseId
 	 */
@@ -38,6 +40,5 @@ public class Grade {
 	public void setGrades(float grades) {
 		this.grades = grades;
 	}
-	private String studentId;
-	private float grades;
+	
 }
