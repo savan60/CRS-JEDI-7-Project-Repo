@@ -2,8 +2,7 @@
 
  * 
  */
-package com.crs.flipkart.bean
-import com.crs.flipkart.Registered_Course;
+package com.crs.flipkart.bean;
 
 /**
  * @author nikhil
@@ -13,13 +12,13 @@ public class GradeCard {
 	private String studentID;
 	private int semester;
 	private float grade;
-	private Registered_Course RegisteredCourse[] = new Registered_Course[] {};
+	private RegisteredCourse RegisteredCourse[] = new RegisteredCourse[] {};
 	
 	
 	/**
 	 * @return the registeredCourse
 	 */
-	public Registered_Course[] getRegisteredCourse() {
+	public RegisteredCourse[] getRegisteredCourse() {
 		return RegisteredCourse;
 	}
 
@@ -28,7 +27,7 @@ public class GradeCard {
 	/**
 	 * @param registeredCourse the registeredCourse to set
 	 */
-	public void setRegisteredCourse(Registered_Course registeredCourse) {
+	public void setRegisteredCourse(RegisteredCourse[] registeredCourse) {
 		RegisteredCourse = registeredCourse;
 	}
 
