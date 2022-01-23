@@ -14,13 +14,12 @@ public class ProfessorApplication {
 		
 		while(true) {
 			
-			System.out.println("Enter your choice:\n"+"1. Login\n2. Forget password\n3. Return to previous options");
+			System.out.println("Enter your choice:\n"+"1. Login\n2. Forgot password\n3. Update Password\n4 Return to previous options");
 			
 			int ch=sc.nextInt();
-			if(ch==3) {
-				
+			if(ch==4) 
 				break;
-			}
+			
 			String email,password;
 		
 			switch(ch) {
@@ -29,7 +28,6 @@ public class ProfessorApplication {
 						email=sc.next();
 						System.out.println("Enter your password\n");
 						password=sc.next();
-						System.out.println(email+" "+password );
 						boolean val=user.authenticate(UserType.Professor,email,password);
 						
 						if(val) {
@@ -41,9 +39,21 @@ public class ProfessorApplication {
 						}
 						break;
 						
-				case 2: 
-					break;
-				
+				case 2: System.out.println("Enter your email:\n");
+						email=sc.next();
+						user.forgotPassword(UserType.Professor,email);
+						break;
+					
+				case 3: System.out.println("Enter your email:\n");
+						email=sc.next();
+						System.out.println("Enter your password\n");
+						password=sc.next();
+						boolean val1=user.authenticate(UserType.Professor,email,password);
+						if(val1) {
+							user.updatePassword(UserType.Professor, email);
+						}
+						else System.out.println("Wrong Email or Password. Try Again!");
+						break;
 				
 				default: System.out.println("Enter valid choice");
 				
@@ -56,7 +66,7 @@ public class ProfessorApplication {
 		System.out.println("Welcome to Professor portal!");
 		
 		while(true) {
-			
+	
 			System.out.println("Please select operation to perform:\n1.View Enrolled Students\n2. Assign grades\n3. Logout");
 			int ch=sc.nextInt();
 			
@@ -66,7 +76,6 @@ public class ProfessorApplication {
 			}
 			
 			switch(ch) {
-			
 				case 1: //call view enrolled students
 					break;
 				case 2: //call assign grades
@@ -77,5 +86,7 @@ public class ProfessorApplication {
 			}
 		}
 	}
+	
+	
 	
 }
