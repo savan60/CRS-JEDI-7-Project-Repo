@@ -14,8 +14,9 @@ public class ProfessorApplication {
 	public void entry() {
 		
 		while(true) {
-			
-			System.out.println("Enter your choice:\n"+"1. Login\n2. Forgot password\n3. Update Password\n4 Return to previous options");
+			System.out.println("__________________________________________________________");
+
+			System.out.println("Enter your choice:\n"+"1. Login\n2. Forgot password\n3. Update Password\n4. Return to previous options");
 			
 			int ch=sc.nextInt();
 			if(ch==4) 
@@ -58,17 +59,19 @@ public class ProfessorApplication {
 				default: System.out.println("Enter valid choice");
 				
 			}
+
 		}
 	}
 	
 	private void homePage() {
-		
+
 		System.out.println("Welcome to Professor portal!");
 		
 		ProfessorService professorService=new ProfessorService();
 		while(true) {
-	
-			System.out.println("Please select operation to perform:\n1.View Enrolled Students\n2. Assign grades\n3. Logout");
+			System.out.println("__________________________________________________________");
+
+			System.out.println("Please select operation to perform:\n1. View Enrolled Students\n2. Assign grades\n3. Logout");
 			int ch=sc.nextInt();
 			
 			if(ch==3) {
@@ -84,7 +87,7 @@ public class ProfessorApplication {
 					professorService.viewEnrolledStudents(UserService.currentUsedId);
 					System.out.println("Enter studentId: ");
 					String studentId=sc.next();
-					System.out.println("Enter grade: "+studentId);
+					System.out.println("Enter grade of studentId "+studentId+": ");
 					float newGrade=sc.nextFloat();
 					professorService.addGrade(UserService.currentUsedId,newGrade,studentId);
 					
