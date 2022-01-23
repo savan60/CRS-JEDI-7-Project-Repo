@@ -5,12 +5,26 @@ package com.crs.flipkart.bean;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
 
-public class Professor {
+public class Professor extends User{
 	private String professorId;
 	private String department;
 	private Date doj;
 	private String position;
+	private String courseId;
+	/**
+	 * @return the courseId
+	 */
+	public String getCourseId() {
+		return courseId;
+	}
+	/**
+	 * @param courseId the courseId to set
+	 */
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
+	}
 	/**
 	 * @return the professorId
 	 */
