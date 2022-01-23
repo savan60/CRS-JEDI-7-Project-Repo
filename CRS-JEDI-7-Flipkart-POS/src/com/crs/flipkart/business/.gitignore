@@ -1,3 +1,9 @@
 /ProfessorService.class
 /GradeCardService.class
 /SemseterRegistrationService.class
+/AdminService.class
+/CatalogService.class
+/GradeService.class
+/PaymentService.class
+/UserService.class
+/RegisteredCourseService.class
