@@ -5,3 +5,14 @@
 /SemesterRegistration.class
 /Semester_Registration.class
 /Date.class
+/Admin.class
+/Card.class
+/CardType.class
+/Catalog.class
+/Cheque.class
+/Course.class
+/NetBanking.class
+/Payment.class
+/RegisteredCourse.class
+/Student.class
+/User.class

@@ -6,4 +6,9 @@ package com.crs.flipkart.utils;
  */
 public class Utils {
 
+	public enum UserType{
+		Admin,
+		Professor,
+		Student
+	}
 }
