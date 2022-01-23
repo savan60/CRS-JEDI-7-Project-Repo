@@ -81,9 +81,12 @@ public class ProfessorApplication {
 					professorService.viewEnrolledStudents(UserService.currentUsedId);
 					break;
 				case 2: //call assign grades
-//					professorService.addGrade();
 					professorService.viewEnrolledStudents(UserService.currentUsedId);
 					System.out.println("Enter studentId: ");
+					String studentId=sc.next();
+					System.out.println("Enter grade: "+studentId);
+					float newGrade=sc.nextFloat();
+					professorService.addGrade(UserService.currentUsedId,newGrade,studentId);
 					
 					break;
 					
