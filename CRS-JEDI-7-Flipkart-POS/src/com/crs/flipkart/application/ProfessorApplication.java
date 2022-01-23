@@ -2,6 +2,7 @@ package com.crs.flipkart.application;
 
 import java.util.Scanner;
 
+import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.utils.Utils.UserType;
 
@@ -29,7 +30,6 @@ public class ProfessorApplication {
 						System.out.println("Enter your password\n");
 						password=sc.next();
 						boolean val=user.authenticate(UserType.Professor,email,password);
-						
 						if(val) {
 							System.out.println("Login Successful");
 							homePage();
@@ -65,6 +65,7 @@ public class ProfessorApplication {
 		
 		System.out.println("Welcome to Professor portal!");
 		
+		ProfessorService professorService=new ProfessorService();
 		while(true) {
 	
 			System.out.println("Please select operation to perform:\n1.View Enrolled Students\n2. Assign grades\n3. Logout");
@@ -76,9 +77,14 @@ public class ProfessorApplication {
 			}
 			
 			switch(ch) {
-				case 1: //call view enrolled students
+				case 1: 
+					professorService.viewEnrolledStudents(UserService.currentUsedId);
 					break;
 				case 2: //call assign grades
+//					professorService.addGrade();
+					professorService.viewEnrolledStudents(UserService.currentUsedId);
+					System.out.println("Enter studentId: ");
+					
 					break;
 					
 				default: System.out.println("Enter valid choice");
