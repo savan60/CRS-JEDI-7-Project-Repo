@@ -6,7 +6,7 @@ import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.utils.Utils.UserType;
 
-public class ProfessorApplication {
+public class CRSProfessorMenu {
 	
 	Scanner sc=new Scanner(System.in);
 	UserService user=new UserService();

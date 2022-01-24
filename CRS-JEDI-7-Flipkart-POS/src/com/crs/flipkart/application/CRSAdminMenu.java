@@ -1,5 +1,5 @@
 package com.crs.flipkart.application;
 
-public class User {
+public class CRSAdminMenu {
 	
 }
