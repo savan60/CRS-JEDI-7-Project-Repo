@@ -18,54 +18,38 @@ public class UserService {
 	public static String currentUsedId;
 	Scanner in = new Scanner(System.in); 
 	
-	public void forgotPassword(UserType role,String email) {
+	public String forgotPassword(String email,long phoneNumber) {
 		for(User u:user) {
-			if(u.getUserType()==role && email.equals(u.getEmail())) {
-				System.out.println("Enter your registered phone number to verify!");
-				long phoneNo = in.nextLong();
-				if(phoneNo == u.getPhoneNumber()) {
-					boolean ischanged = createNewPassword(u);
-					if(ischanged)
-						System.out.println("Password has been changed. Login again!");
-				}
-				else System.out.println("Invalid Credentials!");
-				return;
+			if(email.equals(u.getEmail()) && phoneNumber == u.getPhoneNumber()) {
+				return u.getUserId();
+//				if() {
+//					boolean ischanged = createNewPassword(u);
+//					if(ischanged)
+////						System.out.println("Password has been changed. Login again!");
+//				}
+//				else System.out.println("Invalid Credentials!");
+//				return;
 			}
 		}
-		System.out.println("Email dosen't exist!");
+		return "0";
 	}
 	
 	public void updatePassword(UserType role,String email) {
 		for(User u:user) {
-			if(u.getUserType()==role && email.equals(u.getEmail())) {
-				boolean ischanged = createNewPassword(u);
-				if(ischanged)
-					System.out.println("Password has been updated. Login again!");
-				else System.out.println("Error. Try again!");
-				break;
-			}
+//			if(u.getUserType()==role && email.equals(u.getEmail())) {
+////				boolean ischanged = createNewPassword(u);
+//				if(ischanged)
+//					System.out.println("Password has been updated. Login again!");
+//				else System.out.println("Error. Try again!");
+//				break;
+//			}
 		}
 	}
 	
-	private boolean createNewPassword(User u) {
-		while(true) {
-			System.out.println("Enter your choice:\n"+"1. Change Password\n2. Exit");
-			int choice = in.nextInt();
-			
-			if(choice == 2) return false;
-			else if(choice != 1) 
-				System.out.println("Invalid Choice");
-			else {
-				String pass, newPass; 
-				System.out.println("Type New Password!");
-				pass = in.next();
-				System.out.println("Re-Enter New Password!");
-				newPass = in.next();
-				if(pass.equals(newPass)) {
-					u.setPassword(newPass);
-					return true;
-				}
-				else System.out.println("Passowrd Mismatch. Try Again!");
+	public void createNewPassword(String password,String userId) {
+		for(User u:user) {
+			if(userId.equals(u.getUserId())) {
+				u.setPassword(password);
 			}
 		}
 	}
@@ -74,15 +58,15 @@ public class UserService {
 		
 	}
 	
-	public boolean authenticate(UserType role,String email,String password) {
+	public UserType authenticate(String email,String password) {
 		for(User u:user) {
-			if(u.getUserType()==role && email.equals(u.getEmail()) && password.equals(u.getPassword())) {
+			if(email.equals(u.getEmail()) && password.equals(u.getPassword())) {
 				currentUsedId=u.getUserId();
-				return true;
+				return u.getUserType();
 			}
 		}
 		
-		return false;
+		return UserType.None;
 	}
 	
 

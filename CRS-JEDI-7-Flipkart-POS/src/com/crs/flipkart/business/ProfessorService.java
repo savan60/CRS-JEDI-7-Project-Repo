@@ -39,4 +39,7 @@ public class ProfessorService {
 		}
 		regCourseService.submitGrade(courseId,studentId,grade);
 	}
+	
+	//chooseCourse => get list of courses => professor input (course id) => course table m professorid update kar denge
+	//view course => get list of courses => professor id match => print it.
 }
