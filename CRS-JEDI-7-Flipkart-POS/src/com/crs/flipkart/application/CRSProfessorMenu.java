@@ -11,55 +11,6 @@ public class CRSProfessorMenu {
 	Scanner sc=new Scanner(System.in);
 	UserService user=new UserService();
 	
-//	public void entry() {
-//		
-//		while(true) {
-//			System.out.println("__________________________________________________________");
-//
-//			System.out.println("Enter your choice:\n"+"1. Login\n2. Forgot password\n3. Update Password\n4. Return to previous options");
-//			
-//			int ch=sc.nextInt();
-//			if(ch==4) 
-//				break;
-//			
-//			String email,password;
-//		
-//			switch(ch) {
-//			
-//				case 1: System.out.println("Enter your email:\n");
-//						email=sc.next();
-//						System.out.println("Enter your password\n");
-//						password=sc.next();
-//						boolean val=user.authenticate(UserType.Professor,email,password);
-//						if(val) {
-//							System.out.println("Login Successful");
-//							homePage();
-//						}
-//						else {
-//							System.out.println("Login Unsuccessful, please try again!");
-//						}
-//						break;
-//						
-//				case 2: 
-//				case 3: 
-////					System.out.println("Enter your email:\n");
-////						email=sc.next();
-////						System.out.println("Enter your password\n");
-////						password=sc.next();
-////						boolean val1=user.authenticate(UserType.Professor,email,password);
-////						if(val1) {
-////							user.updatePassword(UserType.Professor, email);
-////						}
-////						else System.out.println("Wrong Email or Password. Try Again!");
-////						break;
-//				
-//				default: System.out.println("Enter valid choice");
-//				
-//			}
-//
-//		}
-//	}
-	
 	public void homePage() {
 
 		System.out.println("Welcome to Professor portal!");
@@ -68,11 +19,11 @@ public class CRSProfessorMenu {
 		while(true) {
 			System.out.println("__________________________________________________________");
 
-			System.out.println("Please select operation to perform:\n1. View Enrolled Students\n2. Assign grades\n3. Logout");
+			System.out.println("Please select operation to perform:\n1. View Enrolled Students\n2. Assign grades\n3. Update password\n4. Logout");
 			//update password will be here
 			int ch=sc.nextInt();
 			
-			if(ch==3) {
+			if(ch==4) {
 				System.out.println("Thank you");
 				break;
 			}
@@ -90,7 +41,37 @@ public class CRSProfessorMenu {
 					professorService.addGrade(UserService.currentUsedId,newGrade,studentId);
 					
 					break;
-					
+				case 3:
+					System.out.println("Enter your old password\n");
+					String password=sc.next();
+					UserType val1=user.authenticate(user.getEmailByUserId(UserService.currentUsedId),password);
+					if(!(val1==UserType.None)) {
+						while(true) {
+							System.out.println("Enter your choice:\n"+"1.Type new password \n2. Exit");
+							int choice = sc.nextInt();
+							
+							if(choice == 2) break;
+							else if(choice != 1) 
+								System.out.println("Invalid Choice");
+							else {
+								String pass1, pass2; 
+								//System.out.println("Type New Password!");
+								pass1 = sc.next();
+								System.out.println("Re-Enter New Password!");
+								pass2 = sc.next();
+								if(pass1.equals(pass2)) {
+									user.createNewPassword(pass1,UserService.currentUsedId);
+									System.out.println("Passowrd changed. Login!");
+									break;
+								}
+								else System.out.println("Passowrd Mismatch. Try Again!");
+							}
+						}
+					}
+					else {
+						System.out.println("Invalid credentials");
+					}
+					break;
 				default: System.out.println("Enter valid choice");
 				
 			}
