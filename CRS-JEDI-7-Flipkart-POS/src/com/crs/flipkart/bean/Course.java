@@ -15,6 +15,16 @@ public class Course {
 	private float credits;
 	private String professorId;
 	
+	
+	
+	public Course(String courseId, String name, float duration, float credits) {
+		super();
+		this.courseId = courseId;
+		this.name = name;
+		this.duration = duration;
+		this.credits = credits;
+	}
+	
 	public String getCourseId() {
 		return courseId;
 	}
