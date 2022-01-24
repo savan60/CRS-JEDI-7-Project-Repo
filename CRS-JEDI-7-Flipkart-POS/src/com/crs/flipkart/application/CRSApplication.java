@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author SAVAN
  *
  */
-public class MainApplication {
+public class CRSApplication {
 
 	/**
 	 * @param args
@@ -18,7 +18,7 @@ public class MainApplication {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		ProfessorApplication professor=new ProfessorApplication();
+		CRSProfessorMenu professor=new CRSProfessorMenu();
 		
 		while(true) {
 			System.out.println("__________________________________________________________");
