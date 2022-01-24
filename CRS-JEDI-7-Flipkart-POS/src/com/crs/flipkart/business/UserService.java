@@ -12,79 +12,46 @@ import com.crs.flipkart.utils.Utils.UserType;
  *
  */
 public class UserService {
-//	String id,String name,String number,String add,UserType type
-	static User[] user={new User("100","Prof1@mail.com",12345,"Bangalore",UserType.Professor,"abcd"),new User("101","Prof2@mail.com",123456,"Hyderabad",UserType.Professor,"efgh")};
+	static HashMap<String,User> user=new HashMap<>(){{
+		put("100",new User("100","Prof1@mail.com",12345,"Bangalore",UserType.Professor,"abcd"));
+		put("101",new User("101","Prof2@mail.com",12345,"Hyderabad",UserType.Professor,"abcd"));
+		}};
+										
 	
 	public static String currentUsedId;
 	Scanner in = new Scanner(System.in); 
 	
-	public void forgotPassword(UserType role,String email) {
-		for(User u:user) {
-			if(u.getUserType()==role && email.equals(u.getEmail())) {
-				System.out.println("Enter your registered phone number to verify!");
-				long phoneNo = in.nextLong();
-				if(phoneNo == u.getPhoneNumber()) {
-					boolean ischanged = createNewPassword(u);
-					if(ischanged)
-						System.out.println("Password has been changed. Login again!");
-				}
-				else System.out.println("Invalid Credentials!");
-				return;
+	public String forgotPassword(String email,long phoneNumber) {
+		for(Map.Entry u:user.entrySet()) {
+			if(email.equals(((User) u.getValue()).getEmail()) && phoneNumber == ((User) u.getValue()).getPhoneNumber()) {
+				return (String) u.getKey();
 			}
 		}
-		System.out.println("Email dosen't exist!");
+		return "0";
 	}
 	
-	public void updatePassword(UserType role,String email) {
-		for(User u:user) {
-			if(u.getUserType()==role && email.equals(u.getEmail())) {
-				boolean ischanged = createNewPassword(u);
-				if(ischanged)
-					System.out.println("Password has been updated. Login again!");
-				else System.out.println("Error. Try again!");
-				break;
-			}
-		}
-	}
 	
-	private boolean createNewPassword(User u) {
-		while(true) {
-			System.out.println("Enter your choice:\n"+"1. Change Password\n2. Exit");
-			int choice = in.nextInt();
-			
-			if(choice == 2) return false;
-			else if(choice != 1) 
-				System.out.println("Invalid Choice");
-			else {
-				String pass, newPass; 
-				System.out.println("Type New Password!");
-				pass = in.next();
-				System.out.println("Re-Enter New Password!");
-				newPass = in.next();
-				if(pass.equals(newPass)) {
-					u.setPassword(newPass);
-					return true;
-				}
-				else System.out.println("Passowrd Mismatch. Try Again!");
-			}
-		}
+	public void createNewPassword(String password,String userId) {
+		(user.get(userId)).setPassword(password);
 	}
 	
 	public void getUsers() {
 		
 	}
-	
-	public boolean authenticate(UserType role,String email,String password) {
-		for(User u:user) {
-			if(u.getUserType()==role && email.equals(u.getEmail()) && password.equals(u.getPassword())) {
-				currentUsedId=u.getUserId();
-				return true;
-			}
-		}
-		
-		return false;
+	public String getEmailByUserId(String userId) {
+		return (user.get(userId)).getEmail();
 	}
 	
+	public UserType authenticate(String email,String password) {
+
+		for(Map.Entry u:user.entrySet()) {
+			if(email.equals(((User) u.getValue()).getEmail()) && password.equals(((User) u.getValue()).getPassword())) {
+				currentUsedId=(String) u.getKey();
+				return  ((User) u.getValue()).getUserType();
+			}
+		}
+		return UserType.None;
+	}
 
 }
 

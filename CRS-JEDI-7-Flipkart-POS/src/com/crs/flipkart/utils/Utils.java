@@ -9,6 +9,7 @@ public class Utils {
 	public enum UserType{
 		Admin,
 		Professor,
-		Student
+		Student,
+		None
 	}
 }
