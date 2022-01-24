@@ -1,7 +1,11 @@
 package com.crs.flipkart.application;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
+import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.business.CourseService;
 import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.utils.Utils.UserType;
@@ -71,10 +75,10 @@ public class CRSProfessorMenu {
 		while(true) {
 			System.out.println("__________________________________________________________");
 
-			System.out.println("Please select operation to perform:\n1. View Enrolled Students\n2. Assign grades\n3. Logout");
+			System.out.println("Please select operation to perform:\n1. View Enrolled Students\n2. Assign grades\n3. Add Courses\n4. View Courses\n0. Logout");
 			int ch=sc.nextInt();
 			
-			if(ch==3) {
+			if(ch==0) {
 				System.out.println("Thank you");
 				break;
 			}
@@ -89,8 +93,30 @@ public class CRSProfessorMenu {
 					String studentId=sc.next();
 					System.out.println("Enter grade of studentId "+studentId+": ");
 					float newGrade=sc.nextFloat();
-					professorService.addGrade(UserService.currentUsedId,newGrade,studentId);
+					System.out.println("Enter courseId: ");
+					String courseId = sc.next();
+					professorService.addGrade(UserService.currentUsedId,newGrade,studentId,courseId);
 					
+					break;
+					
+				case 3:
+					CourseService courseService = new CourseService();
+					HashMap<String, Course> listOfCourses = courseService.getCourses();
+					
+					
+					for (Map.Entry<String,Course> entry : listOfCourses.entrySet()) {
+				            System.out.println("CourseId = " + entry.getKey() +
+				                           ", CourseName = " + entry.getValue().getName());
+					}
+					
+					System.out.println("Enter the courseId?");
+					String cId = sc.next();
+					
+					professorService.addCourse(UserService.currentUsedId, cId);
+					break;
+					
+				case 4: 
+					professorService.viewCourse(UserService.currentUsedId);
 					break;
 					
 				default: System.out.println("Enter valid choice");

@@ -14,28 +14,16 @@ public class Professor extends User{
 	private String department;
 	private Date doj;
 	private String position;
-	private String courseId;
+	private ArrayList<String> myCourseIds = new ArrayList<String>();
 	
-	public Professor(String professorId, String courseId) {
+	public Professor(String professorId) {
 		super(professorId, "name", 12234,"india", UserType.Professor,"abcd");
 		this.professorId = professorId;
 		this.department = "CSEC";
 		this.doj = new Date();
 		this.position = "Headmaster";
-		this.courseId = courseId;
 	}
-	/**
-	 * @return the courseId
-	 */
-	public String getCourseId() {
-		return courseId;
-	}
-	/**
-	 * @param courseId the courseId to set
-	 */
-	public void setCourseId(String courseId) {
-		this.courseId = courseId;
-	}
+	
 	/**
 	 * @return the professorId
 	 */
@@ -84,6 +72,21 @@ public class Professor extends User{
 	public void setPosition(String position) {
 		this.position = position;
 	}
+	/**
+	 * @return the myCourses
+	 */
+	public ArrayList<String> getMyCourses() {
+		return myCourseIds;
+	}
+	/**
+	 * @param myCourses the myCourses to set
+	 */
+	public void setMyCourses(ArrayList<String> myCourses) {
+		this.myCourseIds = myCourses;
+	}
 	
+	public void addToMyCourses(String courseId) {
+		this.myCourseIds.add(courseId);
+	}
 }
 
