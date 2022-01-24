@@ -19,6 +19,7 @@ public class Professor extends User{
 	public Professor(String professorId) {
 		super(professorId, "name", 12234,"india", UserType.Professor,"abcd");
 		this.professorId = professorId;
+		
 		this.department = "CSEC";
 		this.doj = new Date();
 		this.position = "Headmaster";

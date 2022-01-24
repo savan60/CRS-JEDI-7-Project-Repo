@@ -6,7 +6,7 @@ import com.crs.flipkart.bean.Course;
  * @author nandini 
  */
 
-public class SemseterRegistrationService {
+public class SemseterRegistrationService implements SemesterRegistrationInterface{
 	
 	public void addCourse() {
 		System.out.println("Course Added!");

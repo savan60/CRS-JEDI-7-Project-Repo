@@ -5,6 +5,7 @@ package com.crs.flipkart.application;
 
 import java.util.Scanner;
 
+import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.utils.Utils.UserType;
 
@@ -32,7 +33,7 @@ public class CRSApplication {
 			Scanner sc=new Scanner(System.in);
 			int ch=sc.nextInt();
 			String email,password;
-			UserService user=new UserService();
+			UserInterface user=new UserService();
 
 			switch(ch) {
 				case 1: System.out.println("Registering student");

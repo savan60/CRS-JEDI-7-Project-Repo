@@ -11,7 +11,7 @@ import com.crs.flipkart.utils.Utils.UserType;
  * @author parth
  *
  */
-public class UserService {
+public class UserService implements UserInterface{
 	static HashMap<String,User> user=new HashMap<>(){{
 		put("100",new User("100","Prof1@mail.com",12345,"Bangalore",UserType.Professor,"abcd"));
 		put("101",new User("101","Prof2@mail.com",12345,"Hyderabad",UserType.Professor,"abcd"));

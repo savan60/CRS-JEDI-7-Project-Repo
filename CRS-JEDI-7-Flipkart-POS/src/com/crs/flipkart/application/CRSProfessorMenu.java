@@ -6,20 +6,22 @@ import java.util.Scanner;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.business.CourseService;
+import com.crs.flipkart.business.ProfessorInterface;
 import com.crs.flipkart.business.ProfessorService;
+import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class CRSProfessorMenu {
 	
 	Scanner sc=new Scanner(System.in);
-	UserService user=new UserService();
+	UserInterface user=new UserService();
 	
 	public void homePage() {
 
 		System.out.println("Welcome to Professor portal!");
 		
-		ProfessorService professorService=new ProfessorService();
+		ProfessorInterface professorService=new ProfessorService();
 		while(true) {
 			System.out.println("__________________________________________________________");
 			

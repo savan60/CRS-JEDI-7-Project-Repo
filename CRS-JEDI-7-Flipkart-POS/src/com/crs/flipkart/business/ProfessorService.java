@@ -12,8 +12,8 @@ import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class ProfessorService implements ProfessorInterface {
-	RegisteredCourseService regCourseService=new RegisteredCourseService();
-	CourseService courseService = new CourseService();
+	RegisteredCourseInterface regCourseService=new RegisteredCourseService();
+	CourseInterface courseService = new CourseService();
 
 //	private Professor[] listOfProfessor= {new Professor("100","100"),new Professor("101","101"),new Professor("102","102")};
 	private ArrayList<Professor> listOfProfessor = new ArrayList<Professor>(Arrays.asList(new Professor("100"), new Professor("101"), new Professor("103")));
