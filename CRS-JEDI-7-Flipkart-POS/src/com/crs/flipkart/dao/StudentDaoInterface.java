@@ -7,6 +7,6 @@ package com.crs.flipkart.dao;
  * @author SAVAN
  *
  */
-public class ProfessorDAO {
+public interface StudentDaoInterface {
 
 }

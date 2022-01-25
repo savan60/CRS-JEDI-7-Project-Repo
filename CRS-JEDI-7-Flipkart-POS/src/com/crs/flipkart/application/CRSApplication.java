@@ -8,7 +8,19 @@ import java.util.Scanner;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.dao.AdminDaoOperation;
+import com.crs.flipkart.dao.CardDaoInterface;
+import com.crs.flipkart.dao.CardDaoOperation;
+import com.crs.flipkart.dao.CourseDaoOperation;
 import com.crs.flipkart.dao.DBConnection;
+import com.crs.flipkart.dao.GradeCardDaoInterface;
+import com.crs.flipkart.dao.GradeCardDaoOperation;
+import com.crs.flipkart.dao.PaymentDaoOperation;
+import com.crs.flipkart.dao.PaymentNotifierDaoOperation;
+import com.crs.flipkart.dao.ProfessorDaoOperation;
+import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
+import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
+import com.crs.flipkart.dao.StudentDaoOperation;
+import com.crs.flipkart.dao.UserDaoOperation;
 import com.crs.flipkart.utils.Utils.UserType;
 
 //import 
@@ -25,7 +37,18 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
-		DBConnection.setup(AdminDaoOperation.SCHEMA);
+		DBConnection.setup();
+		AdminDaoOperation.createTable();
+		StudentDaoOperation.createTable();
+		ProfessorDaoOperation.createTable();
+		CourseDaoOperation.createTable();
+		UserDaoOperation.createTable();
+		CardDaoOperation.createTable();
+		GradeCardDaoOperation.createTable();
+		PaymentDaoOperation.createTable();
+		PaymentNotifierDaoOperation.createTable();
+		RegisteredCourseDaoOperation.createTable();
+		SemesterRegistrationDaoOperation.createTable();
 		//Menu change 1.Register Student 2. login 3. update password 4.exit
 		//role => if 1 is choosen => student
 		//role => if login => admin@mail.com admin =>admin
