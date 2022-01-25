@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
+import com.crs.flipkart.dao.AdminDaoOperation;
+import com.crs.flipkart.dao.DBConnection;
 import com.crs.flipkart.utils.Utils.UserType;
 
 //import 
@@ -23,6 +25,7 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
+		DBConnection.setup(AdminDaoOperation.SCHEMA);
 		//Menu change 1.Register Student 2. login 3. update password 4.exit
 		//role => if 1 is choosen => student
 		//role => if login => admin@mail.com admin =>admin
