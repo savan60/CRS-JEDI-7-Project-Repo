@@ -8,8 +8,8 @@ package com.crs.flipkart.bean;
  *
  */
 public class Payment {
-	private int studentId;
-	private String  invoiceId;
+	private int studentId;//fk
+	private String  invoiceId;//pk
 	private int amount;
 	private boolean status; 
 	/**

@@ -11,7 +11,7 @@ import com.crs.flipkart.utils.Utils.UserType;
  */
 public class User {
 	
-	private String userId;
+	private String userId;//pk
 	private String email;
 	private long phoneNumber;
 	private String address;

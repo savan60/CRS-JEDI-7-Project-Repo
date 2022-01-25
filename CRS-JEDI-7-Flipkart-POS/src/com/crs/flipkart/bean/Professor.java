@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class Professor extends User{
-	private String professorId;
+	private String professorId;//pk =>userid
 	private String department;
 	private Date doj;
 	private String position;
-	private ArrayList<String> myCourseIds = new ArrayList<String>();
+	private ArrayList<String> myCourseIds = new ArrayList<String>();//database m nahi ayega
 	
 	public Professor(String professorId) {
 		super(professorId, "name", 12234,"india", UserType.Professor,"abcd");

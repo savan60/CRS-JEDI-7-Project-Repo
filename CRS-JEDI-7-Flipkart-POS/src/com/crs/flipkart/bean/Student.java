@@ -8,8 +8,9 @@ package com.crs.flipkart.bean;
  *
  */
 public class Student {
-	private String studentId;
-	private String emailId;
+	private String studentId;//pk => userid
+	private String name;
+	
 	/**
 	 * @return the studentId
 	 */
@@ -25,14 +26,14 @@ public class Student {
 	/**
 	 * @return the emailId
 	 */
-	public String getEmailId() {
-		return emailId;
+	public String getName() {
+		return name;
 	}
 	/**
 	 * @param emailId the emailId to set
 	 */
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

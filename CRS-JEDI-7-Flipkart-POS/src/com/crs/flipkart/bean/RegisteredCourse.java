@@ -8,9 +8,9 @@ package com.crs.flipkart.bean;
  *
  */
 public class RegisteredCourse {
-	private String registeredCourseId;
-	private String courseId;
-	private String studentId;
+	private String registeredCourseId;//pk
+	private String courseId;//fk
+	private String studentId;//fk
 	private float grade;
 	private int semester;
 	/**

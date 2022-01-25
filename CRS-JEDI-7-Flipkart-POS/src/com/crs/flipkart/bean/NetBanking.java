@@ -7,6 +7,8 @@ package com.crs.flipkart.bean;
  * @author SAVAN
  *
  */
+
+//No database
 public class NetBanking extends Payment{
 	private String bankName;
 	private String accountHolderName;

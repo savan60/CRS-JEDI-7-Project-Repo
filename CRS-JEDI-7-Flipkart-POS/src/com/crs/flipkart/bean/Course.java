@@ -9,11 +9,11 @@ package com.crs.flipkart.bean;
  */
 public class Course {
 	
-	private String courseId;
+	private String courseId;//pk
 	private String name;
 	private float duration;
 	private float credits;
-	private String professorId;
+	private String professorId;//fk
 	
 	
 	
