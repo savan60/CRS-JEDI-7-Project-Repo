@@ -38,17 +38,17 @@ public class CRSApplication {
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
 		DBConnection.setup();
-		AdminDaoOperation.createTable();
-		StudentDaoOperation.createTable();
-		ProfessorDaoOperation.createTable();
-		CourseDaoOperation.createTable();
-		UserDaoOperation.createTable();
-		CardDaoOperation.createTable();
-		GradeCardDaoOperation.createTable();
-		PaymentDaoOperation.createTable();
-		PaymentNotifierDaoOperation.createTable();
-		RegisteredCourseDaoOperation.createTable();
-		SemesterRegistrationDaoOperation.createTable();
+//		AdminDaoOperation.createTable();
+//		StudentDaoOperation.createTable();
+//		ProfessorDaoOperation.createTable();
+//		CourseDaoOperation.createTable();
+//		UserDaoOperation.createTable();
+//		CardDaoOperation.createTable();
+//		GradeCardDaoOperation.createTable();
+//		PaymentDaoOperation.createTable();
+//		PaymentNotifierDaoOperation.createTable();
+//		RegisteredCourseDaoOperation.createTable();
+//		SemesterRegistrationDaoOperation.createTable();
 		//Menu change 1.Register Student 2. login 3. update password 4.exit
 		//role => if 1 is choosen => student
 		//role => if login => admin@mail.com admin =>admin
@@ -86,7 +86,7 @@ public class CRSApplication {
 				case 3: System.out.println("Enter your email:\n");
 						email=sc.next();
 						System.out.println("Enter your registered phone number to verify!");
-						long phoneNo = sc.nextLong();
+						String phoneNo = sc.next();
 						String userId=user.forgotPassword(email,phoneNo);
 						if(!(userId).equals("0")){
 							while(true) {
@@ -103,9 +103,13 @@ public class CRSApplication {
 									System.out.println("Re-Enter New Password!");
 									pass2 = sc.next();
 									if(pass1.equals(pass2)) {
-										user.createNewPassword(pass1,userId);
-										System.out.println("Passowrd changed. Login!");
-										break;
+										if(user.createNewPassword(pass1,userId)) {
+											System.out.println("Passowrd changed. Login!");
+											break;
+										}
+										else {
+											System.out.println("Failed, Try Again!");
+										}
 									}
 									else System.out.println("Passowrd Mismatch. Try Again!");
 								}
