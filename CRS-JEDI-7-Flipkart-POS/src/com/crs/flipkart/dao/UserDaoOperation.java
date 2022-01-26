@@ -10,7 +10,7 @@ import com.crs.flipkart.bean.User;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils.UserType;
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.*;
 
 /**
  * @author SAVAN

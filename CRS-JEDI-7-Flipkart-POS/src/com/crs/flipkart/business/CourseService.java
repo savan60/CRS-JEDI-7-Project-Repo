@@ -1,27 +1,31 @@
-/**
- * 
- */
 package com.crs.flipkart.business;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.crs.flipkart.bean.Course;
-import com.crs.flipkart.dao.CourseDaoOperation;
 
 /**
  * @author parth
  *
  */
 public class CourseService implements CourseInterface {
-	
-	private ArrayList<Course> courses = CourseDaoOperation.courses;
 
+	private HashMap<String ,Course> courses = new HashMap<String, Course>();
 
+	public CourseService() {
+		
+//		courses.put("100", new Course("100", "Maths", 90 , 3));
+//		courses.put("102", new Course("102", "Compiler", 90 , 3));
+//		courses.put("103", new Course("103", "Data Structure", 90 , 3));
+//		courses.put("104", new Course("104", "Programming", 90 , 3));
+//		courses.put("105", new Course("105", "Electronics", 90 , 3));
+		
+	}
 
 	/**
 	 * @return the courses
 	 */
-	public ArrayList<Course> getCourses() {
+	public HashMap<String, Course> getCourses() {
 		return courses;
 	}
 
@@ -29,12 +33,25 @@ public class CourseService implements CourseInterface {
 	 * @param courses the courses to set
 	 */
 	
-	public void setCourses(ArrayList<Course> courses) {
+	public void setCourses(HashMap<String, Course> courses) {
 		this.courses = courses;
 	}
-
 	
-	
-	
+	public boolean addCourse(String id,String subj,float duration ,float credits) {
+		if(courses.get(id)!=null) {
+//			courses.put(id, new Course(id, subj, duration , credits));
+			return true;
+		}
+		
+		return false;
+	}
+	public boolean removeCourse(String id) {
+		if(courses.get(id)!=null) {
+			courses.remove(id);
+			return true;
+		}
+		
+		return false;
+	}
 	
 }
