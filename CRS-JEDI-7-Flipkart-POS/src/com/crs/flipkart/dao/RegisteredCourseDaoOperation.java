@@ -65,7 +65,11 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		try {
 			stmt = conn.createStatement();
 			String query = "insert into CRS.registeredcourse(registeredCourseId, courseId, studentId, grade, semester) values(" + courseId+studentId +", "+ courseId + "," + studentId + ", 0,"+sem+");";
-			stmt.executeUpdate(query);
+			int res=stmt.executeUpdate(query);
+			if(res==1) {
+				return true;
+			}
+			return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
