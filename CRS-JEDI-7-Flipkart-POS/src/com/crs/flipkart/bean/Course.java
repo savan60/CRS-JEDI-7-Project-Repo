@@ -9,16 +9,27 @@ package com.crs.flipkart.bean;
  */
 public class Course {
 	
-	private int courseId;
+	private String courseId;//pk
 	private String name;
 	private float duration;
 	private float credits;
-	private String professorId;
+	private String professorId;//fk
 	
-	public int getCourseId() {
+	
+	
+	public Course(String courseId, String professorId,String name, float duration, float credits) {
+		super();
+		this.courseId = courseId;
+		this.professorId=professorId;
+		this.name = name;
+		this.duration = duration;
+		this.credits = credits;
+	}
+	
+	public String getCourseId() {
 		return courseId;
 	}
-	public void setCourseId(int courseId) {
+	public void setCourseId(String courseId) {
 		this.courseId = courseId;
 	}
 	public String getName() {

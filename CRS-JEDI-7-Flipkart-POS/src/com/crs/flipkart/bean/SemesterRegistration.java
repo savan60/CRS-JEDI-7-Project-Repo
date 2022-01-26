@@ -18,7 +18,8 @@ class Date{
 }
 
 public class SemesterRegistration {
-	String StudentID;
+	String SemesterRegistrationId;//pk
+	String StudentID;//fk
 	int Semester;
 	Date date;
 	

@@ -2,7 +2,7 @@ package com.crs.flipkart.business;
 
 import com.crs.flipkart.bean.Course;
 
-public class CatalogService {
+public class CatalogService implements CatalogInterface{
 
 	Course[] course;
 	
