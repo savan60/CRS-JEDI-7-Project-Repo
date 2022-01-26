@@ -37,7 +37,12 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
+		CRSAdminMenu admin = new CRSAdminMenu();
+		
 		DBConnection.setup();
+		
+		admin.homePage();
+		
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
 		ProfessorDaoOperation.createTable();
@@ -124,7 +129,7 @@ public class CRSApplication {
 				default: System.out.println("Invalid choice");
 			}
 		}
-
+		
 	}
 
 }
