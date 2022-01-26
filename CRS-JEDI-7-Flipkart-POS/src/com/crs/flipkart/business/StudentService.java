@@ -15,7 +15,7 @@ import com.crs.flipkart.utils.Utils.UserType;
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
 	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
-	
+	//static variable for semester
 	public void selfRegistration() {
 		
 		Scanner sc = new Scanner(System.in);

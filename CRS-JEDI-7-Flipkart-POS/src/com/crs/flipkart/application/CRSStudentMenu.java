@@ -50,12 +50,14 @@ public class CRSStudentMenu {
 			int choice = sc.nextInt();
 			int sem;
 			String courseId;
-
+			//getSemster() => StudentService
 			switch (choice) {
 
 			case 1:
 				System.out.println("Enter the Semester:");
 				sem=sc.nextInt();
+				// updateSemester(sem);
+				//currentsem also changes
 				
 				boolean val=student.semesterRegistration(sem);
 				if(val) {
@@ -65,7 +67,7 @@ public class CRSStudentMenu {
 						System.out.println("Course Number "+(choosen+1)+": ");
 						System.out.println("Enter the course id:");
 						courseId=sc.next();
-						boolean res=student.addCourse(courseId, 1);
+						boolean res=student.addCourse(courseId, sem);
 						if(res) {
 							choosen++;
 						}
@@ -76,9 +78,11 @@ public class CRSStudentMenu {
 				//-----------------------------------------------------------------------
 				//Remaining: Show list of course
 				//Test that total courses selection doesn't excedd 6
+				//1=> semester
 				student.viewCatalogue(1);
 				System.out.println("Enter the course id:");
 				courseId=sc.next();
+				//1=>semester
 				student.addCourse(courseId, 1);
 				break;
 			case 3:
@@ -86,14 +90,17 @@ public class CRSStudentMenu {
 				break;
 			case 4:
 				//sem take from student table
+				
 				student.viewCatalogue(1);
 //				viewAvailableCourse(studentId);
 				break;
 			case 5:
+				//1=> semester
 				student.viewRegisteredCourses(1);
 //				viewRegisteredCourse(studentId);
 				break;
 			case 6:
+				//1=>semester
 				grade.viewGradeCard(UserService.currentUsedId, 1);
 //				viewGradeCard(studentId);
 				break;
