@@ -20,7 +20,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(50) NOT NULL,"
 				+ "courseId varchar(20) NULL," + "studentId varchar(20) NULL," + "grade float NOT NULL,"
-				+ "semester float NOT NULL," + "PRIMARY KEY (registeredCourseId))";
+				+ "semester INTEGER NOT NULL," + "PRIMARY KEY (registeredCourseId))";
 		DBConnection.createTable(SCHEMA);
 	}
 
