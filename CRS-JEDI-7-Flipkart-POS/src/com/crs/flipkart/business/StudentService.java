@@ -113,5 +113,18 @@ public class StudentService implements StudentInterface{
 		return false;
 	}
 	
+	public boolean dropCourse(String StudentId, String courseId)
+	{
+		boolean val=registeredCourse.dropCourse(courseId,StudentId);
+		if(val) {
+		System.out.println("Course dropped successfully");
+		return true;
+		}
+		else {
+		System.out.println("Course is not dropped, Try again");
+		}
+	return false;
+		
+	}
 	
 }

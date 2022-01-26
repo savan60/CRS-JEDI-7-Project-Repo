@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.crs.flipkart.bean.RegisteredCourse;
+import com.crs.flipkart.utils.Utils;
 
 /**
  * @author SAVAN
@@ -64,12 +65,25 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			String query = "insert into CRS.registeredcourse(registeredCourseId, courseId, studentId, grade, semester) values(" + courseId+studentId +", "+ courseId + "," + studentId + ", 0,"+sem+");";
-			int res=stmt.executeUpdate(query);
-			if(res==1) {
-				return true;
+			String check = "select count(*) from CRS.registeredCourse where studentId = " + studentId;
+			ResultSet rs = stmt.executeQuery(check);
+			rs.next();
+			int count = rs.getInt(1);
+			if (count>=6)
+			{
+				System.out.println("You cannot add more than 6 courses"); 
 			}
-			return false;
+			else
+			{
+				String query = "insert into CRS.registeredcourse(registeredCourseId, courseId, studentId, grade, semester) values(" + Utils.generateId() +", "+ courseId + "," + studentId + ", 0,"+sem+");";
+				int res=stmt.executeUpdate(query);
+				System.out.println("You have added " + (count+1) + " courses.");
+				if(res==1) {
+					return true;
+				}
+				return false;
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
