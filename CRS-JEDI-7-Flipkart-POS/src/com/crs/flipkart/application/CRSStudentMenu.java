@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import com.crs.flipkart.business.StudentInterface;
 import com.crs.flipkart.business.StudentService;
+import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
+import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 
 /**
  * @author SAVAN
@@ -40,6 +42,8 @@ public class CRSStudentMenu {
 
 			int choice = sc.nextInt();
 			int sem;
+			String courseId;
+
 			switch (choice) {
 
 			case 1:
@@ -48,20 +52,27 @@ public class CRSStudentMenu {
 				
 				boolean val=student.semesterRegistration(sem);
 				if(val) {
+					//-----------------------------------------------------------------------
+					//Remaining: Show list of course
 					int choosen=0;
-					String courseId;
 					while(choosen!=6) {
 						System.out.println("Course Number "+(choosen+1)+": ");
 						System.out.println("Enter the course id:");
 						courseId=sc.next();
-						//add course by studentId, courseId and semester
-						choosen++;
+						boolean res=student.addCourse(courseId, 1);
+						if(res) {
+							choosen++;
+						}
 					}
 				}
-//				registerCourses(studentId);
 				break;
 			case 2:
-//				addCourse(studentId);
+				//-----------------------------------------------------------------------
+				//Remaining: Show list of course
+				//Test that total courses selection doesn't excedd 6
+				System.out.println("Enter the course id:");
+				courseId=sc.next();
+				student.addCourse(courseId, 1);
 				break;
 			case 3:
 //				dropCourse(studentId);

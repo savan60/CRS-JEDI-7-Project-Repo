@@ -1,10 +1,14 @@
 package com.crs.flipkart.business;
 
+import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
+import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoInterface;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
 
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
+	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
+
 	public void selfRegistration() {
 		
 	}
@@ -29,6 +33,18 @@ public class StudentService implements StudentInterface{
 		}
 		else {
 			System.out.println("Registration of the semester is already done");
+		}
+		return false;
+	}
+	
+	public boolean addCourse(String courseId,int sem) {
+		boolean val=registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
+		if(val) {
+			System.out.println("Course added successfully");
+			return true;
+		}
+		else {
+			System.out.println("Course is not added, Try again");
 		}
 		return false;
 	}

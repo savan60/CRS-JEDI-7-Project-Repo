@@ -9,4 +9,6 @@ public interface StudentInterface {
 	public void viewCatalogue();
 	
 	public boolean semesterRegistration(int sem);
+	public boolean addCourse(String courseId,int sem);
+
 }
