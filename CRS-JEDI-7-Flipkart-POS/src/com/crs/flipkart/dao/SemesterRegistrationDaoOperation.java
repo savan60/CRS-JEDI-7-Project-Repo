@@ -17,4 +17,5 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 	            + "PRIMARY KEY (semesterRegistrationId))";
 		DBConnection.createTable(SCHEMA);
 	}
+	
 }

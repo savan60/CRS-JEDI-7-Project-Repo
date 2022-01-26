@@ -13,5 +13,5 @@ public interface SemesterRegistrationInterface {
 	public void addCourse();
 	public void dropCourse(Course c) ;
 	public void billPayment() ;
-	public void viewRegisteredCourses();
+	public void viewRegisteredCourses(String studentId,int sem);
 }

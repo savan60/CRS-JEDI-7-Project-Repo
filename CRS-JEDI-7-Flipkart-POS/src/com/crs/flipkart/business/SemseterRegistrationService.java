@@ -1,6 +1,8 @@
 package com.crs.flipkart.business;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.dao.DBConnection;
+import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 
 /**
  * @author nandini 
@@ -20,7 +22,10 @@ public class SemseterRegistrationService implements SemesterRegistrationInterfac
 		System.out.println("Paid!");
 	}
 	
-	public void viewRegisteredCourses() {
-		System.out.println("Registered Courses!");
+	public  void viewRegisteredCourses(String studentId,int sem) {
+		RegisteredCourseDaoOperation.printRegisteredCourses(studentId, sem);
 	}
+
+
+
 }

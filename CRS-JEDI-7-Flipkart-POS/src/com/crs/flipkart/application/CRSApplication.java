@@ -38,6 +38,7 @@ public class CRSApplication {
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
 		DBConnection.setup();
+		
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
 		ProfessorDaoOperation.createTable();
@@ -53,7 +54,6 @@ public class CRSApplication {
 		//role => if 1 is choosen => student
 		//role => if login => admin@mail.com admin =>admin
 		//addprofessor=> professor
-		CourseDaoOperation.app();
 		while(true) {
 			System.out.println("__________________________________________________________");
 			System.out.println("Select choice\n"+"1. Register as a Student\n"+"2. Login\n"+"3. Forget Password\n4. Exit");
