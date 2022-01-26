@@ -5,6 +5,9 @@ import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoInterface;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
 import com.crs.flipkart.dao.CourseDaoOperation;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.Student;
@@ -16,6 +19,32 @@ public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
 	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
 	//static variable for semester
+	static int current_semester;
+	
+	public int getSemester(String id) {
+		StudentDaoOperation student=new StudentDaoOperation();
+		try {
+			return student.getSemester(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return 0;
+	}
+	
+	public void setSemester(String id,int sem) {
+		StudentDaoOperation student=new StudentDaoOperation();
+		current_semester=sem;
+		try {
+			 student.setSemester(id,sem);
+			 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	public void selfRegistration() {
 		
 		Scanner sc = new Scanner(System.in);

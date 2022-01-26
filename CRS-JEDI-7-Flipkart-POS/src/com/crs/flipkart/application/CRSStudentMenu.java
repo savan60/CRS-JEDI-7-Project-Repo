@@ -58,7 +58,8 @@ public class CRSStudentMenu {
 				sem=sc.nextInt();
 				// updateSemester(sem);
 				//currentsem also changes
-				
+				System.out.println("userid: "+UserService.currentUsedId);
+				student.setSemester(UserService.currentUsedId,sem);
 				boolean val=student.semesterRegistration(sem);
 				if(val) {
 					student.viewCatalogue(sem);

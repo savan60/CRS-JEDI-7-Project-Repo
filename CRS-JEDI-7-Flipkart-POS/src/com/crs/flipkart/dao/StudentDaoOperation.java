@@ -29,6 +29,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		     	+ "studentId VARCHAR(20) NOT NULL,"
 	            + "name VARCHAR(45) NOT NULL,"
 	            + "isApproved BOOLEAN NOT NULL,"
+	            + "current_semester int NOT NULL,"
 	            + "PRIMARY KEY (studentId))";
 		DBConnection.createTable(SCHEMA);
 	}
@@ -59,7 +60,42 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		
 	}
 	
+	public int getSemester(String id) {
+		
+		int sem=0;
+		try {
+			
+			String sql="Select current_semester from CRS.student where studentId=?";
+			statement = (PreparedStatement) connection.prepareStatement(sql);
+			statement.setString(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			sem=resultSet.getInt(1);
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return sem;
+	}
 	
+	public void setSemester(String id,int sem) {
+	
+		try {
+			String sql="Update CRS.student set current_semester=? where studentId=?";
+			statement = (PreparedStatement) connection.prepareStatement(sql);
+			statement.setInt(1, sem);
+			statement.setString(2, id);
+			statement.executeUpdate();
+			
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	public ArrayList<String> getAllStudentIds(){
 		ArrayList<String> studentIds = new ArrayList<String>();
 		
