@@ -23,8 +23,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.course (" + "courseId VARCHAR(20) NOT NULL,"
 				+ "professorId VARCHAR(20) NULL," + "name VARCHAR(20) NOT NULL," + "duration float NOT NULL,"
-				+ "credits float NOT NULL,"
-				+ "PRIMARY KEY (courseId))";
+				+ "semester int NOT NULL," + "credits float NOT NULL," + "PRIMARY KEY (courseId))";
 		DBConnection.createTable(SCHEMA);
 	}
 
@@ -68,6 +67,25 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		return listOfCourseId;
 	}
 
+	public static void viewCourses(int sem) {
+		Connection conn = DBConnection.mysqlConnection;
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "select * from CRS.course where semester =" + sem;
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				System.out.println(
+						"Course Id :" + rs.getString("courseId") + " ProfessorId: " + rs.getString("professorId")
+								+ " Course Name: " + rs.getString("name") + " Credits: " + rs.getInt("credits"));
+			}
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void updateProfessorId(String ProfessorId, String CourseId) {
 		Connection conn = DBConnection.mysqlConnection;
 		Statement stmt;
@@ -75,9 +93,9 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			stmt = conn.createStatement();
 			String query = "update CRS.course set professorId = " + ProfessorId + " where courseId = " + CourseId;
 			stmt.executeUpdate(query);
-			
-			query="select * from CRS.course";
-			ResultSet rs=stmt.executeQuery(query);
+
+			query = "select * from CRS.course";
+			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				System.out.println(
 						"CourseId: " + rs.getString("courseId") + " ProfessorId:" + rs.getString("professorId"));
@@ -88,9 +106,9 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			e.printStackTrace();
 		}
 	}
-
+//
 //	public static void main(String[] args) {
 //		DBConnection.setup();
-//		updateProfessorId("100", "100");
+//		viewCourses(2);
 //	}
 }

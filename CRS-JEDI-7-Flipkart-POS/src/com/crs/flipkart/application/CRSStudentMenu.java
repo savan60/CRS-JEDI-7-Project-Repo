@@ -52,8 +52,7 @@ public class CRSStudentMenu {
 				
 				boolean val=student.semesterRegistration(sem);
 				if(val) {
-					//-----------------------------------------------------------------------
-					//Remaining: Show list of course
+					student.viewCatalogue(sem);
 					int choosen=0;
 					while(choosen!=6) {
 						System.out.println("Course Number "+(choosen+1)+": ");
@@ -70,6 +69,7 @@ public class CRSStudentMenu {
 				//-----------------------------------------------------------------------
 				//Remaining: Show list of course
 				//Test that total courses selection doesn't excedd 6
+				student.viewCatalogue(1);
 				System.out.println("Enter the course id:");
 				courseId=sc.next();
 				student.addCourse(courseId, 1);
@@ -78,9 +78,12 @@ public class CRSStudentMenu {
 //				dropCourse(studentId);
 				break;
 			case 4:
+				//sem take from student table
+				student.viewCatalogue(1);
 //				viewAvailableCourse(studentId);
 				break;
 			case 5:
+				student.viewRegisteredCourses(1);
 //				viewRegisteredCourse(studentId);
 				break;
 			case 6:

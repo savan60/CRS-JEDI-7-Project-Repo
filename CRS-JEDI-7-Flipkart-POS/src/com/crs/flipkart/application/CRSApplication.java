@@ -40,6 +40,7 @@ public class CRSApplication {
 		CRSProfessorMenu professor=new CRSProfessorMenu();
 		CRSStudentMenu student=new CRSStudentMenu();
 		DBConnection.setup();
+		
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
 		ProfessorDaoOperation.createTable();

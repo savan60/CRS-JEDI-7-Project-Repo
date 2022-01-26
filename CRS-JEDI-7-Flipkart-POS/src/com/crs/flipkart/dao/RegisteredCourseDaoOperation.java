@@ -47,8 +47,8 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			String query = "update CRS.registeredcourse set grade=" + newGrade + " where courseId=" + courseId + " and studentId="
-					+ studentId;
+			String query = "update CRS.registeredcourse set grade=" + newGrade + " where courseId=" + courseId
+					+ " and studentId=" + studentId;
 			stmt.executeUpdate(query);
 
 		} catch (SQLException e) {
@@ -90,5 +90,26 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+
+	public void printRegisteredCourses(String studentId, int sem) {
+		Connection conn = DBConnection.mysqlConnection;
+		Statement stmt;
+
+		try{
+			stmt = conn.createStatement();
+			String query = "select * from CRS.registeredcourse r inner join CRS.course c on c.courseId=r.courseId where r.studentId="
+					+ studentId + " and r.semester=" + sem;
+		
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				System.out.println("Course name:-->"+rs.getString("name")+"   Course Id:--> " + rs.getString("courseId") + "  Grades:--> " + rs.getFloat("grade"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
 	}
 }

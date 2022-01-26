@@ -6,9 +6,8 @@ public interface StudentInterface {
 	
 	public void viewGradeCard();
 
-	public void viewCatalogue();
-	
+	public void viewCatalogue(int sem) ;	
 	public boolean semesterRegistration(int sem);
 	public boolean addCourse(String courseId,int sem);
-
+	public void viewRegisteredCourses(int sem);
 }

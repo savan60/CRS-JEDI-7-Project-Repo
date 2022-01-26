@@ -4,21 +4,26 @@ import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoInterface;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
+import com.crs.flipkart.dao.CourseDaoOperation;
 
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
 	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
-
+	
 	public void selfRegistration() {
 		
 	}
 	public void viewGradeCard() {
 		
 	}
-	public void viewCatalogue() {
-		
+	public void viewCatalogue(int sem) {
+		CourseDaoOperation.viewCourses(sem);
 	}
 	
+	public void viewRegisteredCourses(int sem) {
+		//take course from student table
+		registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
+	}
 	public boolean semesterRegistration(int sem) {
 		boolean val=semesterRegistration.checkSemAndStudentIdExists(sem, UserService.currentUsedId);
 		if(!val) {
@@ -48,5 +53,6 @@ public class StudentService implements StudentInterface{
 		}
 		return false;
 	}
+	
 	
 }
