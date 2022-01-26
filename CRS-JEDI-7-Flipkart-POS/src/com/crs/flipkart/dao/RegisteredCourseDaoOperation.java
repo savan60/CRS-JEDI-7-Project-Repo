@@ -56,4 +56,37 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 		}
 	}
+	
+	public static void addCourse(String courseId, String studentId)
+	{
+		Connection conn = DBConnection.mysqlConnection;
+
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "insert into CRS.registeredcourse(registeredCourseId, courseId, studentId, grade, semester) values(" + courseId+studentId +", "+ courseId + "," + studentId + ", 0, 1);";
+			stmt.executeUpdate(query);
+		
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void dropCourse(String courseId, String studentId)
+	{
+		Connection conn = DBConnection.mysqlConnection;
+
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "delete from CRS.registeredcourse where courseId = " + courseId + " and studentId = " + studentId + ";";
+			stmt.executeUpdate(query);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

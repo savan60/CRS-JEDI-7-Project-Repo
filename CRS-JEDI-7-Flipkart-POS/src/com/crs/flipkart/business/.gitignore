@@ -7,3 +7,15 @@
 /PaymentService.class
 /UserService.class
 /RegisteredCourseService.class
+/AdminInterface.class
+/CatalogInterface.class
+/CourseInterface.class
+/CourseService.class
+/GradeCardInterface.class
+/PaymentInterface.class
+/ProfessorInterface.class
+/RegisteredCourseInterface.class
+/SemesterRegistrationInterface.class
+/StudentInterface.class
+/StudentService.class
+/UserInterface.class
