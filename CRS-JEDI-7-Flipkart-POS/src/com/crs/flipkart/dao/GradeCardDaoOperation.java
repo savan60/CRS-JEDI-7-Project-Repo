@@ -14,8 +14,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 		         + "studentId VARCHAR(20),"
 		         + "semester INT NOT NULL,"
 		         + "grade FLOAT,"
-		         + "PRIMARY KEY (gradeCardId),"
-		         + "FOREIGN KEY (studentId) REFERENCES student(studentId))";
+		         + "PRIMARY KEY (gradeCardId))";
 		DBConnection.createTable(SCHEMA);
 	}
 }

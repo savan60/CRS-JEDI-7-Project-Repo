@@ -11,11 +11,10 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.semesterRegistration ("
 	            + "semesterRegistrationId VARCHAR(20) NOT NULL,"
-		     	+ "studentId VARCHAR(20) NOT NULL,"
+		     	+ "studentId VARCHAR(20) NULL,"
 	            + "semester INT NOT NULL,"
 	            + "date  DATE NOT NULL,"
-	            + "PRIMARY KEY (semesterRegistrationId),"
-				+ "FOREIGN KEY(studentId) references CRS.student(studentId))";
+	            + "PRIMARY KEY (semesterRegistrationId))";
 		DBConnection.createTable(SCHEMA);
 	}
 }

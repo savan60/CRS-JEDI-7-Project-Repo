@@ -13,8 +13,8 @@ public class PaymentNotifierDaoOperation implements PaymentNotifierDaoInterface 
 				+ "invoiceId VARCHAR(20) NOT NULL,"
 				+ "studentId VARCHAR(20) NOT NULL,"
 				+ "message VARCHAR(45) NOT NULL,"
-				+ "PRIMARY KEY (invoiceId)," + "FOREIGN KEY(studentId) references CRS.student(studentId),"
-				+ "FOREIGN KEY(invoiceId) references CRS.payment(invoiceId))";
+				+ "PRIMARY KEY (invoiceId))";
+				
 		DBConnection.createTable(SCHEMA);
 	}
 }
