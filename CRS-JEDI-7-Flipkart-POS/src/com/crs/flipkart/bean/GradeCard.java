@@ -9,12 +9,27 @@ package com.crs.flipkart.bean;
  *
  */
 public class GradeCard {
-	private String studentID;
+	private String gradeCardId;
+	private String studentId;//fk
 	private int semester;
 	private float grade;
 	private RegisteredCourse RegisteredCourse[] = new RegisteredCourse[] {};
 	
-	
+	/**
+	 * @return the gradeCardId
+	 */
+	public String getGradeCardId() {
+		return gradeCardId;
+	}
+
+
+
+	/**
+	 * @param gradeCardId the gradeCardId to set
+	 */
+	public void setGradeCardId(String gradeCardId) {
+		gradeCardId = gradeCardId;
+	}
 	/**
 	 * @return the registeredCourse
 	 */
@@ -56,7 +71,7 @@ public class GradeCard {
 	 * @return the studentID
 	 */
 	public String getStudentID() {
-		return studentID;
+		return studentId;
 	}
 
 
@@ -65,7 +80,7 @@ public class GradeCard {
 	 * @param studentID the studentID to set
 	 */
 	public void setStudentID(String studentID) {
-		this.studentID = studentID;
+		this.studentId = studentID;
 	}
 
 

@@ -1,42 +1,63 @@
 package com.crs.flipkart.business;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourse;
 import com.crs.flipkart.bean.Student;
+import com.crs.flipkart.dao.CourseDaoOperation;
+import com.crs.flipkart.dao.ProfessorDaoOperation;
+import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.utils.Utils.UserType;
 
-public class ProfessorService {
-	RegisteredCourseService regCourseService=new RegisteredCourseService();
-	private Professor[] listOfProfessor= {new Professor("100","100"),new Professor("101","101"),new Professor("102","102")};
-	private RegisteredCourse[] reg=RegisteredCourseService.reg;
+public class ProfessorService implements ProfessorInterface {
+	RegisteredCourseInterface regCourseService = new RegisteredCourseService();
+	CourseInterface courseService = new CourseService();
 
 	public void viewEnrolledStudents(String professorId) {
-		String courseId="";
-		for(Professor p:listOfProfessor) {
-			if(professorId==p.getProfessorId()) {
-				courseId=p.getCourseId();
-				break;
-			}
-		}
-		for(int i=0;i<reg.length;i++) {
-			if(reg[i].getCourseId()==courseId) {
-				System.out.println("Student Id--->"+reg[i].getStudentId()+" Grade--> "+reg[i].getGrade());
-			}
+		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
+		for (String courseId : courseIds) {
+			System.out.println("Students enrolled in course: " + courseId);
+			RegisteredCourseDaoOperation.printEnrolledStudentInThatCourse(courseId);
+
 		}
 
 	}
-	public void addGrade(String professorId,float grade,String studentId) {
 
-		String courseId="";
-		for(Professor p:listOfProfessor) {
-			if(professorId==p.getProfessorId()) {
-				courseId=p.getCourseId();
+	public void addGrade(String professorId, float grade, String studentId, String courseId) {
+		boolean flag = false;
+		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
+		for (String cId : courseIds) {
+			if (cId.equals(courseId)) {
+				flag = true;
 				break;
 			}
 		}
-		regCourseService.submitGrade(courseId,studentId,grade);
+
+		if (flag) {
+			regCourseService.submitGrade(courseId, studentId, grade);
+		} else {
+			System.out.println("Professor " + professorId + " does not teach " + courseId + " course.");
+		}
 	}
+
+	public void addCourse(String professorId, String courseId) {
+		CourseDaoOperation.updateProfessorId(professorId, courseId);
+	}
+
+	public void viewCourse(String professorId) {
+
+		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
+
+		System.out.println("List of Course:");
+		for (String cId : courseIds) {
+			System.out.println(cId);
+		}
+
+	}
+
 }

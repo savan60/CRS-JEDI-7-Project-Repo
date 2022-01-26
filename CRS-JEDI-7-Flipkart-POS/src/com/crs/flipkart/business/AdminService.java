@@ -7,7 +7,8 @@ package com.crs.flipkart.business;
  * @author parth
  *
  */
-public class AdminService {
+public class AdminService implements AdminInterface {
+	
 	
 	public void addProfessor() {
 		
