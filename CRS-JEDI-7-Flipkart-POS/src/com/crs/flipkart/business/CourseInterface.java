@@ -3,6 +3,7 @@
  */
 package com.crs.flipkart.business;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.crs.flipkart.bean.Course;
@@ -13,7 +14,7 @@ import com.crs.flipkart.bean.Course;
  */
 public interface CourseInterface {
 
-	public HashMap<String, Course> getCourses();	
-	public void setCourses(HashMap<String, Course> courses);
+	public ArrayList<Course> getCourses();	
+	public void setCourses(ArrayList<Course>);
 	
 }

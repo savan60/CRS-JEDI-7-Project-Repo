@@ -38,21 +38,22 @@ public class CRSApplication {
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
 		DBConnection.setup();
-		AdminDaoOperation.createTable();
-		StudentDaoOperation.createTable();
-		ProfessorDaoOperation.createTable();
-		CourseDaoOperation.createTable();
-		UserDaoOperation.createTable();
-		CardDaoOperation.createTable();
-		GradeCardDaoOperation.createTable();
-		PaymentDaoOperation.createTable();
-		PaymentNotifierDaoOperation.createTable();
-		RegisteredCourseDaoOperation.createTable();
-		SemesterRegistrationDaoOperation.createTable();
+//		AdminDaoOperation.createTable();
+//		StudentDaoOperation.createTable();
+//		ProfessorDaoOperation.createTable();
+//		CourseDaoOperation.createTable();
+//		UserDaoOperation.createTable();
+//		CardDaoOperation.createTable();
+//		GradeCardDaoOperation.createTable();
+//		PaymentDaoOperation.createTable();
+//		PaymentNotifierDaoOperation.createTable();
+//		RegisteredCourseDaoOperation.createTable();
+//		SemesterRegistrationDaoOperation.createTable();
 		//Menu change 1.Register Student 2. login 3. update password 4.exit
 		//role => if 1 is choosen => student
 		//role => if login => admin@mail.com admin =>admin
 		//addprofessor=> professor
+		CourseDaoOperation.app();
 		while(true) {
 			System.out.println("__________________________________________________________");
 			System.out.println("Select choice\n"+"1. Register as a Student\n"+"2. Login\n"+"3. Forget Password\n4. Exit");

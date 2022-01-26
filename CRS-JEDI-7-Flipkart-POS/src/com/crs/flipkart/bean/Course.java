@@ -17,9 +17,10 @@ public class Course {
 	
 	
 	
-	public Course(String courseId, String name, float duration, float credits) {
+	public Course(String courseId, String professorId,String name, float duration, float credits) {
 		super();
 		this.courseId = courseId;
+		this.professorId=professorId;
 		this.name = name;
 		this.duration = duration;
 		this.credits = credits;
