@@ -38,7 +38,5 @@ public class GradeCardService implements GradeCardInterface{
 			System.out.println("-----------------------------");
 		}
 		System.out.println("Semester Grade Point Average :"+" "+Float.toString(finalGrade));
-		
-		
 	}
 }

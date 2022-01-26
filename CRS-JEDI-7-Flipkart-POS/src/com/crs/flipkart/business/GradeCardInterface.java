@@ -11,5 +11,7 @@ import java.util.ArrayList;
  */
 public interface GradeCardInterface {
 	public float calGrade(ArrayList<RegisteredCourse> courses);
+	
+	public void viewGradeCard(String studentID, int semester);
 
 }
