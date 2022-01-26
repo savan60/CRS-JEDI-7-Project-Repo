@@ -3,6 +3,9 @@ package com.crs.flipkart.utils;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.UUID;
+
+import com.mysql.cj.util.Util;
 
 /**
  * @author SAVAN
@@ -16,5 +19,20 @@ public class Utils {
 		Student,
 		None
 	}
- 
+	
+	public enum CardType{
+		DEBIT,CREDIT;
+	}
+
+	
+	public static String generateUniqueId() {
+		String uniqueID = UUID.randomUUID().toString();
+		return uniqueID;
+	}
+	
+//	public static void main(String[] arg) {
+//		for(int i=0; i<10; i++)
+//			System.out.println(Utils.generateUniqueId());
+//	}
+
 }

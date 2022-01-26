@@ -11,7 +11,7 @@ import java.sql.*;
 public class DBConnection {
 	private static final String url = "jdbc:mysql://localhost/";
     private static final String user = "root";
-    private static final String password = "root";
+    private static final String password = "Root@123";
     public static Connection mysqlConnection;
     public static void setup() {
    	 try {
