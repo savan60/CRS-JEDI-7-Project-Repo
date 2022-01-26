@@ -22,4 +22,20 @@ public class Utils {
 		String id=(UUID.randomUUID()).toString();
 		return id;
 	}
+	
+	public enum CardType{
+		DEBIT,CREDIT;
+	}
+
+	
+	public static String generateUniqueId() {
+		String uniqueID = UUID.randomUUID().toString();
+		return uniqueID;
+	}
+	
+//	public static void main(String[] arg) {
+//		for(int i=0; i<10; i++)
+//			System.out.println(Utils.generateUniqueId());
+//	}
+
 }

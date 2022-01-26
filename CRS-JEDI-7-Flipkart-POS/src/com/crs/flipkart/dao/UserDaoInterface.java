@@ -5,6 +5,7 @@ package com.crs.flipkart.dao;
 
 import java.util.Vector;
 
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.utils.Utils.UserType;
 
@@ -20,4 +21,6 @@ public interface UserDaoInterface {
 	public boolean updatePassword(String password,String userId);
 	
 	public boolean checkPasswordByUserId(String userId,String password);
+	
+	public void addUser(Student student);
 }

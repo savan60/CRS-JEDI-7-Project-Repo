@@ -5,8 +5,11 @@ package com.crs.flipkart.application;
 
 import java.util.Scanner;
 
+import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.business.GradeCardInterface;
 import com.crs.flipkart.business.GradeCardService;
+import com.crs.flipkart.business.PaymentInterface;
+import com.crs.flipkart.business.PaymentService;
 import com.crs.flipkart.business.StudentInterface;
 import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.UserService;
@@ -23,6 +26,7 @@ public class CRSStudentMenu {
 	public void homepage() {
 		StudentInterface student=new StudentService();
 		GradeCardInterface grade=new GradeCardService();
+		PaymentInterface payment=new PaymentService();
 		while (true) {
 
 			System.out
@@ -95,6 +99,7 @@ public class CRSStudentMenu {
 				break;
 			case 7:
 //				makePayment(studentId);
+				payment.makePayment();
 				break;
 			case 8:
 				return;

@@ -3,6 +3,7 @@
  */
 package com.crs.flipkart.bean;
 
+
 /**
  * @author SAVAN
  *
