@@ -18,7 +18,7 @@ import com.crs.flipkart.bean.RegisteredCourse;
 public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterface {
 
 	public static void createTable() {
-		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(20) NOT NULL,"
+		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(50) NOT NULL,"
 				+ "courseId varchar(20) NULL," + "studentId varchar(20) NULL," + "grade float NOT NULL,"
 				+ "semester float NOT NULL," + "PRIMARY KEY (registeredCourseId))";
 		DBConnection.createTable(SCHEMA);

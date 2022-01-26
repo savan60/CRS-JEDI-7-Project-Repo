@@ -7,4 +7,6 @@ public interface StudentInterface {
 	public void viewGradeCard();
 
 	public void viewCatalogue();
+	
+	public boolean semesterRegistration(int sem);
 }

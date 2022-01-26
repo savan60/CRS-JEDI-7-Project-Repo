@@ -37,6 +37,7 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
+		CRSStudentMenu student=new CRSStudentMenu();
 		DBConnection.setup();
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
@@ -72,7 +73,7 @@ public class CRSApplication {
 						UserType val=user.authenticate(email,password);
 						switch(val) {
 							case Student:
-								System.out.println("Student Menu here");
+								student.homepage();
 								break;
 							case Professor:
 								professor.homePage();
