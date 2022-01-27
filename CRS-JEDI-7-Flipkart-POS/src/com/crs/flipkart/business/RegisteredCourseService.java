@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourse;
+import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 
 /**
@@ -16,8 +17,12 @@ import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
  */
 public class RegisteredCourseService implements RegisteredCourseInterface {
 
+	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
+
+
 	public void submitGrade(String courseId, String studentId, float newGrade) {
-		RegisteredCourseDaoOperation.updateGrade(courseId, studentId, newGrade);
+		
+		registeredCourseDaoInterface.updateGrade(courseId, studentId, newGrade);
 
 	}
 }

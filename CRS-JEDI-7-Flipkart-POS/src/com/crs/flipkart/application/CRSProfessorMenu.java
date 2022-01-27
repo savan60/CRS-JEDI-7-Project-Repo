@@ -54,7 +54,7 @@ public class CRSProfessorMenu {
 					break;
 	
 				case 3:
-					ArrayList<Course> listOfCourses = CourseDaoOperation.courses;
+					ArrayList<Course> listOfCourses = CourseDaoOperation.getAllCourses();
 					for (Course course : listOfCourses) {
 						System.out.println("Course name: " + course.getName() + " course Id: " + course.getCourseId());
 					}

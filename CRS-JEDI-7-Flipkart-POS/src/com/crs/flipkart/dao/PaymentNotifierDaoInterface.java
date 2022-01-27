@@ -9,4 +9,6 @@ package com.crs.flipkart.dao;
  */
 public interface PaymentNotifierDaoInterface {
 
+	public void addPaymentNotification(String studentId, String invoiceId, String message);
+
 }

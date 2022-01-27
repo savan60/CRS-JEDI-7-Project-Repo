@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -5,13 +6,14 @@ package com.crs.flipkart.application;
 
 import java.util.Scanner;
 
+import com.crs.flipkart.business.StudentInterface;
+import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.dao.CardDaoInterface;
 import com.crs.flipkart.dao.CardDaoOperation;
 import com.crs.flipkart.dao.CourseDaoOperation;
-import com.crs.flipkart.dao.DBConnection;
 import com.crs.flipkart.dao.GradeCardDaoInterface;
 import com.crs.flipkart.dao.GradeCardDaoOperation;
 import com.crs.flipkart.dao.PaymentDaoOperation;
@@ -21,6 +23,7 @@ import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
 import com.crs.flipkart.dao.StudentDaoOperation;
 import com.crs.flipkart.dao.UserDaoOperation;
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.Utils.UserType;
 
 //import 
@@ -37,7 +40,9 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
-		DBConnection.setup();
+		CRSStudentMenu student=new CRSStudentMenu();
+		StudentInterface studentInterface=new StudentService();
+		DBUtils.getConnection();
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
 		ProfessorDaoOperation.createTable();
@@ -53,32 +58,39 @@ public class CRSApplication {
 		//role => if 1 is choosen => student
 		//role => if login => admin@mail.com admin =>admin
 		//addprofessor=> professor
-		CourseDaoOperation.app();
+//		CourseDaoOperation.app();
 		while(true) {
 			System.out.println("__________________________________________________________");
 			System.out.println("Select choice\n"+"1. Register as a Student\n"+"2. Login\n"+"3. Forget Password\n4. Exit");
 			Scanner sc=new Scanner(System.in);
 			int ch=sc.nextInt();
 			String email,password;
+			
 			UserInterface user=new UserService();
-
+			
 			switch(ch) {
-				case 1: System.out.println("Registering student");
+				case 1: 
+					studentInterface.selfRegistration();
 				     break;
 				case 2: System.out.println("Enter your email:\n");
 						email=sc.next();
 						System.out.println("Enter your password\n");
 						password=sc.next();
 						UserType val=user.authenticate(email,password);
+						
+						System.out.println("val :" + val);
+						
 						switch(val) {
 							case Student:
-								System.out.println("Student Menu here");
+								student.homepage();
 								break;
 							case Professor:
 								professor.homePage();
 								break;
 							case Admin:
-								System.out.println("Admin Menu here");
+								CRSAdminMenu admin = new CRSAdminMenu();
+								admin.homePage();
+
 								break;
 							default:
 								System.out.println("Login Unsuccessful, please try again!");
@@ -88,7 +100,8 @@ public class CRSApplication {
 						email=sc.next();
 						System.out.println("Enter your registered phone number to verify!");
 						String phoneNo = sc.next();
-						String userId=user.forgotPassword(email,phoneNo);
+						String userId="";
+//								user.forgotPassword(email,phoneNo);
 						if(!(userId).equals("0")){
 							while(true) {
 								System.out.println("Enter your choice:\n"+"1. Change Password\n2. Exit");
@@ -104,13 +117,13 @@ public class CRSApplication {
 									System.out.println("Re-Enter New Password!");
 									pass2 = sc.next();
 									if(pass1.equals(pass2)) {
-										if(user.createNewPassword(pass1,userId)) {
-											System.out.println("Passowrd changed. Login!");
-											break;
-										}
-										else {
-											System.out.println("Failed, Try Again!");
-										}
+//										if(user.createNewPassword(pass1,userId)) {
+//											System.out.println("Passowrd changed. Login!");
+//											break;
+//										}
+//										else {
+//											System.out.println("Failed, Try Again!");
+//										}
 									}
 									else System.out.println("Passowrd Mismatch. Try Again!");
 								}
@@ -124,7 +137,6 @@ public class CRSApplication {
 				default: System.out.println("Invalid choice");
 			}
 		}
-
 	}
 
 }

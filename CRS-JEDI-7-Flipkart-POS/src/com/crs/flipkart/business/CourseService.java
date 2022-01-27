@@ -1,12 +1,12 @@
-/**
- * 
- */
 package com.crs.flipkart.business;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.dao.CourseDaoInterface;
 import com.crs.flipkart.dao.CourseDaoOperation;
+import com.crs.flipkart.dao.UserDaoInterface;
+import com.crs.flipkart.dao.UserDaoOperation;
 
 /**
  * @author parth
@@ -14,10 +14,10 @@ import com.crs.flipkart.dao.CourseDaoOperation;
  */
 public class CourseService implements CourseInterface {
 	
-	private ArrayList<Course> courses = CourseDaoOperation.courses;
-
-
-
+	CourseDaoInterface courseInterface=new CourseDaoOperation();
+	
+	private  ArrayList<Course> courses = CourseDaoOperation.getAllCourses();
+	
 	/**
 	 * @return the courses
 	 */
@@ -33,8 +33,43 @@ public class CourseService implements CourseInterface {
 		this.courses = courses;
 	}
 
+	public boolean addCourse(String id,String subj,float duration ,float credits) {
+		for(int i=0;i<courses.size();i++){
+			if((courses.get(i)).getCourseId().equals(id))return false;	
+		}
+		courseInterface.addCourToDB(id,subj,duration,credits);
+		return true;
+	}
+	
+	public boolean deleteCourse(String id) {
+		ArrayList<Course> listOfCourses = CourseDaoOperation.getAllCourses();
+		for(int i=0;i<listOfCourses.size();i++){
+			if((listOfCourses.get(i)).getCourseId().equals(id)) {
+				courseInterface.delCourse(id);
+				return true;
+			}	
+		}
+		return false;
+	}
+	
+//	public boolean addCourse(String id,String subj,float duration ,float credits) {
+//		if(courses.get(id)!=null) {
+////			courses.put(id, new Course(id, subj, duration , credits));
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 	
 	
-	
+//	
+//	public boolean removeCourse(String id) {
+//		if(courses.get(id)!=null) {
+//			courses.remove(id);
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 	
 }

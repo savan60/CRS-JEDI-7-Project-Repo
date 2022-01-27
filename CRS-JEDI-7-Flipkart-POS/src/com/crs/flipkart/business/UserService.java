@@ -14,6 +14,7 @@ import com.crs.flipkart.utils.Utils.UserType;
  *
  */
 public class UserService implements UserInterface{
+	
 	public static String currentUsedId;
 	UserDaoInterface userInterface=new UserDaoOperation();
 
@@ -26,10 +27,9 @@ public class UserService implements UserInterface{
 		return userInterface.updatePassword(password, userId);
 	}
 	
-	public void getUsers() {
-		
-	}
-	
+//	public void getUsers() {
+//		
+//	}
 	public boolean checkPasswordforEmail(String password) {
 		return userInterface.checkPasswordByUserId(currentUsedId,password);
 	}

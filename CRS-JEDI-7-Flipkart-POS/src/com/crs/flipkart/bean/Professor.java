@@ -16,8 +16,16 @@ public class Professor extends User {
 	private ArrayList<String> myCourseIds = new ArrayList<String>();// database m nahi ayega
 
 
+	public Professor(String professorId,String email,String number,String address,String password, String department, Date doj, String position) {
+		super(professorId, email, number, address, password, UserType.Professor);
+		this.professorId = professorId;
+		this.department = department;
+		this.doj = doj;
+		this.position = position;
+	}
+	
 	public Professor(String professorId, String department, Date doj, String position) {
-		super(professorId, "name", 12234, "india", UserType.Professor, "abcd");
+		super(professorId,"","","","",UserType.Professor);
 		this.professorId = professorId;
 		this.department = department;
 		this.doj = doj;

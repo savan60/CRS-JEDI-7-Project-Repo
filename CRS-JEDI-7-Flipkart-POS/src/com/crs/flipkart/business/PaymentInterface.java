@@ -8,5 +8,8 @@ package com.crs.flipkart.business;
  *
  */
 public interface PaymentInterface{
-	public void paymentNotify() ;
+	public void paymentNotify();
+	public void askForPayment();
+	public boolean makePayment();
+	
 }
