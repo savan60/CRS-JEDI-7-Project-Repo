@@ -33,10 +33,11 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		ArrayList<Course> courses = new ArrayList<>();
 
 		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt;
+		PreparedStatement stmt = null;
 		try {
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from CRS.course");
+			String sql="select * from CRS.course";
+			stmt =conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				courses.add(new Course(rs.getString("courseId"), rs.getString("professorId"), rs.getString("name"),
@@ -56,12 +57,13 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	public static ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
 		Connection conn = DBConnection.mysqlConnection;
 		ArrayList<String> listOfCourseId = new ArrayList<>();
-		Statement stmt;
+		PreparedStatement stmt = null;
 		try {
-			stmt = conn.createStatement();
-			String query = "select courseId from CRS.course where professorId =" + ProfessorId;
+			String sql = "select courseId from CRS.course where professorId =?";
+			stmt =conn.prepareStatement(sql);
+			stmt.setString(1,ProfessorId);
 
-			ResultSet rs = stmt.executeQuery(query);
+			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				listOfCourseId.add(rs.getString("courseId"));
 			}
@@ -76,10 +78,11 @@ public class CourseDaoOperation implements CourseDaoInterface {
 
 	public static void viewCourses(int sem) {
 		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt;
+		PreparedStatement stmt = null;
 		try {
-			stmt = conn.createStatement();
-			String query = "select * from CRS.course where semester =" + sem;
+			String sql= "select * from CRS.course where semester =?";
+			stmt =conn.prepareStatement(sql);
+			stmt.setString(1,sem);
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				System.out.println(
@@ -97,9 +100,10 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		Connection conn = DBConnection.mysqlConnection;
 		Statement stmt;
 		try {
-			stmt = conn.createStatement();
-			String query = "update CRS.course set professorId = " + ProfessorId + " where courseId = " + CourseId;
-			stmt.executeUpdate(query);
+	
+			String sql = "update CRS.course set professorId = ? where courseId=?";
+			stmt =conn.prepareStatement(sql);
+			stmt.executeUpdate();
 
 			query = "select * from CRS.course";
 			ResultSet rs = stmt.executeQuery(query);

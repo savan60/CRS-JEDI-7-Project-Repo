@@ -27,10 +27,12 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 
 	public static void app() {
 		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt;
+		PrepaidStatement stmt=null;
 		try {
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from CRS.professor");
+			String sql="select * from CRS.professor";
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+
+			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				Professor professor = new Professor(rs.getString("professorId"), rs.getString("dept"),
