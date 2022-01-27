@@ -3,14 +3,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.dao.CourseDaoInterface;
 import com.crs.flipkart.dao.CourseDaoOperation;
+import com.crs.flipkart.dao.UserDaoInterface;
+import com.crs.flipkart.dao.UserDaoOperation;
 
 /**
  * @author parth
  *
  */
 public class CourseService implements CourseInterface {
-
+	
+	CourseDaoInterface courseInterface=new CourseDaoOperation();
+	
 	private ArrayList<Course> courses = CourseDaoOperation.getAllCourses();
 	
 	/**
@@ -32,13 +37,13 @@ public class CourseService implements CourseInterface {
 		for(int i=0;i<courses.size();i++){
 			if((courses.get(i)).getCourseId().equals(id))return false;	
 		}
-		CourseDaoOperation.addCourToDB(id,subj,duration,credits);
+		courseInterface.addCourToDB(id,subj,duration,credits);
 		return true;
 	}
 	public boolean deleteCourse(String id) {
 		for(int i=0;i<courses.size();i++){
 			if((courses.get(i)).getCourseId().equals(id)) {
-				CourseDaoOperation.delCourse(id);
+				courseInterface.delCourse(id);
 				return true;
 			}	
 		}

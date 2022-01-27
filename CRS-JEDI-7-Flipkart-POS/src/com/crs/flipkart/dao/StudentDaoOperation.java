@@ -24,7 +24,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 	private PreparedStatement statement = null;
 	Connection connection = DBConnection.mysqlConnection;
 	
-	//add student sem
+	// create student table if it not exists
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.student ("
 		     	+ "studentId VARCHAR(20) NOT NULL,"
@@ -61,6 +61,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		
 		}
 		
+	// add studnet into student table
 	public void addStudent(Student student) {
 
 		try {

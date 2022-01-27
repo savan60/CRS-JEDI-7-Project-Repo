@@ -4,12 +4,14 @@
 package com.crs.flipkart.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.constant.SQLQueriesConstant;
 
 /**
  * @author SAVAN
@@ -27,10 +29,11 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 
 	public static void app() {
 		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt;
+		PreparedStatement stmt=null;
 		try {
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from CRS.professor");
+			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.selectAllProfessorsQuery);
+
+			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				Professor professor = new Professor(rs.getString("professorId"), rs.getString("dept"),

@@ -30,7 +30,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 		try {
 			stmt = (PreparedStatement) conn.createStatement();
-			String query = "select studentId from CRS.registeredcourse where courseId =" + courseId;
+			String query = "select studentId from CRS.registeredCourse where courseId ='" + courseId + "';";
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
 				System.out.println(rs.getString("studentId"));
@@ -45,8 +45,8 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 		try {
 			stmt = (PreparedStatement) conn.createStatement();
-			String query = "update CRS.registeredcourse set grade=" + newGrade + " where courseId=" + courseId + " and studentId="
-					+ studentId;
+			String query = "update CRS.registeredCourse set grade=" + newGrade + " where courseId='" + courseId + "' and studentId='"
+					+ studentId + "';";
 			stmt.executeUpdate(query);
 
 		} catch (SQLException e) {
@@ -91,7 +91,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			String query = "delete from CRS.registeredcourse where courseId = " + courseId + " and studentId = " + studentId + ";";
+			String query = "delete from CRS.registeredCourse where courseId = '" + courseId + "' and studentId = '" + studentId + "';";
 			stmt.executeUpdate(query);
 			return true;
 
@@ -108,8 +108,8 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 		try{
 			stmt = conn.createStatement();
-			String query = "select * from CRS.registeredcourse r inner join CRS.course c on c.courseId=r.courseId where r.studentId="
-					+ studentId + " and r.semester=" + sem;
+			String query = "select * from CRS.registeredCourse r inner join CRS.course c on c.courseId=r.courseId where r.studentId='"
+					+ studentId + "' and r.semester=" + sem;
 		
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
@@ -130,7 +130,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
-			String check = "select count(*) from CRS.registeredCourse where studentId = " + studentId;
+			String check = "select count(*) from CRS.registeredCourse where studentId = '" + studentId +"'";
 			ResultSet rs = stmt.executeQuery(check); // change 1 -> added check for course count
 			rs.next();
 			int count = rs.getInt(1);
@@ -170,6 +170,6 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		}
 		return false;
 	}
-
-	
 }
+
+
