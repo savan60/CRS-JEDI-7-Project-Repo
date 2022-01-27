@@ -21,4 +21,6 @@ public class SQLQueriesConstant {
 	public static final String insertPaymentNotifierQuery= "INSERT INTO `CRS`.`paymentNotifier` (`studentId`, `invoiceId`, `message`) VALUES (?, ?, ?);";
 	public static final String addCoursesToDb="INSERT INTO `CRS`.`course` (`courseId`, `name`, `duration`, `credits`, `semester`) VALUES (?, ?, ?, ?, ?)";
 	public static final String deleteCourseFromDb="delete from CRS.course where courseId= ? ";
+	public static final String fetchRegisteredCourseFromStudentId = "select * from CRS.registeredCourse where studentID = ?  AND semester = ? AND isAllocated = true";
+	public static final String fetchGradeCardUsingStudentId = "select * from CRS.gradeCard where studentId = ? AND semester = ?";
 }

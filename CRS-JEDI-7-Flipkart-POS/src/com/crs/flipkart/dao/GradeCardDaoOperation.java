@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import com.crs.flipkart.bean.RegisteredCourse;
 import com.crs.flipkart.bean.GradeCard;
+import com.crs.flipkart.constant.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,6 +22,10 @@ import java.sql.Statement;
 public class GradeCardDaoOperation implements GradeCardDaoInterface {
 	
 	public static void createTable() {
+		/*
+		 * Method to create GradeCard table in Database
+		 * 
+		 */
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.gradecard ("
 		         + "gradeCardId VARCHAR(20) NOT NULL,"
 		         + "studentId VARCHAR(20),"
@@ -30,13 +36,22 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 	}
 	
 	public static ArrayList<RegisteredCourse> fetchRegisteredSemesterCoursesForStudents(String studentId, int semester) {
+		/*
+		 * Method to fetch semester courses allocated to a student
+		 * @param studentId, semester
+		 * @return List of RegisteredCourses
+		 * 
+		 */
 		Connection conn = DBConnection.mysqlConnection;
 		ArrayList<RegisteredCourse> courses = new ArrayList<RegisteredCourse>();
-		Statement stmt;
+		String sql = SQLQueriesConstant.fetchRegisteredCourseFromStudentId;
+		
 		try {
-			stmt = conn.createStatement();
-			String query = "select * from CRS.registeredCourse where studentId ="+studentId+" AND semester="+semester+" AND isAllocated = true";
-			ResultSet rs = stmt.executeQuery(query);
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, studentId);
+			statement.setInt(2, semester);
+			
+			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
 				courses.add(new RegisteredCourse(rs.getString("registeredCourseId"), rs.getString("courseId"), rs.getString("studentId"),
@@ -52,15 +67,27 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 	}
 	
 	public static GradeCard fetchGradeCard(String studentId, int semester) {
+		
+		/*
+		 * Method to fetch GradeCard of student for a given semester
+		 * If gradeCard is not created yet, then a dummy gradeCard would be returned with NOTFOUND as its gradeCardId
+		 * @param studentId, semester
+		 * @return GradeCard
+		 */
+		
 		Connection conn = DBConnection.mysqlConnection;
 		GradeCard gradeCard = new GradeCard();
-		Statement stmt;
+		
 		gradeCard.setGradeCardId("NOTFOUND");
-
+		String sql = SQLQueriesConstant.fetchGradeCardUsingStudentId;
+		
 		try {
-			stmt = conn.createStatement();
-			String query = "select * from CRS.gradecard where studentId ="+studentId+" AND semester="+semester;
-			ResultSet rs = stmt.executeQuery(query);
+			PreparedStatement statement = conn.prepareStatement(sql);
+			
+			statement.setString(1, studentId);
+			statement.setInt(2, semester);
+			
+			ResultSet rs = statement.executeQuery();
 			boolean found = false;
 			while (rs.next()) {
 				found = true;

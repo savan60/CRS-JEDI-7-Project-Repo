@@ -13,6 +13,11 @@ import com.crs.flipkart.bean.GradeCard;
 public class GradeCardService implements GradeCardInterface{
 
 	public void viewGradeCard(String studentID, int semester) {
+    /*
+     * Method to print score of a student with studentId in Semester semester
+     * @param studentId, semester
+     *
+     */
 		ArrayList<RegisteredCourse> courses = GradeCardDaoOperation.fetchRegisteredSemesterCoursesForStudents(studentID, semester)
 ;
 		GradeCard gradeCard = GradeCardDaoOperation.fetchGradeCard(studentID, semester);
