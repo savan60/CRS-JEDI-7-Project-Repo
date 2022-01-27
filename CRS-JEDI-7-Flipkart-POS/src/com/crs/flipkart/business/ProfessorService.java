@@ -24,8 +24,7 @@ public class ProfessorService implements ProfessorInterface {
 		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
 		for (String courseId : courseIds) {
 			System.out.println("Students enrolled in course: " + courseId);
-//			regCourseService.printEnrolledStudentInThatCourse(courseId);
-
+			RegisteredCourseDaoOperation.printEnrolledStudentInThatCourse(courseId);
 		}
 
 	}

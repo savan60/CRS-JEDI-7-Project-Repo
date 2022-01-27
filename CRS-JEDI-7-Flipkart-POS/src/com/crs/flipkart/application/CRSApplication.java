@@ -66,6 +66,7 @@ public class CRSApplication {
 			Scanner sc=new Scanner(System.in);
 			int ch=sc.nextInt();
 			String email,password;
+			
 			UserInterface user=new UserService();
 			
 			switch(ch) {

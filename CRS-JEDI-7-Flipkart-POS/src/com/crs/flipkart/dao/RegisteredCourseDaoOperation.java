@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.*;
 
 import com.crs.flipkart.bean.RegisteredCourse;
+import com.crs.flipkart.constant.SQLQueriesConstant;
 import com.crs.flipkart.utils.Utils;
 
 /**
@@ -15,9 +16,8 @@ import com.crs.flipkart.utils.Utils;
  */
 public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterface {
 
-	Connection conn = DBConnection.mysqlConnection;
-	private PreparedStatement stmt = null;
-//	Statement stmt=null;
+	static Connection conn = DBConnection.mysqlConnection;
+	static PreparedStatement stmt = null;
 	
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(50) NOT NULL,"
@@ -25,13 +25,15 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 				+ "semester INTEGER NOT NULL," + "PRIMARY KEY (registeredCourseId))";
 		DBConnection.createTable(SCHEMA);
 	}
-
-	public void printEnrolledStudentInThatCourse(String courseId) {
-
+	public static void printEnrolledStudentInThatCourse(String courseId) {
+		conn=DBConnection.mysqlConnection;
+		Statement stmt1;
 		try {
-			stmt = (PreparedStatement) conn.createStatement();
-			String query = "select studentId from CRS.registeredCourse where courseId ='" + courseId + "';";
-			ResultSet rs = stmt.executeQuery(query);
+			stmt1=conn.createStatement();
+			String query="select studentId from CRS.registeredCourse where courseId ="+courseId;
+//			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.EnrolledStudentInThatCourseQuery);
+			
+			ResultSet rs = stmt1.executeQuery(query);
 			while (rs.next()) {
 				System.out.println(rs.getString("studentId"));
 			}
@@ -41,13 +43,14 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		}
 	}
 
-	public void updateGrade(String courseId, String studentId, float newGrade) {
-
+	public static void updateGrade(String courseId, String studentId, float newGrade) {
+		conn=DBConnection.mysqlConnection;
+		Statement stmt1;
 		try {
-			stmt = (PreparedStatement) conn.createStatement();
+			stmt1 =conn.createStatement();
 			String query = "update CRS.registeredCourse set grade=" + newGrade + " where courseId='" + courseId + "' and studentId='"
 					+ studentId + "';";
-			stmt.executeUpdate(query);
+			stmt1.executeUpdate(query);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
