@@ -40,8 +40,6 @@ public class StudentDaoOperation implements StudentDaoInterface{
 
 		HashSet<String> students=new HashSet<>();
 		try {
-			
-			
 			String sql = "Select studentId from CRS.student where isApproved = ?";
 			statement = (PreparedStatement) connection.prepareStatement(sql);
 			statement.setBoolean(1,false);

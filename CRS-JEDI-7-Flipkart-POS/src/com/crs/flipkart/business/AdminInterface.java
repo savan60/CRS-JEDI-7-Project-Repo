@@ -6,7 +6,7 @@ package com.crs.flipkart.business;
  */
 public interface AdminInterface {
 
-	public boolean addProfessor(String userId, String email, String phoneNumber, String address, String password, String department, String position) ;
+	public boolean addProfessor() ;
 	
 	public void verifyStudent() ;
 	

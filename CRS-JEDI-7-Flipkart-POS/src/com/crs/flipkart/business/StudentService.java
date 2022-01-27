@@ -64,7 +64,7 @@ public class StudentService implements StudentInterface{
 		String email = sc.next();
 		
 		System.out.println("Enter phonenumber: ");
-		long phoneNumber = sc.nextLong();
+		String phoneNumber = sc.next();
 		
 		System.out.println("Enter address: ");
 		String address = sc.next();
@@ -72,7 +72,7 @@ public class StudentService implements StudentInterface{
 		System.out.println("Enter password: ");
 		String password = sc.next();
 		
-		Student student = new Student(studentId, name, phoneNumber, address, UserType.Student, password, email);
+		Student student = new Student(studentId, email, name, phoneNumber, address, UserType.Student, password);
 		
 		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
 		studentDaoInterface.addStudent(student);

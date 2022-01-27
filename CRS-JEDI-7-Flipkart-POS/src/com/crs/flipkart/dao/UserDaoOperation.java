@@ -131,7 +131,7 @@ public class UserDaoOperation implements UserDaoInterface{
 			statement = (PreparedStatement) conn.prepareStatement(sql);
 			statement.setString(1,student.getUserId());
 			statement.setString(2,student.getEmail());
-			statement.setLong(3,student.getPhoneNumber());
+			statement.setString(3,student.getPhoneNumber());
 			statement.setString(4,student.getAddress());
 			statement.setString(5,student.getPassword());
 			statement.setString(6, "Student");

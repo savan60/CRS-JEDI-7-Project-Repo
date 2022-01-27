@@ -3,15 +3,9 @@
  */
 package com.crs.flipkart.business;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.crs.flipkart.utils.Utils.UserType;
-import com.crs.flipkart.dao.DBConnection;
 import java.util.Date;
-
-import com.crs.flipkart.bean.RegisteredCourse;
+import java.util.Scanner;
+import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.dao.*;
 
 /**
@@ -23,36 +17,37 @@ public class AdminService implements AdminInterface {
 	UserService user=new UserService();
 	AdminDaoOperation admin=new AdminDaoOperation();
 	
-	public boolean addProfessor(String userId, String email, String phoneNumber, String address, String password, String department, String position) {
-		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt = null;
-		int userres = 0, profres=0;
-	
-		try {
-			stmt = conn.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String userquery = "INSERT INTO CRS.user VALUES('"+userId+"','"+email+"','"+phoneNumber+"','"+address+"','"+password+"','"+UserType.Professor+"');";
-		String profquery = "INSERT INTO CRS.professor VALUES('"+userId+"','"+department+"',curdate(),'"+position+"');";
-
-		try {
-			userres = stmt.executeUpdate(userquery);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public boolean addProfessor() {
+		Scanner sc = new Scanner(System.in);
 		
-		try {
-			profres = stmt.executeUpdate(profquery);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		System.out.println(userres+" "+profres);
-		if(userres==0 || profres==0) return false;
-		return true;
+		System.out.println("Enter the user id:");
+		String professorId=sc.next();
+		
+		System.out.println("Enter the emailid:");
+		String email=sc.next();
+		
+		System.out.println("Enter the phoneNumber:");
+		String phoneNumber=sc.next();
+		
+		System.out.println("Enter the address:");
+		String address=sc.next();
+		
+		System.out.println("Enter the password:");
+		String password=sc.next();
+		
+		System.out.println("Enter Department:");
+		String department=sc.next();
+		
+		System.out.println("Enter Position:");
+		String position=sc.next();
+		
+		Professor newProfessor = new Professor(professorId,email,phoneNumber,address,password,department,new Date(),position);
+		
+		AdminDaoInterface admin = new AdminDaoOperation();
+		
+		if(admin.addProfessorToDB(newProfessor))
+			return true;
+		return false;
 	}
 	
 	public void verifyStudent() {

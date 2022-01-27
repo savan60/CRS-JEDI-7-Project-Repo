@@ -19,5 +19,12 @@ public class SqlUtils {
 	//Semster Registraion
 	public static String CHECK_SEM_AND_STUDENTID_EXISTS="select studentId from CRS.semesterRegistration where studentId = ? and semester = ?";
 	public static String INSERT_SEM_RESGISTRAION="insert into CRS.semesterRegistration(semesterRegistrationId,studentId, semester,date) values (?,?, ?,curdate())";
+	
+	// Add User to database
+	public static String INSERT_USER="insert into CRS.user(userId,email,phoneNumber,address,password,userType) values (?,?,?,?,?,?)";
+	
+	// Add Professor to database
+	public static String INSERT_PROFESSOR="insert into CRS.professor(professorId,dept,doj,pos) values (?,?,?,?)";
+	
 }
 
