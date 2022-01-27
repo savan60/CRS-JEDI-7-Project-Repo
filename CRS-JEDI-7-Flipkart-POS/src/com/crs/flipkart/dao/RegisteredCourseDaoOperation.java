@@ -93,6 +93,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			stmt = conn.createStatement();
 			String query = "delete from CRS.registeredcourse where courseId = " + courseId + " and studentId = " + studentId + ";";
 			stmt.executeUpdate(query);
+			return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -141,21 +142,24 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			else
 			{
 				String query = "INSERT INTO `CRS`.`registeredCourse` (`registeredCourseId`, `courseId`, `studentId`, `grade`, `semester`) VALUES (?, ?, ?, ?, ?)"; // change 3 -> used system generated id
+				String id = Utils.generateId().toString();
+				id = id.substring(0, Math.min(id.length(), 10));
+				System.out.println(id);
 				stmt1 = (PreparedStatement) conn.prepareStatement(query);
-				stmt1.setString(1, Utils.generateId().toString());
+				stmt1.setString(1, id);
 				stmt1.setString(2, courseId);
 				stmt1.setString(3, studentId);
 				stmt1.setFloat(4, 0);
 				stmt1.setInt(5, sem);
-				stmt1.execute(query);
+				stmt1.execute();
 				
 				query = "select count(*) from CRS.registeredCourse";
 				ResultSet res = stmt.executeQuery(query);
-				rs.next();
-				count = rs.getInt(1);
-				
-				System.out.println("You have added " + (count) + " courses.");
-				if(count < 6) {
+				res.next();
+				int count1 = res.getInt(1);
+				count = count+1;
+				System.out.println("You have added " + count + " courses.");
+				if(count <= 6) {
 					return true;
 				}
 				return false;

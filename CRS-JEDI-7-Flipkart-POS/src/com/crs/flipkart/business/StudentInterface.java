@@ -10,7 +10,6 @@ public interface StudentInterface {
 	public boolean semesterRegistration(int sem);
 	public boolean addCourse(String courseId,int sem);
 	public void viewRegisteredCourses(int sem);
-
+	public boolean dropCourse(String studentId, String courseId);
 	public void setSemester(String currentUsedId, int sem);
-	public boolean dropCourse(String StudentId, String courseId);
 }
