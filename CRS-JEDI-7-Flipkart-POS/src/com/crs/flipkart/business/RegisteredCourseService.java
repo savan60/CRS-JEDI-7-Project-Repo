@@ -17,7 +17,7 @@ import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 public class RegisteredCourseService implements RegisteredCourseInterface {
 
 	public void submitGrade(String courseId, String studentId, float newGrade) {
-//		RegisteredCourseDaoOperation.updateGrade(courseId, studentId, newGrade);
+		RegisteredCourseDaoOperation.updateGrade(courseId, studentId, newGrade);
 
 	}
 }
