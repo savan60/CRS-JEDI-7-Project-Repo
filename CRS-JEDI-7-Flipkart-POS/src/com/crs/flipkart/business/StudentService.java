@@ -45,6 +45,8 @@ public class StudentService implements StudentInterface{
 		}
 
 	}
+	
+	// student self register his/her self
 	public void selfRegistration() {
 		
 		Scanner sc = new Scanner(System.in);

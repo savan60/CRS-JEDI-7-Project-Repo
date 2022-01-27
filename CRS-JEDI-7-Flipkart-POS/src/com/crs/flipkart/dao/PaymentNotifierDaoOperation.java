@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.crs.flipkart.constant.SQLQueriesConstant;
 import com.crs.flipkart.utils.Utils;
 
 /**
@@ -19,7 +20,7 @@ public class PaymentNotifierDaoOperation implements PaymentNotifierDaoInterface 
 	private PreparedStatement statement = null;
 	Connection connection = DBConnection.mysqlConnection;
 	
-	
+	// create paymentNotifier table if it not exists
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.paymentNotifier ("
 				+ "invoiceId VARCHAR(45) NOT NULL,"
@@ -30,6 +31,7 @@ public class PaymentNotifierDaoOperation implements PaymentNotifierDaoInterface 
 		DBConnection.createTable(SCHEMA);
 	}
 	
+	// add Payment Notification details to PaymentNotifier table
 	public void addPaymentNotification(String studentId, String invoiceId, String message) {
 		
 		try {
@@ -37,7 +39,7 @@ public class PaymentNotifierDaoOperation implements PaymentNotifierDaoInterface 
 			Connection conn = DBConnection.mysqlConnection;
 			statement = null;
 		
-			String sql = "INSERT INTO `CRS`.`paymentNotifier` (`studentId`, `invoiceId`, `message`) VALUES (?, ?, ?);";
+			String sql = SQLQueriesConstant.insertPaymentNotifierQuery;
 			statement = (PreparedStatement) conn.prepareStatement(sql);
 			statement.setString(1, studentId);
 			statement.setString(2, invoiceId);
