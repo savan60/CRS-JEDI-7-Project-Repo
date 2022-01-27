@@ -22,9 +22,14 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	
 	
 	public static void createTable() {
-		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.course (" + "courseId VARCHAR(20) NOT NULL,"
-				+ "professorId VARCHAR(20) NULL," + "name VARCHAR(20) NOT NULL," + "duration float NOT NULL,"
-				+ "semester int NOT NULL," + "credits float NOT NULL," + "PRIMARY KEY (courseId))";
+		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.course (" 
+							+ "courseId VARCHAR(20) NOT NULL,"
+							+ "professorId VARCHAR(20) NULL," 
+							+ "name VARCHAR(20) NOT NULL," 
+							+ "duration float NOT NULL,"
+							+ "semester int NOT NULL," 
+							+ "credits float NOT NULL," 
+							+ "PRIMARY KEY (courseId))";
 		DBConnection.createTable(SCHEMA);
 	}
 
@@ -74,7 +79,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		return listOfCourseId;
 	}
 
-	public static void viewCourses(int sem) {
+	public void viewCourses(int sem) {
 		Connection conn = DBConnection.mysqlConnection;
 		Statement stmt;
 		try {
@@ -93,7 +98,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 	}
 
-	public static void updateProfessorId(String ProfessorId, String CourseId) {
+	public void updateProfessorId(String ProfessorId, String CourseId) {
 		Connection conn = DBConnection.mysqlConnection;
 		Statement stmt;
 		try {
@@ -115,8 +120,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		
 	}
 	
-	public static void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) {
-	
+	public void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) {
 		Connection conn = DBConnection.mysqlConnection;
 		try {
 			PreparedStatement stmt = null;
@@ -134,7 +138,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			e.printStackTrace();
 		}
 	}
-	public static void delCourse(String CourseId) {
+	public void delCourse(String CourseId) {
 		Connection conn = DBConnection.mysqlConnection;
 		Statement stmt;
 		try {
@@ -154,8 +158,5 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			e.printStackTrace();
 		}
 	}
-//	public static void main(String[] args) {
-//		DBConnection.setup();
-//		viewCourses(2);
-//	}
+
 }
