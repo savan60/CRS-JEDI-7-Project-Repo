@@ -23,7 +23,7 @@ public class StudentService implements StudentInterface{
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
 	
 	//static variable for semester
-	static int current_semester;
+	public static int current_semester;
 	
 	public int getSemester(String id) {
 		StudentDaoOperation student=new StudentDaoOperation();

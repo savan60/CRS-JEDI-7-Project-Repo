@@ -9,6 +9,7 @@ import java.util.Vector;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.business.UserService;
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils.UserType;
 import java.sql.*;
@@ -27,10 +28,10 @@ public class UserDaoOperation implements UserDaoInterface{
 		         + "email VARCHAR(20) NOT NULL," +"phoneNumber VARCHAR(10) NOT NULL," +"address VARCHAR(40),"
 		         + "password VARCHAR(20) NOT NULL," +"userType enum('Admin', 'Student','Professor'),"
 		         + "PRIMARY KEY (userId))";
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
 	private PreparedStatement statement = null;
-	Connection connection = DBConnection.mysqlConnection;
+	Connection connection = DBUtils.getConnection();
 	
 	public UserType authenticate(String email,String password) {
 		statement=null;
@@ -55,7 +56,7 @@ public class UserDaoOperation implements UserDaoInterface{
 	public String getUserIdByEmailAndPhoneNumber(String email, String phoneNumber) {
 		// TODO Auto-generated method stub
 		statement=null;
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 
 		try {
 			String sql = SqlUtils.GET_USERID_BY_EMAIL_AND_PHONE;
@@ -77,7 +78,7 @@ public class UserDaoOperation implements UserDaoInterface{
 	public boolean updatePassword(String password,String userId) {
 		// TODO Auto-generated method stub
 		statement=null;
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 
 		try {
 			String sql = SqlUtils.UPDATE_PASSWORD;
@@ -101,7 +102,7 @@ public class UserDaoOperation implements UserDaoInterface{
 	public boolean checkPasswordByUserId(String userId, String password) {
 		// TODO Auto-generated method stub
 		statement=null;
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 
 		try {
 			String sql = SqlUtils.CHECK_PASSWORD_BY_USERID;
@@ -124,8 +125,7 @@ public class UserDaoOperation implements UserDaoInterface{
 	public void addUser(Student student) {
 
 		try {
-			DBConnection.setup();
-			Connection conn = DBConnection.mysqlConnection;
+			Connection conn = DBUtils.getConnection();
 			statement = null;
 			String sql = "INSERT INTO `CRS`.`user` (`userId`, `email`, `phoneNumber`, `address`, `password`, `userType`) VALUES (?, ?, ?, ?, ?, ?);";
 			statement = (PreparedStatement) conn.prepareStatement(sql);

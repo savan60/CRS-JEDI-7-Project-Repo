@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.constant.SQLQueriesConstant;
+import com.crs.flipkart.utils.DBUtils;
 
 /**
  * @author SAVAN
@@ -24,11 +25,11 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.professor (" + "professorId VARCHAR(20) NOT NULL,"
 				+ "dept VARCHAR(10) NOT NULL," + "doj DATE NOT NULL," + "pos VARCHAR(10),"
 				+ "PRIMARY KEY (professorId))";
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
 
 	public static void app() {
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt=null;
 		try {
 			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.selectAllProfessorsQuery);

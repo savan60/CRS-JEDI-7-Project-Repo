@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.constant.SQLQueriesConstant;
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.CardType;
@@ -23,7 +24,7 @@ import com.crs.flipkart.utils.Utils.CardType;
 public class PaymentDaoOperation implements PaymentDaoInterface {
 	
 	private PreparedStatement statement = null;
-	Connection connection = DBConnection.mysqlConnection;
+	Connection connection = DBUtils.getConnection();
 	
 	// create payment table if it not exists
 	public static void createTable() {
@@ -36,15 +37,14 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 		         + "date DATE,"
 		         + "PRIMARY KEY (invoiceId))";
 		         
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
 	
 	// populate Payment details for all the student in payment table
 	public void generatePaymentDetailsForAllStudents(int amount, String message) {
 	
 		try {
-			DBConnection.setup();
-			Connection conn = DBConnection.mysqlConnection;
+			Connection conn = DBUtils.getConnection();
 			statement = null;
 			
 			StudentDaoOperation studentDaoOperation = new StudentDaoOperation();
@@ -73,8 +73,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 	// update specific payment entry in payment table
 	public boolean updatePaymentDetails(String studentId, String paymentType) {
 		try {
-			DBConnection.setup();
-			Connection conn = DBConnection.mysqlConnection;
+			Connection conn = DBUtils.getConnection();
 			statement = null;
 			
 			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());

@@ -8,6 +8,7 @@ import java.util.*;
 
 import com.crs.flipkart.bean.RegisteredCourse;
 import com.crs.flipkart.constant.SQLQueriesConstant;
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.Utils;
 
 /**
@@ -16,17 +17,18 @@ import com.crs.flipkart.utils.Utils;
  */
 public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterface {
 
-	static Connection conn = DBConnection.mysqlConnection;
+	static Connection conn = DBUtils.getConnection();
 	static PreparedStatement stmt = null;
 	
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(50) NOT NULL,"
 				+ "courseId varchar(20) NULL," + "studentId varchar(20) NULL," + "grade float NOT NULL,"
 				+ "semester INTEGER NOT NULL," + "PRIMARY KEY (registeredCourseId))";
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
-	public static void printEnrolledStudentInThatCourse(String courseId) {
-		conn=DBConnection.mysqlConnection;
+	
+	public void printEnrolledStudentInThatCourse(String courseId) {
+		conn=DBUtils.getConnection();
 		Statement stmt1;
 		try {
 			stmt1=conn.createStatement();
@@ -43,8 +45,8 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		}
 	}
 
-	public static void updateGrade(String courseId, String studentId, float newGrade) {
-		conn=DBConnection.mysqlConnection;
+	public void updateGrade(String courseId, String studentId, float newGrade) {
+		conn=DBUtils.getConnection();
 		Statement stmt1;
 		try {
 			stmt1 =conn.createStatement();
@@ -89,7 +91,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	
 	public boolean dropCourse(String courseId, String studentId)
 	{
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 
 		Statement stmt;
 		try {
@@ -106,7 +108,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 
 	public void printRegisteredCourses(String studentId, int sem) {
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		Statement stmt;
 
 		try{
@@ -127,7 +129,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	
 	public boolean addCourse(String courseId, String studentId,int sem)
 	{
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 
 		PreparedStatement stmt1;
 		Statement stmt;

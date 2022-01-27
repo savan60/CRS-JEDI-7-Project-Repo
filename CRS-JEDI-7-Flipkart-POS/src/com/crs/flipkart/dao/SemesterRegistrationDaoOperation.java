@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils;
 
@@ -23,16 +24,16 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 	            + "semester INT NOT NULL,"
 	            + "date  DATE NOT NULL,"
 	            + "PRIMARY KEY (semesterRegistrationId))";
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
 
 	private PreparedStatement statement = null;
-	Connection connection = DBConnection.mysqlConnection;
+	Connection connection = DBUtils.getConnection();
 	@Override
 	public boolean checkSemAndStudentIdExists(int sem, String studentId) {
 		// TODO Auto-generated method stub
 		statement=null;
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		try {
 			String sql = SqlUtils.CHECK_SEM_AND_STUDENTID_EXISTS;
 			statement = (PreparedStatement) conn.prepareStatement(sql);
@@ -51,7 +52,7 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 	public boolean insertSem(int sem, String studentId) {
 		// TODO Auto-generated method stub
 		statement=null;
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		try {
 			String sql = SqlUtils.INSERT_SEM_RESGISTRAION;
 			statement = (PreparedStatement) conn.prepareStatement(sql);

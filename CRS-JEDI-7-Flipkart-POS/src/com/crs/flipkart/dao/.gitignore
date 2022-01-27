@@ -5,7 +5,7 @@
 /CardDaoOperation.class
 /CourseDaoInterface.class
 /CourseDaoOperation.class
-/DBConnection.class
+/DBUtils.class
 /GradeCardDaoInterface.class
 /GradeCardDaoOperation.class
 /PaymentDaoInterface.class

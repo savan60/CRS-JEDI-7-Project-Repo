@@ -80,11 +80,11 @@ public class CRSStudentMenu {
 				//Remaining: Show list of course
 				//Test that total courses selection doesn't excedd 6
 				//1=> semester
-				student.viewCatalogue(1);
+				student.viewCatalogue(StudentService.current_semester);
 				System.out.println("Enter the course id:");
 				courseId=sc.next();
 				//1=>semester
-				student.addCourse(courseId, 1);
+				student.addCourse(courseId, StudentService.current_semester);
 				break;
 			case 3:
 //				dropCourse(studentId); // change 2 -> fixed the flow for drop course
@@ -96,17 +96,17 @@ public class CRSStudentMenu {
 			case 4:
 				//sem take from student table
 				
-				student.viewCatalogue(1);
+				student.viewCatalogue(StudentService.current_semester);
 //				viewAvailableCourse(studentId);
 				break;
 			case 5:
 				//1=> semester
-				student.viewRegisteredCourses(1);
+				student.viewRegisteredCourses(StudentService.current_semester);
 //				viewRegisteredCourse(studentId);
 				break;
 			case 6:
 				//1=>semester
-				grade.viewGradeCard(UserService.currentUsedId, 1);
+				grade.viewGradeCard(UserService.currentUsedId, StudentService.current_semester);
 //				viewGradeCard(studentId);
 				break;
 			case 7:

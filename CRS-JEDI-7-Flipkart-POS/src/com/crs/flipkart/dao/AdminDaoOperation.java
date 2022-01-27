@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.Map;
 
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils.UserType;
 
@@ -18,7 +19,7 @@ import com.crs.flipkart.utils.Utils.UserType;
  */
 public class AdminDaoOperation implements AdminDaoInterface {
 	
-	Connection conn = DBConnection.mysqlConnection;
+	Connection conn = DBUtils.getConnection();
 	private PreparedStatement stmt = null;
 	Scanner sc=new Scanner(System.in);
 	
@@ -27,7 +28,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		         + "AdminId VARCHAR(20) NOT NULL,"
 		         + "doj DATE NULL,"
 		         + "PRIMARY KEY (AdminId))";
-         DBConnection.createTable(SCHEMA);
+		 DBUtils.createTable(SCHEMA);
 	}
 	 
 	public boolean addProfessorToDB(Professor professor) {

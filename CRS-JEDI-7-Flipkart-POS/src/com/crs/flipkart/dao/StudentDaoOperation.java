@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.Student;
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 
 /**
@@ -22,7 +23,7 @@ import com.crs.flipkart.utils.SqlUtils;
 public class StudentDaoOperation implements StudentDaoInterface{
 	
 	private PreparedStatement statement = null;
-	Connection connection = DBConnection.mysqlConnection;
+	Connection connection = DBUtils.getConnection();
 	
 	// create student table if it not exists
 	public static void createTable() {
@@ -32,7 +33,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 	            + "isApproved BOOLEAN NOT NULL,"
 	            + "current_semester int default 1,"
 	            + "PRIMARY KEY (studentId))";
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
 	
 	public HashSet<String> getStudentListForApproval() {
@@ -63,8 +64,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 	public void addStudent(Student student) {
 
 		try {
-			DBConnection.setup();
-			Connection conn = DBConnection.mysqlConnection;
+			Connection conn = DBUtils.getConnection();
 			
 			// adds student to user table
 			UserDaoOperation userDaoOperation = new  UserDaoOperation();
@@ -126,8 +126,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		ArrayList<String> studentIds = new ArrayList<String>();
 		
 		try {
-			DBConnection.setup();
-			Connection conn = DBConnection.mysqlConnection;
+			Connection conn = DBUtils.getConnection();
 			Statement stmt  = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("select studentId from CRS.student");
 

@@ -12,6 +12,7 @@ import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.CourseDaoInterface;
 import com.crs.flipkart.dao.CourseDaoOperation;
 import com.crs.flipkart.dao.ProfessorDaoOperation;
+import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.utils.Utils.UserType;
 
@@ -19,12 +20,13 @@ public class ProfessorService implements ProfessorInterface {
 	RegisteredCourseInterface regCourseService = new RegisteredCourseService();
 	CourseInterface courseService = new CourseService();
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
+	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
 	public void viewEnrolledStudents(String professorId) {
 		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
 		for (String courseId : courseIds) {
 			System.out.println("Students enrolled in course: " + courseId);
-			RegisteredCourseDaoOperation.printEnrolledStudentInThatCourse(courseId);
+			registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
 		}
 
 	}

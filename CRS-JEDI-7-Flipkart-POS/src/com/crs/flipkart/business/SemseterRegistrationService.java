@@ -1,7 +1,7 @@
 package com.crs.flipkart.business;
 
 import com.crs.flipkart.bean.Course;
-import com.crs.flipkart.dao.DBConnection;
+import com.crs.flipkart.dao.DBUtils;
 import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 

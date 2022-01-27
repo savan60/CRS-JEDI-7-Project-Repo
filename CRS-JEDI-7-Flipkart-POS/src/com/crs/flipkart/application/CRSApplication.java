@@ -14,7 +14,6 @@ import com.crs.flipkart.dao.AdminDaoOperation;
 import com.crs.flipkart.dao.CardDaoInterface;
 import com.crs.flipkart.dao.CardDaoOperation;
 import com.crs.flipkart.dao.CourseDaoOperation;
-import com.crs.flipkart.dao.DBConnection;
 import com.crs.flipkart.dao.GradeCardDaoInterface;
 import com.crs.flipkart.dao.GradeCardDaoOperation;
 import com.crs.flipkart.dao.PaymentDaoOperation;
@@ -24,6 +23,7 @@ import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
 import com.crs.flipkart.dao.StudentDaoOperation;
 import com.crs.flipkart.dao.UserDaoOperation;
+import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.Utils.UserType;
 
 //import 
@@ -42,8 +42,7 @@ public class CRSApplication {
 		CRSProfessorMenu professor=new CRSProfessorMenu();
 		CRSStudentMenu student=new CRSStudentMenu();
 		StudentInterface studentInterface=new StudentService();
-		DBConnection.setup();
-		
+		DBUtils.getConnection();
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
 		ProfessorDaoOperation.createTable();

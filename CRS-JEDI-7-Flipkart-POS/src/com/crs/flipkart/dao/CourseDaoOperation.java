@@ -14,6 +14,7 @@ import java.util.HashMap;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.constant.SQLQueriesConstant;
+import com.crs.flipkart.utils.DBUtils;
 
 /**
  * @author SAVAN
@@ -31,14 +32,14 @@ public class CourseDaoOperation implements CourseDaoInterface {
 							+ "semester int NOT NULL," 
 							+ "credits float NOT NULL," 
 							+ "PRIMARY KEY (courseId))";
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
 
 	public static ArrayList<Course>  getAllCourses() {
 		
 		ArrayList<Course> courses = new ArrayList<>();
 
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt = null;
 		try {
 			String sql="select * from CRS.course";
@@ -61,7 +62,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public static ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		ArrayList<String> listOfCourseId = new ArrayList<>();
 		PreparedStatement stmt = null;
 		try {
@@ -82,7 +83,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public void viewCourses(int sem) {
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt = null;
 		try {
 
@@ -102,7 +103,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public void updateProfessorId(String ProfessorId, String CourseId) {
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt = null;
 		try {
 	
@@ -124,7 +125,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 	
 	public void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) {
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		try {
 			PreparedStatement stmt = null;
 			//String sql = "INSERT INTO `CRS`.`course` (`courseId`, `name`, `duration`, `credits`, `semester`) VALUES (?, ?, ?, ?, ?);";
@@ -142,7 +143,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 	}
 	public void delCourse(String CourseId) {
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		
 		try {
 			PreparedStatement stmt = null;

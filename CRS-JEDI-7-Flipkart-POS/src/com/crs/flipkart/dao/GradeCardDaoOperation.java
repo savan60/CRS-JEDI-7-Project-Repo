@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import com.crs.flipkart.bean.RegisteredCourse;
 import com.crs.flipkart.bean.GradeCard;
 import com.crs.flipkart.constant.*;
+import com.crs.flipkart.utils.DBUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +34,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 		         + "semester INT NOT NULL,"
 		         + "grade FLOAT,"
 		         + "PRIMARY KEY (gradeCardId))";
-		DBConnection.createTable(SCHEMA);
+		DBUtils.createTable(SCHEMA);
 	}
 	
 	public static ArrayList<RegisteredCourse> fetchRegisteredSemesterCoursesForStudents(String studentId, int semester) {
@@ -42,7 +44,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 		 * @return List of RegisteredCourses
 		 * 
 		 */
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		ArrayList<RegisteredCourse> courses = new ArrayList<RegisteredCourse>();
 		String sql = SQLQueriesConstant.fetchRegisteredCourseFromStudentId;
 		
@@ -75,7 +77,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 		 * @return GradeCard
 		 */
 		
-		Connection conn = DBConnection.mysqlConnection;
+		Connection conn = DBUtils.getConnection();
 		GradeCard gradeCard = new GradeCard();
 		
 		gradeCard.setGradeCardId("NOTFOUND");
