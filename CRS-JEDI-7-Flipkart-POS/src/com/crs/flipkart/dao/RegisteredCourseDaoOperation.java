@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.*;
 
 import com.crs.flipkart.bean.RegisteredCourse;
+import com.crs.flipkart.constant.SQLQueriesConstant;
 import com.crs.flipkart.utils.Utils;
 
 /**
@@ -28,8 +29,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	public void printEnrolledStudentInThatCourse(String courseId) {
 
 		try {
-			String sql = "select studentId from CRS.registeredcourse where courseId = ?";
-			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.EnrolledStudentInThatCourseQuery);
 			stmt.setString(1, courseId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -44,8 +44,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	public void updateGrade(String courseId, String studentId, float newGrade) {
 
 		try {
-			String query = "update CRS.registeredcourse set grade= ? where courseId=? and studentId=?";
-			stmt = (PreparedStatement) conn.prepareStatement(query);
+			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.updateGradeQuery);
 			stmt.setFloat(1, newGrade);
 			stmt.setString(2, courseId);
 			stmt.setString(3, studentId);
@@ -103,8 +102,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 		try {
 			
-			String sql = "select * from CRS.registeredcourse r inner join CRS.course c on c.courseId=r.courseId where r.studentId= ? and r.semester=?";
-			stmt = conn.prepareStatement(sql);
+			stmt = conn.prepareStatement(SQLQueriesConstant.registeredCourseQuery);
 			stmt.setString(1,studentId);
 			stmt.setInt(2,sem);
 			ResultSet rs = stmt.executeQuery();

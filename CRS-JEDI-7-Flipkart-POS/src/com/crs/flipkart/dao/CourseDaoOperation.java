@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.constant.SQLQueriesConstant;
 
 /**
  * @author SAVAN
@@ -59,8 +60,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		ArrayList<String> listOfCourseId = new ArrayList<>();
 		PreparedStatement stmt = null;
 		try {
-			String sql = "select courseId from CRS.course where professorId =?";
-			stmt =conn.prepareStatement(sql);
+			stmt =conn.prepareStatement(SQLQueriesConstant.fetchCourseIdFromProfessorId);
 			stmt.setString(1,ProfessorId);
 
 			ResultSet rs = stmt.executeQuery();
@@ -80,10 +80,10 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		Connection conn = DBConnection.mysqlConnection;
 		PreparedStatement stmt = null;
 		try {
-			String sql= "select * from CRS.course where semester =?";
-			stmt =conn.prepareStatement(sql);
-			stmt.setString(1,sem);
-			ResultSet rs = stmt.executeQuery(query);
+
+			stmt =conn.prepareStatement(SQLQueriesConstant.viewCourcesQuery);
+			stmt.setInt(1,sem);
+			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				System.out.println(
 						"Course Id :" + rs.getString("courseId") + " ProfessorId: " + rs.getString("professorId")
@@ -98,15 +98,14 @@ public class CourseDaoOperation implements CourseDaoInterface {
 
 	public static void updateProfessorId(String ProfessorId, String CourseId) {
 		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt;
+		PreparedStatement stmt = null;
 		try {
 	
-			String sql = "update CRS.course set professorId = ? where courseId=?";
-			stmt =conn.prepareStatement(sql);
+			stmt =conn.prepareStatement(SQLQueriesConstant.updateProfessorIdQuery);
+			stmt.setString(1, ProfessorId);
+			stmt.setString(2, CourseId);
 			stmt.executeUpdate();
-
-			query = "select * from CRS.course";
-			ResultSet rs = stmt.executeQuery(query);
+			ResultSet rs = stmt.executeQuery(SQLQueriesConstant.selectAllCoursesQuery);
 			while (rs.next()) {
 				System.out.println(
 						"CourseId: " + rs.getString("courseId") + " ProfessorId:" + rs.getString("professorId"));
