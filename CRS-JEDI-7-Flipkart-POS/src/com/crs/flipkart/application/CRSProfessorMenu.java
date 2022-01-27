@@ -71,8 +71,7 @@ public class CRSProfessorMenu {
 				case 5:
 					System.out.println("Enter your old password\n");
 					String password=sc.next();
-					boolean val1=false;
-//					user.checkPasswordforEmail(password);
+					boolean val1=user.checkPasswordforEmail(password);
 					if(val1) {
 						while(true) {
 							System.out.println("Enter your choice:\n"+"1.Type new password \n2. Exit");

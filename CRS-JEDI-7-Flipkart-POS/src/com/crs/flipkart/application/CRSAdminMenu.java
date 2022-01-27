@@ -110,8 +110,8 @@ public class CRSAdminMenu {
 				case 5:
 					System.out.println("Enter your old password\n");
 					String password=sc.next();
-					UserType val1=user.authenticate(user.getEmailByUserId(UserService.currentUsedId),password);
-					if(!(val1==UserType.None)) {
+					boolean val1=user.checkPasswordforEmail(password);
+					if(val1) {
 						while(true) {
 							System.out.println("Enter your choice:\n"+"1.Type new password \n2. Exit");
 							int choice = sc.nextInt();
@@ -134,10 +134,10 @@ public class CRSAdminMenu {
 							}
 						}
 					}
-					else {
-						System.out.println("Invalid credentials");
-					}
-					break;
+				 else {
+					System.out.println("Invalid credentials");
+				 }
+				break;
 					
 				case 6:	System.out.println("Select your choice: \n1. Approve all students\n2. Approve Students one by one.");
 						int choice= sc.nextInt();

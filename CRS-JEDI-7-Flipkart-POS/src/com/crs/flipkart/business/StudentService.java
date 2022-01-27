@@ -4,6 +4,7 @@ import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoInterface;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
+import com.crs.flipkart.dao.CourseDaoInterface;
 import com.crs.flipkart.dao.CourseDaoOperation;
 
 import java.sql.PreparedStatement;
@@ -18,6 +19,8 @@ import com.crs.flipkart.utils.Utils.UserType;
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
 	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
+	CourseDaoInterface courseInterface=new CourseDaoOperation();
+	
 	//static variable for semester
 	static int current_semester;
 	
@@ -78,7 +81,7 @@ public class StudentService implements StudentInterface{
 		
 	}
 	public void viewCatalogue(int sem) {
-		CourseDaoOperation.viewCourses(sem);
+		courseInterface.viewCourses(sem);
 	}
 	
 	public void viewRegisteredCourses(int sem) {
