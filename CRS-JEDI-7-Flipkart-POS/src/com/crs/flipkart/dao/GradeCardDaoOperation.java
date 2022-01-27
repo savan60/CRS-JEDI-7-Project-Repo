@@ -2,6 +2,14 @@
  * 
  */
 package com.crs.flipkart.dao;
+import java.util.ArrayList;
+
+
+import com.crs.flipkart.bean.RegisteredCourse;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import java.sql.*;
 import java.util.*;
@@ -55,7 +63,28 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
 		
+	public static ArrayList<RegisteredCourse> fetchRegisteredSemesterCoursesForStudents(String studentId, float semester) {
+		Connection conn = DBConnection.mysqlConnection;
+		ArrayList<RegisteredCourse> courses = new ArrayList<RegisteredCourse>();
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "select * from CRS.registeredCourse where studentId ="+studentId+" AND semester="+semester;
+			ResultSet rs = stmt.executeQuery(query);
+
+			while (rs.next()) {
+				courses.add(new RegisteredCourse(rs.getString("registeredCourseId"), rs.getString("courseId"), rs.getString("studentId"),
+						rs.getFloat("grade"), rs.getInt("semester")));
+			}
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return courses;
 	}
 }

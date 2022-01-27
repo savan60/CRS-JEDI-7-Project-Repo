@@ -6,6 +6,7 @@ package com.crs.flipkart.dao;
 import java.sql.*;
 import java.util.Vector;
 
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.utils.SqlUtils;
@@ -17,6 +18,7 @@ import java.sql.*;
  *
  */
 public class UserDaoOperation implements UserDaoInterface{
+	
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.user("
 		         + "userId VARCHAR(20) NOT NULL,"
@@ -115,4 +117,31 @@ public class UserDaoOperation implements UserDaoInterface{
 		}
 		return false;
 	}
+
+
+	public void addUser(Student student) {
+
+		try {
+			DBConnection.setup();
+			Connection conn = DBConnection.mysqlConnection;
+			statement = null;
+			String sql = "INSERT INTO `CRS`.`user` (`userId`, `email`, `phoneNumber`, `address`, `password`, `userType`) VALUES (?, ?, ?, ?, ?, ?);";
+			statement = (PreparedStatement) conn.prepareStatement(sql);
+			statement.setString(1,student.getUserId());
+			statement.setString(2,student.getEmail());
+			statement.setLong(3,student.getPhoneNumber());
+			statement.setString(4,student.getAddress());
+			statement.setString(5,student.getPassword());
+			statement.setString(6, "Student");
+			statement.execute();
+			
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		
+	}
+	
+
+
+
 }

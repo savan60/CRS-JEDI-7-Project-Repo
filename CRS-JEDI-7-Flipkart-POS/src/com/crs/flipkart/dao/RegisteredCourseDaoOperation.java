@@ -19,9 +19,9 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 //	Statement stmt=null;
 	
 	public static void createTable() {
-		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(20) NOT NULL,"
+		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(50) NOT NULL,"
 				+ "courseId varchar(20) NULL," + "studentId varchar(20) NULL," + "grade float NOT NULL,"
-				+ "semester float NOT NULL," + "PRIMARY KEY (registeredCourseId))";
+				+ "semester INTEGER NOT NULL," + "PRIMARY KEY (registeredCourseId))";
 		DBConnection.createTable(SCHEMA);
 	}
 
@@ -80,5 +80,61 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			System.out.println("Error: " + e.getMessage());
 		}
 		return grade;
+	}
+	
+	public boolean addCourse(String courseId, String studentId,int sem)
+	{
+		Connection conn = DBConnection.mysqlConnection;
+
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "insert into CRS.registeredcourse(registeredCourseId, courseId, studentId, grade, semester) values(" + courseId+studentId +", "+ courseId + "," + studentId + ", 0,"+sem+");";
+			int res=stmt.executeUpdate(query);
+			if(res==1) {
+				return true;
+			}
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean dropCourse(String courseId, String studentId)
+	{
+		Connection conn = DBConnection.mysqlConnection;
+
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "delete from CRS.registeredcourse where courseId = " + courseId + " and studentId = " + studentId + ";";
+			stmt.executeUpdate(query);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+	public void printRegisteredCourses(String studentId, int sem) {
+		Connection conn = DBConnection.mysqlConnection;
+		Statement stmt;
+
+		try{
+			stmt = conn.createStatement();
+			String query = "select * from CRS.registeredcourse r inner join CRS.course c on c.courseId=r.courseId where r.studentId="
+					+ studentId + " and r.semester=" + sem;
+		
+			ResultSet rs = stmt.executeQuery(query);
+			while (rs.next()) {
+				System.out.println("Course name:-->"+rs.getString("name")+"   Course Id:--> " + rs.getString("courseId") + "  Grades:--> " + rs.getFloat("grade"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
 	}
 }

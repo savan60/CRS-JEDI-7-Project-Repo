@@ -8,5 +8,7 @@ package com.crs.flipkart.dao;
  *
  */
 public interface SemesterRegistrationDaoInterface {
-
+	public boolean checkSemAndStudentIdExists(int sem,String studentId);
+	
+	public boolean insertSem(int sem,String studentId);
 }

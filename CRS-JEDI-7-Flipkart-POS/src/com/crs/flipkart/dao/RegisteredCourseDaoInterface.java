@@ -11,5 +11,7 @@ import java.util.*;
  */
 public interface RegisteredCourseDaoInterface {
 	public HashMap<String,Float> generateGradeCardBySem(int sem);
-
+	public boolean addCourse(String courseId, String studentId,int sem);
+	public boolean dropCourse(String courseId, String studentId);
+	public  void printRegisteredCourses(String studentId, int sem) ;
 }

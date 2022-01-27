@@ -35,7 +35,7 @@ public class DBConnection {
     public static void createTable(String SCHEMA) {
      	Statement stmt;
 		try {
-			stmt = (DBConnection.mysqlConnection).createStatement();
+			stmt = mysqlConnection.createStatement();
 			 stmt.executeUpdate(SCHEMA);
 			 System.out.println("Admin Table created successfully..."); 
 		} catch (SQLException e) {

@@ -5,42 +5,42 @@ package com.crs.flipkart.bean;
 
 import java.util.Date;
 
+import com.crs.flipkart.utils.Utils.CardType;
+
 /**
  * @author SAVAN
  *
  */
-enum CardType{
-	DEBIT,CREDIT;
-}
 
 public class Card extends Payment{
-	private int cardNumber;
+	private String cardNumber;
 	private CardType cardType;
-	private Date expiryDate;
-	private int cvv;
+	private int expiryMonth;
+	private int expiryYear;
 	private String bankName;
-	/**
-	 * @return the bankName
-	 */
-	public String getBankName() {
-		return bankName;
-	}
-	/**
-	 * @param bankName the bankName to set
-	 */
-	public void setBankName(String bankName) {
+	
+	
+	
+	public Card(String cardNumber, CardType cardType, int expiryMonth, int expiryYear, String bankName) {
+		super();
+		this.cardNumber = cardNumber;
+		this.cardType = cardType;
+		this.expiryMonth = expiryMonth;
+		this.expiryYear = expiryYear;
 		this.bankName = bankName;
 	}
+	
+	
 	/**
 	 * @return the cardNumber
 	 */
-	public int getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 	/**
 	 * @param cardNumber the cardNumber to set
 	 */
-	public void setCardNumber(int cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 	/**
@@ -56,27 +56,42 @@ public class Card extends Payment{
 		this.cardType = cardType;
 	}
 	/**
-	 * @return the expiryDate
+	 * @return the expiryMonth
 	 */
-	public Date getExpiryDate() {
-		return expiryDate;
+	public int getExpiryMonth() {
+		return expiryMonth;
 	}
 	/**
-	 * @param expiryDate the expiryDate to set
+	 * @param expiryMonth the expiryMonth to set
 	 */
-	public void setExpiryDate(Date expiryDate) {
-		this.expiryDate = expiryDate;
+	public void setExpiryMonth(int expiryMonth) {
+		this.expiryMonth = expiryMonth;
 	}
 	/**
-	 * @return the cvv
+	 * @return the expiryYear
 	 */
-	public int getCvv() {
-		return cvv;
+	public int getExpiryYear() {
+		return expiryYear;
 	}
 	/**
-	 * @param cvv the cvv to set
+	 * @param expiryYear the expiryYear to set
 	 */
-	public void setCvv(int cvv) {
-		this.cvv = cvv;
+	public void setExpiryYear(int expiryYear) {
+		this.expiryYear = expiryYear;
 	}
+	/**
+	 * @return the bankName
+	 */
+	public String getBankName() {
+		return bankName;
+	}
+	/**
+	 * @param bankName the bankName to set
+	 */
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	
+	
+	
 }

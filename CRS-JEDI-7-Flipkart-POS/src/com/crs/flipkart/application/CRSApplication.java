@@ -5,6 +5,8 @@ package com.crs.flipkart.application;
 
 import java.util.Scanner;
 
+import com.crs.flipkart.business.StudentInterface;
+import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.dao.AdminDaoOperation;
@@ -37,7 +39,10 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
+		CRSStudentMenu student=new CRSStudentMenu();
+		StudentInterface studentInterface=new StudentService();
 		DBConnection.setup();
+		
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
 		ProfessorDaoOperation.createTable();
@@ -53,7 +58,7 @@ public class CRSApplication {
 		//role => if 1 is choosen => student
 		//role => if login => admin@mail.com admin =>admin
 		//addprofessor=> professor
-		CourseDaoOperation.app();
+//		CourseDaoOperation.app();
 		while(true) {
 			System.out.println("__________________________________________________________");
 			System.out.println("Select choice\n"+"1. Register as a Student\n"+"2. Login\n"+"3. Forget Password\n4. Exit");
@@ -63,7 +68,8 @@ public class CRSApplication {
 			UserInterface user=new UserService();
 			
 			switch(ch) {
-				case 1: System.out.println("Registering student");
+				case 1: 
+					studentInterface.selfRegistration();
 				     break;
 				case 2: System.out.println("Enter your email:\n");
 						email=sc.next();
@@ -72,7 +78,7 @@ public class CRSApplication {
 						UserType val=user.authenticate(email,password);
 						switch(val) {
 							case Student:
-								System.out.println("Student Menu here");
+								student.homepage();
 								break;
 							case Professor:
 								professor.homePage();
