@@ -127,8 +127,8 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		Connection conn = DBConnection.mysqlConnection;
 		try {
 			PreparedStatement stmt = null;
-			String sql = "INSERT INTO `CRS`.`course` (`courseId`, `name`, `duration`, `credits`, `semester`) VALUES (?, ?, ?, ?, ?);";
-			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			//String sql = "INSERT INTO `CRS`.`course` (`courseId`, `name`, `duration`, `credits`, `semester`) VALUES (?, ?, ?, ?, ?);";
+			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.addCoursesToDb);
 			stmt.setString(1,CourseId);
 			stmt.setString(2,CourseName);
 			stmt.setFloat(3, CourseDur);
@@ -143,18 +143,19 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 	public void delCourse(String CourseId) {
 		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt;
+		
 		try {
-			stmt = conn.createStatement();
-			String query = "delete from CRS.course where courseId="+CourseId;
-			stmt.executeUpdate(query);
-			
-			query="select * from CRS.course";
-			ResultSet rs=stmt.executeQuery(query);
-			while (rs.next()) {
-				System.out.println(
-						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
-			}
+			PreparedStatement stmt = null;
+			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.deleteCourseFromDb);
+			//String query = "delete from CRS.course where courseId= ?";
+			stmt.setString(1,CourseId);			
+			stmt.execute();	
+//			query="select * from CRS.course";
+//			ResultSet rs=stmt.executeQuery(query);
+//			while (rs.next()) {
+//				System.out.println(
+//						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
+//			}
 		}
 
 		catch (SQLException e) {

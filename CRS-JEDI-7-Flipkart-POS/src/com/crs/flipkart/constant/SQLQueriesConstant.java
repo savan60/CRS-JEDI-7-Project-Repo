@@ -16,4 +16,9 @@ public class SQLQueriesConstant {
 	public static final String updateProfessorIdQuery="update CRS.course set professorId = ? where courseId=?";
 	public static final String selectAllCoursesQuery="select * from CRS.course";
 	public static final String selectAllProfessorsQuery="select * from CRS.professor";
+	public static final String insertPaymentQuery = "INSERT INTO `CRS`.`payment` (`studentId`, `invoiceId`, `amount`, `status`) VALUES (?, ?, ?, ?);";
+	public static final String updatePaymentQuery = "UPDATE CRS.payment SET status=?, type=?, Date=? where (studentid=?)";
+	public static final String insertPaymentNotifierQuery= "INSERT INTO `CRS`.`paymentNotifier` (`studentId`, `invoiceId`, `message`) VALUES (?, ?, ?);";
+	public static final String addCoursesToDb="INSERT INTO `CRS`.`course` (`courseId`, `name`, `duration`, `credits`, `semester`) VALUES (?, ?, ?, ?, ?)";
+	public static final String deleteCourseFromDb="delete from CRS.course where courseId= ? ";
 }

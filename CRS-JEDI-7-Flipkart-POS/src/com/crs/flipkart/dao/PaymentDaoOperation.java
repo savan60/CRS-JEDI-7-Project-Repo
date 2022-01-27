@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.bean.Student;
+import com.crs.flipkart.constant.SQLQueriesConstant;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.CardType;
@@ -24,7 +25,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 	private PreparedStatement statement = null;
 	Connection connection = DBConnection.mysqlConnection;
 	
-	
+	// create payment table if it not exists
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.payment ("
 		         + "studentId VARCHAR(20) NULL,"
@@ -38,7 +39,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 		DBConnection.createTable(SCHEMA);
 	}
 	
-	
+	// populate Payment details for all the student in payment table
 	public void generatePaymentDetailsForAllStudents(int amount, String message) {
 	
 		try {
@@ -51,7 +52,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 			
 			for(String studentId : studentIds) {
 				String invoiceId = Utils.generateUniqueId();
-				String sql = "INSERT INTO `CRS`.`payment` (`studentId`, `invoiceId`, `amount`, `status`) VALUES (?, ?, ?, ?);";
+				String sql = SQLQueriesConstant.insertPaymentQuery;
 				statement = (PreparedStatement) conn.prepareStatement(sql);
 				statement.setString(1, studentId);
 				statement.setString(2, invoiceId);
@@ -69,7 +70,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 		
 	}
 	
-	
+	// update specific payment entry in payment table
 	public boolean updatePaymentDetails(String studentId, String paymentType) {
 		try {
 			DBConnection.setup();
@@ -78,7 +79,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 			
 			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
 				
-			String sql = "UPDATE CRS.payment SET status=?, type=?, Date=? where (studentid=?)";
+			String sql = SQLQueriesConstant.updatePaymentQuery;
 			statement = (PreparedStatement) conn.prepareStatement(sql);
 			statement.setBoolean(1, true);
 			statement.setString(2, paymentType);

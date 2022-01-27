@@ -18,7 +18,7 @@ import com.crs.flipkart.utils.Utils;
 public class SemesterRegistrationDaoOperation implements SemesterRegistrationDaoInterface{
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.semesterRegistration ("
-	            + "semesterRegistrationId VARCHAR(20) NOT NULL,"
+	            + "semesterRegistrationId VARCHAR(50) NOT NULL,"
 		     	+ "studentId VARCHAR(20) NULL,"
 	            + "semester INT NOT NULL,"
 	            + "date  DATE NOT NULL,"
