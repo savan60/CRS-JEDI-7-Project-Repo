@@ -39,28 +39,28 @@ public class CRSAdminMenu {
 
 			switch(ch) {
 				case 1: 
-					System.out.println("Enter the user id:");
-					String id=sc.next();
+//					System.out.println("Enter the user id:");
+//					String id=sc.next();
+//					
+//					System.out.println("Enter the emailid:");
+//					String email=sc.next();
+//					
+//					System.out.println("Enter the phoneNumber:");
+//					String num=sc.next();
+//					
+//					System.out.println("Enter the address:");
+//					String add=sc.next();
+//					
+//					System.out.println("Enter the password:");
+//					String pass=sc.next();
+//					
+//					System.out.println("Enter Department:");
+//					String dept=sc.next();
+//					
+//					System.out.println("Enter Position:");
+//					String pos=sc.next();
 					
-					System.out.println("Enter the emailid:");
-					String email=sc.next();
-					
-					System.out.println("Enter the phoneNumber:");
-					String num=sc.next();
-					
-					System.out.println("Enter the address:");
-					String add=sc.next();
-					
-					System.out.println("Enter the password:");
-					String pass=sc.next();
-					
-					System.out.println("Enter Department:");
-					String dept=sc.next();
-					
-					System.out.println("Enter Position:");
-					String pos=sc.next();
-					
-					if(adminService.addProfessor(id,email,num,add,pass,dept,pos)) {
+					if(adminService.addProfessor()) {
 						System.out.println("Professor added");
 					}
 					else 

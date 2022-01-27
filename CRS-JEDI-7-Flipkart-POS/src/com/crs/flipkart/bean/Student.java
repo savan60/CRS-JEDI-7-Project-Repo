@@ -14,6 +14,7 @@ public class Student extends User{
 	private String studentId;//pk => userid
 	private String name;
 	private boolean isApproved;
+	
 	public boolean isApproved() {
 		return isApproved;
 	}
@@ -31,8 +32,8 @@ public class Student extends User{
 	}
 	private int current_semester;
 	
-	public Student(String studentId, String name, long number, String address, UserType type, String password) {
-		super(studentId, name, number, address, type, password);
+	public Student(String studentId, String email, String name, String number, String address, UserType type, String password) {
+		super(studentId, email, number, address, password, UserType.Student);
 		this.studentId = studentId;
 		this.name = name;
 	}
