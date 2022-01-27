@@ -11,7 +11,7 @@ import com.crs.flipkart.dao.CourseDaoOperation;
  */
 public class CourseService implements CourseInterface {
 
-	private ArrayList<Course> courses = CourseDaoOperation.courses;
+	private ArrayList<Course> courses = CourseDaoOperation.getAllCourses();
 	
 	/**
 	 * @return the courses

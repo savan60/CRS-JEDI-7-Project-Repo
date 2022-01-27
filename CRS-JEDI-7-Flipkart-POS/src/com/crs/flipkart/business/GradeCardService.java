@@ -12,12 +12,10 @@ import com.crs.flipkart.bean.GradeCard;
  */
 public class GradeCardService implements GradeCardInterface{
 
-
-	
-	public void viewGradeCard(String studentID, int semester, String gradeCardId) {
+	public void viewGradeCard(String studentID, int semester) {
 		ArrayList<RegisteredCourse> courses = GradeCardDaoOperation.fetchRegisteredSemesterCoursesForStudents(studentID, semester)
 ;
-		GradeCard gradeCard = GradeCardDaoOperation.fetchGradeCard(studentID, semester, gradeCardId);
+		GradeCard gradeCard = GradeCardDaoOperation.fetchGradeCard(studentID, semester);
 		if(gradeCard.getGradeCardId().equalsIgnoreCase("NOTFOUND")) {
 			System.out.println("RESULT NOT PREPARED YET");
 			return;

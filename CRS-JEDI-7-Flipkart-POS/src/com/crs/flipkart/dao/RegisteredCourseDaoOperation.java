@@ -83,37 +83,6 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		return grade;
 	}
 	
-	public boolean addCourse(String courseId, String studentId,int sem)
-	{
-		Connection conn = DBConnection.mysqlConnection;
-
-		Statement stmt;
-		try {
-			stmt = conn.createStatement();
-			String check = "select count(*) from CRS.registeredCourse where studentId = " + studentId;
-			ResultSet rs = stmt.executeQuery(check);
-			rs.next();
-			int count = rs.getInt(1);
-			if (count>=6)
-			{
-				System.out.println("You cannot add more than 6 courses"); 
-			}
-			else
-			{
-				String query = "insert into CRS.registeredcourse(registeredCourseId, courseId, studentId, grade, semester) values(" + Utils.generateId() +", "+ courseId + "," + studentId + ", 0,"+sem+");";
-				int res=stmt.executeUpdate(query);
-				System.out.println("You have added " + (count+1) + " courses.");
-				if(res==1) {
-					return true;
-				}
-				return false;
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
 	
 	public boolean dropCourse(String courseId, String studentId)
 	{
@@ -151,4 +120,52 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 		}
 	}
+	
+	public boolean addCourse(String courseId, String studentId,int sem)
+	{
+		Connection conn = DBConnection.mysqlConnection;
+
+		PreparedStatement stmt1;
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String check = "select count(*) from CRS.registeredCourse where studentId = " + studentId;
+			ResultSet rs = stmt.executeQuery(check); // change 1 -> added check for course count
+			rs.next();
+			int count = rs.getInt(1);
+			if (count>=6)
+			{
+				System.out.println("You cannot add more than 6 courses"); 
+			}
+			
+			else
+			{
+				String query = "INSERT INTO `CRS`.`registeredCourse` (`registeredCourseId`, `courseId`, `studentId`, `grade`, `semester`) VALUES (?, ?, ?, ?, ?)"; // change 3 -> used system generated id
+				stmt1 = (PreparedStatement) conn.prepareStatement(query);
+				stmt1.setString(1, Utils.generateId().toString());
+				stmt1.setString(2, courseId);
+				stmt1.setString(3, studentId);
+				stmt1.setFloat(4, 0);
+				stmt1.setInt(5, sem);
+				stmt1.execute(query);
+				
+				query = "select count(*) from CRS.registeredCourse";
+				ResultSet res = stmt.executeQuery(query);
+				rs.next();
+				count = rs.getInt(1);
+				
+				System.out.println("You have added " + (count) + " courses.");
+				if(count < 6) {
+					return true;
+				}
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	
 }

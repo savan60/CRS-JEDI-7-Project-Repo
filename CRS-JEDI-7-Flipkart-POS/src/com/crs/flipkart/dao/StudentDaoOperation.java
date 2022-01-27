@@ -30,7 +30,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		     	+ "studentId VARCHAR(20) NOT NULL,"
 	            + "name VARCHAR(45) NOT NULL,"
 	            + "isApproved BOOLEAN NOT NULL,"
-	            + "current_semester int NOT NULL,"
+	            + "current_semester int default 1,"
 	            + "PRIMARY KEY (studentId))";
 		DBConnection.createTable(SCHEMA);
 	}

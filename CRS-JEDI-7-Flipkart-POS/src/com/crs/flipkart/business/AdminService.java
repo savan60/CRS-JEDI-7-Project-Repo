@@ -34,8 +34,8 @@ public class AdminService implements AdminInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String userquery = "INSERT INTO crs.user VALUES('"+userId+"','"+email+"','"+phoneNumber+"','"+address+"','"+password+"','"+UserType.Professor+"');";
-		String profquery = "INSERT INTO crs.professor VALUES('"+userId+"','"+department+"',curdate(),'"+position+"');";
+		String userquery = "INSERT INTO CRS.user VALUES('"+userId+"','"+email+"','"+phoneNumber+"','"+address+"','"+password+"','"+UserType.Professor+"');";
+		String profquery = "INSERT INTO CRS.professor VALUES('"+userId+"','"+department+"',curdate(),'"+position+"');";
 
 		try {
 			userres = stmt.executeUpdate(userquery);
@@ -77,7 +77,7 @@ public class AdminService implements AdminInterface {
 	public void genReportCard(int sem) {
 		GradeCardDaoOperation grade=new GradeCardDaoOperation();
 		
-		grade.gradeCardGen(sem);
+//		grade.gradeCardGen(sem);
 	}
 	
 	public void updateAddDropTime() {

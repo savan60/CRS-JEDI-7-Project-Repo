@@ -76,6 +76,9 @@ public class CRSApplication {
 						System.out.println("Enter your password\n");
 						password=sc.next();
 						UserType val=user.authenticate(email,password);
+						
+						System.out.println("val :" + val);
+						
 						switch(val) {
 							case Student:
 								student.homepage();

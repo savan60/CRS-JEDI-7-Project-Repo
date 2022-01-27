@@ -87,7 +87,11 @@ public class CRSStudentMenu {
 				student.addCourse(courseId, 1);
 				break;
 			case 3:
-//				dropCourse(studentId);
+				// change 2 -> fixed the flow for drop course
+				System.out.println("Enter the course id for course you want to drop:");
+				courseId=sc.next();
+				//1=>semester
+				student.dropCourse(UserService.currentUsedId,courseId); 
 				break;
 			case 4:
 				//sem take from student table

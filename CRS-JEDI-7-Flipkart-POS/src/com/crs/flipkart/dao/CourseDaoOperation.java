@@ -4,6 +4,7 @@
 package com.crs.flipkart.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,8 +19,8 @@ import com.crs.flipkart.bean.Professor;
  *
  */
 public class CourseDaoOperation implements CourseDaoInterface {
-	public static ArrayList<Course> courses = new ArrayList<>();
-
+	
+	
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.course (" + "courseId VARCHAR(20) NOT NULL,"
 				+ "professorId VARCHAR(20) NULL," + "name VARCHAR(20) NOT NULL," + "duration float NOT NULL,"
@@ -27,9 +28,11 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		DBConnection.createTable(SCHEMA);
 	}
 
-	public static void app() {
-		Connection conn = DBConnection.mysqlConnection;
+	public static ArrayList<Course>  getAllCourses() {
+		
+		ArrayList<Course> courses = new ArrayList<>();
 
+		Connection conn = DBConnection.mysqlConnection;
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
@@ -39,11 +42,15 @@ public class CourseDaoOperation implements CourseDaoInterface {
 				courses.add(new Course(rs.getString("courseId"), rs.getString("professorId"), rs.getString("name"),
 						rs.getFloat("duration"), rs.getFloat("credits")));
 			}
+			
+			return courses;
 		}
 
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return null;
 	}
 
 	public static ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
@@ -109,19 +116,18 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 	
 	public static void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) {
+	
 		Connection conn = DBConnection.mysqlConnection;
-		Statement stmt;
 		try {
-			stmt = conn.createStatement();
-			String query = "Insert into CRS.course(courseId,name,duration,credits) values("+CourseId+","+CourseName+","+CourseDur+","+CourseCre+")";
-			stmt.executeUpdate(query);
-			
-			query="select * from CRS.course";
-			ResultSet rs=stmt.executeQuery(query);
-			while (rs.next()) {
-				System.out.println(
-						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
-			}
+			PreparedStatement stmt = null;
+			String sql = "INSERT INTO `CRS`.`course` (`courseId`, `name`, `duration`, `credits`, `semester`) VALUES (?, ?, ?, ?, ?);";
+			stmt = (PreparedStatement) conn.prepareStatement(sql);
+			stmt.setString(1,CourseId);
+			stmt.setString(2,CourseName);
+			stmt.setFloat(3, CourseDur);
+			stmt.setFloat(4, CourseCre);
+			stmt.setInt(5, 1);
+			stmt.execute();
 		}
 
 		catch (SQLException e) {
