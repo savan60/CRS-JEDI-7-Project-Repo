@@ -17,16 +17,9 @@ public class DBConnection {
    	 try {
             Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();
-            System.out.println("Successfully Connected.");
-            
             String sql = "CREATE DATABASE IF NOT EXISTS CRS";
-            stmt.executeUpdate(sql);
-            System.out.println("Database created successfully...");   
+            stmt.executeUpdate(sql); 
             mysqlConnection=conn;
-                     
-//        	  String CREATE_TABLE_SQL=schema;
-//            stmt.executeUpdate(CREATE_TABLE_SQL);
-//            System.out.println("Table created successfully..."); 
         } catch (Exception e) {
             e.printStackTrace();
         }

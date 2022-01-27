@@ -60,8 +60,8 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 				statement.setBoolean(4, false);
 				statement.execute();
 				
-				PaymentNotifierDaoOperation paymentNotifierDaoOperation = new PaymentNotifierDaoOperation();
-				paymentNotifierDaoOperation.addPaymentNotification(studentId, invoiceId, message);	
+				PaymentNotifierDaoInterface paymentNotifierDaoInterface = new PaymentNotifierDaoOperation();
+				paymentNotifierDaoInterface.addPaymentNotification(studentId, invoiceId, message);	
 			}
 			
 		} catch (SQLException e) {

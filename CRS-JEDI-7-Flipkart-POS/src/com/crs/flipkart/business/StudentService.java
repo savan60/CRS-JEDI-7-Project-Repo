@@ -4,6 +4,7 @@ import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoInterface;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
+import com.crs.flipkart.dao.StudentDaoInterface;
 import com.crs.flipkart.dao.CourseDaoInterface;
 import com.crs.flipkart.dao.CourseDaoOperation;
 
@@ -71,10 +72,10 @@ public class StudentService implements StudentInterface{
 		System.out.println("Enter password: ");
 		String password = sc.next();
 		
-		Student student = new Student(studentId, name, phoneNumber, address, UserType.Student, password);
+		Student student = new Student(studentId, name, phoneNumber, address, UserType.Student, password, email);
 		
-		StudentDaoOperation studentDaoOperation = new StudentDaoOperation();
-		studentDaoOperation.addStudent(student);
+		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
+		studentDaoInterface.addStudent(student);
 	}
 	
 	public void viewGradeCard() {

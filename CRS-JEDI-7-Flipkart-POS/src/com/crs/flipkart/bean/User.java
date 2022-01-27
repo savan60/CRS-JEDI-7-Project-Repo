@@ -25,9 +25,9 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public User(String id,String name,long number,String add,UserType type,String pass) {
+	public User(String id,  String email, long number,String add,UserType type,String pass) {
 		this.userId=id;
-		this.email=name;
+		this.email=email;
 		this.phoneNumber=number;
 		this.address=add;
 		this.userType=type;

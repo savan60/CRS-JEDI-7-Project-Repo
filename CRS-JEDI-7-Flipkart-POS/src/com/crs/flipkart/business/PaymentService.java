@@ -6,7 +6,9 @@ package com.crs.flipkart.business;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.Card;
+import com.crs.flipkart.dao.CardDaoInterface;
 import com.crs.flipkart.dao.CardDaoOperation;
+import com.crs.flipkart.dao.PaymentDaoInterface;
 import com.crs.flipkart.dao.PaymentDaoOperation;
 import com.crs.flipkart.utils.Utils.CardType;
 
@@ -34,7 +36,7 @@ public class PaymentService implements PaymentInterface{
 	
 	public boolean makePayment() {
 		
-		PaymentDaoOperation paymentDaoOperation = new PaymentDaoOperation();
+		PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperation();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Choose type of the payment: ");
 		System.out.println("1. Credit Card/Debit Card");
@@ -43,8 +45,9 @@ public class PaymentService implements PaymentInterface{
 		
 		
 		
-		System.out.println("Enter studentId:");
-		String studentId = sc.next();
+//		System.out.println("Enter studentId:");
+//		String studentId = sc.next();
+		String studentId = UserService.currentUsedId;
 		
 		switch(type) {
 			case 1:
@@ -72,8 +75,8 @@ public class PaymentService implements PaymentInterface{
 				String bankName = sc.next();
 				
 				Card card = new Card(cardNumber, cardType, month, year, bankName);
-				CardDaoOperation cardDaoOperation = new CardDaoOperation();
-				cardDaoOperation.addCard(card);
+				CardDaoInterface cardDaoInterface = new CardDaoOperation();
+				cardDaoInterface.addCard(card);
 				
 				// Reirecting to enter otp
 				
@@ -81,7 +84,7 @@ public class PaymentService implements PaymentInterface{
 				
 				// Update payment table
 				
-				paymentDaoOperation.updatePaymentDetails(studentId, cardType.toString());
+				paymentDaoInterface.updatePaymentDetails(studentId, cardType.toString());
 				
 			break;
 				
@@ -92,7 +95,7 @@ public class PaymentService implements PaymentInterface{
 				// Let's assume payment is successful 
 				
 				// Update payment table
-				paymentDaoOperation.updatePaymentDetails(studentId, "Netbanking");
+				paymentDaoInterface.updatePaymentDetails(studentId, "Netbanking");
 				
 			break;
 				
@@ -102,13 +105,5 @@ public class PaymentService implements PaymentInterface{
 		
 		return false;
 	}
-	
-	
-	public static void main(String[] arg) {
-		PaymentService paymentService = new PaymentService();
-		paymentService.askForPayment();
-//		paymentService.makePayment();
-	}
-	
 	
 }
