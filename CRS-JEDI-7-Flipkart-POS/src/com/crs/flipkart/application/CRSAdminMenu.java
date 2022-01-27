@@ -69,35 +69,35 @@ public class CRSAdminMenu {
 					break;
 					
 				case 2: //call add course
-//					System.out.println("Enter the course id:");
-//					String cid=sc.next();
-//					
-//					System.out.println("Enter the course name:");
-//					String cname=sc.next();
-//					
-//					System.out.println("Enter the duration:");
-//					float cdur=sc.nextFloat();
-//					
-//					System.out.println("Enter the credits:");
-//					float credits=sc.nextFloat();
-//					
-//					if(courseService.addCourse(cid,cname,cdur,credits)) {
-//						System.out.println("Course added");
-//					}
-//					else 
-//						System.out.println("Course id already exists, please try again!");
-//					
+					System.out.println("Enter the course id:");
+					String cid=sc.next();
+					
+					System.out.println("Enter the course name:");
+					String cname=sc.next();
+					
+					System.out.println("Enter the duration:");
+					float cdur=sc.nextFloat();
+					
+					System.out.println("Enter the credits:");
+					float credits=sc.nextFloat();
+					
+					if(courseService.addCourse(cid,cname,cdur,credits)) {
+						System.out.println("Course added");
+					}
+					else 
+						System.out.println("Course id already exists, please try again!");
+					
 					break;
 					
 				case 3:
-//					System.out.println("Enter Course id to remove: ");
-//					String rid=sc.next();
-//					
-//					if(courseService.removeCourse(rid)) {
-//						System.out.println("Course removed");
-//					}
-//					else 
-//						System.out.println("Course id does not exists, please try again!");
+					System.out.println("Enter Course id to remove: ");
+					String rid=sc.next();
+					
+					if(courseService.deleteCourse(rid)) {
+						System.out.println("Course removed");
+					}
+					else 
+						System.out.println("Course id does not exists, please try again!");
 					break;
 					
 				case 4: 

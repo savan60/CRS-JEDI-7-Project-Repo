@@ -87,8 +87,49 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 	}
+	
+	public static void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) {
+		Connection conn = DBConnection.mysqlConnection;
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "Insert into CRS.course(courseId,name,duration,credits) values("+CourseId+","+CourseName+","+CourseDur+","+CourseCre+")";
+			stmt.executeUpdate(query);
+			
+			query="select * from CRS.course";
+			ResultSet rs=stmt.executeQuery(query);
+			while (rs.next()) {
+				System.out.println(
+						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
+			}
+		}
 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static void delCourse(String CourseId) {
+		Connection conn = DBConnection.mysqlConnection;
+		Statement stmt;
+		try {
+			stmt = conn.createStatement();
+			String query = "delete from CRS.course where courseId="+CourseId;
+			stmt.executeUpdate(query);
+			
+			query="select * from CRS.course";
+			ResultSet rs=stmt.executeQuery(query);
+			while (rs.next()) {
+				System.out.println(
+						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
+			}
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 //	public static void main(String[] args) {
 //		DBConnection.setup();
 //		updateProfessorId("100", "100");

@@ -17,7 +17,6 @@ public class CourseService implements CourseInterface {
 	private ArrayList<Course> courses = CourseDaoOperation.courses;
 
 
-
 	/**
 	 * @return the courses
 	 */
@@ -33,8 +32,22 @@ public class CourseService implements CourseInterface {
 		this.courses = courses;
 	}
 
-	
-	
+	public boolean addCourse(String id,String subj,float duration ,float credits) {
+		for(int i=0;i<courses.size();i++){
+			if((courses.get(i)).getCourseId().equals(id))return false;	
+		}
+		CourseDaoOperation.addCourToDB(id,subj,duration,credits);
+		return true;
+	}
+	public boolean deleteCourse(String id) {
+		for(int i=0;i<courses.size();i++){
+			if((courses.get(i)).getCourseId().equals(id)) {
+				CourseDaoOperation.delCourse(id);
+				return true;
+			}	
+		}
+		return false;
+	}
 	
 	
 }

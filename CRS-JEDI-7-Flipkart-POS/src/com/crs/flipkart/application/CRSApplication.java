@@ -37,12 +37,7 @@ public class CRSApplication {
 		// TODO Auto-generated method stub
 		
 		CRSProfessorMenu professor=new CRSProfessorMenu();
-		CRSAdminMenu admin = new CRSAdminMenu();
-		
 		DBConnection.setup();
-		
-		admin.homePage();
-		
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
 		ProfessorDaoOperation.createTable();
@@ -83,7 +78,9 @@ public class CRSApplication {
 								professor.homePage();
 								break;
 							case Admin:
-								System.out.println("Admin Menu here");
+								CRSAdminMenu admin = new CRSAdminMenu();
+								admin.homePage();
+
 								break;
 							default:
 								System.out.println("Login Unsuccessful, please try again!");
@@ -129,7 +126,6 @@ public class CRSApplication {
 				default: System.out.println("Invalid choice");
 			}
 		}
-		
 	}
 
 }
