@@ -61,7 +61,7 @@ public class CRSApplication {
 			int ch=sc.nextInt();
 			String email,password;
 			UserInterface user=new UserService();
-
+			
 			switch(ch) {
 				case 1: System.out.println("Registering student");
 				     break;
@@ -90,7 +90,8 @@ public class CRSApplication {
 						email=sc.next();
 						System.out.println("Enter your registered phone number to verify!");
 						String phoneNo = sc.next();
-						String userId=user.forgotPassword(email,phoneNo);
+						String userId="";
+//								user.forgotPassword(email,phoneNo);
 						if(!(userId).equals("0")){
 							while(true) {
 								System.out.println("Enter your choice:\n"+"1. Change Password\n2. Exit");
@@ -106,13 +107,13 @@ public class CRSApplication {
 									System.out.println("Re-Enter New Password!");
 									pass2 = sc.next();
 									if(pass1.equals(pass2)) {
-										if(user.createNewPassword(pass1,userId)) {
-											System.out.println("Passowrd changed. Login!");
-											break;
-										}
-										else {
-											System.out.println("Failed, Try Again!");
-										}
+//										if(user.createNewPassword(pass1,userId)) {
+//											System.out.println("Passowrd changed. Login!");
+//											break;
+//										}
+//										else {
+//											System.out.println("Failed, Try Again!");
+//										}
 									}
 									else System.out.println("Passowrd Mismatch. Try Again!");
 								}

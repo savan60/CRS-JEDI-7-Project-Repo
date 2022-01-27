@@ -28,11 +28,11 @@ public class CRSAdminMenu {
 		while(true) {
 			System.out.println("__________________________________________________________");
 			
-			System.out.println("Please select operation to perform:\n1. Add Professor\n2. Add Course\n3. Remove Course\n4. Generate Grade Card \n5. Update password\n6. Logout");
+			System.out.println("Please select operation to perform:\n1. Add Professor\n2. Add Course\n3. Remove Course\n4. Generate Grade Card \n5. Update password\n6. Approve Students\n7. Logout");
 			//update password will be here
 			int ch=sc.nextInt();
 			
-			if(ch==6) {
+			if(ch==7) {
 				System.out.println("Thank you");
 				break;
 			}
@@ -101,44 +101,60 @@ public class CRSAdminMenu {
 					break;
 					
 				case 4: 
-//					System.out.println("Enter the semester");
-//					int sem=sc.nextInt();
-//					
-//					adminService.genReportCard(sem);
+					System.out.println("Enter the semester");
+					int sem=sc.nextInt();
+					
+					adminService.genReportCard(sem);
 					break;
 					
 				case 5:
-//					System.out.println("Enter your old password\n");
-//					String password=sc.next();
-//					UserType val1=user.authenticate(user.getEmailByUserId(UserService.currentUsedId),password);
-//					if(!(val1==UserType.None)) {
-//						while(true) {
-//							System.out.println("Enter your choice:\n"+"1.Type new password \n2. Exit");
-//							int choice = sc.nextInt();
-//							
-//							if(choice == 2) break;
-//							else if(choice != 1) 
-//								System.out.println("Invalid Choice");
-//							else {
-//								String pass1, pass2; 
-//								//System.out.println("Type New Password!");
-//								pass1 = sc.next();
-//								System.out.println("Re-Enter New Password!");
-//								pass2 = sc.next();
-//								if(pass1.equals(pass2)) {
-//									user.createNewPassword(pass1,UserService.currentUsedId);
-//									System.out.println("Passowrd changed. Login!");
-//									break;
-//								}
-//								else System.out.println("Passowrd Mismatch. Try Again!");
-//							}
-//						}
-//					}
-//					else {
-//						System.out.println("Invalid credentials");
-//					}
+					System.out.println("Enter your old password\n");
+					String password=sc.next();
+					UserType val1=user.authenticate(user.getEmailByUserId(UserService.currentUsedId),password);
+					if(!(val1==UserType.None)) {
+						while(true) {
+							System.out.println("Enter your choice:\n"+"1.Type new password \n2. Exit");
+							int choice = sc.nextInt();
+							
+							if(choice == 2) break;
+							else if(choice != 1) 
+								System.out.println("Invalid Choice");
+							else {
+								String pass1, pass2; 
+								//System.out.println("Type New Password!");
+								pass1 = sc.next();
+								System.out.println("Re-Enter New Password!");
+								pass2 = sc.next();
+								if(pass1.equals(pass2)) {
+									user.createNewPassword(pass1,UserService.currentUsedId);
+									System.out.println("Passowrd changed. Login!");
+									break;
+								}
+								else System.out.println("Passowrd Mismatch. Try Again!");
+							}
+						}
+					}
+					else {
+						System.out.println("Invalid credentials");
+					}
 					break;
 					
+				case 6:	System.out.println("Select your choice: \n1. Approve all students\n2. Approve Students one by one.");
+						int choice= sc.nextInt();
+						
+						switch(choice) {
+						
+						case 1: adminService.approveAllStudents();
+								break;
+						
+						case 2: adminService.approveStudentsOneByOne();
+								break;
+						
+						default: System.out.println("Invalid Choice");
+						}
+						
+					break;
+				
 				default: System.out.println("Enter valid choice");
 				
 			}

@@ -9,13 +9,19 @@ import java.sql.Statement;
 
 import com.crs.flipkart.utils.Utils.UserType;
 import com.crs.flipkart.dao.DBConnection;
+import java.util.Date;
+
+import com.crs.flipkart.bean.RegisteredCourse;
+import com.crs.flipkart.dao.*;
 
 /**
- * @author parth
+ * @author Shruti
  *
  */
 public class AdminService implements AdminInterface {
 	
+	UserService user=new UserService();
+	AdminDaoOperation admin=new AdminDaoOperation();
 	
 	public boolean addProfessor(String userId, String email, String phoneNumber, String address, String password, String department, String position) {
 		Connection conn = DBConnection.mysqlConnection;
@@ -50,24 +56,34 @@ public class AdminService implements AdminInterface {
 	}
 	
 	public void verifyStudent() {
-			
-	}
-		
-	public void addCourse() {
 		
 	}
-	
-	public void removeCourse() {
 		
+//	public void addCourse() {
+//		
+//	}
+//	
+//	public void removeCourse() {
+//		
+//	}
+	
+	public void approveAllStudents() {
+		admin.approveStudents(1);
+	}
+	public void approveStudentsOneByOne() {
+		admin.approveStudents(0);
 	}
 	
-	
-	public void getReportCard() {
+	public void genReportCard(int sem) {
+		GradeCardDaoOperation grade=new GradeCardDaoOperation();
 		
+		grade.gradeCardGen(sem);
 	}
 	
 	public void updateAddDropTime() {
 		
 	}
+
+	
 
 }

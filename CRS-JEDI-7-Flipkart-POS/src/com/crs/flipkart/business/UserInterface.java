@@ -13,11 +13,12 @@ import com.crs.flipkart.utils.Utils.UserType;
  *
  */
 public interface UserInterface {
-	public String forgotPassword(String email,String phoneNumber) ;
+public String forgotPassword(String email,long phoneNumber) ;
 	
 	
-	public boolean createNewPassword(String password,String userId);
+	public void createNewPassword(String password,String userId);
 	public void getUsers() ;
-	public boolean checkPasswordforEmail(String password);
+	public String getEmailByUserId(String userId) ;
 	public UserType authenticate(String email,String password);
+//	public boolean checkPasswordforEmail(String password);
 }

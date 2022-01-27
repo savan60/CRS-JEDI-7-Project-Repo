@@ -1,26 +1,21 @@
-/**
- * 
- */
 package com.crs.flipkart.business;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.crs.flipkart.bean.Course;
-import com.crs.flipkart.dao.CourseDaoOperation;
 
 /**
  * @author parth
  *
  */
 public class CourseService implements CourseInterface {
-	
-	private ArrayList<Course> courses = CourseDaoOperation.courses;
 
+	private HashMap<String ,Course> courses = new HashMap<String, Course>();
 
 	/**
 	 * @return the courses
 	 */
-	public ArrayList<Course> getCourses() {
+	public HashMap<String, Course> getCourses() {
 		return courses;
 	}
 
@@ -28,7 +23,7 @@ public class CourseService implements CourseInterface {
 	 * @param courses the courses to set
 	 */
 	
-	public void setCourses(ArrayList<Course> courses) {
+	public void setCourses(HashMap<String, Course> courses) {
 		this.courses = courses;
 	}
 
@@ -49,5 +44,21 @@ public class CourseService implements CourseInterface {
 		return false;
 	}
 	
+	public boolean addCourse(String id,String subj,float duration ,float credits) {
+		if(courses.get(id)!=null) {
+//			courses.put(id, new Course(id, subj, duration , credits));
+			return true;
+		}
+		
+		return false;
+	}
+	public boolean removeCourse(String id) {
+		if(courses.get(id)!=null) {
+			courses.remove(id);
+			return true;
+		}
+		
+		return false;
+	}
 	
 }
