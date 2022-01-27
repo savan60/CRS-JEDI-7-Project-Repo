@@ -18,7 +18,6 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 	static Connection conn = DBConnection.mysqlConnection;
 	static PreparedStatement stmt = null;
-
 	
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT exists CRS.registeredCourse(" + "registeredCourseId varchar(50) NOT NULL,"
@@ -27,10 +26,14 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		DBConnection.createTable(SCHEMA);
 	}
 	public static void printEnrolledStudentInThatCourse(String courseId) {
-
+		conn=DBConnection.mysqlConnection;
+		Statement stmt1;
 		try {
-			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.EnrolledStudentInThatCourseQuery);
-			ResultSet rs = stmt.executeQuery();
+			stmt1=conn.createStatement();
+			String query="select studentId from CRS.registeredcourse where courseId ="+courseId;
+//			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.EnrolledStudentInThatCourseQuery);
+			
+			ResultSet rs = stmt1.executeQuery(query);
 			while (rs.next()) {
 				System.out.println(rs.getString("studentId"));
 			}
@@ -41,12 +44,13 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	}
 
 	public static void updateGrade(String courseId, String studentId, float newGrade) {
-
+		conn=DBConnection.mysqlConnection;
+		Statement stmt1;
 		try {
-			stmt = (PreparedStatement) conn.createStatement();
+			stmt1 =conn.createStatement();
 			String query = "update CRS.registeredCourse set grade=" + newGrade + " where courseId='" + courseId + "' and studentId='"
 					+ studentId + "';";
-			stmt.executeUpdate(query);
+			stmt1.executeUpdate(query);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
