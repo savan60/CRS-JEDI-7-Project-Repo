@@ -6,6 +6,7 @@ package com.crs.flipkart.business;
 import java.util.Map;
 
 import com.crs.flipkart.bean.User;
+import com.crs.flipkart.exceptions.UserNotFoundException;
 import com.crs.flipkart.utils.Utils.UserType;
 
 /**
@@ -14,7 +15,7 @@ import com.crs.flipkart.utils.Utils.UserType;
  */
 public interface UserInterface {
 
-	public String forgotPassword(String email,String phoneNumber) ;
+	public String forgotPassword(String email,String phoneNumber) throws UserNotFoundException ;
 	/*
 	 * rests the password of the user
 	 */
@@ -24,7 +25,7 @@ public interface UserInterface {
 	 */
 //	public void getUsers() ;
 	public boolean checkPasswordforEmail(String password);
-	public UserType authenticate(String email,String password);
+	public UserType authenticate(String email,String password) throws UserNotFoundException;
 	/*
 	 * checks weather the entered password and the email id belogings to the same user
 	 *and returns the type of user logging in
