@@ -43,7 +43,7 @@ public class CourseService implements CourseInterface {
 			courseInterface.addCourToDB(id,subj,duration,credits);
 		} catch (CourseNotAddedException e) {
 			// TODO Auto-generated catch block
-			logger.error(e.getMessage());
+			logger.error("Error message: "+e.getMessage());
 		}
 		return true;
 	}
@@ -57,7 +57,7 @@ public class CourseService implements CourseInterface {
 					courseInterface.delCourse(id);
 				} catch (CourseNotDeletedException e) {
 					// TODO Auto-generated catch block
-					logger.error(e.getMessage());
+					logger.error("Error message: "+e.getMessage());
 				}
 				return true;
 			}	

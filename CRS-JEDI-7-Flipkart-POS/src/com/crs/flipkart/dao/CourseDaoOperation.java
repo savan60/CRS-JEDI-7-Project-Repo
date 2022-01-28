@@ -59,7 +59,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 
 		catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error message: "+e.getMessage());
 		}
 		
 		return null;
@@ -81,7 +81,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Error message: "+e.getMessage());
 		}
 		return listOfCourseId;
 	}
@@ -103,7 +103,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 
 		catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error message: "+e.getMessage());
 		}
 	}
 
@@ -125,7 +125,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 
 		catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error message: "+e.getMessage());
 		}
 		
 	}
@@ -146,7 +146,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 
 		catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error message: "+e.getMessage());
 		}
 		throw new CourseNotAddedException(CourseId);
 	}
@@ -169,7 +169,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 
 		catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error message: "+e.getMessage());
 		}
 		throw new CourseNotDeletedException(CourseId);
 	}
