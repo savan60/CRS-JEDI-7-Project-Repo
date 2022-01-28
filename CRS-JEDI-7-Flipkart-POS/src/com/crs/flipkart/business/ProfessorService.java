@@ -14,6 +14,7 @@ import com.crs.flipkart.dao.CourseDaoOperation;
 import com.crs.flipkart.dao.ProfessorDaoOperation;
 import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
+import com.crs.flipkart.exceptions.GradeCardByCourseIdFoundEmpty;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class ProfessorService implements ProfessorInterface {
@@ -26,7 +27,12 @@ public class ProfessorService implements ProfessorInterface {
 		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
 		for (String courseId : courseIds) {
 			System.out.println("Students enrolled in course: " + courseId);
-			registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+			try {
+				registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+			} catch (GradeCardByCourseIdFoundEmpty e) {
+				// TODO Auto-generated catch block
+				System.out.println("Grade card of courseId "+e.getCourseId());
+			}
 		}
 
 	}
