@@ -32,9 +32,9 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		Statement stmt1;
 		try {
 			stmt1=conn.createStatement();
-			String query="select studentId from CRS.registeredCourse where courseId ="+courseId;
+			String query=SQLQueriesConstant.printEnrolledStudentInThatCourseQuery;
 //			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.EnrolledStudentInThatCourseQuery);
-			
+			stmt.setString(1, courseId);
 			ResultSet rs = stmt1.executeQuery(query);
 			while (rs.next()) {
 				System.out.println(rs.getString("studentId"));
@@ -46,13 +46,18 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	}
 
 	public void updateGrade(String courseId, String studentId, float newGrade) {
+		
 		conn=DBUtils.getConnection();
-		Statement stmt1;
+//		Statement stmt1;
+		
 		try {
-			stmt1 =conn.createStatement();
-			String query = "update CRS.registeredCourse set grade=" + newGrade + " where courseId='" + courseId + "' and studentId='"
-					+ studentId + "';";
-			stmt1.executeUpdate(query);
+			String query = SQLQueriesConstant.updateGradeQuery;
+			
+			stmt = (PreparedStatement) conn.prepareStatement(query);
+			stmt.setFloat(1,newGrade);
+			stmt.setString(2,courseId);
+			stmt.setString(3,studentId);
+			stmt.executeUpdate(query);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,7 +72,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		try {
 			
 			
-			String sql = "Select studentId, sum(grade)/4 as SGPA from CRS.registeredCourse where semester = ? group by studentId";
+			String sql = SQLQueriesConstant.generateGradeCardBySemQuery;
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 			stmt.setInt(1,sem);
 			
@@ -93,10 +98,12 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	{
 		Connection conn = DBUtils.getConnection();
 
-		Statement stmt;
+//		Statement stmt;
 		try {
-			stmt = conn.createStatement();
-			String query = "delete from CRS.registeredCourse where courseId = '" + courseId + "' and studentId = '" + studentId + "';";
+//			stmt = conn.createStatement();
+			String query = SQLQueriesConstant.dropCourseQuery;
+			stmt.setString(1, courseId);
+			stmt.setString(2, studentId);
 			stmt.executeUpdate(query);
 			return true;
 

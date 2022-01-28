@@ -8,7 +8,11 @@ import java.sql.Date;
 import java.util.*;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.business.AdminService;
+import com.crs.flipkart.exceptions.*;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils.UserType;
@@ -22,6 +26,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	Connection conn = DBUtils.getConnection();
 	private PreparedStatement stmt = null;
 	Scanner sc=new Scanner(System.in);
+	private static Logger logger=Logger.getLogger(AdminDaoOperation.class);
 	
 	public static void createTable() {
 		 String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.admin ("
@@ -31,7 +36,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		 DBUtils.createTable(SCHEMA);
 	}
 	 
-	public boolean addProfessorToDB(Professor professor) {
+	public boolean addProfessorToDB(Professor professor) throws UserAlreadyExistsException{
 		String userInsertQuery = SqlUtils.INSERT_USER;
 		String profInsertQuery = SqlUtils.INSERT_PROFESSOR;
 		
@@ -41,106 +46,43 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		
 		try {
 			stmt = (PreparedStatement) conn.prepareStatement(userInsertQuery);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
+		
 			stmt.setString(1,professor.getUserId());
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
 			stmt.setString(2,professor.getEmail());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			stmt.setString(3,professor.getPhoneNumber());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			stmt.setString(4,professor.getAddress());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			stmt.setString(5,professor.getPassword());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			stmt.setString(6,UserType.Professor.name());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
+
 			userQueryRes = stmt.executeUpdate();
 //			System.out.print(userQueryRes+" ");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		// Adding info to Professor DB
-		
-		try {
+
 			stmt = (PreparedStatement) conn.prepareStatement(profInsertQuery);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
 			stmt.setString(1,professor.getUserId());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
 			stmt.setString(2,professor.getDepartment());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
 			stmt.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
 			stmt.setString(4,professor.getPosition());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
 			profQueryRes = stmt.executeUpdate();
 //			System.out.println(profQueryRes);
+			
+			if(userQueryRes==1 && profQueryRes==1) {
+				logger.info("Professor added to DB");
+				return true;
+			}
+			
+			return false;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		throw new UserAlreadyExistsException(professor.getEmail());
 		
-		if(userQueryRes==1 && profQueryRes==1) return true;
-		return false;
 	}
 	 
-	 public void approveStudents(int count){
-		 HashSet<String> set=new HashSet<>();
+	 public void approveStudents(int count) throws NoStudentForApprovalException{
 		 
+		 HashSet<String> set=new HashSet<>();
+		 int resultSet=0;
 		 try {
 			 StudentDaoOperation student=new StudentDaoOperation();
 		 
@@ -150,8 +92,9 @@ public class AdminDaoOperation implements AdminDaoInterface {
 				 
 				 stmt = (PreparedStatement) conn.prepareStatement(sql);
 				 stmt.setBoolean(1,true);
-					
-				 int resultSet = stmt.executeUpdate();
+				 
+				 resultSet = stmt.executeUpdate();
+				 logger.info("All Students are approved!");
 			 }
 			 
 			 else {				 
@@ -170,7 +113,8 @@ public class AdminDaoOperation implements AdminDaoInterface {
 					 
 					 else stmt.setBoolean(1,false);
 					 
-					 int resultSet = stmt.executeUpdate();
+					 resultSet = stmt.executeUpdate();
+					 logger.info("Student is approved!");
 				 }
 
 			 }
@@ -178,5 +122,6 @@ public class AdminDaoOperation implements AdminDaoInterface {
 			} catch (SQLException e) {
 				System.out.println("Error: " + e.getMessage());
 			}
+		 	throw new NoStudentForApprovalException(resultSet);
 	 }
 }
