@@ -54,7 +54,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 				courses.add(new Course(rs.getString("courseId"), rs.getString("professorId"), rs.getString("name"),
 						rs.getFloat("duration"), rs.getFloat("credits")));
 			}
-			
+			logger.info("Fetched all the courses");
 			return courses;
 		}
 
@@ -66,6 +66,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public static ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
+		logger.info("Fetching all courses that the professor "+ProfessorId+" teaches");
 		Connection conn = DBUtils.getConnection();
 		ArrayList<String> listOfCourseId = new ArrayList<>();
 		PreparedStatement stmt = null;
@@ -77,6 +78,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			while (rs.next()) {
 				listOfCourseId.add(rs.getString("courseId"));
 			}
+			logger.info("Fetched all courses");
 		}
 
 		catch (SQLException e) {
@@ -87,7 +89,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public void viewCourses(int sem) {
-		logger.info("Fetching all the courses int that sem ="+sem);
+		logger.info("Fetching all the courses in the sem ="+sem);
 		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt = null;
 		try {
@@ -100,6 +102,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 						"Course Id :" + rs.getString("courseId") + " ProfessorId: " + rs.getString("professorId")
 								+ " Course Name: " + rs.getString("name") + " Credits: " + rs.getInt("credits"));
 			}
+			logger.info("Fetched all courses");
 		}
 
 		catch (SQLException e) {
@@ -122,6 +125,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 				System.out.println(
 						"CourseId: " + rs.getString("courseId") + " ProfessorId:" + rs.getString("professorId"));
 			}
+			logger.info("Professor "+ProfessorId+" is allocated to the course+ "+CourseId );
 		}
 
 		catch (SQLException e) {
@@ -131,7 +135,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 	
 	public void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) throws CourseNotAddedException {
-		logger.info("Adding course "+CourseName+" to course Table");
+		logger.info("Adding course "+CourseName+" to catalog");
 		Connection conn = DBUtils.getConnection();
 		try {
 			PreparedStatement stmt = null;
@@ -143,6 +147,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			stmt.setFloat(4, CourseCre);
 			stmt.setInt(5, 1);
 			stmt.execute();
+			logger.info("Course is added to catalog");
 		}
 
 		catch (SQLException e) {
@@ -151,7 +156,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		throw new CourseNotAddedException(CourseId);
 	}
 	public void delCourse(String CourseId) throws CourseNotDeletedException {
-		logger.info("Deleting course "+CourseId+" from course Table");
+		logger.info("Deleting course "+CourseId+" from catalog");
 		Connection conn = DBUtils.getConnection();
 		
 		try {
@@ -166,6 +171,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 //				System.out.println(
 //						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
 //			}
+			logger.info("Course is deleted from the catalog");
 		}
 
 		catch (SQLException e) {

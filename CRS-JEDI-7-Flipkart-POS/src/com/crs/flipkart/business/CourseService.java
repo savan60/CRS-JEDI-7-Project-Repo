@@ -42,7 +42,6 @@ public class CourseService implements CourseInterface {
 		try {
 			courseInterface.addCourToDB(id,subj,duration,credits);
 		} catch (CourseNotAddedException e) {
-			// TODO Auto-generated catch block
 			logger.error("Error message: "+e.getMessage());
 		}
 		return true;
