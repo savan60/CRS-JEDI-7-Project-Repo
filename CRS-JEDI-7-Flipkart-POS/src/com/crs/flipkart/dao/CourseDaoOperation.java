@@ -11,6 +11,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.constant.SQLQueriesConstant;
@@ -24,7 +26,7 @@ import com.crs.flipkart.utils.DBUtils;
  */
 public class CourseDaoOperation implements CourseDaoInterface {
 	
-	
+	private static Logger logger =Logger.getLogger(CourseDaoOperation.class);
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.course (" 
 							+ "courseId VARCHAR(20) NOT NULL,"
@@ -38,7 +40,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public static ArrayList<Course>  getAllCourses() {
-		
+		logger.info("Fetching all the courses");
 		ArrayList<Course> courses = new ArrayList<>();
 
 		Connection conn = DBUtils.getConnection();
@@ -85,6 +87,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public void viewCourses(int sem) {
+		logger.info("Fetching all the courses int that sem ="+sem);
 		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt = null;
 		try {
@@ -105,6 +108,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 
 	public void updateProfessorId(String ProfessorId, String CourseId) {
+		logger.info("Allocating professor"+ProfessorId+"to that course"+CourseId);
 		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt = null;
 		try {
@@ -127,6 +131,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	}
 	
 	public void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) throws CourseNotAddedException {
+		logger.info("Adding course "+CourseName+" to course Table");
 		Connection conn = DBUtils.getConnection();
 		try {
 			PreparedStatement stmt = null;
@@ -146,6 +151,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		throw new CourseNotAddedException(CourseId);
 	}
 	public void delCourse(String CourseId) throws CourseNotDeletedException {
+		logger.info("Deleting course "+CourseId+" from course Table");
 		Connection conn = DBUtils.getConnection();
 		
 		try {
