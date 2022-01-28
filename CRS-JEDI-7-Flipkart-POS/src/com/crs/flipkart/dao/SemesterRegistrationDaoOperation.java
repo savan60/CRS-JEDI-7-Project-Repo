@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
+import com.crs.flipkart.business.SemseterRegistrationService;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils;
@@ -27,8 +30,13 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 		DBUtils.createTable(SCHEMA);
 	}
 
+	private static Logger logger = Logger.getLogger(SemesterRegistrationDaoOperation.class);
+
+	
+	
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
+	
 	@Override
 	public boolean checkSemAndStudentIdExists(int sem, String studentId) {
 		// TODO Auto-generated method stub
@@ -48,6 +56,7 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 		}
 		return false;
 	}
+	
 	@Override
 	public boolean insertSem(int sem, String studentId) {
 		// TODO Auto-generated method stub
