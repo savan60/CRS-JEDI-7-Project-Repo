@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.StudentDaoOperation;
 import com.crs.flipkart.exceptions.StudentNotFound;
+import com.crs.flipkart.exceptions.CheckForSemesterRegistration;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
 import com.mysql.jdbc.log.Log4JLogger;
@@ -99,20 +100,22 @@ public class StudentService implements StudentInterface{
 		registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
 	}
 	public boolean semesterRegistration(int sem) {
-		boolean val=semesterRegistration.checkSemAndStudentIdExists(sem, UserService.currentUsedId);
-		if(!val) {
-			boolean res=semesterRegistration.insertSem(sem, UserService.currentUsedId);
-			if(res) {
-				System.out.println("Semester Registration Successful");
-				return true;
-			}
-			else {
-				System.out.println("Semseter Registration Failed, Try again!");
-			}
+		
+		try {
+			semesterRegistration.checkSemAndStudentIdExists(sem, UserService.currentUsedId);
+				boolean res=semesterRegistration.insertSem(sem, UserService.currentUsedId);
+				if(res) {
+					System.out.println("Semester Registration Successful");
+					return true;
+				}
+				else {
+					System.out.println("Semseter Registration Failed, Try again!");
+				}
 		}
-		else {
-			System.out.println("Registration of the semester is already done");
+		catch(CheckForSemesterRegistration ex) {
+			System.out.println(ex.getMessage());
 		}
+		
 		return false;
 	}
 	
