@@ -1,0 +1,2 @@
+16:24:00,831  INFO AdminService,main:68 - Approve all students function started
+16:24:01,402 ERROR AdminService,main:74 - No Student left for approval

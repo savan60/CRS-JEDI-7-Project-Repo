@@ -82,7 +82,7 @@ public class AdminService implements AdminInterface {
 			admin.approveStudents(0);
 		}
 		catch(NoStudentForApprovalException e) {
-			logger.error(e.getMsg());
+			System.out.println(e.getMsg());
 		}
 	}
 	
