@@ -100,10 +100,9 @@ public class CRSAdminMenu {
 						System.out.println("Course id does not exists, please try again!");
 					break;
 					
-				case 4: 
+				case 4:
 					System.out.println("Enter the semester");
 					int sem=sc.nextInt();
-					
 					adminService.genReportCard(sem);
 					break;
 					
