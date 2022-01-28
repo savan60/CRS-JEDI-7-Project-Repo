@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 
 import com.crs.flipkart.business.SemseterRegistrationService;
+import com.crs.flipkart.exceptions.CheckForSemesterRegistration;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils;
@@ -38,7 +39,7 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 	Connection connection = DBUtils.getConnection();
 	
 	@Override
-	public boolean checkSemAndStudentIdExists(int sem, String studentId) {
+	public boolean checkSemAndStudentIdExists(int sem, String studentId) throws CheckForSemesterRegistration{
 		// TODO Auto-generated method stub
 		statement=null;
 		Connection conn = DBUtils.getConnection();
@@ -52,9 +53,9 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 				return true;
 			}
 		} catch (SQLException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
-		return false;
+		throw new CheckForSemesterRegistration(sem);
 	}
 	
 	@Override
@@ -72,9 +73,8 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 			if(res==1) {
 				return true;
 			}
-			return false;
 		} catch (SQLException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
 		return false;
 	}
