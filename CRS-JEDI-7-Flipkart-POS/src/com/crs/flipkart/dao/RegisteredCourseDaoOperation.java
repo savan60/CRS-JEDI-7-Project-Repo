@@ -62,7 +62,6 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	
 	public HashMap<String,Float> generateGradeCardBySem(int sem) {
 		
-		System.out.println("Inside generateGradeCardBySem ");
 
 		HashMap<String,Float> grade=new HashMap<>();
 		try {

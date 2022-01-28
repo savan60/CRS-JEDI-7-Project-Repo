@@ -43,8 +43,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 		PreparedStatement statement = null;
 		RegisteredCourseDaoOperation reg=new RegisteredCourseDaoOperation();
 		
-		
-		System.out.println("Inside gradecard gen");
+	
 		
 		try {
 			HashMap<String,Float> map= reg.generateGradeCardBySem(sem);

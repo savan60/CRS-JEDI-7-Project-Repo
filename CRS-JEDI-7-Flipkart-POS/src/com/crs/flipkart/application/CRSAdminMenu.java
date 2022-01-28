@@ -101,10 +101,8 @@ public class CRSAdminMenu {
 					break;
 					
 				case 4:
-					System.out.println("start of Admin Menu");
 					System.out.println("Enter the semester");
 					int sem=sc.nextInt();
-					System.out.println("Inside Admin Menu");
 					adminService.genReportCard(sem);
 					break;
 					

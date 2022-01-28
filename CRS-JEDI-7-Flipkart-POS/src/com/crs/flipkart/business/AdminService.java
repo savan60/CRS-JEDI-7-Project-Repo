@@ -70,7 +70,6 @@ public class AdminService implements AdminInterface {
 	}
 	
 	public void genReportCard(int sem) {
-		System.out.println("Inside Admin Serive");
 		GradeCardDaoOperation grade=new GradeCardDaoOperation();
 		
 		grade.gradeCardGen(sem);
