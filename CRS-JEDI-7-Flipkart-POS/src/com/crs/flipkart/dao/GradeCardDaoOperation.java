@@ -52,12 +52,8 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 				
 				String id=sem+""+ e.getKey();
 				System.out.println("");
-//				String grade="INSERT INTO CRS.gradecard("
-//						+id +"," 
-//						+ e.getKey()+ "," 
-//						+ sem+"," 
-//						+ e.getValue() +")";
-				String grade="insert into CRS.gradecard(gradeCardId, studentId, semester, grade) values (?, ?, ?, ?)";
+				
+				String grade=SQLQueriesConstant.gradeCardGenQuery;
 				statement=connection.prepareStatement(grade);
 				statement.setString(1, id);
 				statement.setString(2, e.getKey());
