@@ -1,5 +1,4 @@
 package com.crs.flipkart.business;
-
 import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoInterface;
@@ -11,16 +10,20 @@ import com.crs.flipkart.dao.CourseDaoOperation;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.StudentDaoOperation;
+import com.crs.flipkart.exceptions.StudentNotFound;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
+import com.mysql.jdbc.log.Log4JLogger;
 
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
 	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
+	private static Logger logger = Logger.getLogger(StudentService.class);
 	
 	//static variable for semester
 	public static int current_semester;
@@ -29,9 +32,9 @@ public class StudentService implements StudentInterface{
 		StudentDaoOperation student=new StudentDaoOperation();
 		try {
 			return student.getSemester(id);
-		} catch (Exception e) {
+		} catch (StudentNotFound e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Student not found : "+ e.getId());
 		}
 	
 		return 0;
@@ -43,15 +46,16 @@ public class StudentService implements StudentInterface{
 		try {
 			 student.setSemester(id,sem);
 			 
-		} catch (Exception e) {
+		} catch (StudentNotFound e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Student not found : "+ e.getId());
 		}
 
 	}
 	
 	// student self register his/her self
 	public void selfRegistration() {
+		
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -75,7 +79,12 @@ public class StudentService implements StudentInterface{
 		Student student = new Student(studentId, email, name, phoneNumber, address, UserType.Student, password);
 		
 		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
-		studentDaoInterface.addStudent(student);
+		try {
+			studentDaoInterface.addStudent(student);
+		} catch (StudentNotFound e) {
+			// TODO Auto-generated catch block
+			logger.error("Student not found : " + e.getId());
+		}
 	}
 	
 	public void viewGradeCard() {

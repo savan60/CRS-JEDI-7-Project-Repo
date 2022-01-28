@@ -71,7 +71,7 @@ public class DBUtils {
 	
 	private static final String url = "jdbc:mysql://localhost:3306/";
     private static final String user = "root";
-    private static final String password = "Root@123";
+    private static final String password = "abcd";
     public static Connection mysqlConnection;
     
   

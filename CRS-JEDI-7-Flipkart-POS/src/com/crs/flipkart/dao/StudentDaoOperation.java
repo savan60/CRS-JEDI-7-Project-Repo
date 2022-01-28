@@ -4,6 +4,7 @@
 package com.crs.flipkart.dao;
 
 import java.sql.Connection;
+import org.apache.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,6 +17,8 @@ import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 
+import com.crs.flipkart.exceptions.StudentNotFound;
+
 /**
  * @author SAVAN
  *
@@ -24,7 +27,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 	
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
-	
+	private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
 	// create student table if it not exists
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.student ("
@@ -53,15 +56,15 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			}	
 		}
 		catch (SQLException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
 		
 		return students;
 		
 		}
 		
-	// add studnet into student table
-	public void addStudent(Student student) {
+	// add student into student table
+	public void addStudent(Student student) throws StudentNotFound{
 
 		try {
 			Connection conn = DBUtils.getConnection();
@@ -81,12 +84,13 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			statement.execute();
 			
 		} catch (SQLException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
 		
+		throw new StudentNotFound(student.getUserId());
 	}
 	
-	public int getSemester(String id) {
+	public int getSemester(String id) throws StudentNotFound{
 		
 		int sem=0;
 		try {
@@ -96,6 +100,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			statement.setString(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			sem=resultSet.getInt(1);
+			return sem;
 			
 		}
 		catch (SQLException e) {
@@ -103,10 +108,10 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			e.printStackTrace();
 		}
 
-		return sem;
+		throw new StudentNotFound(id);
 	}
 	
-	public void setSemester(String id,int sem) {
+	public void setSemester(String id,int sem) throws StudentNotFound{
 	
 		try {
 			String sql="Update CRS.student set current_semester=? where studentId=?";
@@ -120,7 +125,8 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		throw new StudentNotFound(id);
 	}
 	public ArrayList<String> getAllStudentIds(){
 		ArrayList<String> studentIds = new ArrayList<String>();
