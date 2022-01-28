@@ -14,6 +14,8 @@ import java.util.HashMap;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.constant.SQLQueriesConstant;
+import com.crs.flipkart.exceptions.CourseNotAddedException;
+import com.crs.flipkart.exceptions.CourseNotDeletedException;
 import com.crs.flipkart.utils.DBUtils;
 
 /**
@@ -124,7 +126,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		
 	}
 	
-	public void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) {
+	public void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) throws CourseNotAddedException {
 		Connection conn = DBUtils.getConnection();
 		try {
 			PreparedStatement stmt = null;
@@ -141,8 +143,9 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		throw new CourseNotAddedException(CourseId);
 	}
-	public void delCourse(String CourseId) {
+	public void delCourse(String CourseId) throws CourseNotDeletedException {
 		Connection conn = DBUtils.getConnection();
 		
 		try {
@@ -162,6 +165,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		throw new CourseNotDeletedException(CourseId);
 	}
 
 }
