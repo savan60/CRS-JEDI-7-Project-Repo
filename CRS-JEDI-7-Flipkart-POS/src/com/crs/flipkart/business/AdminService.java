@@ -72,7 +72,7 @@ public class AdminService implements AdminInterface {
 	public void genReportCard(int sem) {
 		GradeCardDaoOperation grade=new GradeCardDaoOperation();
 		
-//		grade.gradeCardGen(sem);
+		grade.gradeCardGen(sem);
 	}
 	
 	public void updateAddDropTime() {
