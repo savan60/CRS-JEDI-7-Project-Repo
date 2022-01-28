@@ -6,7 +6,7 @@ public class GradeCardByCourseIdFoundEmpty extends Exception{
 	   {
 	      this.courseId = courseId;
 	   } 
-	   public String getSem()
+	   public String getCourseId()
 	   {
 	      return courseId;
 	   }

@@ -17,6 +17,7 @@ import com.crs.flipkart.utils.Utils.CardType;
  *
  */
 public class PaymentService implements PaymentInterface{
+	
 	public void paymentNotify() {
 		System.out.println("Payment notification sent");
 	}

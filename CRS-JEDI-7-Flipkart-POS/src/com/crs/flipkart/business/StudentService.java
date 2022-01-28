@@ -14,6 +14,8 @@ import java.util.Scanner;
 
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.StudentDaoOperation;
+import com.crs.flipkart.exceptions.AddCourseLimitExceed;
+import com.crs.flipkart.exceptions.CourseNotEndrolledByStudent;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
 
@@ -108,29 +110,40 @@ public class StudentService implements StudentInterface{
 	}
 	
 	public boolean addCourse(String courseId,int sem) {
-		boolean val=registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
-		if(val) {
+		boolean val;
+		try {
+			val = registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
 			System.out.println("Course added successfully");
-			return true;
-		}
-		else {
-			System.out.println("Course is not added, Try again");
+			if(val) {
+				return true;
+			}
+			else {
+				System.out.println("Course is not added, Try again");
+			}
+		} catch (AddCourseLimitExceed e) {
+			// TODO Auto-generated catch block
+			System.out.println("You can't add courses more than: "+e.getCourse());
 		}
 		return false;
 	}
 	
 	public boolean dropCourse(String StudentId, String courseId)
 	{
-		boolean val=registeredCourse.dropCourse(courseId,StudentId);
-		if(val) {
-		System.out.println("Course dropped successfully");
-		return true;
+		boolean val;
+		try {
+			val = registeredCourse.dropCourse(courseId,StudentId);
+			if(val) {
+				System.out.println("Course dropped successfully");
+				return true;
+			}
+			else {
+				System.out.println("Course is not dropped, Try again");
+			}
+		} catch (CourseNotEndrolledByStudent e) {
+			// TODO Auto-generated catch block
+			System.out.println("Course is not endrolled by student: "+e.getCourseId());
 		}
-		else {
-		System.out.println("Course is not dropped, Try again");
-		}
-	return false;
-		
+		return false;
 	}
 
 	
