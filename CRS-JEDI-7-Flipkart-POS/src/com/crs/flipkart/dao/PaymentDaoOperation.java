@@ -78,6 +78,8 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 	// update specific payment entry in payment table
 	public boolean updatePaymentDetails(String studentId, String paymentType) throws StudentNotFound{
 		try {
+			
+
 			Connection conn = DBUtils.getConnection();
 			statement = null;
 			

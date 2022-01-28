@@ -4,6 +4,7 @@
 package com.crs.flipkart.dao;
 
 import java.sql.Connection;
+import org.apache.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +27,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 	
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
-	
+	private static Logger logger = Logger.getLogger(StudentDaoOperation.class);
 	// create student table if it not exists
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.student ("
@@ -55,7 +56,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			}	
 		}
 		catch (SQLException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
 		
 		return students;
@@ -83,7 +84,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			statement.execute();
 			
 		} catch (SQLException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
 		
 		throw new StudentNotFound(student.getUserId());
