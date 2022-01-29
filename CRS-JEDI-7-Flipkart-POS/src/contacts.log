@@ -88,3 +88,11 @@
 19:16:22,142  INFO CourseDaoOperation,main:57 - Fetched all the courses
 19:16:24,730  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
 19:16:24,732  INFO CourseDaoOperation,main:81 - Fetched all courses
+19:18:45,368  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:18:45,399 DEBUG UserService,main:34 - Authentication Successful!
+19:18:45,403  INFO CourseDaoOperation,main:43 - Fetching all the courses
+19:18:45,407  INFO CourseDaoOperation,main:57 - Fetched all the courses
+19:18:46,655  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+19:18:46,657  INFO CourseDaoOperation,main:81 - Fetched all courses
+19:18:46,658  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+19:18:46,661  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
