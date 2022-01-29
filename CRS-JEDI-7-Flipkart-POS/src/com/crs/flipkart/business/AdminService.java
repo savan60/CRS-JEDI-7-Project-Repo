@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.dao.*;
 import com.crs.flipkart.exceptions.*;
+import com.crs.flipkart.utils.Utils;
 
 /**
  * @author Shruti
@@ -19,38 +20,18 @@ import com.crs.flipkart.exceptions.*;
 public class AdminService implements AdminInterface {
 	private static Logger logger=Logger.getLogger(AdminService.class);
 	
-	UserService user=new UserService();
-	AdminDaoOperation admin=new AdminDaoOperation();
+	UserInterface user=new UserService();
+	AdminDaoInterface admin=new AdminDaoOperation();
 	
-	public boolean addProfessor() {
+	public boolean addProfessor(String email, String phoneNumber, String address, String password, String department, String position) {
 		
 		logger.info("add professor function started");
 		try {
+			String professorId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
 			
-			Scanner sc = new Scanner(System.in);
+			Date date = new Date();
 			
-			System.out.println("Enter the user id:");
-			String professorId=sc.next();
-			
-			System.out.println("Enter the emailid:");
-			String email=sc.next();
-			
-			System.out.println("Enter the phoneNumber:");
-			String phoneNumber=sc.next();
-			
-			System.out.println("Enter the address:");
-			String address=sc.next();
-			
-			System.out.println("Enter the password:");
-			String password=sc.next();
-			
-			System.out.println("Enter Department:");
-			String department=sc.next();
-			
-			System.out.println("Enter Position:");
-			String position=sc.next();
-			
-			Professor newProfessor = new Professor(professorId,email,phoneNumber,address,password,department,new Date(),position);
+			Professor newProfessor = new Professor(professorId,email,phoneNumber,address,password,department,date,position);
 			
 			AdminDaoInterface admin = new AdminDaoOperation();
 			
@@ -98,9 +79,5 @@ public class AdminService implements AdminInterface {
 	public void updateAddDropTime() {
 		
 	}
-
-
-
-	
 
 }

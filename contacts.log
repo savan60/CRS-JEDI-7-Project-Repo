@@ -1,0 +1,7 @@
+21:04:54,090 ERROR StudentService,main:90 - Student not found : a3d262
+21:33:07,313  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:33:07,356 DEBUG UserService,main:34 - Authentication Successful!
+21:33:07,359  INFO CourseDaoOperation,main:43 - Fetching all the courses
+21:33:07,362  INFO CourseDaoOperation,main:57 - Fetched all the courses
+21:33:48,900  INFO AdminService,main:28 - add professor function started
+21:33:48,933  INFO AdminDaoOperation,main:69 - Professor added to DB
