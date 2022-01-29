@@ -9,6 +9,9 @@ import java.util.Vector;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.business.UserService;
+import com.crs.flipkart.exceptions.PasswordNotMatchException;
+import com.crs.flipkart.exceptions.UserNotFoundException;
+import com.crs.flipkart.exceptions.phoneNumberNotMatchException;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils.UserType;
@@ -30,21 +33,28 @@ public class UserDaoOperation implements UserDaoInterface{
 		         + "PRIMARY KEY (userId))";
 		DBUtils.createTable(SCHEMA);
 	}
+	
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
 	
-	public UserType authenticate(String email,String password) {
+	public UserType authenticate(String email,String password) throws UserNotFoundException, PasswordNotMatchException {
 		statement=null;
 		try {
 			String sql = SqlUtils.VIEW_ALL_USER;
 			statement = (PreparedStatement) connection.prepareStatement(sql);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				if(email.equals(resultSet.getString(2)) && password.equals(resultSet.getString(5))) {
-					UserService.currentUsedId=resultSet.getString(1);
-					return UserType.valueOf(resultSet.getString(6));
+				if(email.equals(resultSet.getString(2))) {
+					if(password.equals(resultSet.getString(5))){
+						UserService.currentUsedId=resultSet.getString(1);
+						return UserType.valueOf(resultSet.getString(6));
+					}
+					else {
+						throw new PasswordNotMatchException(email);
+					}
 				}
 			}
+			throw new UserNotFoundException(email);
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
@@ -53,21 +63,24 @@ public class UserDaoOperation implements UserDaoInterface{
 
 
 	@Override
-	public String getUserIdByEmailAndPhoneNumber(String email, String phoneNumber) {
-		// TODO Auto-generated method stub
+	public String getUserIdByEmailAndPhoneNumber(String email, String phoneNumber) throws UserNotFoundException, phoneNumberNotMatchException {
 		statement=null;
-		Connection conn = DBUtils.getConnection();
-
 		try {
-			String sql = SqlUtils.GET_USERID_BY_EMAIL_AND_PHONE;
-			statement = (PreparedStatement) conn.prepareStatement(sql);
-			statement.setString(1,email);
-			statement.setString(2,phoneNumber);
+			String sql = SqlUtils.VIEW_ALL_USER;
+			statement = (PreparedStatement) connection.prepareStatement(sql);
 			ResultSet resultSet = statement.executeQuery();
-			while(resultSet.next()) {
-				System.out.println("res is "+resultSet.getString(1));
-				return resultSet.getString(1);
+			while (resultSet.next()) {
+				if(email.equals(resultSet.getString(2))) {
+					if(phoneNumber.equals(resultSet.getString(3))){
+						UserService.currentUsedId=resultSet.getString(1);
+						return resultSet.getString(1);
+					}
+					else {
+						throw new phoneNumberNotMatchException(email);
+					}
+				}
 			}
+			throw new UserNotFoundException(email);
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
@@ -76,10 +89,9 @@ public class UserDaoOperation implements UserDaoInterface{
 
 	@Override
 	public boolean updatePassword(String password,String userId) {
-		// TODO Auto-generated method stub
 		statement=null;
+		
 		Connection conn = DBUtils.getConnection();
-
 		try {
 			String sql = SqlUtils.UPDATE_PASSWORD;
 			statement = (PreparedStatement) conn.prepareStatement(sql);
@@ -99,42 +111,46 @@ public class UserDaoOperation implements UserDaoInterface{
 	}
 
 	@Override
-	public boolean checkPasswordByUserId(String userId, String password) {
-		// TODO Auto-generated method stub
+	public boolean checkPasswordByUserId(String userId, String password) throws UserNotFoundException, PasswordNotMatchException {
 		statement=null;
-		Connection conn = DBUtils.getConnection();
-
+		
 		try {
-			String sql = SqlUtils.CHECK_PASSWORD_BY_USERID;
-			statement = (PreparedStatement) conn.prepareStatement(sql);
-			System.out.println("here after");
-			statement.setString(1,password);
-			statement.setString(2,userId);
+			String sql = SqlUtils.VIEW_ALL_USER;
+			statement = (PreparedStatement) connection.prepareStatement(sql);
 			ResultSet resultSet = statement.executeQuery();
-			while(resultSet.next()) {
-				System.out.println("res is "+resultSet.getString(1));
-				return true;
+			while (resultSet.next()) {
+				if(userId.equals(resultSet.getString(1))) {
+					if(password.equals(resultSet.getString(5))){
+						UserService.currentUsedId=resultSet.getString(1);
+						return true;
+					}
+					else {
+						throw new PasswordNotMatchException(userId);
+					}
+				}
 			}
+			throw new UserNotFoundException(userId);
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
+		
 		return false;
 	}
 
 
-	public void addUser(Student student) {
+	public void addUser(User user) {
 
 		try {
 			Connection conn = DBUtils.getConnection();
 			statement = null;
 			String sql = "INSERT INTO `CRS`.`user` (`userId`, `email`, `phoneNumber`, `address`, `password`, `userType`) VALUES (?, ?, ?, ?, ?, ?);";
 			statement = (PreparedStatement) conn.prepareStatement(sql);
-			statement.setString(1,student.getUserId());
-			statement.setString(2,student.getEmail());
-			statement.setString(3,student.getPhoneNumber());
-			statement.setString(4,student.getAddress());
-			statement.setString(5,student.getPassword());
-			statement.setString(6, "Student");
+			statement.setString(1,user.getUserId());
+			statement.setString(2,user.getEmail());
+			statement.setString(3,user.getPhoneNumber());
+			statement.setString(4,user.getAddress());
+			statement.setString(5,user.getPassword());
+			statement.setString(6, user.getUserType().name());
 			statement.execute();
 			
 		} catch (SQLException e) {
@@ -142,8 +158,4 @@ public class UserDaoOperation implements UserDaoInterface{
 		}
 		
 	}
-	
-
-
-
 }

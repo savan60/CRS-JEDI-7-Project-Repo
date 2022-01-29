@@ -4,6 +4,8 @@
  */
 package com.crs.flipkart.application;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 import com.crs.flipkart.business.StudentInterface;
@@ -23,6 +25,7 @@ import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoOperation;
 import com.crs.flipkart.dao.StudentDaoOperation;
 import com.crs.flipkart.dao.UserDaoOperation;
+import com.crs.flipkart.exceptions.UserNotFoundException;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.Utils.UserType;
 
@@ -38,10 +41,10 @@ public class CRSApplication {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-		CRSProfessorMenu professor=new CRSProfessorMenu();
-		CRSStudentMenu student=new CRSStudentMenu();
-		StudentInterface studentInterface=new StudentService();
+
+		CRSProfessorMenu professor = new CRSProfessorMenu();
+		CRSStudentMenu student = new CRSStudentMenu();
+		StudentInterface studentInterface = new StudentService();
 		DBUtils.getConnection();
 		AdminDaoOperation.createTable();
 		StudentDaoOperation.createTable();
@@ -54,87 +57,101 @@ public class CRSApplication {
 		PaymentNotifierDaoOperation.createTable();
 		RegisteredCourseDaoOperation.createTable();
 		SemesterRegistrationDaoOperation.createTable();
-		//Menu change 1.Register Student 2. login 3. update password 4.exit
-		//role => if 1 is choosen => student
-		//role => if login => admin@mail.com admin =>admin
-		//addprofessor=> professor
+		// Menu change 1.Register Student 2. login 3. update password 4.exit
+		// role => if 1 is choosen => student
+		// role => if login => admin@mail.com admin =>admin
+		// addprofessor=> professor
 //		CourseDaoOperation.app();
-		while(true) {
+		while (true) {
 			System.out.println("__________________________________________________________");
-			System.out.println("Select choice\n"+"1. Register as a Student\n"+"2. Login\n"+"3. Forget Password\n4. Exit");
-			Scanner sc=new Scanner(System.in);
-			int ch=sc.nextInt();
-			String email,password;
-			
-			UserInterface user=new UserService();
-			
-			switch(ch) {
-				case 1: 
-					studentInterface.selfRegistration();
-				     break;
-				case 2: System.out.println("Enter your email:\n");
-						email=sc.next();
-						System.out.println("Enter your password\n");
-						password=sc.next();
-						UserType val=user.authenticate(email,password);
-						
-						System.out.println("val :" + val);
-						
-						switch(val) {
-							case Student:
-								student.homepage();
-								break;
-							case Professor:
-								professor.homePage();
-								break;
-							case Admin:
-								CRSAdminMenu admin = new CRSAdminMenu();
-								admin.homePage();
 
-								break;
-							default:
-								System.out.println("Login Unsuccessful, please try again!");
-						}
+			System.out.println(
+					"Select choice\n" + "1. Register as a Student\n" + "2. Login\n" + "3. Forget Password\n4. Exit");
+			Scanner sc = new Scanner(System.in);
+			int ch = sc.nextInt();
+			String email, password;
+
+			UserInterface user = new UserService();
+
+			switch (ch) {
+			case 1:
+				studentInterface.selfRegistration();
+				break;
+			case 2:
+				System.out.println("Enter your email:\n");
+				email = sc.next();
+				System.out.println("Enter your password\n");
+				password = sc.next();
+				UserType val = UserType.None;
+				try {
+					val = user.authenticate(email, password);
+				} catch (UserNotFoundException e) {
+					System.out.println("User Not Found: " + e.getuserCredential());
+				}
+
+//						System.out.println("val :" + val);
+
+				switch (val) {
+				case Student:
+					student.homepage();
 					break;
-				case 3: System.out.println("Enter your email:\n");
-						email=sc.next();
-						System.out.println("Enter your registered phone number to verify!");
-						String phoneNo = sc.next();
-						String userId="";
-//								user.forgotPassword(email,phoneNo);
-						if(!(userId).equals("0")){
-							while(true) {
-								System.out.println("Enter your choice:\n"+"1. Change Password\n2. Exit");
-								int choice = sc.nextInt();
-								
-								if(choice == 2) break;
-								else if(choice != 1) 
-									System.out.println("Invalid Choice");
-								else {
-									String pass1, pass2; 
-									System.out.println("Type New Password!");
-									pass1 = sc.next();
-									System.out.println("Re-Enter New Password!");
-									pass2 = sc.next();
-									if(pass1.equals(pass2)) {
-//										if(user.createNewPassword(pass1,userId)) {
-//											System.out.println("Passowrd changed. Login!");
-//											break;
-//										}
-//										else {
-//											System.out.println("Failed, Try Again!");
-//										}
-									}
-									else System.out.println("Passowrd Mismatch. Try Again!");
-								}
-							}
-						}
+				case Professor:
+					professor.homePage();
+					break;
+				case Admin:
+					CRSAdminMenu admin = new CRSAdminMenu();
+					admin.homePage();
+					break;
+
+				default:
+					System.out.println("Login Unsuccessful, please try again!");
+				}
+				break;
+			case 3:
+				System.out.println("Enter your email:\n");
+				email = sc.next();
+				System.out.println("Enter your registered phone number to verify!");
+				String phoneNo = sc.next();
+				String userId = "0";
+				try {
+					userId = user.forgotPassword(email, phoneNo);
+				} catch (UserNotFoundException e) {
+					e.printStackTrace();
+				}
+				if (!(userId).equals("0")) {
+					while (true) {
+						System.out.println("Enter your choice:\n" + "1. Change Password\n2. Exit");
+						int choice = sc.nextInt();
+
+						if (choice == 2)
+							break;
+						else if (choice != 1)
+							System.out.println("Invalid Choice");
 						else {
-							System.out.println("Invalid Credentials!");
+							String pass1, pass2;
+							System.out.println("Type New Password!");
+							pass1 = sc.next();
+							System.out.println("Re-Enter New Password!");
+							pass2 = sc.next();
+							if (pass1.equals(pass2)) {
+								if (user.createNewPassword(pass1, userId)) {
+									System.out.println("Passowrd changed. Login!");
+									break;
+								} else {
+									System.out.println("Failed, Try Again!");
+								}
+							} else
+								System.out.println("Passowrd Mismatch. Try Again!");
 						}
-						break;
-				case 4: System.exit(0);
-				default: System.out.println("Invalid choice");
+					}
+				} else {
+					System.out.println("Invalid Credentials!");
+				}
+				break;
+			case 4:
+				System.exit(0);
+			default:
+				System.out.println("Invalid choice");
 			}
 		}
 	}

@@ -1,5 +1,4 @@
 package com.crs.flipkart.business;
-
 import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.dao.SemesterRegistrationDaoInterface;
@@ -11,16 +10,23 @@ import com.crs.flipkart.dao.CourseDaoOperation;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.dao.StudentDaoOperation;
+import com.crs.flipkart.exceptions.StudentNotFound;
+import com.crs.flipkart.exceptions.CheckForSemesterRegistration;
+import com.crs.flipkart.exceptions.AddCourseLimitExceed;
+import com.crs.flipkart.exceptions.CourseNotEndrolledByStudent;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
+import com.mysql.jdbc.log.Log4JLogger;
 
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
 	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
+	private static Logger logger = Logger.getLogger(StudentService.class);
 	
 	//static variable for semester
 	public static int current_semester;
@@ -28,10 +34,11 @@ public class StudentService implements StudentInterface{
 	public int getSemester(String id) {
 		StudentDaoOperation student=new StudentDaoOperation();
 		try {
-			return student.getSemester(id);
-		} catch (Exception e) {
+			current_semester=student.getSemester(id);
+			return current_semester;
+		} catch (StudentNotFound e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Student not found : "+ e.getId());
 		}
 	
 		return 0;
@@ -43,15 +50,16 @@ public class StudentService implements StudentInterface{
 		try {
 			 student.setSemester(id,sem);
 			 
-		} catch (Exception e) {
+		} catch (StudentNotFound e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Student not found : "+ e.getId());
 		}
 
 	}
 	
 	// student self register his/her self
 	public void selfRegistration() {
+		
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -75,7 +83,12 @@ public class StudentService implements StudentInterface{
 		Student student = new Student(studentId, email, name, phoneNumber, address, UserType.Student, password);
 		
 		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
-		studentDaoInterface.addStudent(student);
+		try {
+			studentDaoInterface.addStudent(student);
+		} catch (StudentNotFound e) {
+			// TODO Auto-generated catch block
+			logger.error("Student not found : " + e.getId());
+		}
 	}
 	
 	public void viewGradeCard() {
@@ -90,47 +103,60 @@ public class StudentService implements StudentInterface{
 		registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
 	}
 	public boolean semesterRegistration(int sem) {
-		boolean val=semesterRegistration.checkSemAndStudentIdExists(sem, UserService.currentUsedId);
-		if(!val) {
-			boolean res=semesterRegistration.insertSem(sem, UserService.currentUsedId);
-			if(res) {
-				System.out.println("Semester Registration Successful");
-				return true;
-			}
-			else {
-				System.out.println("Semseter Registration Failed, Try again!");
-			}
+		
+		try {
+			semesterRegistration.checkSemAndStudentIdExists(sem, UserService.currentUsedId);
+				boolean res=semesterRegistration.insertSem(sem, UserService.currentUsedId);
+				if(res) {
+					System.out.println("Semester Registration Successful");
+					return true;
+				}
+				else {
+					System.out.println("Semseter Registration Failed, Try again!");
+				}
 		}
-		else {
-			System.out.println("Registration of the semester is already done");
+		catch(CheckForSemesterRegistration ex) {
+			System.out.println(ex.getMessage());
 		}
+		
 		return false;
 	}
 	
 	public boolean addCourse(String courseId,int sem) {
-		boolean val=registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
-		if(val) {
+		boolean val;
+		try {
+			val = registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
 			System.out.println("Course added successfully");
-			return true;
-		}
-		else {
-			System.out.println("Course is not added, Try again");
+			if(val) {
+				return true;
+			}
+			else {
+				System.out.println("Course is not added, Try again");
+			}
+		} catch (AddCourseLimitExceed e) {
+			// TODO Auto-generated catch block
+			System.out.println("You can't add courses more than: "+e.getCourse());
 		}
 		return false;
 	}
 	
 	public boolean dropCourse(String StudentId, String courseId)
 	{
-		boolean val=registeredCourse.dropCourse(courseId,StudentId);
-		if(val) {
-		System.out.println("Course dropped successfully");
-		return true;
+		boolean val;
+		try {
+			val = registeredCourse.dropCourse(courseId,StudentId);
+			if(val) {
+				System.out.println("Course dropped successfully");
+				return true;
+			}
+			else {
+				System.out.println("Course is not dropped, Try again");
+			}
+		} catch (CourseNotEndrolledByStudent e) {
+			// TODO Auto-generated catch block
+			System.out.println("Course is not endrolled by student: "+e.getCourseId());
 		}
-		else {
-		System.out.println("Course is not dropped, Try again");
-		}
-	return false;
-		
+		return false;
 	}
 
 	

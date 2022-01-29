@@ -16,7 +16,8 @@ import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.CardType;
-
+import com.crs.flipkart.exceptions.StudentNotFound;
+import com.crs.flipkart.exceptions.NegativeAmountException;
 /**
  * @author SAVAN
  *
@@ -41,9 +42,13 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 	}
 	
 	// populate Payment details for all the student in payment table
-	public void generatePaymentDetailsForAllStudents(int amount, String message) {
+	public void generatePaymentDetailsForAllStudents(int amount, String message) throws NegativeAmountException{
 	
 		try {
+			
+			if (amount<0)
+				throw new NegativeAmountException(amount);
+			
 			Connection conn = DBUtils.getConnection();
 			statement = null;
 			
@@ -71,8 +76,10 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 	}
 	
 	// update specific payment entry in payment table
-	public boolean updatePaymentDetails(String studentId, String paymentType) {
+	public boolean updatePaymentDetails(String studentId, String paymentType) throws StudentNotFound{
 		try {
+			
+
 			Connection conn = DBUtils.getConnection();
 			statement = null;
 			
@@ -97,7 +104,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 			System.out.println("Error: " + e.getMessage());
 		}
 		
-		return false;
+		throw new StudentNotFound(studentId);
 	}
 	
 	

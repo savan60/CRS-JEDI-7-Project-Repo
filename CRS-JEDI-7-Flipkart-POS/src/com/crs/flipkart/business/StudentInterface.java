@@ -12,4 +12,5 @@ public interface StudentInterface {
 	public void viewRegisteredCourses(int sem);
 	public boolean dropCourse(String studentId, String courseId);
 	public void setSemester(String currentUsedId, int sem);
+	public int getSemester(String id);
 }

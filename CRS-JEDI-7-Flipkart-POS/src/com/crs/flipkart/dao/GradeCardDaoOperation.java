@@ -9,20 +9,26 @@ import com.crs.flipkart.bean.RegisteredCourse;
 import com.crs.flipkart.bean.GradeCard;
 import com.crs.flipkart.constant.*;
 import com.crs.flipkart.utils.DBUtils;
+import com.crs.flipkart.exceptions.GradeCardNotCreatedException;
+
+
+import org.apache.log4j.Logger;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 
 /**
  * @author SAVAN
  *
  */
-public class GradeCardDaoOperation implements GradeCardDaoInterface {
+public class GradeCardDaoOperation implements GradeCardDaoInterface{
 	
+	private static Logger logger = Logger.getLogger(GradeCardDaoOperation.class);
 	public static void createTable() {
 		/*
 		 * Method to create GradeCard table in Database
@@ -52,12 +58,8 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 				
 				String id=sem+""+ e.getKey();
 				System.out.println("");
-//				String grade="INSERT INTO CRS.gradecard("
-//						+id +"," 
-//						+ e.getKey()+ "," 
-//						+ sem+"," 
-//						+ e.getValue() +")";
-				String grade="insert into CRS.gradecard(gradeCardId, studentId, semester, grade) values (?, ?, ?, ?)";
+				
+				String grade=SQLQueriesConstant.gradeCardGenQuery;
 				statement=connection.prepareStatement(grade);
 				statement.setString(1, id);
 				statement.setString(2, e.getKey());
@@ -97,7 +99,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 			statement.setInt(2, semester);
 			
 			ResultSet rs = statement.executeQuery();
-
+			logger.info("Creating gradeCard for student "+studentId+" semester "+semester);
 			while (rs.next()) {
 				courses.add(new RegisteredCourse(rs.getString("registeredCourseId"), rs.getString("courseId"), rs.getString("studentId"),
 						rs.getFloat("grade"), rs.getInt("semester"), rs.getTimestamp("timestamp")));
@@ -105,13 +107,14 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 		}
 
 		catch (SQLException e) {
+			logger.error("SQL Error : "+e.getMessage());
 			e.printStackTrace();
 		}
 		
 		return courses;
 	}
 	
-	public static GradeCard fetchGradeCard(String studentId, int semester) {
+	public static GradeCard fetchGradeCard(String studentId, int semester) throws GradeCardNotCreatedException{
 		
 		/*
 		 * Method to fetch GradeCard of student for a given semester
@@ -131,29 +134,30 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface {
 			
 			statement.setString(1, studentId);
 			statement.setInt(2, semester);
+			logger.info("Fetching gradeCard for Student "+studentId+" semester "+semester);
 			
 			ResultSet rs = statement.executeQuery();
-			boolean found = false;
+		
 			while (rs.next()) {
-				found = true;
 				gradeCard.setGradeCardId(rs.getString("gradeCardId"));
 				gradeCard.setSemester(semester);
 				gradeCard.setStudentID(studentId);
 				gradeCard.setGrade(rs.getFloat("grade"));
 			}
 			
-			if(!found) {
-				gradeCard.setGradeCardId("NOTFOUND");
-			}
 			return gradeCard;
 		}
-
-		catch (SQLException e) {
-			e.printStackTrace();
+		catch (Exception ex) {
+			throw new GradeCardNotCreatedException(studentId, semester);
 		}
-
-    //this is dummy gradeCard, in case no gradeCard is found, gradeID here will be NOTFOUND
-    return gradeCard;
+		finally {
+			try {
+				conn.close();
+			}catch(SQLException ex){
+				logger.error("SQL ERROR "+ ex.getMessage());
+				ex.printStackTrace();
+			}
+		}
 	}
 }
 

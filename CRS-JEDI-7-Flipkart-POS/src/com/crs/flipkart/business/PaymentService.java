@@ -4,12 +4,14 @@
 package com.crs.flipkart.business;
 
 import java.util.Scanner;
-
+import org.apache.log4j.Logger;
 import com.crs.flipkart.bean.Card;
 import com.crs.flipkart.dao.CardDaoInterface;
 import com.crs.flipkart.dao.CardDaoOperation;
 import com.crs.flipkart.dao.PaymentDaoInterface;
 import com.crs.flipkart.dao.PaymentDaoOperation;
+import com.crs.flipkart.exceptions.NegativeAmountException;
+import com.crs.flipkart.exceptions.StudentNotFound;
 import com.crs.flipkart.utils.Utils.CardType;
 
 /**
@@ -17,6 +19,8 @@ import com.crs.flipkart.utils.Utils.CardType;
  *
  */
 public class PaymentService implements PaymentInterface{
+	
+	private static Logger logger = Logger.getLogger(PaymentService.class);
 	public void paymentNotify() {
 		System.out.println("Payment notification sent");
 	}
@@ -30,7 +34,12 @@ public class PaymentService implements PaymentInterface{
 		
 		
 		PaymentDaoOperation paymentDaoOperation = new PaymentDaoOperation();
-		paymentDaoOperation.generatePaymentDetailsForAllStudents(amount, message);
+		try {
+			paymentDaoOperation.generatePaymentDetailsForAllStudents(amount, message);
+		} catch (NegativeAmountException e) {
+			// TODO Auto-generated catch block
+			logger.error("Negative amount : " + e.getAmount());
+		}
 	}
 	
 	
@@ -84,7 +93,12 @@ public class PaymentService implements PaymentInterface{
 				
 				// Update payment table
 				
+			try {
 				paymentDaoInterface.updatePaymentDetails(studentId, cardType.toString());
+			} catch (StudentNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				
 			break;
 				
@@ -95,7 +109,12 @@ public class PaymentService implements PaymentInterface{
 				// Let's assume payment is successful 
 				
 				// Update payment table
+			try {
 				paymentDaoInterface.updatePaymentDetails(studentId, "Netbanking");
+			} catch (StudentNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				
 			break;
 				

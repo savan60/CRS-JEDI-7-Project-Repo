@@ -15,7 +15,4 @@ import com.crs.flipkart.bean.RegisteredCourse;
 public interface GradeCardDaoInterface {
 	
 	
-	
-	
-	
 }
