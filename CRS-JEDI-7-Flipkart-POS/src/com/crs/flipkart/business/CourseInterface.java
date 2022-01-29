@@ -14,11 +14,11 @@ import com.crs.flipkart.bean.Course;
  */
 public interface CourseInterface {
 
-	public ArrayList<Course> getCourses();	
-	/*
-	 * returns the list of courses
-	 * */
-	public void setCourses(ArrayList<Course> courses);
+//	public ArrayList<Course> getCourses();	
+//	/*
+//	 * returns the list of courses
+//	 * */
+//	public void setCourses(ArrayList<Course> courses);
 	public boolean addCourse(String id,String subj,float duration ,float credits);
 	/*
 	 * adds course to coursedb

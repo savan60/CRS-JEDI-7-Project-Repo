@@ -29,7 +29,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	private static Logger logger =Logger.getLogger(CourseDaoOperation.class);
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.course (" 
-							+ "courseId VARCHAR(20) NOT NULL,"
+							+ "courseId VARCHAR(45) NOT NULL,"
 							+ "professorId VARCHAR(20) NULL," 
 							+ "name VARCHAR(20) NOT NULL," 
 							+ "duration float NOT NULL,"
@@ -148,6 +148,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			stmt.setInt(5, 1);
 			stmt.execute();
 			logger.info("Course is added to catalog");
+			return;
 		}
 
 		catch (SQLException e) {
@@ -155,15 +156,15 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 		throw new CourseNotAddedException(CourseId);
 	}
-	public void delCourse(String CourseId) throws CourseNotDeletedException {
-		logger.info("Deleting course "+CourseId+" from catalog");
+	public void delCourse(String CourseName) throws CourseNotDeletedException {
+		logger.info("Deleting course "+CourseName+" from catalog");
 		Connection conn = DBUtils.getConnection();
 		
 		try {
 			PreparedStatement stmt = null;
 			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.deleteCourseFromDb);
 			//String query = "delete from CRS.course where courseId= ?";
-			stmt.setString(1,CourseId);			
+			stmt.setString(1,CourseName);			
 			stmt.execute();	
 //			query="select * from CRS.course";
 //			ResultSet rs=stmt.executeQuery(query);
@@ -172,12 +173,13 @@ public class CourseDaoOperation implements CourseDaoInterface {
 //						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
 //			}
 			logger.info("Course is deleted from the catalog");
+			return;
 		}
 
 		catch (SQLException e) {
 			logger.error("Error message: "+e.getMessage());
 		}
-		throw new CourseNotDeletedException(CourseId);
+		throw new CourseNotDeletedException(CourseName);
 	}
 
 }

@@ -20,7 +20,7 @@ public class SQLQueriesConstant {
 	public static final String updatePaymentQuery = "UPDATE CRS.payment SET status=?, type=?, Date=? where (studentid=?)";
 	public static final String insertPaymentNotifierQuery= "INSERT INTO `CRS`.`paymentNotifier` (`studentId`, `invoiceId`, `message`) VALUES (?, ?, ?);";
 	public static final String addCoursesToDb="INSERT INTO `CRS`.`course` (`courseId`, `name`, `duration`, `credits`, `semester`) VALUES (?, ?, ?, ?, ?)";
-	public static final String deleteCourseFromDb="delete from CRS.course where courseId= ? ";
+	public static final String deleteCourseFromDb="delete from CRS.course where name= ? ";
 	public static final String fetchRegisteredCourseFromStudentId = "select * from CRS.registeredCourse where studentID = ?  AND semester = ?";
 	public static final String fetchGradeCardUsingStudentId = "select * from CRS.gradecard where studentId = ? AND semester = ?";
 	public static final String gradeCardGenQuery="insert into CRS.gradecard(gradeCardId, studentId, semester, grade) values (?, ?, ?, ?)";

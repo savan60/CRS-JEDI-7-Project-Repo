@@ -13,6 +13,7 @@ import com.crs.flipkart.business.ProfessorInterface;
 import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
+import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class CRSAdminMenu {
@@ -69,8 +70,8 @@ public class CRSAdminMenu {
 					break;
 					
 				case 2: //call add course
-					System.out.println("Enter the course id:");
-					String cid=sc.next();
+//					System.out.println("Enter the course id:");
+//					String cid=sc.next();
 					
 					System.out.println("Enter the course name:");
 					String cname=sc.next();
@@ -81,7 +82,7 @@ public class CRSAdminMenu {
 					System.out.println("Enter the credits:");
 					float credits=sc.nextFloat();
 					
-					if(courseService.addCourse(cid,cname,cdur,credits)) {
+					if(courseService.addCourse(Utils.generateUniqueId(),cname,cdur,credits)) {
 						System.out.println("Course added");
 					}
 					else 
@@ -90,10 +91,10 @@ public class CRSAdminMenu {
 					break;
 					
 				case 3:
-					System.out.println("Enter Course id to remove: ");
-					String rid=sc.next();
+					System.out.println("Enter the name of Course to remove: ");
+					String rname=sc.next();
 					
-					if(courseService.deleteCourse(rid)) {
+					if(courseService.deleteCourse(rname)) {
 						System.out.println("Course removed");
 					}
 					else 

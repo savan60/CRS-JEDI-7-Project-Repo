@@ -1,3 +1,30 @@
 16:02:57,821  INFO CourseDaoOperation,main:43 - Fetching all the courses
 16:06:01,538  INFO CourseDaoOperation,main:43 - Fetching all the courses
 16:09:14,611  INFO CourseDaoOperation,main:43 - Fetching all the courses
+21:44:01,837  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:44:01,848 DEBUG UserService,main:34 - Authentication Successful!
+21:44:01,850  INFO CourseDaoOperation,main:43 - Fetching all the courses
+21:44:01,851  INFO CourseDaoOperation,main:57 - Fetched all the courses
+21:45:11,756  INFO CourseService,main:38 - you are adding this course8fbb2958-7165-4fac-b4ac-ddc6bf00a965
+21:45:11,756  INFO CourseDaoOperation,main:138 - Adding course maths to catalog
+21:45:11,765  INFO CourseDaoOperation,main:150 - Course is added to catalog
+21:47:21,278  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:47:21,289 DEBUG UserService,main:34 - Authentication Successful!
+21:47:21,291  INFO CourseDaoOperation,main:43 - Fetching all the courses
+21:47:21,296  INFO CourseDaoOperation,main:57 - Fetched all the courses
+21:47:37,139  INFO CourseService,main:38 - you are adding this coursemaths
+21:47:37,139  INFO CourseDaoOperation,main:138 - Adding course maths to catalog
+21:47:37,148  INFO CourseDaoOperation,main:150 - Course is added to catalog
+21:55:37,814  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:55:37,826 DEBUG UserService,main:34 - Authentication Successful!
+21:56:08,384  INFO CourseService,main:36 - you are adding this coursemaths
+21:56:08,384  INFO CourseDaoOperation,main:43 - Fetching all the courses
+21:56:08,386  INFO CourseDaoOperation,main:57 - Fetched all the courses
+21:56:28,945  INFO CourseService,main:50 - you are deleting this coursemaths
+21:56:28,946  INFO CourseDaoOperation,main:43 - Fetching all the courses
+21:56:28,947  INFO CourseDaoOperation,main:57 - Fetched all the courses
+21:56:28,948  INFO CourseDaoOperation,main:160 - Deleting course maths from catalog
+21:56:28,958  INFO CourseDaoOperation,main:175 - Course is deleted from the catalog
+21:56:51,354  INFO CourseService,main:50 - you are deleting this coursemaths
+21:56:51,355  INFO CourseDaoOperation,main:43 - Fetching all the courses
+21:56:51,356  INFO CourseDaoOperation,main:57 - Fetched all the courses
