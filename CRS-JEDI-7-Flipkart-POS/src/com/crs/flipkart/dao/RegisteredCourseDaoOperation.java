@@ -37,14 +37,12 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	
 	public void printEnrolledStudentInThatCourse(String courseId) throws GradeCardByCourseIdFoundEmpty{
 		conn=DBUtils.getConnection();
-		Statement stmt1;
 		logger.info("printEnrolledStudentInThatCourse started");
 		try {
-			stmt1=conn.createStatement();
 			String query=SQLQueriesConstant.printEnrolledStudentInThatCourseQuery;
-//			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.EnrolledStudentInThatCourseQuery);
+			stmt = (PreparedStatement) conn.prepareStatement(query);
 			stmt.setString(1, courseId);
-			ResultSet rs = stmt1.executeQuery(query);
+			ResultSet rs = stmt.executeQuery();
 			int count =0;
 			while (rs.next()) {
 				count+=1;
@@ -73,7 +71,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			stmt.setFloat(1,newGrade);
 			stmt.setString(2,courseId);
 			stmt.setString(3,studentId);
-			stmt.executeUpdate(query);
+			stmt.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -116,12 +114,15 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		Connection conn = DBUtils.getConnection();
 
 //		Statement stmt;
+		stmt=null;
+
 		try {
 //			stmt = conn.createStatement();
 			String query = SQLQueriesConstant.dropCourseQuery;
+			stmt = (PreparedStatement) conn.prepareStatement(query);
 			stmt.setString(1, courseId);
 			stmt.setString(2, studentId);
-			stmt.executeUpdate(query);
+			stmt.executeUpdate();
 			return true;
 
 		} catch (SQLException e) {
@@ -170,6 +171,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			}
 			else
 			{
+				logger.debug("sem is "+sem);
 				String query = "INSERT INTO `CRS`.`registeredCourse` (`registeredCourseId`, `courseId`, `studentId`, `grade`, `semester`) VALUES (?, ?, ?, ?, ?)"; // change 3 -> used system generated id
 				String id = Utils.generateId().toString();
 				id = id.substring(0, Math.min(id.length(), 10));

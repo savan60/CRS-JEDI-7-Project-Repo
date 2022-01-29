@@ -50,12 +50,12 @@ public class SemesterRegistrationDaoOperation implements SemesterRegistrationDao
 			statement.setInt(2,sem);
 			ResultSet resultSet = statement.executeQuery();
 			while(resultSet.next()) {
-				return true;
+				throw new CheckForSemesterRegistration(sem);
 			}
 		} catch (SQLException e) {
 			logger.error("Error: " + e.getMessage());
 		}
-		throw new CheckForSemesterRegistration(sem);
+		return false;
 	}
 	
 	@Override

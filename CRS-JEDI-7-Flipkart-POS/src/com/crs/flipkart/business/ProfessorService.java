@@ -24,6 +24,7 @@ public class ProfessorService implements ProfessorInterface {
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
 	public void viewEnrolledStudents(String professorId) {
+		//fetchCourseIdFromProfessorId is called directly, remove the static and use the correct flow
 		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
 		for (String courseId : courseIds) {
 			System.out.println("Students enrolled in course: " + courseId);

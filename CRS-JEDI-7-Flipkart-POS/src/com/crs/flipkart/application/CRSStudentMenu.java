@@ -3,6 +3,7 @@
  */
 package com.crs.flipkart.application;
 
+import java.lang.System.Logger;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.Payment;
@@ -23,7 +24,6 @@ import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
  */
 public class CRSStudentMenu {
 	static Scanner sc = new Scanner(System.in);
-
 	public void homepage() {
 		StudentInterface student=new StudentService();
 		GradeCardInterface grade=new GradeCardService();
@@ -44,7 +44,7 @@ public class CRSStudentMenu {
 			System.out.println("6. View Grade Card");
 			System.out.println("7. Make Payment");
 			System.out.println("8. Update Password");
-			System.out.println("9. Exit");
+			System.out.println("9. Log Out");
 
 			System.out.println("*********************************************************************************");
 
@@ -53,6 +53,9 @@ public class CRSStudentMenu {
 			int choice = sc.nextInt();
 			int sem;
 			String courseId;
+			//getSemster is giving error
+//			student.getSemester(UserService.currentUsedId);
+			StudentService.current_semester=1;//remove this statement after getsemester is fixed
 			//getSemster() => StudentService
 			switch (choice) {
 
@@ -85,6 +88,7 @@ public class CRSStudentMenu {
 				System.out.println("Enter the course id:");
 				courseId=sc.next();
 				//1=>semester
+				System.out.println("Semester is "+StudentService.current_semester);
 				student.addCourse(courseId, StudentService.current_semester);
 				break;
 			case 3:

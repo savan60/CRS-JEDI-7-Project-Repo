@@ -11,6 +11,7 @@ import com.crs.flipkart.dao.CardDaoOperation;
 import com.crs.flipkart.dao.PaymentDaoInterface;
 import com.crs.flipkart.dao.PaymentDaoOperation;
 import com.crs.flipkart.exceptions.NegativeAmountException;
+import com.crs.flipkart.exceptions.StudentNotFound;
 import com.crs.flipkart.utils.Utils.CardType;
 
 /**
@@ -92,7 +93,12 @@ public class PaymentService implements PaymentInterface{
 				
 				// Update payment table
 				
+			try {
 				paymentDaoInterface.updatePaymentDetails(studentId, cardType.toString());
+			} catch (StudentNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				
 			break;
 				
@@ -103,7 +109,12 @@ public class PaymentService implements PaymentInterface{
 				// Let's assume payment is successful 
 				
 				// Update payment table
+			try {
 				paymentDaoInterface.updatePaymentDetails(studentId, "Netbanking");
+			} catch (StudentNotFound e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				
 			break;
 				

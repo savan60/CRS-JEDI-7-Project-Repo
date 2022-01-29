@@ -34,7 +34,8 @@ public class StudentService implements StudentInterface{
 	public int getSemester(String id) {
 		StudentDaoOperation student=new StudentDaoOperation();
 		try {
-			return student.getSemester(id);
+			current_semester=student.getSemester(id);
+			return current_semester;
 		} catch (StudentNotFound e) {
 			// TODO Auto-generated catch block
 			logger.error("Student not found : "+ e.getId());

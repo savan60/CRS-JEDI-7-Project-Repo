@@ -126,10 +126,10 @@ public class CRSAdminMenu {
 								pass2 = sc.next();
 								if(pass1.equals(pass2)) {
 									user.createNewPassword(pass1,UserService.currentUsedId);
-									System.out.println("Passowrd changed. Login!");
+									System.out.println("Password changed. Login!");
 									break;
 								}
-								else System.out.println("Passowrd Mismatch. Try Again!");
+								else System.out.println("Password Mismatch. Try Again!");
 							}
 						}
 					}
