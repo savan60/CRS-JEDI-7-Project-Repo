@@ -65,7 +65,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		return null;
 	}
 
-	public static ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
+	public ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
 		logger.info("Fetching all courses that the professor "+ProfessorId+" teaches");
 		Connection conn = DBUtils.getConnection();
 		ArrayList<String> listOfCourseId = new ArrayList<>();

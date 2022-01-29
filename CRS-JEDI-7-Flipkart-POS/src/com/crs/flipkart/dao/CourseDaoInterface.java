@@ -3,6 +3,8 @@
  */
 package com.crs.flipkart.dao;
 
+import java.util.ArrayList;
+
 import com.crs.flipkart.exceptions.CourseNotAddedException;
 import com.crs.flipkart.exceptions.CourseNotDeletedException;
 
@@ -21,4 +23,5 @@ public interface CourseDaoInterface {
 	/*
 	 * using this method admin can delete course from the list of courses available.
 	 * */
+	public ArrayList<String> fetchCourseIdFromProfessorId(String professorId);
 }

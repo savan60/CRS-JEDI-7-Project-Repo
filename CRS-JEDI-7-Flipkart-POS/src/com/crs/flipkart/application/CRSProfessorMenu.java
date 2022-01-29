@@ -13,6 +13,7 @@ import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.dao.CourseDaoOperation;
 import com.crs.flipkart.utils.Utils.UserType;
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
 public class CRSProfessorMenu {
 
@@ -39,7 +40,13 @@ public class CRSProfessorMenu {
 			
 			switch (ch) {
 				case 1:
-					professorService.viewEnrolledStudents(UserService.currentUsedId);
+					HashMap<String, ArrayList<Pair<String, String>>>list=professorService.viewEnrolledStudents(UserService.currentUsedId);
+					list.forEach((key, value)->{
+						System.out.println("CourseId: "+key);
+						value.forEach((student)->{
+							System.out.println("StudentName: "+student.left+" StudentId: "+student.right);
+						});
+					});
 					break;
 				case 2: // call assign grades
 					professorService.viewEnrolledStudents(UserService.currentUsedId);

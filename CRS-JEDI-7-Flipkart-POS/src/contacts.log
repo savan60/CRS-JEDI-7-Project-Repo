@@ -1,3 +1,90 @@
 16:02:57,821  INFO CourseDaoOperation,main:43 - Fetching all the courses
 16:06:01,538  INFO CourseDaoOperation,main:43 - Fetching all the courses
 16:09:14,611  INFO CourseDaoOperation,main:43 - Fetching all the courses
+16:44:20,949  INFO UserService,main:30 - Inside UserService: Authentication Started!
+16:44:20,977 DEBUG UserService,main:34 - Authentication Successful!
+16:44:20,979  INFO CourseDaoOperation,main:43 - Fetching all the courses
+16:44:20,984  INFO CourseDaoOperation,main:57 - Fetched all the courses
+16:44:22,528  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+16:44:22,530  INFO CourseDaoOperation,main:81 - Fetched all courses
+16:44:22,530  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+16:47:05,960  INFO UserService,main:30 - Inside UserService: Authentication Started!
+16:47:05,983 DEBUG UserService,main:34 - Authentication Successful!
+16:47:05,985  INFO CourseDaoOperation,main:43 - Fetching all the courses
+16:47:05,987  INFO CourseDaoOperation,main:57 - Fetched all the courses
+16:47:07,612  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+16:47:07,614  INFO CourseDaoOperation,main:81 - Fetched all courses
+16:47:07,614  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+16:47:07,638  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+16:48:47,089  INFO UserService,main:30 - Inside UserService: Authentication Started!
+16:48:47,111 DEBUG UserService,main:34 - Authentication Successful!
+16:48:47,113  INFO CourseDaoOperation,main:43 - Fetching all the courses
+16:48:47,115  INFO CourseDaoOperation,main:57 - Fetched all the courses
+16:48:54,147  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+16:48:54,149  INFO CourseDaoOperation,main:81 - Fetched all courses
+16:48:54,149  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+16:48:54,179  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+16:53:16,559  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+16:53:16,560  INFO CourseDaoOperation,main:81 - Fetched all courses
+16:56:38,887  INFO UserService,main:30 - Inside UserService: Authentication Started!
+16:56:38,909 DEBUG UserService,main:34 - Authentication Successful!
+16:56:38,912  INFO CourseDaoOperation,main:43 - Fetching all the courses
+16:56:38,915  INFO CourseDaoOperation,main:57 - Fetched all the courses
+16:56:40,545  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+16:56:40,546  INFO CourseDaoOperation,main:81 - Fetched all courses
+16:56:40,547  INFO RegisteredCourseDaoOperation,main:40 - printEnrolledStudentInThatCourse started
+16:56:40,556  INFO RegisteredCourseDaoOperation,main:40 - printEnrolledStudentInThatCourse started
+16:58:54,173  INFO UserService,main:30 - Inside UserService: Authentication Started!
+16:58:54,194 DEBUG UserService,main:34 - Authentication Successful!
+16:58:54,195  INFO CourseDaoOperation,main:43 - Fetching all the courses
+16:58:54,198  INFO CourseDaoOperation,main:57 - Fetched all the courses
+16:58:57,507  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+16:58:57,509  INFO CourseDaoOperation,main:81 - Fetched all courses
+16:58:57,509  INFO RegisteredCourseDaoOperation,main:40 - printEnrolledStudentInThatCourse started
+16:58:57,522  INFO RegisteredCourseDaoOperation,main:40 - printEnrolledStudentInThatCourse started
+17:00:18,955  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:00:18,983 DEBUG UserService,main:34 - Authentication Successful!
+17:00:18,984  INFO CourseDaoOperation,main:43 - Fetching all the courses
+17:00:18,986  INFO CourseDaoOperation,main:57 - Fetched all the courses
+17:00:20,218  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+17:00:20,221  INFO CourseDaoOperation,main:81 - Fetched all courses
+17:00:20,221  INFO RegisteredCourseDaoOperation,main:40 - printEnrolledStudentInThatCourse started
+17:00:20,224  INFO RegisteredCourseDaoOperation,main:40 - printEnrolledStudentInThatCourse started
+17:20:22,525  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:20:22,570 DEBUG UserService,main:34 - Authentication Successful!
+17:20:22,572  INFO CourseDaoOperation,main:43 - Fetching all the courses
+17:20:22,575  INFO CourseDaoOperation,main:57 - Fetched all the courses
+17:20:24,335  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+17:20:24,336  INFO CourseDaoOperation,main:81 - Fetched all courses
+17:20:24,337  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+17:20:24,339  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+17:37:28,890  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:37:28,918 DEBUG UserService,main:34 - Authentication Successful!
+17:37:28,920  INFO CourseDaoOperation,main:43 - Fetching all the courses
+17:37:28,922  INFO CourseDaoOperation,main:57 - Fetched all the courses
+17:37:30,260  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+17:37:30,262  INFO CourseDaoOperation,main:81 - Fetched all courses
+17:37:30,263  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+17:37:30,265  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+17:38:48,867  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:38:48,896 DEBUG UserService,main:34 - Authentication Successful!
+17:38:48,897  INFO CourseDaoOperation,main:43 - Fetching all the courses
+17:38:48,900  INFO CourseDaoOperation,main:57 - Fetched all the courses
+17:38:55,780  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+17:38:55,782  INFO CourseDaoOperation,main:81 - Fetched all courses
+17:38:55,783  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+17:38:55,785  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+17:42:12,497  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:42:12,521 DEBUG UserService,main:34 - Authentication Successful!
+17:42:12,523  INFO CourseDaoOperation,main:43 - Fetching all the courses
+17:42:12,525  INFO CourseDaoOperation,main:57 - Fetched all the courses
+17:42:13,703  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+17:42:13,705  INFO CourseDaoOperation,main:81 - Fetched all courses
+17:42:13,706  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+17:42:13,708  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+19:16:22,100  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:16:22,136 DEBUG UserService,main:34 - Authentication Successful!
+19:16:22,139  INFO CourseDaoOperation,main:43 - Fetching all the courses
+19:16:22,142  INFO CourseDaoOperation,main:57 - Fetched all the courses
+19:16:24,730  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+19:16:24,732  INFO CourseDaoOperation,main:81 - Fetched all courses
