@@ -1,2 +1,11 @@
 16:24:00,831  INFO AdminService,main:68 - Approve all students function started
 16:24:01,402 ERROR AdminService,main:74 - No Student left for approval
+16:52:22,725  INFO AdminService,main:79 - Approve students One By One function started
+16:52:28,924  INFO AdminDaoOperation,main:117 - Student is approved!
+17:07:49,294  INFO AdminService,main:79 - Approve students One By One function started
+17:14:23,091  INFO AdminService,main:79 - Approve students One By One function started
+17:14:29,342  INFO AdminDaoOperation,main:119 - Student is approved!
+17:14:35,033  INFO AdminDaoOperation,main:119 - Student is approved!
+17:16:06,928  INFO AdminService,main:68 - Approve all students function started
+17:16:07,009  INFO AdminDaoOperation,main:97 - All Students are approved!
+17:16:07,010 ERROR AdminService,main:74 - No Student left for approval

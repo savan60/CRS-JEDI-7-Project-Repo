@@ -88,11 +88,11 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		 
 			 if(count==1) {
 				 
-				 String sql = "UPDATE CRS.student SET isApproved=? WHERE isApproved = false";
+				 String sql = "UPDATE CRS.student SET isApproved=? WHERE isApproved = ?";
 				 
 				 stmt = (PreparedStatement) conn.prepareStatement(sql);
 				 stmt.setBoolean(1,true);
-				 
+				 stmt.setBoolean(2,false);
 				 resultSet = stmt.executeUpdate();
 				 logger.info("All Students are approved!");
 			 }
@@ -105,16 +105,25 @@ public class AdminDaoOperation implements AdminDaoInterface {
 					 System.out.println("You want to approve Student with id: "+str);
 					 System.out.println("Press 1 for yes and 2 for no");
 					 int ch=sc.nextInt();
-					 String sql = "UPDATE CRS.student SET isApproved=? WHERE studentId="+str;
+					 String sql = "UPDATE CRS.student SET isApproved=? WHERE studentId=?";
 					 
 					 stmt = (PreparedStatement) conn.prepareStatement(sql);
-					 if(ch==1)
-						 stmt.setBoolean(1,true);
+					 stmt.setString(2, str);
 					 
-					 else stmt.setBoolean(1,false);
+					 if(ch==1) {
+						 stmt.setBoolean(1,true);
+						 logger.info("This student is approved!");
+					 }
+						 
+					 
+					 else {
+						 
+						 stmt.setBoolean(1,false);
+						 logger.info("This student is not approved!");
+					 }
 					 
 					 resultSet = stmt.executeUpdate();
-					 logger.info("Student is approved!");
+					 
 				 }
 
 			 }
