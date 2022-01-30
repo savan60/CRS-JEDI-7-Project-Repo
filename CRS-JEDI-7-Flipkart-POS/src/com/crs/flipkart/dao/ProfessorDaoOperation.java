@@ -23,14 +23,15 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.professor (" + "professorId VARCHAR(20) NOT NULL,"
-				+ "dept VARCHAR(10) NOT NULL," + "doj DATE NOT NULL," + "pos VARCHAR(10),"
+				+ "dept VARCHAR(10) NOT NULL," + "doj DATE NOT NULL," + "pos VARCHAR(10)," + "phoneNumber VARCHAR(10) NOT NULL," 
+	            + "address VARCHAR(40),"
 				+ "PRIMARY KEY (professorId))";
 		DBUtils.createTable(SCHEMA);
 	}
 
 	public static void app() {
 		Connection conn = DBUtils.getConnection();
-		PreparedStatement stmt=null;
+		PreparedStatement stmt = null;
 		try {
 			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.selectAllProfessorsQuery);
 
@@ -49,7 +50,5 @@ public class ProfessorDaoOperation implements ProfessorDaoInterface {
 		}
 
 	}
-
-	
 
 }

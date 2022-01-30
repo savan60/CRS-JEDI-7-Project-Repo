@@ -13,19 +13,45 @@ public class Professor extends User {
 	private String department;
 	private Date doj;
 	private String position;
+	private String phoneNumber;
+	private String address;
 	private ArrayList<String> myCourseIds = new ArrayList<String>();// database m nahi ayega
 
 
 	public Professor(String professorId,String email,String number,String address,String password, String department, Date doj, String position) {
-		super(professorId, email, number, address, password, UserType.Professor);
+		super(professorId, email, password, UserType.Professor);
 		this.professorId = professorId;
 		this.department = department;
 		this.doj = doj;
+		this.phoneNumber=number;
+		this.address=address;
 		this.position = position;
 	}
 	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	/**
+	 * @param phoneNumber the phoneNumber to set
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	public Professor(String professorId, String department, Date doj, String position) {
-		super(professorId,"","","","",UserType.Professor);
+		super(professorId,"","",UserType.Professor);
 		this.professorId = professorId;
 		this.department = department;
 		this.doj = doj;

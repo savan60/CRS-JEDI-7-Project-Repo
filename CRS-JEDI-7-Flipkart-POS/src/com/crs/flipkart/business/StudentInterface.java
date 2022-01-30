@@ -1,11 +1,10 @@
 package com.crs.flipkart.business;
 
-public interface StudentInterface {
-	
-	public void selfRegistration();
-	
-	public void viewGradeCard();
+import com.crs.flipkart.bean.Student;
 
+public interface StudentInterface {
+	public void viewGradeCard();
+	public void selfRegistration(Student student);
 	public void viewCatalogue(int sem) ;	
 	public boolean semesterRegistration(int sem);
 	public boolean addCourse(String courseId,int sem);

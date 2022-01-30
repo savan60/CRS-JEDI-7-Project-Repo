@@ -34,6 +34,8 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		     	+ "studentId VARCHAR(20) NOT NULL,"
 	            + "name VARCHAR(45) NOT NULL,"
 	            + "isApproved BOOLEAN NOT NULL,"
+	            + "phoneNumber VARCHAR(10) NOT NULL," 
+	            + "address VARCHAR(40),"
 	            + "current_semester int default 1,"
 	            + "PRIMARY KEY (studentId))";
 		DBUtils.createTable(SCHEMA);
@@ -64,7 +66,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		}
 		
 	// add student into student table
-	public void addStudent(Student student) throws StudentNotFound{
+	public void addStudent(Student student) {
 
 		try {
 			Connection conn = DBUtils.getConnection();
@@ -76,18 +78,18 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			
 			// adds student to student table
 			statement = null;
-			String sql = "INSERT INTO `CRS`.`student` (`studentId`, `name`, `isApproved`) VALUES (?, ?, ?);";
+			String sql = "INSERT INTO `CRS`.`student` (`studentId`,`phoneNumber`,`address`, `name`, `isApproved`) VALUES (?, ? , ? , ?, ?);";
 			statement = (PreparedStatement) conn.prepareStatement(sql);
 			statement.setString(1,student.getStudentId());
-			statement.setString(2,student.getName());
-			statement.setBoolean(3,false);
-			statement.execute();
+			statement.setString(2, student.getPhoneNumber());
+			statement.setString(3,student.getAddress());
+			statement.setString(4,student.getName());
+			statement.setBoolean(5,false);
+			statement.executeUpdate();
 			
 		} catch (SQLException e) {
 			logger.error("Error: " + e.getMessage());
 		}
-		
-		throw new StudentNotFound(student.getUserId());
 	}
 	
 	public int getSemester(String id) throws StudentNotFound{

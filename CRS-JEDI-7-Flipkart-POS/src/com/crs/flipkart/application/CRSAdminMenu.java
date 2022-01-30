@@ -1,10 +1,12 @@
 package com.crs.flipkart.application;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.business.AdminInterface;
 import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.CourseInterface;
@@ -13,6 +15,7 @@ import com.crs.flipkart.business.ProfessorInterface;
 import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
+import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class CRSAdminMenu {
@@ -39,28 +42,29 @@ public class CRSAdminMenu {
 
 			switch(ch) {
 				case 1: 
-//					System.out.println("Enter the user id:");
-//					String id=sc.next();
-//					
-//					System.out.println("Enter the emailid:");
-//					String email=sc.next();
-//					
-//					System.out.println("Enter the phoneNumber:");
-//					String num=sc.next();
-//					
-//					System.out.println("Enter the address:");
-//					String add=sc.next();
-//					
-//					System.out.println("Enter the password:");
-//					String pass=sc.next();
-//					
-//					System.out.println("Enter Department:");
-//					String dept=sc.next();
-//					
-//					System.out.println("Enter Position:");
-//					String pos=sc.next();
+					String professorId=Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
 					
-					if(adminService.addProfessor()) {
+					System.out.println("Enter the emailid:");
+					String email=sc.next();
+					
+					System.out.println("Enter the phoneNumber:");
+					String phoneNumber=sc.next();
+					
+					System.out.println("Enter the address:");
+					String address=sc.next();
+					
+					System.out.println("Enter the password:");
+					String password=sc.next();
+					
+					System.out.println("Enter Department:");
+					String department=sc.next();
+					
+					System.out.println("Enter Position:");
+					String position=sc.next();
+					
+					Professor newProfessor = new Professor(professorId,email,phoneNumber,address,password,department,new Date(),position);
+					
+					if(adminService.addProfessor(newProfessor)) {
 						System.out.println("Professor added");
 					}
 					else 
@@ -108,7 +112,7 @@ public class CRSAdminMenu {
 					
 				case 5:
 					System.out.println("Enter your old password\n");
-					String password=sc.next();
+					password=sc.next();
 					boolean val1=user.checkPasswordforEmail(password);
 					if(val1) {
 						while(true) {

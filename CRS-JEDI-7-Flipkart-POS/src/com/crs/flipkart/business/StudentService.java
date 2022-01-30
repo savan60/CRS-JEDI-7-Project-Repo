@@ -58,37 +58,9 @@ public class StudentService implements StudentInterface{
 	}
 	
 	// student self register his/her self
-	public void selfRegistration() {
-		
-		
-		Scanner sc = new Scanner(System.in);
-		
-		String studentId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
-		
-		System.out.println("Enter name: ");
-		String name = sc.next();
-		
-		System.out.println("Enter email address: ");
-		String email = sc.next();
-		
-		System.out.println("Enter phonenumber: ");
-		String phoneNumber = sc.next();
-		
-		System.out.println("Enter address: ");
-		String address = sc.next();
-		
-		System.out.println("Enter password: ");
-		String password = sc.next();
-		
-		Student student = new Student(studentId, email, name, phoneNumber, address, UserType.Student, password);
-		
+	public void selfRegistration(Student student) {
 		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
-		try {
-			studentDaoInterface.addStudent(student);
-		} catch (StudentNotFound e) {
-			// TODO Auto-generated catch block
-			logger.error("Student not found : " + e.getId());
-		}
+		studentDaoInterface.addStudent(student);
 	}
 	
 	public void viewGradeCard() {
@@ -102,6 +74,7 @@ public class StudentService implements StudentInterface{
 		//take course from student table
 		registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
 	}
+	
 	public boolean semesterRegistration(int sem) {
 		
 		try {

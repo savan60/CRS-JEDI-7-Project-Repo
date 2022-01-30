@@ -1,12 +1,14 @@
 package com.crs.flipkart.business;
 
+import com.crs.flipkart.bean.Professor;
+
 /**
  * @author Shruti
  *
  */
 public interface AdminInterface {
 
-	public boolean addProfessor() ;
+	public boolean addProfessor(Professor prof) ;
 	
 	public void approveAllStudents();
 	public void approveStudentsOneByOne();

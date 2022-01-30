@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
+import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.business.StudentInterface;
 import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.UserInterface;
@@ -27,6 +28,7 @@ import com.crs.flipkart.dao.StudentDaoOperation;
 import com.crs.flipkart.dao.UserDaoOperation;
 import com.crs.flipkart.exceptions.UserNotFoundException;
 import com.crs.flipkart.utils.DBUtils;
+import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
 
 //import 
@@ -69,13 +71,31 @@ public class CRSApplication {
 					"Select choice\n" + "1. Register as a Student\n" + "2. Login\n" + "3. Forget Password\n4. Exit");
 			Scanner sc = new Scanner(System.in);
 			int ch = sc.nextInt();
-			String email, password;
+			String email, password,name,phoneNumber,address;
 
 			UserInterface user = new UserService();
 
 			switch (ch) {
 			case 1:
-				studentInterface.selfRegistration();
+				String studentId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
+				
+				System.out.println("Enter name: ");
+				name = sc.next();
+				
+				System.out.println("Enter email address: ");
+				String emai = sc.next();
+				
+				System.out.println("Enter phonenumber: ");
+				phoneNumber = sc.next();
+				
+				System.out.println("Enter address: ");
+				address = sc.next();
+				
+				System.out.println("Enter password: ");
+				password = sc.next();
+				
+				Student stud = new Student(studentId, emai, name, phoneNumber, address, UserType.Student, password);
+				studentInterface.selfRegistration(stud);
 				break;
 			case 2:
 				System.out.println("Enter your email:\n");

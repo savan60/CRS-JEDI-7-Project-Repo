@@ -6,6 +6,8 @@ package com.crs.flipkart.dao;
 import java.sql.*;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
+
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.business.UserService;
@@ -24,11 +26,11 @@ import java.sql.*;
 
 
 public class UserDaoOperation implements UserDaoInterface{
-	
+	private static Logger logger = Logger.getLogger(UserDaoOperation.class);
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.user("
 		         + "userId VARCHAR(20) NOT NULL,"
-		         + "email VARCHAR(20) NOT NULL," +"phoneNumber VARCHAR(10) NOT NULL," +"address VARCHAR(40),"
+		         + "email VARCHAR(20) NOT NULL," 
 		         + "password VARCHAR(20) NOT NULL," +"userType enum('Admin', 'Student','Professor'),"
 		         + "PRIMARY KEY (userId))";
 		DBUtils.createTable(SCHEMA);
@@ -45,9 +47,9 @@ public class UserDaoOperation implements UserDaoInterface{
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				if(email.equals(resultSet.getString(2))) {
-					if(password.equals(resultSet.getString(5))){
+					if(password.equals(resultSet.getString(3))){
 						UserService.currentUsedId=resultSet.getString(1);
-						return UserType.valueOf(resultSet.getString(6));
+						return UserType.valueOf(resultSet.getString(4));
 					}
 					else {
 						throw new PasswordNotMatchException(email);
@@ -66,7 +68,7 @@ public class UserDaoOperation implements UserDaoInterface{
 	public String getUserIdByEmailAndPhoneNumber(String email, String phoneNumber) throws UserNotFoundException, phoneNumberNotMatchException {
 		statement=null;
 		try {
-			String sql = SqlUtils.VIEW_ALL_USER;
+			String sql=SqlUtils.VIEW_USER_WITH_PHONE;
 			statement = (PreparedStatement) connection.prepareStatement(sql);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
@@ -120,7 +122,7 @@ public class UserDaoOperation implements UserDaoInterface{
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				if(userId.equals(resultSet.getString(1))) {
-					if(password.equals(resultSet.getString(5))){
+					if(password.equals(resultSet.getString(2))){
 						UserService.currentUsedId=resultSet.getString(1);
 						return true;
 					}
@@ -143,19 +145,43 @@ public class UserDaoOperation implements UserDaoInterface{
 		try {
 			Connection conn = DBUtils.getConnection();
 			statement = null;
-			String sql = "INSERT INTO `CRS`.`user` (`userId`, `email`, `phoneNumber`, `address`, `password`, `userType`) VALUES (?, ?, ?, ?, ?, ?);";
+			String sql = SqlUtils.INSERT_USER;
 			statement = (PreparedStatement) conn.prepareStatement(sql);
 			statement.setString(1,user.getUserId());
 			statement.setString(2,user.getEmail());
-			statement.setString(3,user.getPhoneNumber());
-			statement.setString(4,user.getAddress());
-			statement.setString(5,user.getPassword());
-			statement.setString(6, user.getUserType().name());
+			statement.setString(3,user.getPassword());
+			statement.setString(4, user.getUserType().name());
 			statement.execute();
 			
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		
+	}
+
+
+	@Override
+	public boolean IsStudentApproved(String userId) {
+		// TODO Auto-generated method stub
+		statement=null;
+		
+		try {
+			String sql = SqlUtils.IS_STUDENT_APPROVED;
+			statement = (PreparedStatement) connection.prepareStatement(sql);
+			statement.setString(1,userId);
+			ResultSet resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				boolean isApproved=resultSet.getBoolean(1);
+				if(isApproved) {
+					logger.debug("Student is approved");
+					return true;
+				}
+				break;
+			}
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}		
+		logger.debug("student is not approved");
+		return false;
 	}
 }

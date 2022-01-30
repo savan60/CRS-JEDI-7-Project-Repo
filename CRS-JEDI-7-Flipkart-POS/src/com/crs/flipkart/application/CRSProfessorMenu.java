@@ -50,7 +50,6 @@ public class CRSProfessorMenu {
 					System.out.println("Enter courseId: ");
 					String courseId = sc.next();
 					professorService.addGrade(UserService.currentUsedId, newGrade, studentId, courseId);
-	
 					break;
 	
 				case 3:

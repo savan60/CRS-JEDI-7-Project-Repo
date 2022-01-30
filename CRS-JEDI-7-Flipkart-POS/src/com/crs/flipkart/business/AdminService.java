@@ -22,38 +22,11 @@ public class AdminService implements AdminInterface {
 	UserService user=new UserService();
 	AdminDaoOperation admin=new AdminDaoOperation();
 	
-	public boolean addProfessor() {
+	public boolean addProfessor(Professor newProfessor) {
 		
 		logger.info("add professor function started");
 		try {
-			
-			Scanner sc = new Scanner(System.in);
-			
-			System.out.println("Enter the user id:");
-			String professorId=sc.next();
-			
-			System.out.println("Enter the emailid:");
-			String email=sc.next();
-			
-			System.out.println("Enter the phoneNumber:");
-			String phoneNumber=sc.next();
-			
-			System.out.println("Enter the address:");
-			String address=sc.next();
-			
-			System.out.println("Enter the password:");
-			String password=sc.next();
-			
-			System.out.println("Enter Department:");
-			String department=sc.next();
-			
-			System.out.println("Enter Position:");
-			String position=sc.next();
-			
-			Professor newProfessor = new Professor(professorId,email,phoneNumber,address,password,department,new Date(),position);
-			
 			AdminDaoInterface admin = new AdminDaoOperation();
-			
 			if(admin.addProfessorToDB(newProfessor))
 				return true;
 		}

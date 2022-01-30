@@ -13,8 +13,6 @@ public class User {
 	
 	private String userId;//pk
 	private String email;
-	private String phoneNumber;
-	private String address;
 	private String password;
 	private UserType userType;
 	
@@ -25,11 +23,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public User(String id,String email,String number,String add,String pass,UserType type) {
+	public User(String id,String email,String pass,UserType type) {
 		this.userId=id;
 		this.email=email;
-		this.phoneNumber=number;
-		this.address=add;
+		
 		this.password=pass;
 		this.userType=type;
 	}
@@ -66,27 +63,7 @@ public class User {
 	/**
 	 * @return the phoneNumber
 	 */
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	/**
-	 * @param phoneNumber the phoneNumber to set
-	 */
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	/**
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
-	/**
-	 * @param address the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	
 	
 	
 	
