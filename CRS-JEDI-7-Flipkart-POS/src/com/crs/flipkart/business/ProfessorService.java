@@ -17,6 +17,7 @@ import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.exceptions.GradeCardByCourseIdFoundEmpty;
 import com.crs.flipkart.utils.Utils.UserType;
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
 public class ProfessorService implements ProfessorInterface {
 	RegisteredCourseInterface regCourseService = new RegisteredCourseService();
@@ -24,24 +25,28 @@ public class ProfessorService implements ProfessorInterface {
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
-	public void viewEnrolledStudents(String professorId) {
-		//fetchCourseIdFromProfessorId is called directly, remove the static and use the correct flow
+	public HashMap<String, ArrayList<Pair<String, String>>> viewEnrolledStudents(String professorId) {
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
-		for (String courseId : courseIds) {
+		HashMap<String, ArrayList<Pair<String, String>>> MapOfEnrolledStudents=new HashMap<String, ArrayList<Pair<String,String>>>();
+		courseIds.forEach((courseId)->{
 			System.out.println("Students enrolled in course: " + courseId);
 			try {
-				registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+				ArrayList<Pair<String, String>> list=registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+				MapOfEnrolledStudents.put(courseId, list);
+				
 			} catch (GradeCardByCourseIdFoundEmpty e) {
 				// TODO Auto-generated catch block
 				System.out.println("Grade card of courseId "+e.getCourseId());
 			}
-		}
+		});
+		return MapOfEnrolledStudents;
 
 	}
 
+
 	public void addGrade(String professorId, float grade, String studentId, String courseId) {
 		boolean flag = false;
-		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
+		ArrayList<String> courseIds =courseInterface.fetchCourseIdFromProfessorId(professorId);
 		for (String cId : courseIds) {
 			if (cId.equals(courseId)) {
 				flag = true;
@@ -63,6 +68,7 @@ public class ProfessorService implements ProfessorInterface {
 	public void viewCourse(String professorId) {
 
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
+<<<<<<< HEAD
 		if(courseIds.isEmpty()) {
 			System.out.println("No courses assigned to you");
 			return;
@@ -71,6 +77,11 @@ public class ProfessorService implements ProfessorInterface {
 		System.out.println("List of Courses:");
 		System.out.println("CourseId\tCourseName\tDuration\tCredits");
 		courseIds.forEach(courseInterface::printCourseDetails);
+=======
+
+		System.out.println("List of Course:");
+		courseIds.forEach(System.out::println);
+>>>>>>> dfe08f30052c4df2773fc4a6d5eee2a321686ecc
 
 	}
 

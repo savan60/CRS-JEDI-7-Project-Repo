@@ -16,6 +16,7 @@ import com.crs.flipkart.exceptions.GradeCardByCourseIdFoundEmpty;
 import com.crs.flipkart.exceptions.GradeCardBySemFoundEmpty;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.Utils;
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
 /**
  * @author SAVAN
@@ -35,20 +36,21 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		DBUtils.createTable(SCHEMA);
 	}
 	
-	public void printEnrolledStudentInThatCourse(String courseId) throws GradeCardByCourseIdFoundEmpty{
-		conn=DBUtils.getConnection();
+	public ArrayList<Pair<String, String>> printEnrolledStudentInThatCourse(String courseId) throws GradeCardByCourseIdFoundEmpty{
+		
 		logger.info("printEnrolledStudentInThatCourse started");
+		ArrayList<Pair<String, String>> listOfStudentsInThatCourse=new ArrayList<Pair<String,String>>();
 		try {
+			conn=DBUtils.getConnection();
+			PreparedStatement stmt1 ;
 			String query=SQLQueriesConstant.printEnrolledStudentInThatCourseQuery;
-			stmt = (PreparedStatement) conn.prepareStatement(query);
-			stmt.setString(1, courseId);
-			ResultSet rs = stmt.executeQuery();
+			stmt1=(PreparedStatement) conn.prepareStatement(query);
+			stmt1.setString(1, courseId);
+			ResultSet rs = stmt1.executeQuery();
 			int count =0;
 			while (rs.next()) {
 				count+=1;
-				//Changes required:
-				//need to pass this list of student in crsapplication and print there, no print statement should present outside crs application which is to be shown to user
-				System.out.println(rs.getString("studentId"));
+				listOfStudentsInThatCourse.add(new Pair<String, String>(rs.getString("name"),rs.getString("studentId")));
 			}
 			if(count==0) {
 				throw new GradeCardByCourseIdFoundEmpty(courseId);
@@ -57,6 +59,8 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			e.printStackTrace();
 
 		}
+		return listOfStudentsInThatCourse;
+		
 	}
 
 	public void updateGrade(String courseId, String studentId, float newGrade) {
@@ -71,7 +75,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			stmt.setFloat(1,newGrade);
 			stmt.setString(2,courseId);
 			stmt.setString(3,studentId);
-			stmt.executeUpdate();
+			stmt.executeUpdate(query);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -114,15 +118,12 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		Connection conn = DBUtils.getConnection();
 
 //		Statement stmt;
-		stmt=null;
-
 		try {
 //			stmt = conn.createStatement();
 			String query = SQLQueriesConstant.dropCourseQuery;
-			stmt = (PreparedStatement) conn.prepareStatement(query);
 			stmt.setString(1, courseId);
 			stmt.setString(2, studentId);
-			stmt.executeUpdate();
+			stmt.executeUpdate(query);
 			return true;
 
 		} catch (SQLException e) {
@@ -171,7 +172,6 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			}
 			else
 			{
-				logger.debug("sem is "+sem);
 				String query = "INSERT INTO `CRS`.`registeredCourse` (`registeredCourseId`, `courseId`, `studentId`, `grade`, `semester`) VALUES (?, ?, ?, ?, ?)"; // change 3 -> used system generated id
 				String id = Utils.generateId().toString();
 				id = id.substring(0, Math.min(id.length(), 10));

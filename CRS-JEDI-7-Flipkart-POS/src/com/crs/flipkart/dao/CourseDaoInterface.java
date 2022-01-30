@@ -3,6 +3,8 @@
  */
 package com.crs.flipkart.dao;
 
+import java.util.ArrayList;
+
 import com.crs.flipkart.exceptions.CourseNotAddedException;
 import com.crs.flipkart.exceptions.CourseNotDeletedException;
 
@@ -33,4 +35,5 @@ public interface CourseDaoInterface {
 	 * @param courseId
 	 * 
 	 */
+	public ArrayList<String> fetchCourseIdFromProfessorId(String professorId);
 }
