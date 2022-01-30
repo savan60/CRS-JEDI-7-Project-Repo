@@ -19,12 +19,12 @@ public class CRSProfessorMenu {
 
 	Scanner sc = new Scanner(System.in);
 	UserInterface user = new UserService();
+	ProfessorInterface professorService = new ProfessorService();
 
 	public void homePage() {
 
 		System.out.println("Welcome to Professor portal!");
 
-		ProfessorInterface professorService = new ProfessorService();
 		while (true) {
 			System.out.println("__________________________________________________________");
 
@@ -40,16 +40,10 @@ public class CRSProfessorMenu {
 			
 			switch (ch) {
 				case 1:
-					HashMap<String, ArrayList<Pair>>list=professorService.viewEnrolledStudents(UserService.currentUsedId);
-					list.forEach((key, value)->{
-						System.out.println("CourseId: "+key);
-						value.forEach((student)->{
-							System.out.println("StudentName: "+student.getLeft()+" StudentId: "+student.getRight());
-						});
-					});
+					viewEndrolledStudents();
 					break;
 				case 2: // call assign grades
-					professorService.viewEnrolledStudents(UserService.currentUsedId);
+					viewEndrolledStudents();
 					System.out.println("Enter studentId: ");
 					String studentId = sc.next();
 					System.out.println("Enter grade of studentId " + studentId + ": ");
@@ -112,4 +106,13 @@ public class CRSProfessorMenu {
 		}
 	}
 
+	public void viewEndrolledStudents() {
+		HashMap<String, ArrayList<Pair>>list=professorService.viewEnrolledStudents(UserService.currentUsedId);
+		list.forEach((key, value)->{
+			System.out.println("CourseId: "+key);
+			value.forEach((student)->{
+				System.out.println("StudentName: "+student.getLeft()+" StudentId: "+student.getRight());
+			});
+		});
+	}
 }

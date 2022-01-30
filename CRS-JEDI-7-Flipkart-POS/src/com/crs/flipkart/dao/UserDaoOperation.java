@@ -122,7 +122,7 @@ public class UserDaoOperation implements UserDaoInterface{
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				if(userId.equals(resultSet.getString(1))) {
-					if(password.equals(resultSet.getString(2))){
+					if(password.equals(resultSet.getString(3))){
 						UserService.currentUsedId=resultSet.getString(1);
 						return true;
 					}

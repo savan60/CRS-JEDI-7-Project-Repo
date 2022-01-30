@@ -119,11 +119,11 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 
 //		Statement stmt;
 		try {
-//			stmt = conn.createStatement();
 			String query = SQLQueriesConstant.dropCourseQuery;
+			stmt = (PreparedStatement) conn.prepareStatement(query);
 			stmt.setString(1, courseId);
 			stmt.setString(2, studentId);
-			stmt.executeUpdate(query);
+			stmt.executeUpdate();
 			return true;
 
 		} catch (SQLException e) {

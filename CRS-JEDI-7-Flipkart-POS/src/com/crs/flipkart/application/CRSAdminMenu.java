@@ -73,8 +73,7 @@ public class CRSAdminMenu {
 					break;
 
 				case 2: // call add course
-					System.out.println("Enter the course id:");
-					String cid = sc.next();
+					String cId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
 
 					System.out.println("Enter the course name:");
 					String cname = sc.next();
@@ -85,7 +84,7 @@ public class CRSAdminMenu {
 					System.out.println("Enter the credits:");
 					float credits = sc.nextFloat();
 
-					if (courseService.addCourse(Utils.generateUniqueId(), cname, cdur, credits)) {
+					if (courseService.addCourse(cId, cname, cdur, credits)) {
 						System.out.println("Course added");
 					} else
 						System.out.println("Course id already exists, please try again!");

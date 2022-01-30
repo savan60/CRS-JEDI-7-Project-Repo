@@ -107,7 +107,6 @@ public class CRSStudentMenu {
 				grade.viewGradeCard(UserService.currentUsedId, StudentService.current_semester);
 				break;
 			case 7:
-				System.out.println("7th case started");
 				boolean res=payment.checkForPayment(UserService.currentUsedId);
 				if(res) {
 					makePayment();

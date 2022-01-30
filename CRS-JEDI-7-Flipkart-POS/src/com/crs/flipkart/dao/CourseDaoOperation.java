@@ -29,7 +29,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 	private static Logger logger =Logger.getLogger(CourseDaoOperation.class);
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.course (" 
-							+ "courseId VARCHAR(45) NOT NULL,"
+							+ "courseId VARCHAR(20) NOT NULL,"
 							+ "professorId VARCHAR(20) NULL," 
 							+ "name VARCHAR(20) NOT NULL," 
 							+ "duration float NOT NULL,"
@@ -190,8 +190,9 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, courseId);
 			ResultSet rs = statement.executeQuery();
-			return new Course(rs.getString("courseId"),rs.getString("professorId"),rs.getString("name"),rs.getFloat("duration"),rs.getFloat("credits"));
-					
+			while(rs.next()) {
+				return new Course(rs.getString("courseId"),rs.getString("professorId"),rs.getString("name"),rs.getFloat("duration"),rs.getFloat("credits"));
+			}		
 		}catch(SQLException e){
 			logger.error("Error Message : "+e.getMessage());
 		}
