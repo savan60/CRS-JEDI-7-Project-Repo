@@ -10,6 +10,10 @@ package com.crs.flipkart.bean;
 
 //No database
 public class NetBanking extends Payment{
+	public NetBanking(String studentId, String invoiceId, double amount, boolean status) {
+		super(studentId, invoiceId, amount, status);
+		// TODO Auto-generated constructor stub
+	}
 	private String bankName;
 	private String accountHolderName;
 	/**

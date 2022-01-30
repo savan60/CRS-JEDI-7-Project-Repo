@@ -9,20 +9,30 @@ package com.crs.flipkart.bean;
  *
  */
 public class Payment {
-	private int studentId;//fk
+	public Payment(String studentId, String invoiceId, double amount, boolean status) {
+		super();
+		this.studentId = studentId;
+		this.invoiceId = invoiceId;
+		this.amount = amount;
+		this.status = status;
+	}
+	public Payment() {
+		// TODO Auto-generated constructor stub
+	}
+	private String studentId;//fk
 	private String  invoiceId;//pk
-	private int amount;
+	private double amount;
 	private boolean status; 
 	/**
 	 * @return the studentId
 	 */
-	public int getStudentId() {
+	public String getStudentId() {
 		return studentId;
 	}
 	/**
 	 * @param studentId the studentId to set
 	 */
-	public void setStudentId(int studentId) {
+	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
 	/**
@@ -40,13 +50,13 @@ public class Payment {
 	/**
 	 * @return the amount
 	 */
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 	/**
 	 * @param amount the amount to set
 	 */
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	/**

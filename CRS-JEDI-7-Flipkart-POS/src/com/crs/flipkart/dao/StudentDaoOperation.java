@@ -94,14 +94,18 @@ public class StudentDaoOperation implements StudentDaoInterface{
 	
 	public int getSemester(String id) throws StudentNotFound{
 		
-		int sem=0;
+		int sem=1;
 		try {
-			
+			Connection connection = DBUtils.getConnection();
+
 			String sql="Select current_semester from CRS.student where studentId=?";
 			statement = (PreparedStatement) connection.prepareStatement(sql);
+			logger.debug("student id is "+id);
 			statement.setString(1, id);
 			ResultSet resultSet = statement.executeQuery();
-			sem=resultSet.getInt(1);
+			while(resultSet.next()) {
+				sem=resultSet.getInt(1);
+			}
 			return sem;
 			
 		}
@@ -130,6 +134,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		
 		throw new StudentNotFound(id);
 	}
+	
 	public ArrayList<String> getAllStudentIds(){
 		ArrayList<String> studentIds = new ArrayList<String>();
 		

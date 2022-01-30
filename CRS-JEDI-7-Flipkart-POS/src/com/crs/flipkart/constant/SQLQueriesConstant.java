@@ -28,4 +28,5 @@ public class SQLQueriesConstant {
 	public static final String generateGradeCardBySemQuery="Select studentId, sum(grade)/4 as SGPA from CRS.registeredCourse where semester = ? group by studentId";
 	public static final String dropCourseQuery="delete from CRS.registeredCourse where courseId=? and studentId=?";
 	public static final String updateGrade="update CRS.registeredCourse set grade=? where courseId= ? and studentId=? ";
+	public static final String GET_ALL_PAYMENT_FOR_STUDENT="select * from crs.payment where studentId = ? and status = 0";
 }
