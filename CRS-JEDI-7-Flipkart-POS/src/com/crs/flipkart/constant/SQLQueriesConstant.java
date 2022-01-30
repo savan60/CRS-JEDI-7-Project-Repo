@@ -24,7 +24,7 @@ public class SQLQueriesConstant {
 	public static final String fetchRegisteredCourseFromStudentId = "select * from CRS.registeredCourse where studentID = ?  AND semester = ?";
 	public static final String fetchGradeCardUsingStudentId = "select * from CRS.gradecard where studentId = ? AND semester = ?";
 	public static final String gradeCardGenQuery="insert into CRS.gradecard(gradeCardId, studentId, semester, grade) values (?, ?, ?, ?)";
-	public static final String printEnrolledStudentInThatCourseQuery="select studentId from CRS.registeredCourse where courseId =?";
+	public static final String printEnrolledStudentInThatCourseQuery="select s.studentId,s.name from CRS.student s inner join  CRS.registeredCourse r on s.studentId=r.studentId where r.courseId=?";
 	public static final String generateGradeCardBySemQuery="Select studentId, sum(grade)/4 as SGPA from CRS.registeredCourse where semester = ? group by studentId";
 	public static final String dropCourseQuery="delete from CRS.registeredCourse where courseId =? and studentId = ?";
 	public static final String updateGrade="update CRS.registeredCourse set grade=? where courseId= ? and studentId=? ";

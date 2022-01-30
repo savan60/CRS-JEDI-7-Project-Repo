@@ -15,8 +15,8 @@ import com.crs.flipkart.exceptions.CourseNotEndrolledByStudent;
 import com.crs.flipkart.exceptions.GradeCardByCourseIdFoundEmpty;
 import com.crs.flipkart.exceptions.GradeCardBySemFoundEmpty;
 import com.crs.flipkart.utils.DBUtils;
+import com.crs.flipkart.utils.Pair;
 import com.crs.flipkart.utils.Utils;
-import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
 /**
  * @author SAVAN
@@ -36,10 +36,10 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		DBUtils.createTable(SCHEMA);
 	}
 	
-	public ArrayList<Pair<String, String>> printEnrolledStudentInThatCourse(String courseId) throws GradeCardByCourseIdFoundEmpty{
+	public ArrayList<Pair> printEnrolledStudentInThatCourse(String courseId) throws GradeCardByCourseIdFoundEmpty{
 		
 		logger.info("printEnrolledStudentInThatCourse started");
-		ArrayList<Pair<String, String>> listOfStudentsInThatCourse=new ArrayList<Pair<String,String>>();
+		ArrayList<Pair> listOfStudentsInThatCourse=new ArrayList<>();
 		try {
 			conn=DBUtils.getConnection();
 			PreparedStatement stmt1 ;
@@ -50,7 +50,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			int count =0;
 			while (rs.next()) {
 				count+=1;
-				listOfStudentsInThatCourse.add(new Pair<String, String>(rs.getString("name"),rs.getString("studentId")));
+				listOfStudentsInThatCourse.add(new Pair(rs.getString("name"), rs.getString("studentId")));
 			}
 			if(count==0) {
 				throw new GradeCardByCourseIdFoundEmpty(courseId);
@@ -206,5 +206,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		return false;
 	}
 }
+
+
 
 

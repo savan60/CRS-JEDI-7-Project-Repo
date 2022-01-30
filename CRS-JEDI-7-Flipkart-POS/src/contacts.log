@@ -96,3 +96,57 @@
 19:18:46,657  INFO CourseDaoOperation,main:81 - Fetched all courses
 19:18:46,658  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
 19:18:46,661  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+18:57:25,440  INFO UserService,main:30 - Inside UserService: Authentication Started!
+18:57:25,475 ERROR UserService,main:39 - User Not Found: prof1@mail.com
+19:52:23,902  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:52:23,933 DEBUG UserService,main:34 - Authentication Successful!
+19:52:23,944  INFO CourseDaoOperation,main:43 - Fetching all the courses
+19:52:23,949  INFO CourseDaoOperation,main:57 - Fetched all the courses
+19:52:25,709  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+19:52:25,712  INFO CourseDaoOperation,main:81 - Fetched all courses
+19:52:25,712  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+19:52:25,751  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+20:07:55,347  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:07:55,452 ERROR UserService,main:46 - Wrong Password for Email: Prof1@mail.com
+20:08:20,062  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:08:20,064 ERROR UserService,main:48 - User Not Found: prof1@mail.com
+20:08:32,908  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:08:32,909 ERROR UserService,main:46 - Wrong Password for Email: Prof1@mail.com
+20:09:19,282  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:09:19,372 ERROR UserService,main:46 - Wrong Password for Email: Prof1@mail.com
+20:11:42,044  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:11:42,075 ERROR UserService,main:46 - Wrong Password for Email: Prof1@mail.com
+20:13:26,635  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:13:26,667 ERROR UserService,main:46 - Wrong Password for Email: Prof1@mail.com
+20:15:27,021  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:15:27,114 ERROR UserService,main:46 - Wrong Password for Email: Prof1@mail.com
+20:19:01,452  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:19:01,484 ERROR UserService,main:46 - Wrong Password for Email: Prof1@mail.com
+20:20:23,062  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:20:23,093 ERROR UserService,main:46 - Wrong Password for Email: prof2@mail.com
+20:22:13,841  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:22:13,878 ERROR UserService,main:46 - Wrong Password for Email: admin@mail.com
+20:23:51,642  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:23:51,670 DEBUG UserService,main:43 - Authentication Successful!
+20:23:58,576  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+20:23:58,580  INFO CourseDaoOperation,main:81 - Fetched all courses
+20:26:22,247  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:26:22,278 DEBUG UserService,main:43 - Authentication Successful!
+20:26:23,504  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+20:26:23,506  INFO CourseDaoOperation,main:81 - Fetched all courses
+20:26:23,508  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+20:28:57,700  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:28:57,733 DEBUG UserService,main:43 - Authentication Successful!
+20:28:59,034  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+20:28:59,036  INFO CourseDaoOperation,main:81 - Fetched all courses
+20:28:59,037  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+20:31:50,886  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:31:50,917 DEBUG UserService,main:43 - Authentication Successful!
+20:31:52,058  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+20:31:52,060  INFO CourseDaoOperation,main:81 - Fetched all courses
+20:31:52,061  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+20:37:14,016  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:37:14,049 DEBUG UserService,main:43 - Authentication Successful!
+20:37:15,253  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+20:37:15,254  INFO CourseDaoOperation,main:81 - Fetched all courses
+20:37:15,255  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started

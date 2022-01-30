@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Stream;
+//import java.util.Stream;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -16,8 +16,8 @@ import com.crs.flipkart.dao.ProfessorDaoOperation;
 import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.exceptions.GradeCardByCourseIdFoundEmpty;
+import com.crs.flipkart.utils.Pair;
 import com.crs.flipkart.utils.Utils.UserType;
-import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
 public class ProfessorService implements ProfessorInterface {
 	RegisteredCourseInterface regCourseService = new RegisteredCourseService();
@@ -25,13 +25,13 @@ public class ProfessorService implements ProfessorInterface {
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
-	public HashMap<String, ArrayList<Pair<String, String>>> viewEnrolledStudents(String professorId) {
+	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(String professorId) {
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
-		HashMap<String, ArrayList<Pair<String, String>>> MapOfEnrolledStudents=new HashMap<String, ArrayList<Pair<String,String>>>();
+		HashMap<String, ArrayList<Pair>> MapOfEnrolledStudents=new HashMap<String, ArrayList<Pair>>();
 		courseIds.forEach((courseId)->{
 			System.out.println("Students enrolled in course: " + courseId);
 			try {
-				ArrayList<Pair<String, String>> list=registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+				ArrayList<Pair> list=registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
 				MapOfEnrolledStudents.put(courseId, list);
 				
 			} catch (GradeCardByCourseIdFoundEmpty e) {

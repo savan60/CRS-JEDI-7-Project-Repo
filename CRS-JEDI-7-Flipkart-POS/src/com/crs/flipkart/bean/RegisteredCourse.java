@@ -18,14 +18,14 @@ public class RegisteredCourse {
 	
 	
 	
-	public RegisteredCourse(String registeredCourseId, String courseId, String studentId, float grade, int semester) {
-		super();
-		this.registeredCourseId = registeredCourseId;
-		this.courseId = courseId;
-		this.studentId = studentId;
-		this.grade = grade;
-		this.semester = semester;
-	}
+//	public RegisteredCourse(String registeredCourseId, String courseId, String studentId, float grade, int semester) {
+//		super();
+//		this.registeredCourseId = registeredCourseId;
+//		this.courseId = courseId;
+//		this.studentId = studentId;
+//		this.grade = grade;
+//		this.semester = semester;
+//	}
 	
 	/**
 	 * @return the registeredCourseId

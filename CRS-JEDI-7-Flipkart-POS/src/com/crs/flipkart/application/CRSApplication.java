@@ -71,29 +71,30 @@ public class CRSApplication {
 					"Select choice\n" + "1. Register as a Student\n" + "2. Login\n" + "3. Forget Password\n4. Exit");
 			Scanner sc = new Scanner(System.in);
 			int ch = sc.nextInt();
-			String email, password,name,phoneNumber,address;
+			String email, password, name, phoneNumber, address;
 
 			UserInterface user = new UserService();
 
 			switch (ch) {
 			case 1:
-				String studentId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
-				
+				String studentId = Utils.generateUniqueId().substring(0, 3)
+						+ Utils.generateUniqueId().substring(10, 13);
+
 				System.out.println("Enter name: ");
 				name = sc.next();
-				
+
 				System.out.println("Enter email address: ");
 				String emai = sc.next();
-				
+
 				System.out.println("Enter phonenumber: ");
 				phoneNumber = sc.next();
-				
+
 				System.out.println("Enter address: ");
 				address = sc.next();
-				
+
 				System.out.println("Enter password: ");
 				password = sc.next();
-				
+
 				Student stud = new Student(studentId, emai, name, phoneNumber, address, UserType.Student, password);
 				studentInterface.selfRegistration(stud);
 				break;
@@ -109,7 +110,10 @@ public class CRSApplication {
 					System.out.println("User Not Found: " + e.getuserCredential());
 				}
 
-//						System.out.println("val :" + val);
+				if (val != UserType.None) {
+					System.out.println("User " + UserService.currentUsedId + " logged in on :" + LocalDate.now()
+							+ " at " + LocalTime.now());
+				}
 
 				switch (val) {
 				case Student:
