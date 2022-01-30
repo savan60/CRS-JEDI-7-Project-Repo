@@ -170,7 +170,9 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, studentId);
 			ResultSet rs = statement.executeQuery();
-			return rs.getString("name");
+			while(rs.next()) {
+				return rs.getString("name");
+			}
 		}catch(SQLException e){
 			logger.error("Error Message : "+e.getMessage());
 		}

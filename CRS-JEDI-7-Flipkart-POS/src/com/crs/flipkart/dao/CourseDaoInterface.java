@@ -29,7 +29,7 @@ public interface CourseDaoInterface {
 	
 	public Course getCourseFromId(String courseId);
 	public ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId);
-	public void printCourseDetails(String courseId);
+	
 	/*
 	 * To get course name from course ID
 	 * @param courseId

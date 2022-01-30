@@ -199,10 +199,5 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		return null;
 	}
 	
-	public void printCourseDetails(String courseId) {
-		logger.info("PRINTING course details for courseId: "+courseId);
-		Course course = this.getCourseFromId(courseId);
-		System.out.println(course.getCourseId()+"\t"+course.getName()+"\t"+course.getDuration()+"\t"+course.getCredits());
-	}
-
+	
 }

@@ -74,7 +74,10 @@ public class ProfessorService implements ProfessorInterface {
 		}
 		System.out.println("List of Courses:");
 		System.out.println("CourseId\tCourseName\tDuration\tCredits");
-		courseIds.forEach(courseInterface::printCourseDetails);
+		for(String courseId : courseIds) {
+			Course course = courseInterface.getCourseFromId(courseId);
+			System.out.println(course.getCourseId()+"\t"+course.getName()+"\t"+course.getDuration()+"\t"+course.getCredits());
+		}
 	}
 
 }
