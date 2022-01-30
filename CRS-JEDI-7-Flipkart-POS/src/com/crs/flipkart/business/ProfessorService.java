@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Stream;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -25,7 +26,7 @@ public class ProfessorService implements ProfessorInterface {
 
 	public void viewEnrolledStudents(String professorId) {
 		//fetchCourseIdFromProfessorId is called directly, remove the static and use the correct flow
-		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
+		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
 		for (String courseId : courseIds) {
 			System.out.println("Students enrolled in course: " + courseId);
 			try {
@@ -61,12 +62,15 @@ public class ProfessorService implements ProfessorInterface {
 
 	public void viewCourse(String professorId) {
 
-		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
-
-		System.out.println("List of Course:");
-		for (String cId : courseIds) {
-			System.out.println(cId);
+		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
+		if(courseIds.isEmpty()) {
+			System.out.println("No courses assigned to you");
+			return;
 		}
+		
+		System.out.println("List of Courses:");
+		System.out.println("CourseId\tCourseName\tDuration\tCredits");
+		courseIds.forEach(courseInterface::printCourseDetails);
 
 	}
 
