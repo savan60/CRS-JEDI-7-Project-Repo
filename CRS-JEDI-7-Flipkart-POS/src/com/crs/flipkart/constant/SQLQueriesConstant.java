@@ -29,4 +29,6 @@ public class SQLQueriesConstant {
 	public static final String dropCourseQuery="delete from CRS.registeredCourse where courseId=? and studentId=?";
 	public static final String updateGrade="update CRS.registeredCourse set grade=? where courseId= ? and studentId=? ";
 	public static final String GET_ALL_PAYMENT_FOR_STUDENT="select * from crs.payment where studentId = ? and status = 0";
+	public static final String fetchCourseFromId="select * from CRS.course where courseId = ?";
+	public static final String fetchStudentNameFromId="select name from CRS.student where studentId=?";
 }

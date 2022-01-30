@@ -15,21 +15,16 @@ public class RegisteredCourse {
 	private String studentId;//fk
 	private float grade;
 	private int semester;
-	private Timestamp timeStamp;
-	private boolean isAllocated;
 	
 	
 	
-	public RegisteredCourse(String registeredCourseId, String courseId, String studentId, float grade, int semester,
-			Timestamp timeStamp) {
+	public RegisteredCourse(String registeredCourseId, String courseId, String studentId, float grade, int semester) {
 		super();
 		this.registeredCourseId = registeredCourseId;
 		this.courseId = courseId;
 		this.studentId = studentId;
 		this.grade = grade;
 		this.semester = semester;
-		this.timeStamp = timeStamp;
-		this.isAllocated = false;
 	}
 	
 	/**

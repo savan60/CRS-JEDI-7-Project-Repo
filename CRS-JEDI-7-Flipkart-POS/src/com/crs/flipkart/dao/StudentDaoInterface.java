@@ -18,5 +18,6 @@ public interface StudentDaoInterface {
 	public int getSemester(String id) throws StudentNotFound;
 	public void addStudent(Student student) ; 
 	public ArrayList<String> getAllStudentIds();
+	public String getStudentNameFromId(String studentId);
 	
 }

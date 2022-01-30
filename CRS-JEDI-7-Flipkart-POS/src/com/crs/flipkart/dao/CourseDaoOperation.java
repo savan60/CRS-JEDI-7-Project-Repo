@@ -65,7 +65,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		return null;
 	}
 
-	public static ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
+	public ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
 		logger.info("Fetching all courses that the professor "+ProfessorId+" teaches");
 		Connection conn = DBUtils.getConnection();
 		ArrayList<String> listOfCourseId = new ArrayList<>();
@@ -177,7 +177,29 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		catch (SQLException e) {
 			logger.error("Error message: "+e.getMessage());
 		}
+		
 		throw new CourseNotDeletedException(CourseId);
+	}
+	
+	public Course getCourseFromId(String courseId) {
+		logger.info("Getting course for CourseID:"+courseId);
+		Connection conn = DBUtils.getConnection();
+		String sql = SQLQueriesConstant.fetchCourseFromId;
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, courseId);
+			ResultSet rs = statement.execute();
+			return new Course(rs.getString("courseId"),rs.getString("professorId"),rs.getString("name"),rs.getFloat("duration"),rs.getFloat("credits"));
+					
+		}catch(SQLException e){
+			logger.error("Error Message : "+e.getMessage());
+		}
+	}
+	
+	public void printCourseDetails(String courseId) {
+		logger.info("PRINTING course details for courseId: "+courseId);
+		Course course = this.getCourseFromId(courseId);
+		System.out.println(course.getCourseId()+"\t"+course.getName()+"\t"+course.getDuration()+"\t"+course.getCredits());
 	}
 
 }

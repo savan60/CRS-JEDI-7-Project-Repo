@@ -12,10 +12,14 @@ import java.util.*;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
+import com.crs.flipkart.constant.SQLQueriesConstant;
+
 
 import com.crs.flipkart.exceptions.StudentNotFound;
 
@@ -156,5 +160,19 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		}
 
 		return null;
+	}
+	
+	public String getStudentNameFromId(String studentId) {
+		logger.info("Getting student name for StudentID:"+studentId);
+		Connection conn = DBUtils.getConnection();
+		String sql = SQLQueriesConstant.fetchStudentNameFromId;
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, studentId);
+			ResultSet rs = statement.execute();
+			return rs.getString("name");
+		}catch(SQLException e){
+			logger.error("Error Message : "+e.getMessage());
+		}
 	}
 }

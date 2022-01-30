@@ -82,7 +82,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface{
 	
 	
 	
-	public static ArrayList<RegisteredCourse> fetchRegisteredSemesterCoursesForStudents(String studentId, int semester) {
+	public ArrayList<RegisteredCourse> fetchRegisteredSemesterCoursesForStudents(String studentId, int semester) {
 		/*
 		 * Method to fetch semester courses allocated to a student
 		 * @param studentId, semester
@@ -102,7 +102,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface{
 			logger.info("Creating gradeCard for student "+studentId+" semester "+semester);
 			while (rs.next()) {
 				courses.add(new RegisteredCourse(rs.getString("registeredCourseId"), rs.getString("courseId"), rs.getString("studentId"),
-						rs.getFloat("grade"), rs.getInt("semester"), rs.getTimestamp("timestamp")));
+						rs.getFloat("grade"), rs.getInt("semester")));
 			}
 		}
 
@@ -114,7 +114,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface{
 		return courses;
 	}
 	
-	public static GradeCard fetchGradeCard(String studentId, int semester) throws GradeCardNotCreatedException{
+	public GradeCard fetchGradeCard(String studentId, int semester) throws GradeCardNotCreatedException{
 		
 		/*
 		 * Method to fetch GradeCard of student for a given semester
