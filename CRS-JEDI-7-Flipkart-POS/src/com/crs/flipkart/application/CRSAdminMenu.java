@@ -46,136 +46,131 @@ public class CRSAdminMenu {
 			}
 
 			switch (ch) {
-			case 1:
-				String professorId = Utils.generateUniqueId().substring(0, 3)
-						+ Utils.generateUniqueId().substring(10, 13);
-
-				System.out.println("Enter the emailid:");
-				String email = sc.next();
-
-				System.out.println("Enter the phoneNumber:");
-				String phoneNumber = sc.next();
-
-				System.out.println("Enter the address:");
-				String address = sc.next();
-
-				System.out.println("Enter the password:");
-				String password = sc.next();
-
-				System.out.println("Enter Department:");
-				String department = sc.next();
-
-				System.out.println("Enter Position:");
-				String position = sc.next();
-
-				Professor newProfessor = new Professor(professorId, email, phoneNumber, address, password, department,
-						new Date(), position);
-
-				if (adminService.addProfessor(newProfessor)) {
-					System.out.println("Professor added");
-				} else
-					System.out.println("User id already exists! or Please try again!");
-
-				break;
-
-			case 2: // call add course
-				System.out.println("Enter the course id:");
-				String cid = sc.next();
-
-				System.out.println("Enter the course name:");
-				String cname = sc.next();
-
-				System.out.println("Enter the duration:");
-				float cdur = sc.nextFloat();
-
-				System.out.println("Enter the credits:");
-				float credits = sc.nextFloat();
-
-				if(courseService.addCourse(Utils.generateUniqueId(),cname,cdur,credits)) {
-					System.out.println("Course added");
-				} else
-					System.out.println("Course id already exists, please try again!");
-
-				break;
-
-			case 3:
-				System.out.println("Enter Course id to remove: ");
-				String rid = sc.next();
-
-				if (courseService.deleteCourse(rid)) {
-					System.out.println("Course removed");
-				} else
-					System.out.println("Course id does not exists, please try again!");
-				break;
-
-			case 4:
-				System.out.println("Enter the semester");
-				int sem = sc.nextInt();
-				adminService.genReportCard(sem);
-				break;
-
-			case 5:
-				System.out.println("Enter your old password\n");
-				password = sc.next();
-				boolean val1 = user.checkPasswordforEmail(password);
-				if (val1) {
-					while (true) {
-						System.out.println("Enter your choice:\n" + "1.Type new password \n2. Exit");
-						int choice = sc.nextInt();
-
-						if (choice == 2)
-							break;
-						else if (choice != 1)
-							System.out.println("Invalid Choice");
-						else {
-							String pass1, pass2;
-							// System.out.println("Type New Password!");
-							pass1 = sc.next();
-							System.out.println("Re-Enter New Password!");
-							pass2 = sc.next();
-							if (pass1.equals(pass2)) {
-								user.createNewPassword(pass1, UserService.currentUsedId);
-								System.out.println("Password changed. Login!");
-								break;
-							} else
-								System.out.println("Password Mismatch. Try Again!");
-						}
-					}
-				} else {
-					System.out.println("Invalid credentials");
-				}
-				break;
-
-			case 6:
-				System.out.println("Select your choice: \n1. Approve all students\n2. Approve Students one by one.");
-				int choice = sc.nextInt();
-
-				switch (choice) {
-
 				case 1:
-					adminService.approveAllStudents();
+					System.out.println("Enter the emailid:");
+					String email = sc.next();
+
+					System.out.println("Enter the phoneNumber:");
+					String phoneNumber = sc.next();
+
+					System.out.println("Enter the address:");
+					String address = sc.next();
+
+					System.out.println("Enter the password:");
+					String pass = sc.next();
+
+					System.out.println("Enter Department:");
+					String department = sc.next();
+
+					System.out.println("Enter Position:");
+					String position = sc.next();
+
+					if (adminService.addProfessor(email, phoneNumber, address, pass, department, position)) {
+						System.out.println("Professor added");
+					} else
+						System.out.println("User id already exists! or Please try again!");
+
 					break;
 
-				case 2:
-					adminService.approveStudentsOneByOne();
+				case 2: // call add course
+					System.out.println("Enter the course id:");
+					String cid = sc.next();
+
+					System.out.println("Enter the course name:");
+					String cname = sc.next();
+
+					System.out.println("Enter the duration:");
+					float cdur = sc.nextFloat();
+
+					System.out.println("Enter the credits:");
+					float credits = sc.nextFloat();
+
+					if (courseService.addCourse(Utils.generateUniqueId(), cname, cdur, credits)) {
+						System.out.println("Course added");
+					} else
+						System.out.println("Course id already exists, please try again!");
+
 					break;
 
+				case 3:
+					System.out.println("Enter Course id to remove: ");
+					String rid = sc.next();
+
+					if (courseService.deleteCourse(rid)) {
+						System.out.println("Course removed");
+					} else
+						System.out.println("Course id does not exists, please try again!");
+					break;
+
+				case 4:
+					System.out.println("Enter the semester");
+					int sem = sc.nextInt();
+					adminService.genReportCard(sem);
+					break;
+
+				case 5:
+					System.out.println("Enter your old password\n");
+					password = sc.next();
+					boolean val1 = user.checkPasswordforEmail(password);
+					if (val1) {
+						while (true) {
+							System.out.println("Enter your choice:\n" + "1.Type new password \n2. Exit");
+							int choice = sc.nextInt();
+
+							if (choice == 2)
+								break;
+							else if (choice != 1)
+								System.out.println("Invalid Choice");
+							else {
+								String pass1, pass2;
+								// System.out.println("Type New Password!");
+								pass1 = sc.next();
+								System.out.println("Re-Enter New Password!");
+								pass2 = sc.next();
+								if (pass1.equals(pass2)) {
+									user.createNewPassword(pass1, UserService.currentUsedId);
+									System.out.println("Password changed. Login!");
+									break;
+								} else
+									System.out.println("Password Mismatch. Try Again!");
+							}
+						}
+					} else {
+						System.out.println("Invalid credentials");
+					}
+					break;
+
+				case 6:
+					System.out
+							.println("Select your choice: \n1. Approve all students\n2. Approve Students one by one.");
+					int choice = sc.nextInt();
+
+					switch (choice) {
+
+						case 1:
+							adminService.approveAllStudents();
+							break;
+
+						case 2:
+							adminService.approveStudentsOneByOne();
+							break;
+
+						default:
+							System.out.println("Invalid Choice");
+					}
+
+					break;
+
+				case 7:
+					System.out.println("Enter fee amount: ");
+					int amount = sc.nextInt();
+					System.out.println("Enter payment message: ");
+					String message = sc.next();
+					paymentService.askForPayment(amount, message);
+					System.out.println("Payment added to Students");
+					break;
 				default:
-					System.out.println("Invalid Choice");
-				}
-
-				break;
-
-			case 7:
-				System.out.println("Enter fee amount: ");
-				int amount = sc.nextInt();
-				System.out.println("Enter payment message: ");
-				String message = sc.next();
-				paymentService.askForPayment(amount, message);
-				System.out.println("Payment added to Students");
-				break;
-			default:
-				System.out.println("Enter valid choice");
+					System.out.println("Enter valid choice");
 
 			}
 		}

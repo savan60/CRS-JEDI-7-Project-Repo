@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.dao.*;
 import com.crs.flipkart.exceptions.*;
+import com.crs.flipkart.utils.Utils;
 
 /**
  * @author Shruti
@@ -19,13 +20,19 @@ import com.crs.flipkart.exceptions.*;
 public class AdminService implements AdminInterface {
 	private static Logger logger=Logger.getLogger(AdminService.class);
 	
-	UserService user=new UserService();
-	AdminDaoOperation admin=new AdminDaoOperation();
+	UserInterface user=new UserService();
+	AdminDaoInterface admin=new AdminDaoOperation();
 	
-	public boolean addProfessor(Professor newProfessor) {
+	public boolean addProfessor(String email, String phoneNumber, String address, String password, String department, String position) {
 		
 		logger.info("add professor function started");
 		try {
+			String professorId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
+			
+			Date date = new Date();
+			
+			Professor newProfessor = new Professor(professorId,email,phoneNumber,address,password,department,date,position);
+			
 			AdminDaoInterface admin = new AdminDaoOperation();
 			if(admin.addProfessorToDB(newProfessor))
 				return true;
@@ -71,9 +78,5 @@ public class AdminService implements AdminInterface {
 	public void updateAddDropTime() {
 		
 	}
-
-
-
-	
 
 }

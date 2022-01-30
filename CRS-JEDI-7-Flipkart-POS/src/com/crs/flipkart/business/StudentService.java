@@ -20,7 +20,7 @@ import com.crs.flipkart.exceptions.AddCourseLimitExceed;
 import com.crs.flipkart.exceptions.CourseNotEndrolledByStudent;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
-import com.mysql.jdbc.log.Log4JLogger;
+//import com.mysql.jdbc.log.Log4JLogger;
 
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
