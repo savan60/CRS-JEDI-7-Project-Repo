@@ -18,111 +18,61 @@ import com.crs.flipkart.utils.Utils.CardType;
  * @author SAVAN
  *
  */
-public class PaymentService implements PaymentInterface{
-	
+public class PaymentService implements PaymentInterface {
+
 	private static Logger logger = Logger.getLogger(PaymentService.class);
+
+	PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperation();
+
 	public void paymentNotify() {
 		System.out.println("Payment notification sent");
 	}
-	
-	public void askForPayment() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter fee amount: ");
-		int amount = sc.nextInt();
-		System.out.println("Enter payment message: ");
-		String message = sc.next();
-		
-		
+
+	public boolean askForPayment(int amount,String message) {
 		PaymentDaoOperation paymentDaoOperation = new PaymentDaoOperation();
 		try {
-			paymentDaoOperation.generatePaymentDetailsForAllStudents(amount, message);
+			return paymentDaoOperation.generatePaymentDetailsForAllStudents(amount, message);
 		} catch (NegativeAmountException e) {
 			// TODO Auto-generated catch block
 			logger.error("Negative amount : " + e.getAmount());
 		}
-	}
-	
-	
-	public boolean makePayment() {
-		
-		PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperation();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Choose type of the payment: ");
-		System.out.println("1. Credit Card/Debit Card");
-		System.out.println("2. Netbanking");
-		int type = sc.nextInt();
-		
-		
-		
-//		System.out.println("Enter studentId:");
-//		String studentId = sc.next();
-		String studentId = UserService.currentUsedId;
-		
-		switch(type) {
-			case 1:
-						
-				System.out.println("Enter cardNumber:");
-				String cardNumber = sc.next();
-				
-				System.out.println("Enter card type\n"
-						+ "  press 1 for DEBIT card\n"
-						+ "  press 2 for CREDIT card\n");
-				int choice = sc.nextInt();
-				CardType cardType = (choice == 1 ? CardType.DEBIT : CardType.CREDIT);  
-				
-				System.out.println("Enter Expiry month: ");
-				int month = sc.nextInt();
-				
-				System.out.println("Enter Expiry year: ");
-				int year = sc.nextInt();
-				
-
-				System.out.println("Enter cvv: ");
-				int cvv = sc.nextInt();
-				
-				System.out.println("Enter bank name: ");
-				String bankName = sc.next();
-				
-				Card card = new Card(cardNumber, cardType, month, year, bankName);
-				CardDaoInterface cardDaoInterface = new CardDaoOperation();
-				cardDaoInterface.addCard(card);
-				
-				// Reirecting to enter otp
-				
-				// Let's assume payment is successful 
-				
-				// Update payment table
-				
-			try {
-				paymentDaoInterface.updatePaymentDetails(studentId, cardType.toString());
-			} catch (StudentNotFound e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-				
-			break;
-				
-			case 2:
-
-				// Reirecting to NETBANKING
-				
-				// Let's assume payment is successful 
-				
-				// Update payment table
-			try {
-				paymentDaoInterface.updatePaymentDetails(studentId, "Netbanking");
-			} catch (StudentNotFound e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-				
-			break;
-				
-			default:
-				System.out.println("Choose proper payment option.");
-		}
-		
 		return false;
 	}
+
 	
+	@Override
+	public boolean makePaymentByNetBanking() {
+		// TODO Auto-generated method stub
+		try {
+			return paymentDaoInterface.updatePaymentDetails(UserService.currentUsedId, "Netbanking");
+		} catch (StudentNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean makePaymentByCard(Card card) {
+		// TODO Auto-generated method stub
+		CardDaoInterface cardDaoInterface = new CardDaoOperation();
+		cardDaoInterface.addCard(card);
+
+		try {
+			return paymentDaoInterface.updatePaymentDetails(UserService.currentUsedId, card.getCardType().toString());
+		} catch (StudentNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean checkForPayment(String id) {
+		// TODO Auto-generated method stub
+		return paymentDaoInterface.getListOfPayment(id);
+	}
+	
+	
+
 }

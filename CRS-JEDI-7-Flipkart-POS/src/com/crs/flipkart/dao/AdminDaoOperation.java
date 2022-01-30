@@ -32,12 +32,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		 String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.admin ("
 		         + "AdminId VARCHAR(20) NOT NULL,"
 		         + "doj DATE NULL,"
+		         + "phoneNumber VARCHAR(10) NOT NULL," 
+		         + "address VARCHAR(40),"
 		         + "PRIMARY KEY (AdminId))";
 		 DBUtils.createTable(SCHEMA);
 	}
 	 
 	public boolean addProfessorToDB(Professor professor) throws UserAlreadyExistsException{
-		String userInsertQuery = SqlUtils.INSERT_USER;
 		String profInsertQuery = SqlUtils.INSERT_PROFESSOR;
 		
 		int userQueryRes=0, profQueryRes=0;
@@ -45,27 +46,22 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		// Adding info to User DB
 		
 		try {
-			stmt = (PreparedStatement) conn.prepareStatement(userInsertQuery);
-		
-			stmt.setString(1,professor.getUserId());
-			stmt.setString(2,professor.getEmail());
-			stmt.setString(3,professor.getPhoneNumber());
-			stmt.setString(4,professor.getAddress());
-			stmt.setString(5,professor.getPassword());
-			stmt.setString(6,UserType.Professor.name());
-
-			userQueryRes = stmt.executeUpdate();
+			UserDaoOperation userDaoOperation = new  UserDaoOperation();
+			userDaoOperation.addUser(professor);
+			
 //			System.out.print(userQueryRes+" ");
 
 			stmt = (PreparedStatement) conn.prepareStatement(profInsertQuery);
 			stmt.setString(1,professor.getUserId());
-			stmt.setString(2,professor.getDepartment());
-			stmt.setDate(3, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			stmt.setString(4,professor.getPosition());
+			stmt.setString(2, professor.getPhoneNumber());
+			stmt.setString(3,professor.getAddress());
+			stmt.setString(4,professor.getDepartment());
+			stmt.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			stmt.setString(6,professor.getPosition());
 			profQueryRes = stmt.executeUpdate();
 //			System.out.println(profQueryRes);
 			
-			if(userQueryRes==1 && profQueryRes==1) {
+			if(profQueryRes==1) {
 				logger.info("Professor added to DB");
 				return true;
 			}
@@ -88,7 +84,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		 
 			 if(count==1) {
 				 
-				 String sql = "UPDATE CRS.student SET isApproved=? WHERE isApproved = false";
+				 String sql = "UPDATE CRS.student SET isApproved=? WHERE isApproved = ?";
 				 
 				 stmt = (PreparedStatement) conn.prepareStatement(sql);
 				 stmt.setBoolean(1,true);
@@ -105,13 +101,22 @@ public class AdminDaoOperation implements AdminDaoInterface {
 					 System.out.println("You want to approve Student with id: "+str);
 					 System.out.println("Press 1 for yes and 2 for no");
 					 int ch=sc.nextInt();
-					 String sql = "UPDATE CRS.student SET isApproved=? WHERE studentId="+str;
+					 String sql = "UPDATE CRS.student SET isApproved=? WHERE studentId=?";
 					 
 					 stmt = (PreparedStatement) conn.prepareStatement(sql);
-					 if(ch==1)
-						 stmt.setBoolean(1,true);
+					 stmt.setString(2, str);
 					 
-					 else stmt.setBoolean(1,false);
+					 if(ch==1) {
+						 stmt.setBoolean(1,true);
+						 logger.info("This student is approved!");
+					 }
+						 
+					 
+					 else {
+						 
+						 stmt.setBoolean(1,false);
+						 logger.info("This student is not approved!");
+					 }
 					 
 					 resultSet = stmt.executeUpdate();
 					 logger.info("Student is approved!");

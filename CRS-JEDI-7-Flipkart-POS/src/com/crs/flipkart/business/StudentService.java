@@ -20,7 +20,7 @@ import com.crs.flipkart.exceptions.AddCourseLimitExceed;
 import com.crs.flipkart.exceptions.CourseNotEndrolledByStudent;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
-import com.mysql.jdbc.log.Log4JLogger;
+//import com.mysql.jdbc.log.Log4JLogger;
 
 public class StudentService implements StudentInterface{
 	SemesterRegistrationDaoInterface semesterRegistration=new SemesterRegistrationDaoOperation();
@@ -58,37 +58,9 @@ public class StudentService implements StudentInterface{
 	}
 	
 	// student self register his/her self
-	public void selfRegistration() {
-		
-		
-		Scanner sc = new Scanner(System.in);
-		
-		String studentId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
-		
-		System.out.println("Enter name: ");
-		String name = sc.next();
-		
-		System.out.println("Enter email address: ");
-		String email = sc.next();
-		
-		System.out.println("Enter phonenumber: ");
-		String phoneNumber = sc.next();
-		
-		System.out.println("Enter address: ");
-		String address = sc.next();
-		
-		System.out.println("Enter password: ");
-		String password = sc.next();
-		
-		Student student = new Student(studentId, email, name, phoneNumber, address, UserType.Student, password);
-		
+	public void selfRegistration(Student student) {
 		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
-		try {
-			studentDaoInterface.addStudent(student);
-		} catch (StudentNotFound e) {
-			// TODO Auto-generated catch block
-			logger.error("Student not found : " + e.getId());
-		}
+		studentDaoInterface.addStudent(student);
 	}
 	
 	public void viewGradeCard() {
@@ -102,6 +74,7 @@ public class StudentService implements StudentInterface{
 		//take course from student table
 		registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
 	}
+	
 	public boolean semesterRegistration(int sem) {
 		
 		try {
@@ -123,16 +96,16 @@ public class StudentService implements StudentInterface{
 	}
 	
 	public boolean addCourse(String courseId,int sem) {
-		boolean val;
 		try {
-			val = registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
-			System.out.println("Course added successfully");
+			boolean val=registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
 			if(val) {
+				System.out.println("Course added successfully");
 				return true;
 			}
 			else {
 				System.out.println("Course is not added, Try again");
 			}
+			return false;
 		} catch (AddCourseLimitExceed e) {
 			// TODO Auto-generated catch block
 			System.out.println("You can't add courses more than: "+e.getCourse());
@@ -142,15 +115,14 @@ public class StudentService implements StudentInterface{
 	
 	public boolean dropCourse(String StudentId, String courseId)
 	{
-		boolean val;
 		try {
-			val = registeredCourse.dropCourse(courseId,StudentId);
+			boolean val=registeredCourse.dropCourse(StudentId, courseId);
 			if(val) {
-				System.out.println("Course dropped successfully");
-				return true;
+			System.out.println("Course dropped successfully");
+			return true;
 			}
 			else {
-				System.out.println("Course is not dropped, Try again");
+			System.out.println("Course is not dropped, Try again");
 			}
 		} catch (CourseNotEndrolledByStudent e) {
 			// TODO Auto-generated catch block

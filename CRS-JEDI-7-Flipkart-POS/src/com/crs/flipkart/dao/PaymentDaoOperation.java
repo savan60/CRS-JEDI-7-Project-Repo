@@ -6,8 +6,11 @@ package com.crs.flipkart.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.bean.Student;
@@ -26,7 +29,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 	
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
-	
+	private static Logger logger = Logger.getLogger(PaymentDaoOperation.class);
 	// create payment table if it not exists
 	public static void createTable() {
 		String SCHEMA="CREATE TABLE IF NOT EXISTS CRS.payment ("
@@ -42,7 +45,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 	}
 	
 	// populate Payment details for all the student in payment table
-	public void generatePaymentDetailsForAllStudents(int amount, String message) throws NegativeAmountException{
+	public boolean generatePaymentDetailsForAllStudents(int amount, String message) throws NegativeAmountException{
 	
 		try {
 			
@@ -54,7 +57,7 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 			
 			StudentDaoOperation studentDaoOperation = new StudentDaoOperation();
 			ArrayList<String> studentIds = studentDaoOperation.getAllStudentIds();
-			
+			int count=0;
 			for(String studentId : studentIds) {
 				String invoiceId = Utils.generateUniqueId();
 				String sql = SQLQueriesConstant.insertPaymentQuery;
@@ -67,12 +70,16 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 				
 				PaymentNotifierDaoInterface paymentNotifierDaoInterface = new PaymentNotifierDaoOperation();
 				paymentNotifierDaoInterface.addPaymentNotification(studentId, invoiceId, message);	
+				count++;
+			}
+			if(count!=0) {
+				return true;
 			}
 			
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
-		
+		return false;
 	}
 	
 	// update specific payment entry in payment table
@@ -92,12 +99,11 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 			statement.setTimestamp(3, date);
 			statement.setString(4, studentId);
 			int row = statement.executeUpdate();
-			if(row==0) {
-				return false;
-			}
-			else {
+			logger.debug("response of update is "+row);
+			if(row!=0) {
 				return true;
 			}
+			return false;
 			
 			
 		} catch (SQLException e) {
@@ -106,8 +112,26 @@ public class PaymentDaoOperation implements PaymentDaoInterface {
 		
 		throw new StudentNotFound(studentId);
 	}
-	
-	
-	
+
+	@Override
+	public boolean getListOfPayment(String userId) {
+		// TODO Auto-generated method stub
+		logger.info("Start of getListofpayment");
+		Connection conn = DBUtils.getConnection();
+		String sql = SQLQueriesConstant.GET_ALL_PAYMENT_FOR_STUDENT;
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, userId);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				logger.debug(rs.getString(1));
+				return true;
+			}
+			logger.debug("No payment found");
+		} catch (SQLException e) {
+			logger.error("Error: " + e.getMessage());
+		}		
+		return false;
+	}
 	
 }

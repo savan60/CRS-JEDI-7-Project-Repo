@@ -12,18 +12,19 @@ import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.dao.CourseDaoOperation;
+import com.crs.flipkart.utils.Pair;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class CRSProfessorMenu {
 
 	Scanner sc = new Scanner(System.in);
 	UserInterface user = new UserService();
+	ProfessorInterface professorService = new ProfessorService();
 
 	public void homePage() {
 
 		System.out.println("Welcome to Professor portal!");
 
-		ProfessorInterface professorService = new ProfessorService();
 		while (true) {
 			System.out.println("__________________________________________________________");
 
@@ -39,10 +40,10 @@ public class CRSProfessorMenu {
 			
 			switch (ch) {
 				case 1:
-					professorService.viewEnrolledStudents(UserService.currentUsedId);
+					viewEndrolledStudents();
 					break;
 				case 2: // call assign grades
-					professorService.viewEnrolledStudents(UserService.currentUsedId);
+					viewEndrolledStudents();
 					System.out.println("Enter studentId: ");
 					String studentId = sc.next();
 					System.out.println("Enter grade of studentId " + studentId + ": ");
@@ -50,7 +51,6 @@ public class CRSProfessorMenu {
 					System.out.println("Enter courseId: ");
 					String courseId = sc.next();
 					professorService.addGrade(UserService.currentUsedId, newGrade, studentId, courseId);
-	
 					break;
 	
 				case 3:
@@ -106,4 +106,13 @@ public class CRSProfessorMenu {
 		}
 	}
 
+	public void viewEndrolledStudents() {
+		HashMap<String, ArrayList<Pair>>list=professorService.viewEnrolledStudents(UserService.currentUsedId);
+		list.forEach((key, value)->{
+			System.out.println("CourseId: "+key);
+			value.forEach((student)->{
+				System.out.println("StudentName: "+student.getLeft()+" StudentId: "+student.getRight());
+			});
+		});
+	}
 }

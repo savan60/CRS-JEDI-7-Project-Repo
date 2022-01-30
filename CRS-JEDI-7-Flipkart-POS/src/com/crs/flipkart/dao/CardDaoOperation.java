@@ -3,10 +3,13 @@
  */
 package com.crs.flipkart.dao;
 
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 import com.crs.flipkart.bean.Card;
 import com.crs.flipkart.utils.DBUtils;
@@ -21,7 +24,7 @@ public class CardDaoOperation implements CardDaoInterface {
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
 	
-	
+	private static Logger logger = Logger.getLogger(CardDaoOperation.class);
 	public static void createTable() {
 		String SCHEMA = "CREATE TABLE IF NOT EXISTS CRS.card (" + "cardNumber VARCHAR(20) NOT NULL,"
 				+ "cardType enum('DEBIT', 'CREDIT')," + "expiryMonth INT NOT NULL," + "expiryYear INT NOT NULL," 
@@ -46,7 +49,7 @@ public class CardDaoOperation implements CardDaoInterface {
 			
 			
 		} catch (SQLException e) {
-			System.out.println("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
 		
 	}

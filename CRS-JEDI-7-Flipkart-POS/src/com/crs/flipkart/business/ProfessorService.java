@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+//import java.util.Stream;
 
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
@@ -15,6 +16,7 @@ import com.crs.flipkart.dao.ProfessorDaoOperation;
 import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
 import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
 import com.crs.flipkart.exceptions.GradeCardByCourseIdFoundEmpty;
+import com.crs.flipkart.utils.Pair;
 import com.crs.flipkart.utils.Utils.UserType;
 
 public class ProfessorService implements ProfessorInterface {
@@ -23,24 +25,28 @@ public class ProfessorService implements ProfessorInterface {
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
-	public void viewEnrolledStudents(String professorId) {
-		//fetchCourseIdFromProfessorId is called directly, remove the static and use the correct flow
-		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
-		for (String courseId : courseIds) {
+	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(String professorId) {
+		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
+		HashMap<String, ArrayList<Pair>> MapOfEnrolledStudents=new HashMap<String, ArrayList<Pair>>();
+		courseIds.forEach((courseId)->{
 			System.out.println("Students enrolled in course: " + courseId);
 			try {
-				registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+				ArrayList<Pair> list=registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+				MapOfEnrolledStudents.put(courseId, list);
+				
 			} catch (GradeCardByCourseIdFoundEmpty e) {
 				// TODO Auto-generated catch block
 				System.out.println("Grade card of courseId "+e.getCourseId());
 			}
-		}
+		});
+		return MapOfEnrolledStudents;
 
 	}
 
+
 	public void addGrade(String professorId, float grade, String studentId, String courseId) {
 		boolean flag = false;
-		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
+		ArrayList<String> courseIds =courseInterface.fetchCourseIdFromProfessorId(professorId);
 		for (String cId : courseIds) {
 			if (cId.equals(courseId)) {
 				flag = true;
@@ -61,13 +67,17 @@ public class ProfessorService implements ProfessorInterface {
 
 	public void viewCourse(String professorId) {
 
-		ArrayList<String> courseIds = CourseDaoOperation.fetchCourseIdFromProfessorId(professorId);
-
-		System.out.println("List of Course:");
-		for (String cId : courseIds) {
-			System.out.println(cId);
+		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
+		if(courseIds.isEmpty()) {
+			System.out.println("No courses assigned to you");
+			return;
 		}
-
+		System.out.println("List of Courses:");
+		System.out.println("CourseId\tCourseName\tDuration\tCredits");
+		for(String courseId : courseIds) {
+			Course course = courseInterface.getCourseFromId(courseId);
+			System.out.println(course.getCourseId()+"\t"+course.getName()+"\t"+course.getDuration()+"\t"+course.getCredits());
+		}
 	}
 
 }

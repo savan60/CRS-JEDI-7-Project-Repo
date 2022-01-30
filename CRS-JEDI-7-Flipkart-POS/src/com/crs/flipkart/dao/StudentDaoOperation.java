@@ -12,10 +12,14 @@ import java.util.*;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.Student;
 import com.crs.flipkart.utils.DBUtils;
 import com.crs.flipkart.utils.SqlUtils;
+import com.crs.flipkart.constant.SQLQueriesConstant;
+
 
 import com.crs.flipkart.exceptions.StudentNotFound;
 
@@ -34,6 +38,8 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		     	+ "studentId VARCHAR(20) NOT NULL,"
 	            + "name VARCHAR(45) NOT NULL,"
 	            + "isApproved BOOLEAN NOT NULL,"
+	            + "phoneNumber VARCHAR(10) NOT NULL," 
+	            + "address VARCHAR(40),"
 	            + "current_semester int default 1,"
 	            + "PRIMARY KEY (studentId))";
 		DBUtils.createTable(SCHEMA);
@@ -64,7 +70,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		}
 		
 	// add student into student table
-	public void addStudent(Student student) throws StudentNotFound{
+	public void addStudent(Student student) {
 
 		try {
 			Connection conn = DBUtils.getConnection();
@@ -76,30 +82,34 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			
 			// adds student to student table
 			statement = null;
-			String sql = "INSERT INTO `CRS`.`student` (`studentId`, `name`, `isApproved`) VALUES (?, ?, ?);";
+			String sql = "INSERT INTO `CRS`.`student` (`studentId`,`phoneNumber`,`address`, `name`, `isApproved`) VALUES (?, ? , ? , ?, ?);";
 			statement = (PreparedStatement) conn.prepareStatement(sql);
 			statement.setString(1,student.getStudentId());
-			statement.setString(2,student.getName());
-			statement.setBoolean(3,false);
-			statement.execute();
+			statement.setString(2, student.getPhoneNumber());
+			statement.setString(3,student.getAddress());
+			statement.setString(4,student.getName());
+			statement.setBoolean(5,false);
+			statement.executeUpdate();
 			
 		} catch (SQLException e) {
 			logger.error("Error: " + e.getMessage());
 		}
-		
-		throw new StudentNotFound(student.getUserId());
 	}
 	
 	public int getSemester(String id) throws StudentNotFound{
 		
-		int sem=0;
+		int sem=1;
 		try {
-			
+			Connection connection = DBUtils.getConnection();
+
 			String sql="Select current_semester from CRS.student where studentId=?";
 			statement = (PreparedStatement) connection.prepareStatement(sql);
+			logger.debug("student id is "+id);
 			statement.setString(1, id);
 			ResultSet resultSet = statement.executeQuery();
-			sem=resultSet.getInt(1);
+			while(resultSet.next()) {
+				sem=resultSet.getInt(1);
+			}
 			return sem;
 			
 		}
@@ -128,6 +138,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		
 		throw new StudentNotFound(id);
 	}
+	
 	public ArrayList<String> getAllStudentIds(){
 		ArrayList<String> studentIds = new ArrayList<String>();
 		
@@ -148,6 +159,23 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			e.printStackTrace();
 		}
 
+		return null;
+	}
+	
+	public String getStudentNameFromId(String studentId) {
+		logger.info("Getting student name for StudentID:"+studentId);
+		Connection conn = DBUtils.getConnection();
+		String sql = SQLQueriesConstant.fetchStudentNameFromId;
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, studentId);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				return rs.getString("name");
+			}
+		}catch(SQLException e){
+			logger.error("Error Message : "+e.getMessage());
+		}
 		return null;
 	}
 }

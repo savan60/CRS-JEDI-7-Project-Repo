@@ -65,7 +65,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		return null;
 	}
 
-	public static ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
+	public ArrayList<String> fetchCourseIdFromProfessorId(String ProfessorId) {
 		logger.info("Fetching all courses that the professor "+ProfessorId+" teaches");
 		Connection conn = DBUtils.getConnection();
 		ArrayList<String> listOfCourseId = new ArrayList<>();
@@ -148,6 +148,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			stmt.setInt(5, 1);
 			stmt.execute();
 			logger.info("Course is added to catalog");
+			return;
 		}
 
 		catch (SQLException e) {
@@ -155,15 +156,15 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 		throw new CourseNotAddedException(CourseId);
 	}
-	public void delCourse(String CourseId) throws CourseNotDeletedException {
-		logger.info("Deleting course "+CourseId+" from catalog");
+	public void delCourse(String CourseName) throws CourseNotDeletedException {
+		logger.info("Deleting course "+CourseName+" from catalog");
 		Connection conn = DBUtils.getConnection();
 		
 		try {
 			PreparedStatement stmt = null;
 			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.deleteCourseFromDb);
 			//String query = "delete from CRS.course where courseId= ?";
-			stmt.setString(1,CourseId);			
+			stmt.setString(1,CourseName);			
 			stmt.execute();	
 //			query="select * from CRS.course";
 //			ResultSet rs=stmt.executeQuery(query);
@@ -172,12 +173,31 @@ public class CourseDaoOperation implements CourseDaoInterface {
 //						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
 //			}
 			logger.info("Course is deleted from the catalog");
+			return;
 		}
 
 		catch (SQLException e) {
 			logger.error("Error message: "+e.getMessage());
 		}
-		throw new CourseNotDeletedException(CourseId);
+		throw new CourseNotDeletedException(CourseName);
 	}
-
+	
+	public Course getCourseFromId(String courseId) {
+		logger.info("Getting course for CourseID:"+courseId);
+		Connection conn = DBUtils.getConnection();
+		String sql = SQLQueriesConstant.fetchCourseFromId;
+		try {
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, courseId);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				return new Course(rs.getString("courseId"),rs.getString("professorId"),rs.getString("name"),rs.getFloat("duration"),rs.getFloat("credits"));
+			}		
+		}catch(SQLException e){
+			logger.error("Error Message : "+e.getMessage());
+		}
+		return null;
+	}
+	
+	
 }

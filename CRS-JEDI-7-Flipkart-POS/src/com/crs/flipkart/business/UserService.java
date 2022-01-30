@@ -31,6 +31,15 @@ public class UserService implements UserInterface{
 		UserType u = UserType.None;
 		try {
 			u = userInterface.authenticate(email, password);
+			if(u==UserType.Student) {
+				if(userInterface.IsStudentApproved(currentUsedId)) {
+					return UserType.Student;
+				}
+				else {
+					System.out.println("Student is not approved!");
+					return UserType.None;
+				}
+			}
 			logger.debug("Authentication Successful!");
 			return u;
 		} catch (PasswordNotMatchException e) {

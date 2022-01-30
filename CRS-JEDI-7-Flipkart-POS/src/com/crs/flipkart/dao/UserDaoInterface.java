@@ -26,4 +26,6 @@ public interface UserDaoInterface {
 	public boolean checkPasswordByUserId(String userId,String password) throws UserNotFoundException, PasswordNotMatchException;
 	
 	public void addUser(User user);
+	
+	public boolean IsStudentApproved(String userId);
 }
