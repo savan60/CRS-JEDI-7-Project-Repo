@@ -96,16 +96,16 @@ public class StudentService implements StudentInterface{
 	}
 	
 	public boolean addCourse(String courseId,int sem) {
-		boolean val;
 		try {
-			val = registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
-			System.out.println("Course added successfully");
+			boolean val=registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
 			if(val) {
+				System.out.println("Course added successfully");
 				return true;
 			}
 			else {
 				System.out.println("Course is not added, Try again");
 			}
+			return false;
 		} catch (AddCourseLimitExceed e) {
 			// TODO Auto-generated catch block
 			System.out.println("You can't add courses more than: "+e.getCourse());
@@ -115,15 +115,14 @@ public class StudentService implements StudentInterface{
 	
 	public boolean dropCourse(String StudentId, String courseId)
 	{
-		boolean val;
 		try {
-			val = registeredCourse.dropCourse(courseId,StudentId);
+			boolean val=registeredCourse.dropCourse(StudentId, courseId);
 			if(val) {
-				System.out.println("Course dropped successfully");
-				return true;
+			System.out.println("Course dropped successfully");
+			return true;
 			}
 			else {
-				System.out.println("Course is not dropped, Try again");
+			System.out.println("Course is not dropped, Try again");
 			}
 		} catch (CourseNotEndrolledByStudent e) {
 			// TODO Auto-generated catch block

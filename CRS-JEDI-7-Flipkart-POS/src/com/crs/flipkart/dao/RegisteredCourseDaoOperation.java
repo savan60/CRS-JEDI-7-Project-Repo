@@ -113,17 +113,24 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	}
 	
 	
-	public boolean dropCourse(String courseId, String studentId) throws CourseNotEndrolledByStudent
+	public boolean dropCourse(String studentId, String courseId)
 	{
 		Connection conn = DBUtils.getConnection();
 
-//		Statement stmt;
+		Statement stmt;
 		try {
-			String query = SQLQueriesConstant.dropCourseQuery;
-			stmt = (PreparedStatement) conn.prepareStatement(query);
-			stmt.setString(1, courseId);
-			stmt.setString(2, studentId);
-			stmt.executeUpdate();
+			stmt = conn.createStatement();
+			String query_check = "select count(*) from CRS.registeredCourse where studentId = '" + studentId +"' and courseId = '" + courseId + "'";
+			ResultSet r = stmt.executeQuery(query_check);
+			r.next();
+			int ct = r.getInt(1);
+			if (ct==0)
+			{
+				System.out.println("You did not enroll in this course");
+				return false;
+			}
+			String query = "delete from CRS.registeredCourse where courseId = '" + courseId + "' and studentId = '" + studentId + "';";
+			stmt.executeUpdate(query);
 			return true;
 
 		} catch (SQLException e) {
@@ -155,13 +162,25 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	}
 	
 	public boolean addCourse(String courseId, String studentId,int sem) throws AddCourseLimitExceed
-	{
+	 {
 		Connection conn = DBUtils.getConnection();
 
 		PreparedStatement stmt1;
 		Statement stmt;
 		try {
+			//System.out.println("HELLO");
 			stmt = conn.createStatement();
+			String new_check = "select count(*) from CRS.registeredCourse where studentId = '" + studentId +"' and courseId = '" + courseId + "'";
+			ResultSet r = stmt.executeQuery(new_check);
+			r.next();
+			int ct = r.getInt(1);
+			//System.out.println("For sid = " + studentId + " and course = " + courseId + "ct is  " + ct);
+			if (ct>=1)
+			{
+				
+				System.out.println("You already added this course");
+				return false;
+			}
 			String check = "select count(*) from CRS.registeredCourse where studentId = '" + studentId +"'";
 			ResultSet rs = stmt.executeQuery(check); // change 1 -> added check for course count
 			rs.next();
@@ -170,6 +189,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			{
 				throw new AddCourseLimitExceed();
 			}
+
 			else
 			{
 				String query = "INSERT INTO `CRS`.`registeredCourse` (`registeredCourseId`, `courseId`, `studentId`, `grade`, `semester`) VALUES (?, ?, ?, ?, ?)"; // change 3 -> used system generated id
@@ -183,16 +203,12 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 				stmt1.setFloat(4, 0);
 				stmt1.setInt(5, sem);
 				int response=stmt1.executeUpdate();
-				//Changes required:
-				//need to check number of courses endrolled by particluar student in particluar sem
-				//here you are checking all the entries which is wrong
+				
 				query = "select count(*) from CRS.registeredCourse";
 				ResultSet res = stmt.executeQuery(query);
 				res.next();
 				int count1 = res.getInt(1);
 				count = count+1;
-				//Changes required:
-				//need to pass this list of student in crsapplication and print there, no print statement should present outside crs application which is to be shown to user
 				System.out.println("You have added " + count + " courses.");
 				if(count <= 6) {
 					return true;
