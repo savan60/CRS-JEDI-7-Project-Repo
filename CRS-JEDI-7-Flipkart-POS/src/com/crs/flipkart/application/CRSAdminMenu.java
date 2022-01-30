@@ -91,7 +91,7 @@ public class CRSAdminMenu {
 				System.out.println("Enter the credits:");
 				float credits = sc.nextFloat();
 
-				if (courseService.addCourse(cid, cname, cdur, credits)) {
+				if(courseService.addCourse(Utils.generateUniqueId(),cname,cdur,credits)) {
 					System.out.println("Course added");
 				} else
 					System.out.println("Course id already exists, please try again!");
