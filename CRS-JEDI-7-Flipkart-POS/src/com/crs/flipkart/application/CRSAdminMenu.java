@@ -110,7 +110,7 @@ public class CRSAdminMenu {
 
 				case 5:
 					System.out.println("Enter your old password\n");
-					password = sc.next();
+					String password = sc.next();
 					boolean val1 = user.checkPasswordforEmail(password);
 					if (val1) {
 						while (true) {

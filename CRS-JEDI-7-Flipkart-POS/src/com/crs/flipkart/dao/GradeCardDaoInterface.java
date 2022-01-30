@@ -5,6 +5,7 @@ package com.crs.flipkart.dao;
 
 import java.util.ArrayList;
 
+import com.crs.flipkart.bean.GradeCard;
 import com.crs.flipkart.bean.RegisteredCourse;
 import com.crs.flipkart.exceptions.GradeCardNotCreatedException;
 

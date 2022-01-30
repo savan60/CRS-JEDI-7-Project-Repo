@@ -35,5 +35,4 @@ public interface CourseDaoInterface {
 	 * @param courseId
 	 * 
 	 */
-	public ArrayList<String> fetchCourseIdFromProfessorId(String professorId);
 }

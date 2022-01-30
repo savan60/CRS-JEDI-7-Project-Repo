@@ -119,12 +119,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 					 }
 					 
 					 resultSet = stmt.executeUpdate();
-					 
-<<<<<<< HEAD
-					 resultSet = stmt.executeUpdate();
 					 logger.info("Student is approved!");
-=======
->>>>>>> 3ab313f9f7988a532ba55c3daa229c4528a7a192
 				 }
 
 			 }

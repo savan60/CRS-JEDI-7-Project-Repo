@@ -68,21 +68,13 @@ public class ProfessorService implements ProfessorInterface {
 	public void viewCourse(String professorId) {
 
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
-<<<<<<< HEAD
 		if(courseIds.isEmpty()) {
 			System.out.println("No courses assigned to you");
 			return;
 		}
-		
 		System.out.println("List of Courses:");
 		System.out.println("CourseId\tCourseName\tDuration\tCredits");
 		courseIds.forEach(courseInterface::printCourseDetails);
-=======
-
-		System.out.println("List of Course:");
-		courseIds.forEach(System.out::println);
->>>>>>> dfe08f30052c4df2773fc4a6d5eee2a321686ecc
-
 	}
 
 }

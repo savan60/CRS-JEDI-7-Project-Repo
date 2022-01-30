@@ -49,7 +49,7 @@ public class CardDaoOperation implements CardDaoInterface {
 			
 			
 		} catch (SQLException e) {
-			logger.Error("Error: " + e.getMessage());
+			logger.error("Error: " + e.getMessage());
 		}
 		
 	}

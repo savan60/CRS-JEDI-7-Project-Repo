@@ -189,12 +189,13 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		try {
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, courseId);
-			ResultSet rs = statement.execute();
+			ResultSet rs = statement.executeQuery();
 			return new Course(rs.getString("courseId"),rs.getString("professorId"),rs.getString("name"),rs.getFloat("duration"),rs.getFloat("credits"));
 					
 		}catch(SQLException e){
 			logger.error("Error Message : "+e.getMessage());
 		}
+		return null;
 	}
 	
 	public void printCourseDetails(String courseId) {
