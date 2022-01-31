@@ -16,12 +16,12 @@ public class DummyPro {
 	private String department;
 	private Date doj;
 	private String position;
-	public DummyPro(String pos) {
-		super();
-		this.position=pos;
-	}
+	
 	private String phoneNumber;
 	private String address;
+	
+
+	
 	/**
 	 * @return the professorId
 	 */
