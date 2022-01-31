@@ -28,6 +28,10 @@ public class Professor extends User {
 		this.position = position;
 	}
 	
+	public Professor() {
+		super();
+	}
+	
 	
 	public String getPhoneNumber() {
 		return phoneNumber;

@@ -22,6 +22,18 @@ public class AdminService implements AdminInterface {
 	
 	UserInterface user=new UserService();
 	AdminDaoInterface admin=new AdminDaoOperation();
+	private static volatile AdminService instance = null;
+
+	public static AdminService getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(AdminService.class){
+				instance = new AdminService();
+			}
+		}
+		return instance;
+	}
 	
 	public boolean addProfessor(String email, String phoneNumber, String address, String password, String department, String position) {
 		

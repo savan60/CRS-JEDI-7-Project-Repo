@@ -25,6 +25,9 @@ public class DummyPro {
 	}
 	private String phoneNumber;
 	private String address;
+	
+
+	
 	/**
 	 * @return the professorId
 	 */

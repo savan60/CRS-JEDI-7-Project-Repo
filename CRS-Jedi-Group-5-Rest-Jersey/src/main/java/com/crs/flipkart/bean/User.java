@@ -30,6 +30,9 @@ public class User {
 		this.password=pass;
 		this.userType=type;
 	}
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
 	public UserType getUserType() {
 		return userType;
 	}
