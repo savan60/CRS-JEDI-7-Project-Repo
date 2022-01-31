@@ -13,6 +13,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -27,53 +28,55 @@ import com.crs.flipkart.utils.Pair;
 
 @Path("/professorApi")
 public class ProfessorController {
-	ProfessorInterface professorInterface=new ProfessorService();
+	ProfessorInterface professorInterface = new ProfessorService();
+
 	@GET
 	@Path("/viewEnrolledStudents")
 	@Produces(MediaType.APPLICATION_JSON)
-	public HashMap<String, ArrayList<Pair>> getCustomerDetails() {
-		HashMap<String, ArrayList<Pair>> result=professorInterface.viewEnrolledStudents("100");
+	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(@QueryParam("professorId") String professorId) {
+		String id=professorId;
+		System.out.println(id);
+		HashMap<String, ArrayList<Pair>> result = professorInterface.viewEnrolledStudents(id);
 		return result;
 	}
+
 	@GET
-	@Path("/viewCourses")
+	@Path("/viewCourses/{professorId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<String> viewCourses(){
-		ArrayList<String> list=professorInterface.viewCourse("100");
+	public ArrayList<String> viewCourses(@PathParam("professorId") String professorId) {
+		ArrayList<String> list = professorInterface.viewCourse(professorId);
 		return list;
 	}
-	
-	
+
 	@PUT
-	@Path("/addGrade")
+	@Path("/addGrade/{professorId}/{grade}/{studentId}/{courseId}")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addGrade() {
+	public Response addGrade(@PathParam("professorId") String professorId, @PathParam("grade") float grade,
+			@PathParam("studentId") String studentId, @PathParam("courseId") String courseId) {
 		String result;
-		if(professorInterface.addGrade("100", 8, "0379fd","103" )) {
-			result="Grade is assigned";
-        	return Response.status(201).entity(result).build();
-		}
-		else {
-			result="Grade assigned failed";
+		if (professorInterface.addGrade(professorId, grade, studentId, courseId)) {
+			result = "Grade is assigned";
+			return Response.status(201).entity(result).build();
+		} else {
+			result = "Grade assigned failed";
 			return Response.status(500).entity(result).build();
 		}
 	}
-	
+
 	@PUT
-	@Path("/addCourse")
+	@Path("/addCourse/{professorId}/{courseId}")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addCourse() {
+	public Response addCourse(@PathParam("professorId") String professorId, @PathParam("courseId") String courseId) {
 		String result;
-		if(professorInterface.addCourse("100", "104")) {
-			result="Professor assigned to this course";
-        	return Response.status(201).entity(result).build();
-		}
-		else {
-			result="Assigned failed";
+		if (professorInterface.addCourse(professorId, courseId)) {
+			result = "Professor assigned to this course";
+			return Response.status(201).entity(result).build();
+		} else {
+			result = "Assigned failed";
 			return Response.status(500).entity(result).build();
 		}
 	}
-	
+
 }
