@@ -38,17 +38,17 @@ public class CustomerController {
 	@Path("/post")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createTrackInJSON(Customer customer) {
-        System.out.println("hit post service");
-        
-        System.out.println("value of title from UI " +customer.getId());
-        System.out.println("value of singer form UI" +customer.getName());
+	public Response createTrackInJSON(String json) {
+//        System.out.println("hit post service");
+//        
+//        System.out.println("value of title from UI " +customer.getId());
+//        System.out.println("value of singer form UI" +customer.getName());
+//		
+//        
+//        String result = "Track saved : " + customer;
 		
-        
-        String result = "Track saved : " + customer;
-		
-		
-		return Response.status(201).entity(result).build();
+		System.out.println(json);
+		return Response.status(201).entity("track").build();
 		
 	} 
 

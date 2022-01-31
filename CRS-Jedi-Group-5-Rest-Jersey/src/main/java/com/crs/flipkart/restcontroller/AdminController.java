@@ -27,11 +27,11 @@ public class AdminController {
 	@Path("/post")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response AddProfessor(DummyPro name) {
+	public Response AddProfessor(DummyPro pro) {
         System.out.println("hit post service");
         
-        System.out.println("value of title from UI " +name.getPhoneNumber());
-        System.out.println("value of singer form UI" +name.getDepartment());
+        System.out.println("value of title from UI " +pro.getPhoneNumber());
+        System.out.println("value of singer form UI" +pro.getDepartment());
         
         String result = "Track saved : ";
 		

@@ -20,6 +20,9 @@ public class DummyPro {
 		super();
 		this.position=pos;
 	}
+	public DummyPro() {
+		
+	}
 	private String phoneNumber;
 	private String address;
 	/**
