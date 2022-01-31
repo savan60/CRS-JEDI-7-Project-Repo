@@ -150,3 +150,48 @@
 20:37:15,253  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
 20:37:15,254  INFO CourseDaoOperation,main:81 - Fetched all courses
 20:37:15,255  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+11:31:55,749  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:31:55,792 DEBUG UserService,main:43 - Authentication Successful!
+11:32:52,190  INFO CourseService,main:36 - you are adding this course200
+11:32:52,191  INFO CourseDaoOperation,main:43 - Fetching all the courses
+11:32:52,197  INFO CourseDaoOperation,main:57 - Fetched all the courses
+11:32:52,197  INFO CourseDaoOperation,main:138 - Adding course 200 to catalog
+11:32:52,203  INFO CourseDaoOperation,main:150 - Course is added to catalog
+11:38:51,993  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:38:52,018 DEBUG UserService,main:43 - Authentication Successful!
+11:40:06,571  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:40:06,594 DEBUG UserService,main:43 - Authentication Successful!
+11:53:10,170  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:53:10,192 DEBUG UserService,main:43 - Authentication Successful!
+11:53:52,860  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:53:52,885 DEBUG UserService,main:43 - Authentication Successful!
+11:55:53,929  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:55:53,957 ERROR UserService,main:46 - Wrong Password for Email: admin@mail.com
+11:56:06,446  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:56:06,448 DEBUG UserService,main:43 - Authentication Successful!
+11:57:10,343  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:57:10,378 DEBUG UserService,main:43 - Authentication Successful!
+11:58:29,036  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:58:29,059 DEBUG UserService,main:43 - Authentication Successful!
+11:58:53,490  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:58:53,516 DEBUG UserService,main:43 - Authentication Successful!
+11:59:32,579  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:59:32,603 DEBUG UserService,main:43 - Authentication Successful!
+12:00:44,971  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:00:44,995 DEBUG UserService,main:43 - Authentication Successful!
+12:02:29,420  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:02:29,443 DEBUG UserService,main:43 - Authentication Successful!
+12:03:35,938  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:03:35,966 DEBUG UserService,main:43 - Authentication Successful!
+12:04:45,633  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:04:45,658 DEBUG UserService,main:43 - Authentication Successful!
+12:05:08,265  INFO AdminService,main:28 - add professor function started
+12:05:08,295  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:06:28,553  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:06:28,577 DEBUG UserService,main:43 - Authentication Successful!
+12:06:41,541  INFO AdminService,main:28 - add professor function started
+12:06:41,574  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:07:55,447  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:07:55,475 DEBUG UserService,main:43 - Authentication Successful!
+12:08:06,023  INFO AdminService,main:28 - add professor function started
+12:08:06,059  INFO AdminDaoOperation,main:65 - Professor added to DB
