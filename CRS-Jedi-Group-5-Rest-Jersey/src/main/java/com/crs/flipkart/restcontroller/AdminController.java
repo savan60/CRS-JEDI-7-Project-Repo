@@ -1,6 +1,7 @@
 package com.crs.flipkart.restcontroller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,13 +22,14 @@ import com.crs.flipkart.bean.DummyPro;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.business.AdminInterface;
 import com.crs.flipkart.business.AdminService;
+import com.crs.flipkart.business.ProfessorService;
+import com.crs.flipkart.utils.Pair;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 
 
 @Path("/adminApi")
@@ -44,7 +46,7 @@ public class AdminController {
 	public Response AddProfessor(Professor professor) {
         System.out.println("In Addprofessor");
 
-		AdminInterface adminOperation = AdminService.getInstance();
+		AdminInterface adminOperation = new AdminService();
 		String result;
 
         if(adminOperation.addProfessor( professor.getEmail(),  professor.getPhoneNumber(),  professor.getAddress(),  professor.getPassword(),  professor.getDepartment(),  professor.getPosition())) {
@@ -54,22 +56,12 @@ public class AdminController {
         else {
         	result="Professor not added";
         	return Response.status(409).entity(result).build();
-        }		
+        }
 	} 
-
-	@DELETE
-	@Path("/delete/{customerId}")
-	public Response deleteCustomer(@PathParam("customerId") int customerId)
-	throws URIReferenceException{
-
-		// service query to perfomr the delete operation
-		
-		// implementation
-		return Response.status(200).entity("Track id " +customerId +
-				"successfully deleted").build();
-		
 	
-	}
+	
+
+	
 	
 	
 

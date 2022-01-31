@@ -39,7 +39,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	}
 	 
 	public boolean addProfessorToDB(Professor professor) throws UserAlreadyExistsException{
-		String profInsertQuery = SqlUtils.INSERT_PROFESSOR;
+		
 		
 		int userQueryRes=0, profQueryRes=0;
 		
@@ -48,18 +48,19 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		try {
 			UserDaoOperation userDaoOperation = new  UserDaoOperation();
 			userDaoOperation.addUser(professor);
-			
-//			System.out.print(userQueryRes+" ");
-
-			stmt = (PreparedStatement) conn.prepareStatement(profInsertQuery);
-			stmt.setString(1,professor.getUserId());
-			stmt.setString(2, professor.getPhoneNumber());
-			stmt.setString(3,professor.getAddress());
-			stmt.setString(4,professor.getDepartment());
-			stmt.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now()));
-			stmt.setString(6,professor.getPosition());
-			profQueryRes = stmt.executeUpdate();
-//			System.out.println(profQueryRes);
+			PreparedStatement stmt1 = null;
+			System.out.print(userQueryRes+" ");
+			conn=DBUtils.getConnection();
+			String sql="insert into crs.professor(professorId,phoneNumber,address,dept,doj,pos) values (?,?,?,?,?,?)";
+			stmt1 = (PreparedStatement) conn.prepareStatement(sql);
+			stmt1.setString(1,professor.getUserId());
+			stmt1.setString(2, professor.getPhoneNumber());
+			stmt1.setString(3,professor.getAddress());
+			stmt1.setString(4,professor.getDepartment());
+			stmt1.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now()));
+			stmt1.setString(6,professor.getPosition());
+			profQueryRes = stmt1.executeUpdate();
+			System.out.println(profQueryRes);
 			
 			if(profQueryRes==1) {
 				logger.info("Professor added to DB");

@@ -17,7 +17,7 @@ import com.crs.flipkart.utils.Pair;
  */
 public interface RegisteredCourseDaoInterface {
 	public ArrayList<Pair> printEnrolledStudentInThatCourse(String courseId) throws GradeCardByCourseIdFoundEmpty;
-	public void updateGrade(String courseId, String studentId, float newGrade) ;
+	public boolean updateGrade(String courseId, String studentId, float newGrade) ;
 	public HashMap<String,Float> generateGradeCardBySem(int sem) throws GradeCardBySemFoundEmpty;
 	public boolean addCourse(String courseId, String studentId,int sem) throws AddCourseLimitExceed;
 	public boolean dropCourse(String courseId, String studentId) throws CourseNotEndrolledByStudent;

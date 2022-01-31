@@ -8,31 +8,38 @@ package com.crs.flipkart.utils;
  *
  */
 public class Pair {
-	private String left;
-	private String right;
+	private String StudentName;
+	private String StudentId;
 	/**
-	 * @return the left
+	 * @return the studentName
 	 */
-
-	public Pair(String left, String right) {
+	public String getStudentName() {
+		return StudentName;
+	}
+	public Pair(String studentName, String studentId) {
 		super();
-		this.left = left;
-		this.right = right;
+		StudentName = studentName;
+		StudentId = studentId;
 	}
-	public String getLeft() {
-		return left;
+	/**
+	 * @param studentName the studentName to set
+	 */
+	public void setStudentName(String studentName) {
+		StudentName = studentName;
+	}
+	/**
+	 * @return the studentId
+	 */
+	public String getStudentId() {
+		return StudentId;
+	}
+	/**
+	 * @param studentId the studentId to set
+	 */
+	public void setStudentId(String studentId) {
+		StudentId = studentId;
 	}
 
-	public void setLeft(String left) {
-		this.left = left;
-	}
-
-	public String getRight() {
-		return right;
-	}
-
-	public void setRight(String right) {
-		this.right = right;
-	}
+	
 	
 }

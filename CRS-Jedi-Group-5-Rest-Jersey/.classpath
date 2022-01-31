@@ -8,7 +8,7 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/SAVAN/Downloads/gson-2.6.2.jar"/>
-	<classpathentry kind="lib" path="E:/flipkart/apk/sql/mysql-connector-java-5.1.7-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ADARSH/Desktop/mysql-connector-java-8.0.28/mysql-connector-java-8.0.28.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ADARSH/Desktop/log4j-1.2.11.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

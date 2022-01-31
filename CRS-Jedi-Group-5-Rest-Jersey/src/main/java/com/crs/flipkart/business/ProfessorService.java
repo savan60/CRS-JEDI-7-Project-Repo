@@ -22,31 +22,30 @@ import com.crs.flipkart.utils.Utils.UserType;
 public class ProfessorService implements ProfessorInterface {
 	RegisteredCourseInterface regCourseService = new RegisteredCourseService();
 	CourseInterface courseService = new CourseService();
-	CourseDaoInterface courseInterface=new CourseDaoOperation();
+	CourseDaoInterface courseInterface = new CourseDaoOperation();
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
 	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(String professorId) {
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
-		HashMap<String, ArrayList<Pair>> MapOfEnrolledStudents=new HashMap<String, ArrayList<Pair>>();
-		courseIds.forEach((courseId)->{
+		HashMap<String, ArrayList<Pair>> MapOfEnrolledStudents = new HashMap<String, ArrayList<Pair>>();
+		courseIds.forEach((courseId) -> {
 			System.out.println("Students enrolled in course: " + courseId);
 			try {
-				ArrayList<Pair> list=registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
+				ArrayList<Pair> list = registeredCourseDaoInterface.printEnrolledStudentInThatCourse(courseId);
 				MapOfEnrolledStudents.put(courseId, list);
-				
+
 			} catch (GradeCardByCourseIdFoundEmpty e) {
 				// TODO Auto-generated catch block
-				System.out.println("Grade card of courseId "+e.getCourseId());
+				System.out.println("Grade card of courseId " + e.getCourseId());
 			}
 		});
 		return MapOfEnrolledStudents;
 
 	}
 
-
-	public void addGrade(String professorId, float grade, String studentId, String courseId) {
+	public boolean addGrade(String professorId, float grade, String studentId, String courseId) {
 		boolean flag = false;
-		ArrayList<String> courseIds =courseInterface.fetchCourseIdFromProfessorId(professorId);
+		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
 		for (String cId : courseIds) {
 			if (cId.equals(courseId)) {
 				flag = true;
@@ -55,29 +54,35 @@ public class ProfessorService implements ProfessorInterface {
 		}
 
 		if (flag) {
-			regCourseService.submitGrade(courseId, studentId, grade);
+			if (regCourseService.submitGrade(courseId, studentId, grade))
+				return true;
 		} else {
 			System.out.println("Professor " + professorId + " does not teach " + courseId + " course.");
 		}
+		return false;
 	}
 
-	public void addCourse(String professorId, String courseId) {
-		courseInterface.updateProfessorId(professorId, courseId);
+	public boolean addCourse(String professorId, String courseId) {
+		if (courseInterface.updateProfessorId(professorId, courseId))
+			return true;
+		return false;
 	}
 
-	public void viewCourse(String professorId) {
+	public ArrayList<String> viewCourse(String professorId) {
 
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
-		if(courseIds.isEmpty()) {
+		if (courseIds.isEmpty()) {
 			System.out.println("No courses assigned to you");
-			return;
+			return courseIds;
 		}
 		System.out.println("List of Courses:");
 		System.out.println("CourseId\tCourseName\tDuration\tCredits");
-		for(String courseId : courseIds) {
+		for (String courseId : courseIds) {
 			Course course = courseInterface.getCourseFromId(courseId);
-			System.out.println(course.getCourseId()+"\t"+course.getName()+"\t"+course.getDuration()+"\t"+course.getCredits());
+			System.out.println(course.getCourseId() + "\t" + course.getName() + "\t" + course.getDuration() + "\t"
+					+ course.getCredits());
 		}
+		return courseIds;
 	}
 
 }

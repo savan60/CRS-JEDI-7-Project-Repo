@@ -110,28 +110,25 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 	}
 
-	public void updateProfessorId(String ProfessorId, String CourseId) {
+	public boolean updateProfessorId(String ProfessorId, String CourseId) {
 		logger.info("Allocating professor"+ProfessorId+"to that course"+CourseId);
-		Connection conn = DBUtils.getConnection();
-		PreparedStatement stmt = null;
+		
 		try {
-	
-			stmt =conn.prepareStatement(SQLQueriesConstant.updateProfessorIdQuery);
+			Connection conn = DBUtils.getConnection();
+			PreparedStatement stmt = null;
+			stmt=(PreparedStatement)conn.prepareStatement(SQLQueriesConstant.updateProfessorIdQuery);
 			stmt.setString(1, ProfessorId);
 			stmt.setString(2, CourseId);
 			stmt.executeUpdate();
-			ResultSet rs = stmt.executeQuery(SQLQueriesConstant.selectAllCoursesQuery);
-			while (rs.next()) {
-				System.out.println(
-						"CourseId: " + rs.getString("courseId") + " ProfessorId:" + rs.getString("professorId"));
-			}
+			int res=stmt.executeUpdate();
+			if(res==1)return true;
 			logger.info("Professor "+ProfessorId+" is allocated to the course+ "+CourseId );
 		}
 
 		catch (SQLException e) {
 			logger.error("Error message: "+e.getMessage());
 		}
-		
+		return false;
 	}
 	
 	public void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) throws CourseNotAddedException {

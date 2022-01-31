@@ -19,10 +19,11 @@ public class RegisteredCourseService implements RegisteredCourseInterface {
 
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
+	public boolean submitGrade(String courseId, String studentId, float newGrade) {
 
-	public void submitGrade(String courseId, String studentId, float newGrade) {
-		
-		registeredCourseDaoInterface.updateGrade(courseId, studentId, newGrade);
+		if (registeredCourseDaoInterface.updateGrade(courseId, studentId, newGrade))
+			return true;
+		return false;
 
 	}
 }

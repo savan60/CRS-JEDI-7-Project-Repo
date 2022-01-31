@@ -63,24 +63,29 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		
 	}
 
-	public void updateGrade(String courseId, String studentId, float newGrade) {
+	public boolean updateGrade(String courseId, String studentId, float newGrade) {
 		
-		conn=DBUtils.getConnection();
+		
 //		Statement stmt1;
 		
 		try {
+			PreparedStatement stmt1 = null;
+			conn=DBUtils.getConnection();
 			String query = SQLQueriesConstant.updateGradeQuery;
-			
-			stmt = (PreparedStatement) conn.prepareStatement(query);
-			stmt.setFloat(1,newGrade);
-			stmt.setString(2,courseId);
-			stmt.setString(3,studentId);
-			stmt.executeUpdate(query);
+			System.out.println("Hello");
+			stmt1 = (PreparedStatement) conn.prepareStatement(query);
+			stmt1.setFloat(1,newGrade);
+			stmt1.setString(2,courseId);
+			stmt1.setString(3,studentId);
+			int res=stmt1.executeUpdate();
+			System.out.println(res);
+			if(res==1)return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
+		return false;
 	}
 	
 	public HashMap<String,Float> generateGradeCardBySem(int sem) throws GradeCardBySemFoundEmpty{

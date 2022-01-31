@@ -2,6 +2,6 @@ package com.crs.flipkart.business;
 
 public interface RegisteredCourseInterface {
 	
-	public void submitGrade(String courseId,String studentId,float newGrade);
+	public boolean submitGrade(String courseId,String studentId,float newGrade);
 
 }
