@@ -12,25 +12,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.crypto.URIReferenceException;
 
+import com.crs.flipkart.bean.DummyPro;
+import com.crs.flipkart.bean.Professor;
 
-@Path("/CustomerAPI")
-public class CustomerController {
+
+@Path("/adminApi")
+public class AdminController {
 	
 //GEt method which is using for fetch
-	@GET
-	@Path("/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Customer getCustomerDetails() {
-
-		//  clinet --- service ---- dao ----> SQL
-       
-		Customer customer=new Customer();
-		customer.setId(101);
-		customer.setName("Flipcard");
-		customer.setAddress("mumbai");
-		
-	   return customer;
-	}
 	
 	
 //	post method implementation
@@ -38,18 +27,16 @@ public class CustomerController {
 	@Path("/post")
 	@Consumes("application/json")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createTrackInJSON(Customer customer) {
+	public Response AddProfessor(DummyPro name) {
         System.out.println("hit post service");
         
-        System.out.println("value of title from UI " +customer.getId());
-        System.out.println("value of singer form UI" +customer.getName());
-		
+        System.out.println("value of title from UI " +name.getPhoneNumber());
+        System.out.println("value of singer form UI" +name.getDepartment());
         
-        String result = "Track saved : " + customer;
+        String result = "Track saved : ";
 		
 		
 		return Response.status(201).entity(result).build();
-		
 	} 
 
 	@DELETE
@@ -67,17 +54,5 @@ public class CustomerController {
 	}
 	
 	
-	@PUT
-	@Path("/update")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Customer updateCustomer(Customer customer){
-		
-		// rest of impl write here in code 
-		
-		customer.setName(customer.getName() +"updated");
-		return customer;
-		
-	}
 
 }
