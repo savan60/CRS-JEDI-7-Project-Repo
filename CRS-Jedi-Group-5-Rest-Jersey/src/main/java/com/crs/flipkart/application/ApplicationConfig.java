@@ -8,6 +8,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import com.crs.flipkart.restcontroller.AdminController;
 import com.crs.flipkart.restcontroller.ProfessorController;
 import com.crs.flipkart.restcontroller.StudentController;
+import com.crs.flipkart.restcontroller.UserController;
 
 //import org.glassfish.jersey.server.ResourceConfig;
 
@@ -24,6 +25,7 @@ public class ApplicationConfig extends ResourceConfig {
 		register(ProfessorController.class);
 
 		register(StudentController.class);
+		register(UserController.class);
 
 	}
 
