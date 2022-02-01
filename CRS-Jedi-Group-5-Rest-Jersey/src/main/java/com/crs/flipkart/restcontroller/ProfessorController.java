@@ -35,12 +35,6 @@ public class ProfessorController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(@QueryParam("professorId") String professorId) {
 		HashMap<String, ArrayList<Pair>> result = professorInterface.viewEnrolledStudents(professorId);
-		result.forEach((key, value)->{
-			System.out.println("CourseId: "+key);
-			value.forEach((student)->{
-				System.out.println("StudentName: "+student.getStudentName()+" StudentId: "+student.getStudentId());
-			});
-		});
 		return result;
 	}
 

@@ -195,3 +195,7 @@
 12:07:55,475 DEBUG UserService,main:43 - Authentication Successful!
 12:08:06,023  INFO AdminService,main:28 - add professor function started
 12:08:06,059  INFO AdminDaoOperation,main:65 - Professor added to DB
+20:17:09,982  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:17:10,007 DEBUG UserService,main:43 - Authentication Successful!
+20:17:20,398  INFO AdminService,main:28 - add professor function started
+20:17:20,441  INFO AdminDaoOperation,main:65 - Professor added to DB
