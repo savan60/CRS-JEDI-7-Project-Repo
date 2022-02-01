@@ -12,6 +12,6 @@ import java.util.ArrayList;
 public interface GradeCardInterface {
 
 	
-	public void viewGradeCard(String studentID, int semester);
+	public String viewGradeCard(String studentID, int semester);
 
 }

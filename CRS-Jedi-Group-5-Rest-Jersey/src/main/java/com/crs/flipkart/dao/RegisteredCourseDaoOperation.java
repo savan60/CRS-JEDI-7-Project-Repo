@@ -144,7 +144,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 	}
 
 
-	public void printRegisteredCourses(String studentId, int sem) {
+	public String printRegisteredCourses(String studentId, int sem) {
 		Connection conn = DBUtils.getConnection();
 		Statement stmt;
 
@@ -154,15 +154,19 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 					+ studentId + "' and r.semester=" + sem;
 		
 			ResultSet rs = stmt.executeQuery(query);
-			while (rs.next()) {
-				//Changes required:
-				//need to pass this list of student in crsapplication and print there, no print statement should present outside crs application which is to be shown to user
-				System.out.println("Course name:-->"+rs.getString("name")+"   Course Id:--> " + rs.getString("courseId") + "  Grades:--> " + rs.getFloat("grade"));
-			}
+			String res = "";   
+		       
+	        while (rs.next()) {
+	           
+	            res += "Course name:-->"+rs.getString("name")+"   Course Id:--> " + rs.getString("courseId") + "  Grades:--> " + rs.getFloat("grade") + "\n";
+	        }
+
+	        return res;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	public boolean addCourse(String courseId, String studentId,int sem) throws AddCourseLimitExceed

@@ -23,24 +23,20 @@ import com.crs.flipkart.bean.DummyPro;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.business.AdminInterface;
 import com.crs.flipkart.business.AdminService;
-<<<<<<< HEAD
 import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.utils.Pair;
-=======
 import com.crs.flipkart.business.CourseInterface;
 import com.crs.flipkart.business.CourseService;
 import com.crs.flipkart.business.PaymentInterface;
 import com.crs.flipkart.business.PaymentService;
->>>>>>> 28ce3df6fd5e548f7c9d4aebf06e9e854a090a12
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
-<<<<<<< HEAD
 
-=======
->>>>>>> 28ce3df6fd5e548f7c9d4aebf06e9e854a090a12
+
+
 
 
 
@@ -69,16 +65,12 @@ public class AdminController {
         else {
         	result="Professor not added";
         	return Response.status(409).entity(result).build();
-<<<<<<< HEAD
+
         }
 	} 
 	
 	
 
-	
-=======
-        }		
-	}
 	
 	@POST
 	@Path("/addcourse")
@@ -117,7 +109,7 @@ public class AdminController {
 			 return Response.status(201).entity("Course id does not exist, please try again!").build();
 		}		
 	}
->>>>>>> 28ce3df6fd5e548f7c9d4aebf06e9e854a090a12
+
 	
 	@PUT
 	@Path("/approvestudents")

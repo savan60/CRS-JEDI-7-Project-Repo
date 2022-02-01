@@ -88,7 +88,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		return listOfCourseId;
 	}
 
-	public void viewCourses(int sem) {
+	public String viewCourses(int sem) {
 		logger.info("Fetching all the courses in the sem ="+sem);
 		Connection conn = DBUtils.getConnection();
 		PreparedStatement stmt = null;
@@ -97,17 +97,22 @@ public class CourseDaoOperation implements CourseDaoInterface {
 			stmt =conn.prepareStatement(SQLQueriesConstant.viewCourcesQuery);
 			stmt.setInt(1,sem);
 			ResultSet rs = stmt.executeQuery();
+			String str="";
 			while (rs.next()) {
-				System.out.println(
-						"Course Id :" + rs.getString("courseId") + " ProfessorId: " + rs.getString("professorId")
-								+ " Course Name: " + rs.getString("name") + " Credits: " + rs.getInt("credits"));
+				str+="Course Id :" + rs.getString("courseId") + " ProfessorId: " + rs.getString("professorId")
+						+ " Course Name: " + rs.getString("name") + " Credits: " + rs.getInt("credits")+"\n";
+//				System.out.println(
+//						"Course Id :" + rs.getString("courseId") + " ProfessorId: " + rs.getString("professorId")
+//								+ " Course Name: " + rs.getString("name") + " Credits: " + rs.getInt("credits"));
 			}
 			logger.info("Fetched all courses");
+			return str;
 		}
 
 		catch (SQLException e) {
 			logger.error("Error message: "+e.getMessage());
 		}
+		return null;
 	}
 
 	public boolean updateProfessorId(String ProfessorId, String CourseId) {

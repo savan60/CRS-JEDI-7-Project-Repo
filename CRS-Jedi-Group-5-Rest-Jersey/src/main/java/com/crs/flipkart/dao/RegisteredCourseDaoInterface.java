@@ -21,5 +21,5 @@ public interface RegisteredCourseDaoInterface {
 	public HashMap<String,Float> generateGradeCardBySem(int sem) throws GradeCardBySemFoundEmpty;
 	public boolean addCourse(String courseId, String studentId,int sem) throws AddCourseLimitExceed;
 	public boolean dropCourse(String courseId, String studentId) throws CourseNotEndrolledByStudent;
-	public  void printRegisteredCourses(String studentId, int sem) ;
+	public  String printRegisteredCourses(String studentId, int sem) ;
 }
