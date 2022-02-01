@@ -7,12 +7,15 @@ import java.util.*;
 
 import org.apache.log4j.Logger;
 
+import com.crs.flipkart.bean.ReturnStatus;
 import com.crs.flipkart.bean.User;
 import com.crs.flipkart.dao.UserDaoInterface;
 import com.crs.flipkart.dao.UserDaoOperation;
 import com.crs.flipkart.exceptions.PasswordNotMatchException;
 import com.crs.flipkart.exceptions.UserNotFoundException;
 import com.crs.flipkart.exceptions.phoneNumberNotMatchException;
+import com.crs.flipkart.utils.Pair;
+import com.crs.flipkart.utils.Utils.LoginStatus;
 import com.crs.flipkart.utils.Utils.UserType;
 
 /**
@@ -26,40 +29,57 @@ public class UserService implements UserInterface{
 	public static String currentUsedId;
 	UserDaoInterface userInterface=new UserDaoOperation();
 
-	public UserType authenticate(String email,String password) {
+	public ReturnStatus authenticate(String email,String password) {
 		logger.info("Inside UserService: Authentication Started!");
-		UserType u = UserType.None;
+		User user;
+		ReturnStatus ret=new ReturnStatus();
 		try {
-			u = userInterface.authenticate(email, password);
+			user = userInterface.authenticate(email, password);
+			if(user.getUserType()==null) {
+				ret.setMessage("User Login Failed,Try again");
+				ret.setStatus(300);
+				return ret;
+			}
+			UserType u=user.getUserType();
 			if(u==UserType.Student) {
-				if(userInterface.IsStudentApproved(currentUsedId)) {
-					return UserType.Student;
+				if(userInterface.IsStudentApproved(user.getUserId())) {
+					ret.setMessage("User Login Success");
+					ret.setStatus(200);
+					ret.setResponse(user.getUserId());
+					return ret;
 				}
 				else {
 					System.out.println("Student is not approved!");
-					return UserType.None;
+					ret.setMessage("Student is not approved,wait till admin approves you!");
+					ret.setStatus(300);
+					return ret;
 				}
 			}
+			ret.setMessage("User Login Success,Try again");
+			ret.setStatus(200);
+			ret.setResponse(user.getUserId());
 			logger.debug("Authentication Successful!");
-			return u;
+			return ret;
 		} catch (PasswordNotMatchException e) {
 			logger.error("Wrong Password for Email: "+e.getuserCredential());
 		} catch (UserNotFoundException e) {
 			logger.error("User Not Found: "+e.getuserCredential());
 		}
-		return u;
+		ret.setMessage("Invalid credentials,Try again");
+		ret.setStatus(300);
+		return ret;
 	}
 	
-	public String forgotPassword(String email,String phoneNumber) {
+	public String forgotPassword(String email,String phoneNumber) throws phoneNumberNotMatchException,UserNotFoundException {
 		logger.info("Inside UserService: In forgotPassword Functionality!");
 		String id = "0";
 		try {
 			id = userInterface.getUserIdByEmailAndPhoneNumber(email,phoneNumber);
 			logger.debug("User Found!");
 		} catch (phoneNumberNotMatchException e) {
-			logger.error("Wrong Phone Number for Email: "+e.getuserCredential());
+			throw new phoneNumberNotMatchException(e.getuserCredential());
 		} catch (UserNotFoundException e) {
-			logger.error("User Not Found with Email: "+e.getuserCredential());
+			throw new UserNotFoundException(e.getuserCredential());
 		}
 		return id;
 	}
@@ -73,19 +93,23 @@ public class UserService implements UserInterface{
 		return created;
 	}
 	
-	public boolean checkPasswordforEmail(String password) {
+	public boolean checkPasswordforEmail(String password,String userId) throws UserNotFoundException, PasswordNotMatchException {
 		logger.info("Inside UserService: In checkPasswordforEmail Functionality!");
 		boolean check = false;
 		try {
-			check = userInterface.checkPasswordByUserId(currentUsedId,password);
+			check = userInterface.checkPasswordByUserId(userId,password);
 			logger.debug("User Checked!");
 		} catch (PasswordNotMatchException e) {
-			logger.error("Wrong Password for UserId: "+e.getuserCredential());
+			throw e;
+//			logger.error("Wrong Password for UserId: "+e.getuserCredential());
 		} catch (UserNotFoundException e) {
-			logger.error("User Not Found with UserId: "+e.getuserCredential());
+			throw e;
+//			logger.error("User Not Found with UserId: "+e.getuserCredential());
 		}
 		return check;
 	}
+
+	
 	
 }
 

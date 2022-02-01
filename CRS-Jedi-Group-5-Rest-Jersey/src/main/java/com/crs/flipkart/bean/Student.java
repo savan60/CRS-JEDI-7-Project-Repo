@@ -17,6 +17,9 @@ public class Student extends User{
 	private String phoneNumber;
 	private String address;
 	
+	public Student() {
+		super();
+	}
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}

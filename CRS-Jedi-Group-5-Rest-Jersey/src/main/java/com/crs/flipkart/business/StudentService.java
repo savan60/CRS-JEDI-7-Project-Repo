@@ -58,9 +58,9 @@ public class StudentService implements StudentInterface{
 	}
 	
 	// student self register his/her self
-	public void selfRegistration(Student student) {
+	public boolean selfRegistration(Student student) {
 		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
-		studentDaoInterface.addStudent(student);
+		return studentDaoInterface.addStudent(student);
 	}
 	
 	public void viewGradeCard() {

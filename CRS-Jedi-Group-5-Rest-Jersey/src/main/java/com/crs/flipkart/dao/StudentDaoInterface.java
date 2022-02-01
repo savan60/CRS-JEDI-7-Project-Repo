@@ -16,7 +16,7 @@ public interface StudentDaoInterface {
 
 	public void setSemester(String id,int sem) throws StudentNotFound;
 	public int getSemester(String id) throws StudentNotFound;
-	public void addStudent(Student student) ; 
+	public boolean addStudent(Student student) ; 
 	public ArrayList<String> getAllStudentIds();
 	public String getStudentNameFromId(String studentId);
 	
