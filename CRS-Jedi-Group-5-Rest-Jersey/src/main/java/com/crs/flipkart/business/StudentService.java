@@ -78,13 +78,13 @@ public class StudentService implements StudentInterface{
 	public void viewGradeCard() {
 		
 	}
-	public void viewCatalogue(int sem) {
-		courseInterface.viewCourses(sem);
+	public String viewCatalogue(int sem) {
+		return courseInterface.viewCourses(sem);
 	}
 	
-	public void viewRegisteredCourses(int sem) {
+	public String viewRegisteredCourses(int sem) {
 		//take course from student table
-		registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
+		return registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
 	}
 	
 	public boolean semesterRegistration(int sem) {

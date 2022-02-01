@@ -25,6 +25,18 @@ public class UserService implements UserInterface{
 	
 	public static String currentUsedId;
 	UserDaoInterface userInterface=new UserDaoOperation();
+	private static volatile UserService instance = null;
+
+	public static UserService getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(UserService.class){
+				instance = new UserService();
+			}
+		}
+		return instance;
+	}
 
 	public UserType authenticate(String email,String password) {
 		logger.info("Inside UserService: Authentication Started!");

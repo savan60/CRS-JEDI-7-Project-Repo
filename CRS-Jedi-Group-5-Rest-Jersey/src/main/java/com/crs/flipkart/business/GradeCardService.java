@@ -27,7 +27,20 @@ public class GradeCardService implements GradeCardInterface{
 	StudentDaoInterface studentInterface = new StudentDaoOperation();
 	GradeCardDaoInterface gradeCardInterface = new GradeCardDaoOperation();
 	
-	public void viewGradeCard(String studentID, int semester) {
+	private static volatile GradeCardService instance = null;
+
+	public static GradeCardService getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(GradeCardService.class){
+				instance = new GradeCardService();
+			}
+		}
+		return instance;
+	}
+	
+	public String viewGradeCard(String studentID, int semester) {
     /*
      * Method to print score of a student with studentId in Semester semester
      * @param studentId, semester
@@ -37,20 +50,23 @@ public class GradeCardService implements GradeCardInterface{
 		ArrayList<RegisteredCourse> courses = gradeCardInterface.fetchRegisteredSemesterCoursesForStudents(studentID, semester)
 ;
 		try {
-			
+			String res = "";
 			GradeCard gradeCard = gradeCardInterface.fetchGradeCard(studentID, semester);
 			float finalGrade = gradeCard.getGrade();
-			System.out.println("GRADE CARD FOR SEMESTER : "+Integer.toString(semester));
-			System.out.println("STUDENT ID : "+studentID+" NAME: "+studentInterface.getStudentNameFromId(studentID));
-			System.out.println("CourseID\t Course Name\tScore");
+			res += "GRADE CARD FOR SEMESTER : "+Integer.toString(semester) + "\n";
+			res += "STUDENT ID : "+studentID+" NAME: "+studentInterface.getStudentNameFromId(studentID) + "\n";
+			res += "CourseID\t Course Name\tScore\n";
 			
 			for(RegisteredCourse course : courses) {
-				System.out.println(course.getCourseId()+"\t"+courseInterface.getCourseFromId(course.getCourseId()).getName()+"\t"+Float.toString(course.getGrade()));
-				System.out.println("-----------------------------");
+				res += course.getCourseId()+"\t"+courseInterface.getCourseFromId(course.getCourseId()).getName()+"\t"+Float.toString(course.getGrade()) + "\n";
+				res += "-----------------------------\n";
 			}
-			System.out.println("Semester Grade Point Average :"+" "+Float.toString(finalGrade));
-		}catch(GradeCardNotCreatedException ex) {
+			res += "Semester Grade Point Average :"+" "+Float.toString(finalGrade) + "\n";
+			return res;	
+		}
+		catch(GradeCardNotCreatedException ex) {
 			logger.error("GRADECARDNOTCREATED "+ex.getMessage());
 		}
+		return null;
 	}
 }
