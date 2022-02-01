@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  */
 public interface CourseDaoInterface {
-	public  void viewCourses(int sem);
+	public  String viewCourses(int sem);
 	public  boolean updateProfessorId(String ProfessorId, String CourseId);
 	public  void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) throws CourseNotAddedException;
 	/*

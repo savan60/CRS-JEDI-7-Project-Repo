@@ -366,41 +366,7 @@ public class StudentController {
 
 	}
 	
-	@POST
-	@Path("/updatePassword")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response UpdatePassword (String t) throws JSONException{
-		 HashMap<String, String> map = new HashMap<String, String>();
-	        JSONObject jObject = new JSONObject(t);
-	        Iterator<?> keys = jObject.keys();
-
-	        while( keys.hasNext() ){
-	            String key = (String)keys.next();
-	            String value = jObject.getString(key); 
-	            map.put(key, value);
-	        }
-
-	        System.out.println("json : "+jObject);
-	        System.out.println("map : "+map);
-	    String result="";
-	    UserInterface userOperation = UserService.getInstance();
-	    UserService.currentUsedId=map.get("userID");
-	    boolean val1 = userOperation.checkPasswordforEmail(map.get("password"));	
-		if(val1) {
-			if(map.get("newpass").equals(map.get("renewpass"))) {
-				userOperation.createNewPassword(map.get("newpass"),map.get("userID"));
-				result="Update password Successful";
-				return Response.status(201).entity(result).build();
-			}
-			result="Update password UnSuccessful";
-			return Response.status(409).entity(result).build();
-		}
-		else {
-			result="Update password UnSuccessful";
-			return Response.status(409).entity(result).build();
-		}
-	}
+	
 
 	@DELETE
 	@Path("/delete/{customerId}")
