@@ -24,6 +24,10 @@ public class ApplicationConfig extends ResourceConfig {
 
 		register(AdminController.class);
 		register(ProfessorController.class);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 28ce3df6fd5e548f7c9d4aebf06e9e854a090a12
 	}
 
 }

@@ -24,6 +24,18 @@ public class ProfessorService implements ProfessorInterface {
 	CourseInterface courseService = new CourseService();
 	CourseDaoInterface courseInterface = new CourseDaoOperation();
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
+	private static volatile ProfessorService instance = null;
+	
+	public static ProfessorService getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(AdminService.class){
+				instance = new ProfessorService();
+			}
+		}
+		return instance;
+	}
 
 	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(String professorId) {
 		System.out.println(professorId);

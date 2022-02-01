@@ -75,59 +75,51 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		throw new UserAlreadyExistsException(professor.getEmail());
 		
 	}
-	 
-	 public void approveStudents(int count) throws NoStudentForApprovalException{
+	  
+	public boolean approveStudents(String id) throws NoStudentForApprovalException{
 		 
 		 HashSet<String> set=new HashSet<>();
 		 int resultSet=0;
 		 try {
 			 StudentDaoOperation student=new StudentDaoOperation();
 		 
-			 if(count==1) {
+			 if(id.equals("0")) {
 				 
 				 String sql = "UPDATE CRS.student SET isApproved=? WHERE isApproved = ?";
 				 
 				 stmt = (PreparedStatement) conn.prepareStatement(sql);
 				 stmt.setBoolean(1,true);
-				 
+				 stmt.setBoolean(2,false);
 				 resultSet = stmt.executeUpdate();
 				 logger.info("All Students are approved!");
+				 if (resultSet!=0)
+					 return true;
+				 else return false;
 			 }
 			 
 			 else {				 
 				 
-				 set.addAll(student.getStudentListForApproval());
-				
-				 for(String str:set) {
-					 System.out.println("You want to approve Student with id: "+str);
-					 System.out.println("Press 1 for yes and 2 for no");
-					 int ch=sc.nextInt();
 					 String sql = "UPDATE CRS.student SET isApproved=? WHERE studentId=?";
 					 
 					 stmt = (PreparedStatement) conn.prepareStatement(sql);
-					 stmt.setString(2, str);
+					 stmt.setString(2, id);
 					 
-					 if(ch==1) {
-						 stmt.setBoolean(1,true);
-						 logger.info("This student is approved!");
-					 }
-						 
 					 
-					 else {
-						 
-						 stmt.setBoolean(1,false);
-						 logger.info("This student is not approved!");
-					 }
-					 
+				     stmt.setBoolean(1,true);
+					 logger.info("This student is approved!");
+					
 					 resultSet = stmt.executeUpdate();
-					 logger.info("Student is approved!");
-				 }
+					 if (resultSet!=0)
+						 return true;
+					 else return false;
 
 			 }
 				
 			} catch (SQLException e) {
 				System.out.println("Error: " + e.getMessage());
 			}
+		 	
 		 	throw new NoStudentForApprovalException(resultSet);
+		 	
 	 }
 }

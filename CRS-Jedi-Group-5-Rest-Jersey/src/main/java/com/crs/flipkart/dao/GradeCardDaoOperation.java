@@ -56,8 +56,7 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface{
 			
 			for(Map.Entry<String, Float> e : map.entrySet()) {
 				
-				String id=sem+""+ e.getKey();
-				System.out.println("");
+				String id=sem+ e.getKey();
 				
 				String grade=SQLQueriesConstant.gradeCardGenQuery;
 				statement=connection.prepareStatement(grade);

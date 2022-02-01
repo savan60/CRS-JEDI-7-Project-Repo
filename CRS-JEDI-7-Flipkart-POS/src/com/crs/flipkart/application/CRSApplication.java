@@ -3,7 +3,7 @@
  * 
  */
 package com.crs.flipkart.application;
-
+import java.awt.Font; //Using for bold
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -64,7 +64,11 @@ public class CRSApplication {
 		// role => if login => admin@mail.com admin =>admin
 		// addprofessor=> professor
 //		CourseDaoOperation.app();
+		final String bold = "\033[1;30m";  // BLACK
 		while (true) {
+			System.out
+			.println(bold + "#------------------------Welcome to Course Registration System------------------------#");
+
 			System.out.println("__________________________________________________________");
 
 			System.out.println(

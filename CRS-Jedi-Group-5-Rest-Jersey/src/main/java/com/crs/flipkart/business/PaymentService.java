@@ -23,6 +23,19 @@ public class PaymentService implements PaymentInterface {
 	private static Logger logger = Logger.getLogger(PaymentService.class);
 
 	PaymentDaoInterface paymentDaoInterface = new PaymentDaoOperation();
+	
+	private static volatile PaymentService instance = null;
+
+	public static PaymentService getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(PaymentService.class){
+				instance = new PaymentService();
+			}
+		}
+		return instance;
+	}
 
 	public void paymentNotify() {
 		System.out.println("Payment notification sent");

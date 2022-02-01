@@ -13,6 +13,6 @@ import com.crs.flipkart.exceptions.UserAlreadyExistsException;
 public interface AdminDaoInterface {
 	
 	public boolean addProfessorToDB(Professor professor) throws UserAlreadyExistsException;
-	public void approveStudents(int count) throws NoStudentForApprovalException;
+	public boolean approveStudents(String id) throws NoStudentForApprovalException;
 	
 }

@@ -26,6 +26,10 @@ public class Course {
 		this.credits = credits;
 	}
 	
+	public Course() {
+		super();
+	}
+	
 	public String getCourseId() {
 		return courseId;
 	}

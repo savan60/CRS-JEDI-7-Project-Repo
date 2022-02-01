@@ -92,7 +92,6 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		HashMap<String,Float> grade=new HashMap<>();
 		try {
 			
-			
 			String sql = SQLQueriesConstant.generateGradeCardBySemQuery;
 			stmt = (PreparedStatement) conn.prepareStatement(sql);
 			stmt.setInt(1,sem);

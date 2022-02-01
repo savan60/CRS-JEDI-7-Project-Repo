@@ -69,11 +69,11 @@ public class DBUtils {
     }
 	
 	
-	private static final String url = "jdbc:mysql://127.0.0.1:3306/";
-    private static final String user = "root";
-    private static final String password = "satak11411";
-    public static Connection mysqlConnection;
-    
+//	private static final String url = "jdbc:mysql://127.0.0.1:3306/";
+//    private static final String user = "root";
+//    private static final String password = "satak11411";
+//    public static Connection mysqlConnection;
+//    
   
     
     public static void createTable(String SCHEMA) {

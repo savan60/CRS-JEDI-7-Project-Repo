@@ -56,31 +56,38 @@ public class AdminService implements AdminInterface {
 	}
 	
 
-	public void approveAllStudents() {
+	public boolean approveAllStudents(String id) {
 		logger.info("Approve all students function started");
 		
 		try {
-			admin.approveStudents(1);
+			if (admin.approveStudents(id))
+				return true;
+			else return false;
 		}
 		catch(NoStudentForApprovalException e) {
 			logger.error(e.getMsg());
 		}
+		return false;
 		
 	}
-	public void approveStudentsOneByOne() {
-		logger.info("Approve students One By One function started");
-		
-		try {
-			admin.approveStudents(0);
-		}
-		catch(NoStudentForApprovalException e) {
-			System.out.println(e.getMsg());
-		}
-	}
+	
+//	public void approveStudentsOneByOne() {
+//		logger.info("Approve students One By One function started");
+//		
+//		try {
+//			admin.approveStudents(0);
+//		}
+//		catch(NoStudentForApprovalException e) {
+//			System.out.println(e.getMsg());
+//		}
+	//}
 	
 	public void genReportCard(int sem) {
 		
+		System.out.println(sem);
+		System.out.println("Generate report card function started");
 		logger.info("Generate report card function started");
+		
 		
 		GradeCardDaoOperation grade=new GradeCardDaoOperation();
 		

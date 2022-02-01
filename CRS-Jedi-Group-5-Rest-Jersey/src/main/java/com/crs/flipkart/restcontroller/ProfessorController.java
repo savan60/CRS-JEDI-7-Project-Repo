@@ -6,6 +6,7 @@ package com.crs.flipkart.restcontroller;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+<<<<<<< HEAD
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,11 +18,29 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+=======
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.xml.crypto.URIReferenceException;
+
+import com.crs.flipkart.bean.Course;
+import com.crs.flipkart.bean.Professor;
+import com.crs.flipkart.business.AdminInterface;
+import com.crs.flipkart.business.AdminService;
+>>>>>>> 28ce3df6fd5e548f7c9d4aebf06e9e854a090a12
 import com.crs.flipkart.business.ProfessorInterface;
 import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.utils.Pair;
 
 /**
+<<<<<<< HEAD
  * @author ADARSH
  *
  */
@@ -76,5 +95,19 @@ public class ProfessorController {
 			return Response.status(500).entity(result).build();
 		}
 	}
+=======
+ * @author DELL NOTEBOOK
+ *
+ */
+
+//viewenrolledstudents
+		// assigngrades
+		// addcourse
+		// dropcourse
+		// update password
+		// logout
+@Path("/professorApi")
+public class ProfessorController {
+>>>>>>> 28ce3df6fd5e548f7c9d4aebf06e9e854a090a12
 
 }

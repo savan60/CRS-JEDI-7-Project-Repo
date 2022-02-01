@@ -18,6 +18,7 @@ public class Payment {
 	}
 	public Payment() {
 		// TODO Auto-generated constructor stub
+		super();
 	}
 	private String studentId;//fk
 	private String  invoiceId;//pk
