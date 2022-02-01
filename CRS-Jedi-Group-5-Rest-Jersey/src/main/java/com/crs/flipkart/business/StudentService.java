@@ -27,9 +27,21 @@ public class StudentService implements StudentInterface{
 	RegisteredCourseDaoInterface registeredCourse=new RegisteredCourseDaoOperation();
 	CourseDaoInterface courseInterface=new CourseDaoOperation();
 	private static Logger logger = Logger.getLogger(StudentService.class);
-	
 	//static variable for semester
 	public static int current_semester;
+	
+	private static volatile StudentService instance = null;
+
+	public static StudentService getInstance()
+	{
+		if(instance == null)
+		{
+			synchronized(StudentService.class){
+				instance = new StudentService();
+			}
+		}
+		return instance;
+	}
 	
 	public int getSemester(String id) {
 		StudentDaoOperation student=new StudentDaoOperation();
