@@ -4,6 +4,7 @@
 package com.crs.flipkart.dao;
 
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
@@ -39,8 +40,10 @@ public class UserDaoOperation implements UserDaoInterface{
 	private PreparedStatement statement = null;
 	Connection connection = DBUtils.getConnection();
 	
-	public UserType authenticate(String email,String password) throws UserNotFoundException, PasswordNotMatchException {
+	public User authenticate(String email,String password) throws UserNotFoundException, PasswordNotMatchException {
 		statement=null;
+       
+        User user=new User();
 		try {
 			String sql = SqlUtils.VIEW_ALL_USER;
 			statement = (PreparedStatement) connection.prepareStatement(sql);
@@ -48,8 +51,9 @@ public class UserDaoOperation implements UserDaoInterface{
 			while (resultSet.next()) {
 				if(email.equals(resultSet.getString(2))) {
 					if(password.equals(resultSet.getString(3))){
-						UserService.currentUsedId=resultSet.getString(1);
-						return UserType.valueOf(resultSet.getString(4));
+						user.setUserId(resultSet.getString(1));
+						user.setUserType(UserType.valueOf(resultSet.getString(4)));						
+						return user;
 					}
 					else {
 						throw new PasswordNotMatchException(email);
@@ -60,7 +64,7 @@ public class UserDaoOperation implements UserDaoInterface{
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
-		return UserType.None;
+		return user;
 	}
 
 
@@ -74,7 +78,6 @@ public class UserDaoOperation implements UserDaoInterface{
 			while (resultSet.next()) {
 				if(email.equals(resultSet.getString(2))) {
 					if(phoneNumber.equals(resultSet.getString(3))){
-						UserService.currentUsedId=resultSet.getString(1);
 						return resultSet.getString(1);
 					}
 					else {

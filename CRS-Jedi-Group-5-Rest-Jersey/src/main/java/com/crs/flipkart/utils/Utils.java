@@ -18,6 +18,11 @@ public class Utils {
 		None
 	}
  
+	public enum LoginStatus{
+		Success,
+		Failure,
+		NotApproved
+	}
 	public static String generateId() {
 		String id=(UUID.randomUUID()).toString();
 		return id;

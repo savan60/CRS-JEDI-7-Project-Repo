@@ -17,7 +17,7 @@ import com.crs.flipkart.utils.Utils.UserType;
  *
  */
 public interface UserDaoInterface {
-	public UserType authenticate(String email,String password) throws UserNotFoundException, PasswordNotMatchException;
+	public User authenticate(String email,String password) throws UserNotFoundException, PasswordNotMatchException;
 	
 	public String getUserIdByEmailAndPhoneNumber(String email,String phoneNumber) throws UserNotFoundException, phoneNumberNotMatchException;
 	
