@@ -34,18 +34,22 @@ public class ProfessorController {
 	@Path("/viewEnrolledStudents")
 	@Produces(MediaType.APPLICATION_JSON)
 	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(@QueryParam("professorId") String professorId) {
-		String id=professorId;
-		System.out.println(id);
-		HashMap<String, ArrayList<Pair>> result = professorInterface.viewEnrolledStudents(id);
+		HashMap<String, ArrayList<Pair>> result = professorInterface.viewEnrolledStudents(professorId);
+		result.forEach((key, value)->{
+			System.out.println("CourseId: "+key);
+			value.forEach((student)->{
+				System.out.println("StudentName: "+student.getStudentName()+" StudentId: "+student.getStudentId());
+			});
+		});
 		return result;
 	}
 
 	@GET
 	@Path("/viewCourses/{professorId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<String> viewCourses(@PathParam("professorId") String professorId) {
-		ArrayList<String> list = professorInterface.viewCourse(professorId);
-		return list;
+	public HashMap<String, String> viewCourses(@PathParam("professorId") String professorId) {
+		HashMap<String, String> res = professorInterface.viewCourse(professorId);
+		return res;
 	}
 
 	@PUT

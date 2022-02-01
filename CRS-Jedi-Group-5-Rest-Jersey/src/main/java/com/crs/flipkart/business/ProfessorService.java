@@ -26,6 +26,7 @@ public class ProfessorService implements ProfessorInterface {
 	RegisteredCourseDaoInterface registeredCourseDaoInterface = new RegisteredCourseDaoOperation();
 
 	public HashMap<String, ArrayList<Pair>> viewEnrolledStudents(String professorId) {
+		System.out.println(professorId);
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
 		HashMap<String, ArrayList<Pair>> MapOfEnrolledStudents = new HashMap<String, ArrayList<Pair>>();
 		courseIds.forEach((courseId) -> {
@@ -68,21 +69,20 @@ public class ProfessorService implements ProfessorInterface {
 		return false;
 	}
 
-	public ArrayList<String> viewCourse(String professorId) {
-
+	public HashMap<String, String> viewCourse(String professorId) {
+		HashMap<String, String> res=new HashMap<String, String>();
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
 		if (courseIds.isEmpty()) {
 			System.out.println("No courses assigned to you");
-			return courseIds;
+			return res;
 		}
 		System.out.println("List of Courses:");
 		System.out.println("CourseId\tCourseName\tDuration\tCredits");
 		for (String courseId : courseIds) {
 			Course course = courseInterface.getCourseFromId(courseId);
-			System.out.println(course.getCourseId() + "\t" + course.getName() + "\t" + course.getDuration() + "\t"
-					+ course.getCredits());
+			res.put(courseId, course.getName());
 		}
-		return courseIds;
+		return res;
 	}
 
 }
