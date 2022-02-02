@@ -199,3 +199,70 @@
 20:17:10,007 DEBUG UserService,main:43 - Authentication Successful!
 20:17:20,398  INFO AdminService,main:28 - add professor function started
 20:17:20,441  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:06:44,729  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:06:44,741 DEBUG UserService,main:43 - Authentication Successful!
+12:07:29,131  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:07:29,145 DEBUG UserService,main:43 - Authentication Successful!
+12:08:57,251  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:08:57,263 ERROR UserService,main:48 - User Not Found: admin@m.com
+12:09:32,131  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:09:32,144 ERROR UserService,main:48 - User Not Found: JVEV
+12:10:09,660  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:10:09,681 ERROR UserService,main:48 - User Not Found: KVE
+12:10:36,443  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:10:36,444 DEBUG UserService,main:43 - Authentication Successful!
+12:12:58,058  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:12:58,071 DEBUG UserService,main:43 - Authentication Successful!
+12:14:23,941  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:14:23,954 DEBUG UserService,main:43 - Authentication Successful!
+12:16:11,961  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:16:11,972 DEBUG UserService,main:43 - Authentication Successful!
+12:16:24,112  INFO AdminService,main:28 - add professor function started
+12:16:24,180  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:17:51,622  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:17:51,633 DEBUG UserService,main:43 - Authentication Successful!
+12:19:44,520  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:19:44,530 DEBUG UserService,main:43 - Authentication Successful!
+12:21:18,715  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:21:18,725 DEBUG UserService,main:43 - Authentication Successful!
+12:21:54,440  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:21:54,454 DEBUG UserService,main:43 - Authentication Successful!
+12:21:59,483  INFO CourseService,main:36 - you are adding this coursevdvd
+12:21:59,484  INFO CourseDaoOperation,main:43 - Fetching all the courses
+12:21:59,485  INFO CourseDaoOperation,main:57 - Fetched all the courses
+12:21:59,486  INFO CourseDaoOperation,main:138 - Adding course vdvd to catalog
+12:21:59,490  INFO CourseDaoOperation,main:150 - Course is added to catalog
+12:23:08,988  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:23:09,002 DEBUG UserService,main:43 - Authentication Successful!
+12:23:20,738  INFO CourseService,main:36 - you are adding this courseee
+12:23:20,739  INFO CourseDaoOperation,main:43 - Fetching all the courses
+12:23:20,742  INFO CourseDaoOperation,main:57 - Fetched all the courses
+12:23:20,742  INFO CourseDaoOperation,main:138 - Adding course ee to catalog
+12:23:20,761  INFO CourseDaoOperation,main:150 - Course is added to catalog
+12:24:22,246  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:24:22,259 DEBUG UserService,main:43 - Authentication Successful!
+12:24:29,348  INFO CourseService,main:36 - you are adding this courseeew
+12:24:29,348  INFO CourseDaoOperation,main:43 - Fetching all the courses
+12:24:29,351  INFO CourseDaoOperation,main:57 - Fetched all the courses
+12:24:29,351  INFO CourseDaoOperation,main:138 - Adding course eew to catalog
+12:24:29,355  INFO CourseDaoOperation,main:150 - Course is added to catalog
+12:37:27,398  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:37:27,427 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:39:15,759  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:39:15,773 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:39:27,293  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:39:27,295 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:40:20,588  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:40:20,591 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:43:45,605  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:43:45,617 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:44:13,293  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:44:13,302 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:57:17,621  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:57:17,635 DEBUG UserService,main:43 - Authentication Successful!
+13:00:33,472  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:00:33,485 DEBUG UserService,main:43 - Authentication Successful!
+13:01:05,307  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:01:05,321 DEBUG UserService,main:43 - Authentication Successful!
+13:02:07,262  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:02:07,275 DEBUG UserService,main:43 - Authentication Successful!

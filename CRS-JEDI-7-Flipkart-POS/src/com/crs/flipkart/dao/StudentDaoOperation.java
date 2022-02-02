@@ -70,7 +70,7 @@ public class StudentDaoOperation implements StudentDaoInterface{
 		}
 		
 	// add student into student table
-	public void addStudent(Student student) {
+	public boolean addStudent(Student student) {
 
 		try {
 			Connection conn = DBUtils.getConnection();
@@ -89,11 +89,13 @@ public class StudentDaoOperation implements StudentDaoInterface{
 			statement.setString(3,student.getAddress());
 			statement.setString(4,student.getName());
 			statement.setBoolean(5,false);
-			statement.executeUpdate();
+			int res=statement.executeUpdate();
+			if(res==1)return true;
 			
 		} catch (SQLException e) {
 			logger.error("Error: " + e.getMessage());
 		}
+		return false;
 	}
 	
 	public int getSemester(String id) throws StudentNotFound{

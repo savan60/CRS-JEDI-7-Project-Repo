@@ -81,8 +81,10 @@ public class UserDaoOperation implements UserDaoInterface{
 						throw new phoneNumberNotMatchException(email);
 					}
 				}
+
 			}
 			throw new UserNotFoundException(email);
+			
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
