@@ -22,6 +22,8 @@ import com.crs.flipkart.utils.Utils.UserType;
  * @author parth
  *
  */
+
+table:=> userid , token, expiry date
 public class UserService implements UserInterface{
 	
 	private static Logger logger = Logger.getLogger(UserService.class);
