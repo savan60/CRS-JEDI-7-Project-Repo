@@ -143,7 +143,6 @@ public class UserDaoOperation implements UserDaoInterface{
 
 
 	public void addUser(User user) {
-
 		try {
 			Connection conn = DBUtils.getConnection();
 			statement = null;

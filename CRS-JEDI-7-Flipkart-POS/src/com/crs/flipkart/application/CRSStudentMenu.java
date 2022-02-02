@@ -3,11 +3,8 @@
  */
 package com.crs.flipkart.application;
 
-import java.lang.System.Logger;
 import java.util.Scanner;
-
 import com.crs.flipkart.bean.Card;
-import com.crs.flipkart.bean.Payment;
 import com.crs.flipkart.business.GradeCardInterface;
 import com.crs.flipkart.business.GradeCardService;
 import com.crs.flipkart.business.PaymentInterface;
@@ -16,11 +13,6 @@ import com.crs.flipkart.business.StudentInterface;
 import com.crs.flipkart.business.StudentService;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
-import com.crs.flipkart.dao.CardDaoInterface;
-import com.crs.flipkart.dao.CardDaoOperation;
-import com.crs.flipkart.dao.RegisteredCourseDaoInterface;
-import com.crs.flipkart.dao.RegisteredCourseDaoOperation;
-import com.crs.flipkart.exceptions.StudentNotFound;
 import com.crs.flipkart.utils.Utils.CardType;
 
 /**
@@ -35,15 +27,6 @@ public class CRSStudentMenu {
 	UserInterface user = new UserService();
 
 	public void homepage() {
-////		public static final String ANSI_RESET = "\u001B[0m";
-//		public static final String ANSI_BLACK = "\u001B[30m";
-//		public static final String ANSI_RED = "\u001B[31m";
-//		public static final String ANSI_GREEN = "\u001B[32m";
-//		public static final String ANSI_YELLOW = "\u001B[33m";
-//		public static final String ANSI_BLUE = "\u001B[34m";
-//		public static final String ANSI_PURPLE = "\u001B[35m";
-//		public static final String ANSI_CYAN = "\u001B[36m";
-//		public static final String ANSI_WHITE = "\u001B[37m";
 		while (true) {
 
 			System.out

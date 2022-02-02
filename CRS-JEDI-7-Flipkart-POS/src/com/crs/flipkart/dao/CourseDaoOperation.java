@@ -156,22 +156,16 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		}
 		throw new CourseNotAddedException(CourseId);
 	}
-	public void delCourse(String CourseName) throws CourseNotDeletedException {
-		logger.info("Deleting course "+CourseName+" from catalog");
+	public void delCourse(String CourseId) throws CourseNotDeletedException {
+		logger.info("Deleting course "+CourseId+" from catalog");
 		Connection conn = DBUtils.getConnection();
 		
 		try {
 			PreparedStatement stmt = null;
 			stmt = (PreparedStatement) conn.prepareStatement(SQLQueriesConstant.deleteCourseFromDb);
 			//String query = "delete from CRS.course where courseId= ?";
-			stmt.setString(1,CourseName);			
+			stmt.setString(1,CourseId);			
 			stmt.execute();	
-//			query="select * from CRS.course";
-//			ResultSet rs=stmt.executeQuery(query);
-//			while (rs.next()) {
-//				System.out.println(
-//						"CourseId: " + rs.getString("courseId") + " coursename:" + rs.getString("name"));
-//			}
 			logger.info("Course is deleted from the catalog");
 			return;
 		}
@@ -179,7 +173,7 @@ public class CourseDaoOperation implements CourseDaoInterface {
 		catch (SQLException e) {
 			logger.error("Error message: "+e.getMessage());
 		}
-		throw new CourseNotDeletedException(CourseName);
+		throw new CourseNotDeletedException(CourseId);
 	}
 	
 	public Course getCourseFromId(String courseId) {

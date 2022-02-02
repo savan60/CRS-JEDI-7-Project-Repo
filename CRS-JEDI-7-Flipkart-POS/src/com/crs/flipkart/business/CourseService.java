@@ -50,7 +50,7 @@ public class CourseService implements CourseInterface {
 		logger.info("you are deleting this course"+id);
 		ArrayList<Course> listOfCourses = CourseDaoOperation.getAllCourses();
 		for(int i=0;i<listOfCourses.size();i++){
-			if((listOfCourses.get(i)).getName().equals(id)) {
+			if(((listOfCourses.get(i)).getCourseId()).equals(id)) {
 				try {
 					courseInterface.delCourse(id);
 				} catch (CourseNotDeletedException e) {

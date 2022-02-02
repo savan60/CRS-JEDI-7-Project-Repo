@@ -57,24 +57,18 @@ public class CRSApplication {
 		RegisteredCourseDaoOperation.createTable();
 		SemesterRegistrationDaoOperation.createTable();
 		
-		String bold = "\033[1;30m";  // BLACK
-		String TEXT_PURPLE = "\u001B[35m"; //PURPLE
-		String TEXT_CYAN = "\u001B[36m";
-		String TEXT_GREEN = "\u001B[32m";
-		String TEXT_BLACK = "\u001B[30m";
-		String TEXT_RED = "\u001B[31m";
 		while (true) {
-			System.out.println(bold);
-			System.out.println(TEXT_PURPLE);
+			System.out.println(COLORCONSTANT.bold);
+			System.out.println(COLORCONSTANT.TEXT_PURPLE);
 			System.out.println("_____________________________________________________________________________________________________________________________________");
 			System.out.println();
 			System.out.println("#--------------------------------------------WELCOME TO COURSE REGISTRATION SYSTEM-------------------------------------------------#");
 
 			System.out.println("_____________________________________________________________________________________________________________________________________");
-			System.out.println(TEXT_CYAN);
+			System.out.println(COLORCONSTANT.TEXT_CYAN);
 			System.out.println(
 					"1. Register as a Student\n2. Login\n3. Forget Password\n4. Exit".toUpperCase());
-			System.out.println(TEXT_GREEN);
+			System.out.println(COLORCONSTANT.TEXT_GREEN);
 			System.out.print("Enter Choice: ".toUpperCase());
 			Scanner sc = new Scanner(System.in);
 			int ch = sc.nextInt();
@@ -84,7 +78,7 @@ public class CRSApplication {
 
 			switch (ch) {
 			case 1:
-				System.out.println(TEXT_GREEN);
+				System.out.println(COLORCONSTANT.TEXT_GREEN);
 				String studentId = Utils.generateUniqueId().substring(0, 3)
 						+ Utils.generateUniqueId().substring(10, 13);
 
@@ -106,26 +100,27 @@ public class CRSApplication {
 				Student stud = new Student(studentId, emai, name, phoneNumber, address, UserType.Student, password);
 				System.out.println();
 				if(studentInterface.selfRegistration(stud)) {
-					System.out.println(TEXT_BLACK);
+					System.out.println(COLORCONSTANT.TEXT_BLACK);
 					System.out.println("Registration completed");
 				}
 				break;
 			case 2:
-				System.out.println(TEXT_GREEN);
+				System.out.println(COLORCONSTANT.TEXT_GREEN);
 				System.out.print("Enter your email: ".toUpperCase());
 				email = sc.next();
 				System.out.print("Enter your password: ".toUpperCase());
 				password = sc.next();
-				System.out.println(TEXT_BLACK);
+				System.out.println(COLORCONSTANT.TEXT_BLACK);
 				UserType val = UserType.None;
 				try {
 					val = user.authenticate(email, password);
 				} catch (UserNotFoundException e) {
-					System.out.println(TEXT_RED);
+					System.out.println(COLORCONSTANT.TEXT_RED);
 					System.out.println("User Not Found: " + e.getuserCredential());
 				}
 
 				if (val != UserType.None) {
+					System.out.print(COLORCONSTANT.TEXT_YELLOW);
 					System.out.println("User " + UserService.currentUsedId + " logged in on :" + LocalDate.now()
 							+ " at " + LocalTime.now());
 				}
@@ -143,12 +138,12 @@ public class CRSApplication {
 					break;
 
 				default:
-					System.out.println(TEXT_RED);
+					System.out.println(COLORCONSTANT.TEXT_RED);
 					System.out.println("Login Unsuccessful, please try again!");
 				}
 				break;
 			case 3:
-				System.out.println(TEXT_GREEN);
+				System.out.println(COLORCONSTANT.TEXT_GREEN);
 				System.out.print("Enter your email: ".toUpperCase());
 				email = sc.next();
 				System.out.print("Enter your registered phone number to verify!: ".toUpperCase());
@@ -158,7 +153,7 @@ public class CRSApplication {
 				try {
 					userId = user.forgotPassword(email, phoneNo);
 				} catch (UserNotFoundException e) {
-					System.out.println(TEXT_RED);
+					System.out.println(COLORCONSTANT.TEXT_RED);
 					System.out.println(e.getMessage());
 				}
 				if (!(userId).equals("0")) {

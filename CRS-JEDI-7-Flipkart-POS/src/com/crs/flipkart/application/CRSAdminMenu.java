@@ -1,32 +1,24 @@
 package com.crs.flipkart.application;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-
-import com.crs.flipkart.bean.Course;
-import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.business.AdminInterface;
 import com.crs.flipkart.business.AdminService;
 import com.crs.flipkart.business.CourseInterface;
 import com.crs.flipkart.business.CourseService;
 import com.crs.flipkart.business.PaymentInterface;
 import com.crs.flipkart.business.PaymentService;
-import com.crs.flipkart.business.ProfessorInterface;
-import com.crs.flipkart.business.ProfessorService;
 import com.crs.flipkart.business.UserInterface;
 import com.crs.flipkart.business.UserService;
 import com.crs.flipkart.constant.COLORCONSTANT;
 import com.crs.flipkart.utils.Utils;
-import com.crs.flipkart.utils.Utils.UserType;
 
 public class CRSAdminMenu {
 	Scanner sc = new Scanner(System.in);
 	UserInterface user = new UserService();
 
 	public void homePage() {
-
+		
+		System.out.println(COLORCONSTANT.TEXT_BLACK);
 		System.out.println("Welcome to Admin portal!");
 
 		AdminInterface adminService = new AdminService();
@@ -42,121 +34,106 @@ public class CRSAdminMenu {
 			System.out.println("_____________________________________________________________________________________________________________________________________");
 			System.out.println(COLORCONSTANT.TEXT_CYAN);
 			System.out.println(
-					"Please select operation to perform:\n\n1. Add Professor\n2. Add Course\n3. Remove Course\n4. Generate Grade Card \n5. Update password\n6. Approve Students\n7. Semester Fees\n8. Logout\n".toUpperCase());
+					"Please select operation to perform:\n\n1. Add Professor\n2. Add Course\n3. Remove Course\n4. Generate Grade Card \n5. Approve Students\n6. Semester Fees\n7. Logout\n".toUpperCase());
 			// update password will be here
-			System.out.println(COLORCONSTANT.TEXT_GREEN);
+			System.out.print(COLORCONSTANT.TEXT_GREEN);
 			System.out.print("Enter Choice: ".toUpperCase());
 			int ch = sc.nextInt();
+			System.out.println();
 
-			if (ch == 8) {
-				System.out.println("Thank you");
+			if (ch == 7) {
+				System.out.print(COLORCONSTANT.TEXT_BLACK);
+				System.out.println("Thank you!".toUpperCase());
 				break;
 			}
 			switch (ch) {
 				case 1:
-					System.out.print("Enter the emailid:");
+					System.out.print(COLORCONSTANT.TEXT_GREEN);
+					
+					System.out.print("Enter the emailid: ".toUpperCase());
 					String email = sc.next();
 
-					System.out.print("Enter the phoneNumber:");
+					System.out.print("Enter the phoneNumber: ".toUpperCase());
 					String phoneNumber = sc.next();
 
-					System.out.print("Enter the address:");
+					System.out.print("Enter the address: ".toUpperCase());
 					String address = sc.next();
 
-					System.out.print("Enter the password:");
+					System.out.print("Enter the password: ".toUpperCase());
 					String pass = sc.next();
 
-					System.out.print("Enter Department:");
+					System.out.print("Enter Department: ".toUpperCase());
 					String department = sc.next();
 
-					System.out.print("Enter Position:");
+					System.out.print("Enter Position: ".toUpperCase());
 					String position = sc.next();
-
-					if (adminService.addProfessor(email, phoneNumber, address, pass, department, position)) {
+					
+					int res = adminService.addProfessor(email, phoneNumber, address, pass, department, position);
+					
+					if (res == 1) {
 						System.out.println(COLORCONSTANT.TEXT_BLACK);
-						System.out.println("Professor added");
-					} else {
+						System.out.println("Professor added!");
+					} else if (res==2) {
 						System.out.println(COLORCONSTANT.TEXT_RED);
-						System.out.println("User id already exists! or Please try again!");
+						System.out.println("Professor with this email already exists!");
+					} else{
+						System.out.println(COLORCONSTANT.TEXT_RED);
+						System.out.println("Please try again!");
 					}
 					break;
 
 				case 2: // call add course
+					System.out.print(COLORCONSTANT.TEXT_GREEN);
+					
 					String cId = Utils.generateUniqueId().substring(0,3) + Utils.generateUniqueId().substring(10,13);
 
-					System.out.print("Enter the course name:");
+					System.out.print("Enter the course name: ".toUpperCase());
 					String cname = sc.next();
 
-					System.out.print("Enter the duration:");
+					System.out.print("Enter the duration: ".toUpperCase());
 					float cdur = sc.nextFloat();
 
-					System.out.print("Enter the credits:");
+					System.out.print("Enter the credits: ".toUpperCase());
 					float credits = sc.nextFloat();
 					System.out.println(COLORCONSTANT.TEXT_BLACK);
 					if (courseService.addCourse(cId, cname, cdur, credits)) {
-						System.out.println(COLORCONSTANT.TEXT_BLACK);
-						System.out.println("Course added");
+						System.out.print(COLORCONSTANT.TEXT_BLACK);
+						System.out.println("Course added!");
 					} else {
-						System.out.println(COLORCONSTANT.TEXT_RED);
-						System.out.println("Course id already exists, please try again!");
+						System.out.print(COLORCONSTANT.TEXT_RED);
+						System.out.println("Please try again!");
 					}
 					break;
 
 				case 3:
-					System.out.println("Enter Course id to remove: ");
+					System.out.print(COLORCONSTANT.TEXT_GREEN);
+					
+					System.out.print("Enter Course id to remove: ".toUpperCase());
 					String rid = sc.next();
 
 					if (courseService.deleteCourse(rid)) {
-						System.out.println("Course removed");
-					} else
-						System.out.println("Course id does not exists, please try again!");
-					break;
-
-				case 4:
-					System.out.println("Enter the semester");
-					int sem = sc.nextInt();
-					adminService.genReportCard(sem);
-					break;
-
-				case 5:
-					System.out.println("Enter your old password\n");
-					String password = sc.next();
-					boolean val1 = user.checkPasswordforEmail(password);
-					if (val1) {
-						while (true) {
-							System.out.println("Enter your choice:\n" + "1.Type new password \n2. Exit");
-							int choice = sc.nextInt();
-
-							if (choice == 2)
-								break;
-							else if (choice != 1)
-								System.out.println("Invalid Choice");
-							else {
-								String pass1, pass2;
-								// System.out.println("Type New Password!");
-								pass1 = sc.next();
-								System.out.println("Re-Enter New Password!");
-								pass2 = sc.next();
-								if (pass1.equals(pass2)) {
-									user.createNewPassword(pass1, UserService.currentUsedId);
-									System.out.println("Password changed. Login!");
-									break;
-								} else
-									System.out.println("Password Mismatch. Try Again!");
-							}
-						}
+						System.out.println(COLORCONSTANT.TEXT_BLACK);
+						System.out.println("Course removed!");
 					} else {
-						System.out.println("Invalid credentials");
+						System.out.println(COLORCONSTANT.TEXT_RED);
+						System.out.println("Course id does not exists, or please try again!");
 					}
 					break;
 
-				case 6:
-					System.out
-							.println("Select your choice: \n1. Approve all students\n2. Approve Students one by one.");
+				case 4:
+					System.out.print(COLORCONSTANT.TEXT_GREEN);
+					System.out.print("Enter semester: ".toUpperCase());
+					int sem = sc.nextInt();
+					adminService.genReportCard(sem);
+					System.out.println(COLORCONSTANT.TEXT_BLACK);
+					System.out.print("Grade Cards Generated!");
+					break;
+
+				case 5:
+					System.out.print(COLORCONSTANT.TEXT_GREEN);
+					System.out.println("Select your choice: \n1. Approve all students\n2. Approve Students one by one.");
 					int choice = sc.nextInt();
-
 					switch (choice) {
-
 						case 1:
 							adminService.approveAllStudents();
 							break;
@@ -166,21 +143,26 @@ public class CRSAdminMenu {
 							break;
 
 						default:
+							System.out.println(COLORCONSTANT.TEXT_RED);
 							System.out.println("Invalid Choice");
 					}
 
 					break;
 
-				case 7:
-					System.out.println("Enter fee amount: ");
+				case 6:
+					System.out.print(COLORCONSTANT.TEXT_GREEN);
+					System.out.print("Enter fee amount: ".toUpperCase());
 					int amount = sc.nextInt();
-					System.out.println("Enter payment message: ");
-					String message = sc.next();
+					sc.nextLine();
+					System.out.print("Enter payment message: ".toUpperCase());
+					String message = sc.nextLine();
 					paymentService.askForPayment(amount, message);
-					System.out.println("Payment added to Students");
+					System.out.println(COLORCONSTANT.TEXT_BLACK);
+					System.out.println("Payment added to Students!".toUpperCase());
 					break;
 				default:
-					System.out.println("Enter valid choice");
+					System.out.println(COLORCONSTANT.TEXT_RED);
+					System.out.println("Enter valid choice".toUpperCase());
 
 			}
 		}

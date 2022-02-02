@@ -7,8 +7,8 @@ import com.crs.flipkart.bean.Professor;
  *
  */
 public interface AdminInterface {
-	public boolean addProfessor(String email,String phoneNumber,String address,String password,String department,String position);
-	public void approveAllStudents();
+	public int addProfessor(String email,String phoneNumber,String address,String password,String department,String position);
+	public boolean approveAllStudents();
 	public void approveStudentsOneByOne();
 	public void genReportCard(int sem) ;
 	public void updateAddDropTime();

@@ -29,5 +29,8 @@ public class SqlUtils {
 	// Add Professor to database
 	public static String INSERT_PROFESSOR="insert into CRS.professor(professorId,phoneNumber,address,dept,doj,pos) values (?,?,?,?,?,?)";
 	
+	// Is user present in database
+	public static String GET_USER_BY_EMAIL = "select * from CRS.user where email = ?";
+	
 }
 

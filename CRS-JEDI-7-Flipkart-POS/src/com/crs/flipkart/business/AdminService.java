@@ -23,7 +23,7 @@ public class AdminService implements AdminInterface {
 	UserInterface user=new UserService();
 	AdminDaoInterface admin=new AdminDaoOperation();
 	
-	public boolean addProfessor(String email, String phoneNumber, String address, String password, String department, String position) {
+	public int addProfessor(String email, String phoneNumber, String address, String password, String department, String position) {
 		
 		logger.info("add professor function started");
 		try {
@@ -35,23 +35,26 @@ public class AdminService implements AdminInterface {
 			
 			AdminDaoInterface admin = new AdminDaoOperation();
 			if(admin.addProfessorToDB(newProfessor))
-				return true;
+				return 1;
 		}
 		catch(UserAlreadyExistsException e) {
 			logger.error("This user already exists: "+e.getEmail());
+			return 2;
 		}
-		return false;
+		return 0;
 	}
 	
 
-	public void approveAllStudents() {
+	public boolean approveAllStudents() {
 		logger.info("Approve all students function started");
 		
 		try {
 			admin.approveStudents(1);
+			return true;
 		}
 		catch(NoStudentForApprovalException e) {
 			logger.error(e.getMsg());
+			return false;
 		}
 		
 	}
