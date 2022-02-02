@@ -29,27 +29,13 @@ public class CourseService implements CourseInterface {
 		}
 		return instance;
 	}
-		
-	/**
-	 * @return the courses
-	 */
-//	public ArrayList<Course> getCourses() {
-//		return courses;
-//	}
-
-	/**
-	 * @param courses the courses to set
-	 */
-	
-//	public void setCourses(ArrayList<Course> courses) {
-//		this.courses = courses;
-//	}
 
 	public boolean addCourse(String id,String subj,float duration ,float credits) {
-		logger.info("you are adding this course"+subj);
+		logger.info("You are adding this course: "+subj);
 		ArrayList<Course> courses = CourseDaoOperation.getAllCourses();
 		for(int i=0;i<courses.size();i++){
-			if((courses.get(i)).getName().equals(subj))return false;	
+			if((courses.get(i)).getName().equals(subj))
+				return false;
 		}
 		try {
 			courseInterface.addCourToDB(id,subj,duration,credits);
@@ -60,7 +46,7 @@ public class CourseService implements CourseInterface {
 	}
 	
 	public boolean deleteCourse(String name) {
-		logger.info("you are deleting this course"+name);
+		logger.info("you are deleting this course: "+name);
 		ArrayList<Course> listOfCourses = CourseDaoOperation.getAllCourses();
 		for(int i=0;i<listOfCourses.size();i++){
 			if((listOfCourses.get(i)).getName().equals(name)) {
