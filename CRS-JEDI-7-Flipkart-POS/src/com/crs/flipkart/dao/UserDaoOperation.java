@@ -68,6 +68,7 @@ public class UserDaoOperation implements UserDaoInterface{
 	public String getUserIdByEmailAndPhoneNumber(String email, String phoneNumber) throws UserNotFoundException, phoneNumberNotMatchException {
 		statement=null;
 		try {
+			
 			String sql=SqlUtils.VIEW_USER_WITH_PHONE;
 			statement = (PreparedStatement) connection.prepareStatement(sql);
 			ResultSet resultSet = statement.executeQuery();
@@ -81,8 +82,10 @@ public class UserDaoOperation implements UserDaoInterface{
 						throw new phoneNumberNotMatchException(email);
 					}
 				}
+
 			}
 			throw new UserNotFoundException(email);
+			
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
@@ -117,8 +120,9 @@ public class UserDaoOperation implements UserDaoInterface{
 		statement=null;
 		
 		try {
+			Connection connection1 = DBUtils.getConnection();
 			String sql = SqlUtils.VIEW_ALL_USER;
-			statement = (PreparedStatement) connection.prepareStatement(sql);
+			statement = (PreparedStatement) connection1.prepareStatement(sql);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				if(userId.equals(resultSet.getString(1))) {
@@ -141,7 +145,6 @@ public class UserDaoOperation implements UserDaoInterface{
 
 
 	public void addUser(User user) {
-
 		try {
 			Connection conn = DBUtils.getConnection();
 			statement = null;

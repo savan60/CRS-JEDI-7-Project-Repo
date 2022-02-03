@@ -16,8 +16,8 @@ import java.util.ArrayList;
  */
 public interface CourseDaoInterface {
 	public  void viewCourses(int sem);
-	public  void updateProfessorId(String ProfessorId, String CourseId);
-	public  void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre) throws CourseNotAddedException;
+	public  boolean updateProfessorId(String ProfessorId, String CourseId);
+	public  void addCourToDB(String CourseId,String CourseName,Float CourseDur,Float CourseCre,int CourseSem) throws CourseNotAddedException;
 	/*
 	 * using this function admin can add a course to the list of courses available.
 	 * */

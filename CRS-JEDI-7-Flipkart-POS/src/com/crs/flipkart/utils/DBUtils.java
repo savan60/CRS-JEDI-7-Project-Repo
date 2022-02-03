@@ -81,7 +81,6 @@ public class DBUtils {
 		try {
 			 stmt = getConnection().createStatement();
 			 stmt.executeUpdate(SCHEMA);
-			 System.out.println("Admin Table created successfully..."); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

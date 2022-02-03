@@ -49,15 +49,12 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface{
 		PreparedStatement statement = null;
 		RegisteredCourseDaoOperation reg=new RegisteredCourseDaoOperation();
 		
-	
-		
 		try {
 			HashMap<String,Float> map= reg.generateGradeCardBySem(sem);
 			
 			for(Map.Entry<String, Float> e : map.entrySet()) {
 				
 				String id=sem+""+ e.getKey();
-				System.out.println("");
 				
 				String grade=SQLQueriesConstant.gradeCardGenQuery;
 				statement=connection.prepareStatement(grade);
@@ -68,16 +65,13 @@ public class GradeCardDaoOperation implements GradeCardDaoInterface{
 				
 				int result=statement.executeUpdate();
 				
-				System.out.println(result);
-				}
+//				System.out.println(result);
+			}
 			
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	

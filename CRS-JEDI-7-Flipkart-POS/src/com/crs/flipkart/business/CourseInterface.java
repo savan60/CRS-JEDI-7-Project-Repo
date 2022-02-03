@@ -19,7 +19,7 @@ public interface CourseInterface {
 //	 * returns the list of courses
 //	 * */
 //	public void setCourses(ArrayList<Course> courses);
-	public boolean addCourse(String id,String subj,float duration ,float credits);
+	public boolean addCourse(String id,String subj,float duration ,float credits,int sem);
 	/*
 	 * adds course to coursedb
 	 * */

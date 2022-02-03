@@ -9,10 +9,13 @@ import com.crs.flipkart.dao.CourseDaoOperation;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
 
+import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Student;
+import com.crs.flipkart.constant.COLORCONSTANT;
 import com.crs.flipkart.dao.StudentDaoOperation;
 import com.crs.flipkart.exceptions.StudentNotFound;
 import com.crs.flipkart.exceptions.CheckForSemesterRegistration;
@@ -20,6 +23,7 @@ import com.crs.flipkart.exceptions.AddCourseLimitExceed;
 import com.crs.flipkart.exceptions.CourseNotEndrolledByStudent;
 import com.crs.flipkart.utils.Utils;
 import com.crs.flipkart.utils.Utils.UserType;
+import com.crs.flipkart.validator.StudentValidator;
 //import com.mysql.jdbc.log.Log4JLogger;
 
 public class StudentService implements StudentInterface{
@@ -58,9 +62,9 @@ public class StudentService implements StudentInterface{
 	}
 	
 	// student self register his/her self
-	public void selfRegistration(Student student) {
+	public boolean selfRegistration(Student student) {
 		StudentDaoInterface studentDaoInterface = new StudentDaoOperation();
-		studentDaoInterface.addStudent(student);
+		return studentDaoInterface.addStudent(student);
 	}
 	
 	public void viewGradeCard() {
@@ -72,7 +76,7 @@ public class StudentService implements StudentInterface{
 	
 	public void viewRegisteredCourses(int sem) {
 		//take course from student table
-		registeredCourse.printRegisteredCourses(UserService.currentUsedId, 1);
+		registeredCourse.printRegisteredCourses(UserService.currentUsedId, sem);
 	}
 	
 	public boolean semesterRegistration(int sem) {
@@ -96,18 +100,27 @@ public class StudentService implements StudentInterface{
 	}
 	
 	public boolean addCourse(String courseId,int sem) {
+		ArrayList<Course> courses=CourseDaoOperation.getAllCourses();
+		if(!StudentValidator.isValidCourseCode(courseId, courses)) {
+			System.out.println(COLORCONSTANT.TEXT_RED);
+			System.out.println("Course not available");
+			return false;
+		}
 		try {
 			boolean val=registeredCourse.addCourse(courseId,UserService.currentUsedId,sem);
 			if(val) {
+				System.out.println(COLORCONSTANT.TEXT_BLACK);
 				System.out.println("Course added successfully");
 				return true;
 			}
 			else {
+				System.out.println(COLORCONSTANT.TEXT_RED);
 				System.out.println("Course is not added, Try again");
 			}
 			return false;
 		} catch (AddCourseLimitExceed e) {
 			// TODO Auto-generated catch block
+			System.out.println(COLORCONSTANT.TEXT_RED);
 			System.out.println("You can't add courses more than: "+e.getCourse());
 		}
 		return false;
@@ -118,10 +131,12 @@ public class StudentService implements StudentInterface{
 		try {
 			boolean val=registeredCourse.dropCourse(StudentId, courseId);
 			if(val) {
+				System.out.println(COLORCONSTANT.TEXT_BLACK);
 			System.out.println("Course dropped successfully");
 			return true;
 			}
 			else {
+			System.out.println(COLORCONSTANT.TEXT_RED);
 			System.out.println("Course is not dropped, Try again");
 			}
 		} catch (CourseNotEndrolledByStudent e) {

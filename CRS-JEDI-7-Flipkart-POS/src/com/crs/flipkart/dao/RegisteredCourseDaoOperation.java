@@ -9,6 +9,7 @@ import java.util.*;
 import org.apache.log4j.Logger;
 
 import com.crs.flipkart.bean.RegisteredCourse;
+import com.crs.flipkart.constant.COLORCONSTANT;
 import com.crs.flipkart.constant.SQLQueriesConstant;
 import com.crs.flipkart.exceptions.AddCourseLimitExceed;
 import com.crs.flipkart.exceptions.CourseNotEndrolledByStudent;
@@ -63,24 +64,30 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 		
 	}
 
-	public void updateGrade(String courseId, String studentId, float newGrade) {
+public boolean updateGrade(String courseId, String studentId, float newGrade) {
 		
-		conn=DBUtils.getConnection();
+		
 //		Statement stmt1;
 		
 		try {
+			Connection conn = DBUtils.getConnection();
+
+			PreparedStatement stmt1 = null;
+			conn=DBUtils.getConnection();
 			String query = SQLQueriesConstant.updateGradeQuery;
-			
-			stmt = (PreparedStatement) conn.prepareStatement(query);
-			stmt.setFloat(1,newGrade);
-			stmt.setString(2,courseId);
-			stmt.setString(3,studentId);
-			stmt.executeUpdate(query);
+			stmt1 = (PreparedStatement) conn.prepareStatement(query);
+			stmt1.setFloat(1,newGrade);
+			stmt1.setString(2,courseId);
+			stmt1.setString(3,studentId);
+			int res=stmt1.executeUpdate();
+			System.out.println(res);
+			if(res==1)return true;
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		}
+		return false;
 	}
 	
 	public HashMap<String,Float> generateGradeCardBySem(int sem) throws GradeCardBySemFoundEmpty{
@@ -126,6 +133,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			int ct = r.getInt(1);
 			if (ct==0)
 			{
+				System.out.println(COLORCONSTANT.TEXT_RED);
 				System.out.println("You did not enroll in this course");
 				return false;
 			}
@@ -150,10 +158,12 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 					+ studentId + "' and r.semester=" + sem;
 		
 			ResultSet rs = stmt.executeQuery(query);
+			System.out.println(COLORCONSTANT.TEXT_BLACK);
+			System.out.println("Course Id    Grades      Course name");
 			while (rs.next()) {
 				//Changes required:
 				//need to pass this list of student in crsapplication and print there, no print statement should present outside crs application which is to be shown to user
-				System.out.println("Course name:-->"+rs.getString("name")+"   Course Id:--> " + rs.getString("courseId") + "  Grades:--> " + rs.getFloat("grade"));
+				System.out.println(rs.getString("courseId")+"         " + rs.getFloat("grade") + "       " + rs.getString("name"));
 			}
 
 		} catch (SQLException e) {
@@ -177,7 +187,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 			//System.out.println("For sid = " + studentId + " and course = " + courseId + "ct is  " + ct);
 			if (ct>=1)
 			{
-				
+				System.out.println(COLORCONSTANT.TEXT_RED);
 				System.out.println("You already added this course");
 				return false;
 			}
@@ -209,6 +219,7 @@ public class RegisteredCourseDaoOperation implements RegisteredCourseDaoInterfac
 				res.next();
 				int count1 = res.getInt(1);
 				count = count+1;
+				System.out.println(COLORCONSTANT.TEXT_BLACK);
 				System.out.println("You have added " + count + " courses.");
 				if(count <= 6) {
 					return true;

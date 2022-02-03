@@ -150,3 +150,1236 @@
 20:37:15,253  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
 20:37:15,254  INFO CourseDaoOperation,main:81 - Fetched all courses
 20:37:15,255  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+11:31:55,749  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:31:55,792 DEBUG UserService,main:43 - Authentication Successful!
+11:32:52,190  INFO CourseService,main:36 - you are adding this course200
+11:32:52,191  INFO CourseDaoOperation,main:43 - Fetching all the courses
+11:32:52,197  INFO CourseDaoOperation,main:57 - Fetched all the courses
+11:32:52,197  INFO CourseDaoOperation,main:138 - Adding course 200 to catalog
+11:32:52,203  INFO CourseDaoOperation,main:150 - Course is added to catalog
+11:38:51,993  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:38:52,018 DEBUG UserService,main:43 - Authentication Successful!
+11:40:06,571  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:40:06,594 DEBUG UserService,main:43 - Authentication Successful!
+11:53:10,170  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:53:10,192 DEBUG UserService,main:43 - Authentication Successful!
+11:53:52,860  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:53:52,885 DEBUG UserService,main:43 - Authentication Successful!
+11:55:53,929  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:55:53,957 ERROR UserService,main:46 - Wrong Password for Email: admin@mail.com
+11:56:06,446  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:56:06,448 DEBUG UserService,main:43 - Authentication Successful!
+11:57:10,343  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:57:10,378 DEBUG UserService,main:43 - Authentication Successful!
+11:58:29,036  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:58:29,059 DEBUG UserService,main:43 - Authentication Successful!
+11:58:53,490  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:58:53,516 DEBUG UserService,main:43 - Authentication Successful!
+11:59:32,579  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:59:32,603 DEBUG UserService,main:43 - Authentication Successful!
+12:00:44,971  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:00:44,995 DEBUG UserService,main:43 - Authentication Successful!
+12:02:29,420  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:02:29,443 DEBUG UserService,main:43 - Authentication Successful!
+12:03:35,938  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:03:35,966 DEBUG UserService,main:43 - Authentication Successful!
+12:04:45,633  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:04:45,658 DEBUG UserService,main:43 - Authentication Successful!
+12:05:08,265  INFO AdminService,main:28 - add professor function started
+12:05:08,295  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:06:28,553  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:06:28,577 DEBUG UserService,main:43 - Authentication Successful!
+12:06:41,541  INFO AdminService,main:28 - add professor function started
+12:06:41,574  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:07:55,447  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:07:55,475 DEBUG UserService,main:43 - Authentication Successful!
+12:08:06,023  INFO AdminService,main:28 - add professor function started
+12:08:06,059  INFO AdminDaoOperation,main:65 - Professor added to DB
+20:17:09,982  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:17:10,007 DEBUG UserService,main:43 - Authentication Successful!
+20:17:20,398  INFO AdminService,main:28 - add professor function started
+20:17:20,441  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:06:44,729  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:06:44,741 DEBUG UserService,main:43 - Authentication Successful!
+12:07:29,131  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:07:29,145 DEBUG UserService,main:43 - Authentication Successful!
+12:08:57,251  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:08:57,263 ERROR UserService,main:48 - User Not Found: admin@m.com
+12:09:32,131  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:09:32,144 ERROR UserService,main:48 - User Not Found: JVEV
+12:10:09,660  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:10:09,681 ERROR UserService,main:48 - User Not Found: KVE
+12:10:36,443  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:10:36,444 DEBUG UserService,main:43 - Authentication Successful!
+12:12:58,058  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:12:58,071 DEBUG UserService,main:43 - Authentication Successful!
+12:14:23,941  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:14:23,954 DEBUG UserService,main:43 - Authentication Successful!
+12:16:11,961  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:16:11,972 DEBUG UserService,main:43 - Authentication Successful!
+12:16:24,112  INFO AdminService,main:28 - add professor function started
+12:16:24,180  INFO AdminDaoOperation,main:65 - Professor added to DB
+12:17:51,622  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:17:51,633 DEBUG UserService,main:43 - Authentication Successful!
+12:19:44,520  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:19:44,530 DEBUG UserService,main:43 - Authentication Successful!
+12:21:18,715  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:21:18,725 DEBUG UserService,main:43 - Authentication Successful!
+12:21:54,440  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:21:54,454 DEBUG UserService,main:43 - Authentication Successful!
+12:21:59,483  INFO CourseService,main:36 - you are adding this coursevdvd
+12:21:59,484  INFO CourseDaoOperation,main:43 - Fetching all the courses
+12:21:59,485  INFO CourseDaoOperation,main:57 - Fetched all the courses
+12:21:59,486  INFO CourseDaoOperation,main:138 - Adding course vdvd to catalog
+12:21:59,490  INFO CourseDaoOperation,main:150 - Course is added to catalog
+12:23:08,988  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:23:09,002 DEBUG UserService,main:43 - Authentication Successful!
+12:23:20,738  INFO CourseService,main:36 - you are adding this courseee
+12:23:20,739  INFO CourseDaoOperation,main:43 - Fetching all the courses
+12:23:20,742  INFO CourseDaoOperation,main:57 - Fetched all the courses
+12:23:20,742  INFO CourseDaoOperation,main:138 - Adding course ee to catalog
+12:23:20,761  INFO CourseDaoOperation,main:150 - Course is added to catalog
+12:24:22,246  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:24:22,259 DEBUG UserService,main:43 - Authentication Successful!
+12:24:29,348  INFO CourseService,main:36 - you are adding this courseeew
+12:24:29,348  INFO CourseDaoOperation,main:43 - Fetching all the courses
+12:24:29,351  INFO CourseDaoOperation,main:57 - Fetched all the courses
+12:24:29,351  INFO CourseDaoOperation,main:138 - Adding course eew to catalog
+12:24:29,355  INFO CourseDaoOperation,main:150 - Course is added to catalog
+12:37:27,398  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:37:27,427 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:39:15,759  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:39:15,773 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:39:27,293  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:39:27,295 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:40:20,588  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:40:20,591 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:43:45,605  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:43:45,617 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:44:13,293  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+12:44:13,302 ERROR UserService,main:62 - User Not Found with Email: admin@mail.com
+12:57:17,621  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:57:17,635 DEBUG UserService,main:43 - Authentication Successful!
+13:00:33,472  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:00:33,485 DEBUG UserService,main:43 - Authentication Successful!
+13:01:05,307  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:01:05,321 DEBUG UserService,main:43 - Authentication Successful!
+13:02:07,262  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:02:07,275 DEBUG UserService,main:43 - Authentication Successful!
+13:02:28,521  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:02:28,534 DEBUG UserService,main:43 - Authentication Successful!
+13:03:10,893  INFO AdminService,main:28 - add professor function started
+13:03:10,956  INFO AdminDaoOperation,main:65 - Professor added to DB
+13:51:16,293  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:51:16,306 DEBUG UserService,main:43 - Authentication Successful!
+13:52:02,107  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 96a601 teaches
+13:52:02,109  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:53:54,587  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 96a601 teaches
+13:53:54,588  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:54:17,953  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:54:17,967 DEBUG UserService,main:43 - Authentication Successful!
+13:54:19,190  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+13:54:19,191  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:54:19,192  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:54:19,233  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:54:19,235  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:54:19,236  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:54:19,237  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:55:19,653  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:55:19,666 DEBUG UserService,main:43 - Authentication Successful!
+13:55:21,885  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+13:55:21,886  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:55:21,888  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:55:21,890  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:55:21,891  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:55:21,893  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:55:21,895  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:56:15,679  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:56:15,692 DEBUG UserService,main:43 - Authentication Successful!
+13:56:17,202  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+13:56:17,203  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:56:17,205  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:56:17,207  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:56:17,208  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:56:17,209  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:56:17,210  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:56:59,970  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:56:59,984 DEBUG UserService,main:43 - Authentication Successful!
+13:57:01,174  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+13:57:01,175  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:57:01,176  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:57:01,179  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:57:01,180  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:57:01,181  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:57:01,183  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:58:49,551  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:58:49,564 ERROR UserService,main:48 - User Not Found: prof1@mail.com
+13:59:07,967  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:59:07,968 DEBUG UserService,main:43 - Authentication Successful!
+13:59:10,021  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+13:59:10,022  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:59:10,024  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:10,026  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:10,027  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:10,028  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:10,030  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:36,988  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:59:37,001 DEBUG UserService,main:43 - Authentication Successful!
+13:59:38,388  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+13:59:38,389  INFO CourseDaoOperation,main:81 - Fetched all courses
+13:59:38,390  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:38,393  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:38,395  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:38,396  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+13:59:38,398  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:01:17,468  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:01:17,481 DEBUG UserService,main:43 - Authentication Successful!
+14:04:29,283  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:04:29,296 DEBUG UserService,main:43 - Authentication Successful!
+14:05:05,883  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:05:05,896 DEBUG UserService,main:43 - Authentication Successful!
+14:05:52,405  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:05:52,419 DEBUG UserService,main:43 - Authentication Successful!
+14:05:56,995  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:05:56,997  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:05:56,999  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:05:57,001  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:05:57,003  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:05:57,004  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:05:57,006  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:06:34,082  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:06:34,083  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:06:34,084  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:06:34,085  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:06:34,087  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:06:34,127  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:06:34,128  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:09:57,504  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:09:57,518 DEBUG UserService,main:43 - Authentication Successful!
+14:09:59,796  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:09:59,797  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:09:59,798  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:09:59,800  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:09:59,801  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:09:59,802  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:09:59,804  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:10:26,543  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:10:26,544  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:12:30,257  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:12:30,267 ERROR UserService,main:48 - User Not Found: prof1@mail.com
+14:12:42,503  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:12:42,504 DEBUG UserService,main:43 - Authentication Successful!
+14:12:44,262  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:12:44,263  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:12:44,265  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:12:44,267  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:12:44,269  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:12:44,270  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:12:44,272  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:12:55,123  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:12:55,124  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:35:51,180  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:35:51,184  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:35:51,185  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:35:51,187  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:35:51,188  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:35:51,191  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:35:51,193  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:35:59,248  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:35:59,249  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:49:17,700  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:49:17,748 DEBUG UserService,main:43 - Authentication Successful!
+14:50:01,684  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:50:01,686 DEBUG UserService,main:43 - Authentication Successful!
+14:50:16,349  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:50:16,351  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:50:16,353  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:50:16,355  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:50:16,356  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:50:16,357  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:50:16,359  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:50:23,788  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:50:23,788  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:51:00,321  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:51:00,335 DEBUG UserService,main:43 - Authentication Successful!
+14:51:04,948  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:51:04,949  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:51:04,951  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:51:04,953  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:51:04,954  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:51:04,956  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:51:04,957  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+14:51:22,415  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:51:22,416  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:51:36,747  INFO CourseDaoOperation,main:43 - Fetching all the courses
+14:51:36,749  INFO CourseDaoOperation,main:57 - Fetched all the courses
+14:52:47,879  INFO CourseDaoOperation,main:114 - Allocating professor100to that course109
+14:53:33,320  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:53:33,333 DEBUG UserService,main:43 - Authentication Successful!
+14:53:37,118  INFO CourseDaoOperation,main:43 - Fetching all the courses
+14:53:37,121  INFO CourseDaoOperation,main:57 - Fetched all the courses
+14:53:44,941  INFO CourseDaoOperation,main:114 - Allocating professor100to that course107
+14:56:13,044  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:56:13,057 DEBUG UserService,main:43 - Authentication Successful!
+14:56:20,139  INFO CourseDaoOperation,main:43 - Fetching all the courses
+14:56:20,141  INFO CourseDaoOperation,main:57 - Fetched all the courses
+14:56:28,223  INFO CourseDaoOperation,main:114 - Allocating professor100to that course100
+14:58:06,088  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+14:58:06,090  INFO CourseDaoOperation,main:81 - Fetched all courses
+14:58:06,090  INFO CourseDaoOperation,main:183 - Getting course for CourseID:100
+14:58:06,091  INFO CourseDaoOperation,main:183 - Getting course for CourseID:101
+14:58:06,093  INFO CourseDaoOperation,main:183 - Getting course for CourseID:102
+14:58:06,093  INFO CourseDaoOperation,main:183 - Getting course for CourseID:103
+14:58:06,094  INFO CourseDaoOperation,main:183 - Getting course for CourseID:104
+14:58:06,095  INFO CourseDaoOperation,main:183 - Getting course for CourseID:107
+14:58:06,096  INFO CourseDaoOperation,main:183 - Getting course for CourseID:109
+15:01:24,182  INFO UserService,main:30 - Inside UserService: Authentication Started!
+15:01:24,240 DEBUG UserService,main:43 - Authentication Successful!
+15:01:27,579  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+15:01:27,580  INFO CourseDaoOperation,main:81 - Fetched all courses
+15:01:27,581  INFO CourseDaoOperation,main:183 - Getting course for CourseID:100
+15:01:27,583  INFO CourseDaoOperation,main:183 - Getting course for CourseID:101
+15:01:27,584  INFO CourseDaoOperation,main:183 - Getting course for CourseID:102
+15:01:27,585  INFO CourseDaoOperation,main:183 - Getting course for CourseID:103
+15:01:27,587  INFO CourseDaoOperation,main:183 - Getting course for CourseID:104
+15:01:27,587  INFO CourseDaoOperation,main:183 - Getting course for CourseID:107
+15:01:27,588  INFO CourseDaoOperation,main:183 - Getting course for CourseID:109
+15:02:49,881  INFO UserService,main:30 - Inside UserService: Authentication Started!
+15:02:49,894 DEBUG UserService,main:43 - Authentication Successful!
+15:02:51,608  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+15:02:51,609  INFO CourseDaoOperation,main:81 - Fetched all courses
+15:02:51,610  INFO CourseDaoOperation,main:183 - Getting course for CourseID:100
+15:02:51,612  INFO CourseDaoOperation,main:183 - Getting course for CourseID:101
+15:02:51,613  INFO CourseDaoOperation,main:183 - Getting course for CourseID:102
+15:02:51,613  INFO CourseDaoOperation,main:183 - Getting course for CourseID:103
+15:02:51,615  INFO CourseDaoOperation,main:183 - Getting course for CourseID:104
+15:02:51,616  INFO CourseDaoOperation,main:183 - Getting course for CourseID:107
+15:02:51,617  INFO CourseDaoOperation,main:183 - Getting course for CourseID:109
+15:03:22,866  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+15:03:22,866  INFO CourseDaoOperation,main:81 - Fetched all courses
+15:03:22,866  INFO CourseDaoOperation,main:183 - Getting course for CourseID:100
+15:03:22,868  INFO CourseDaoOperation,main:183 - Getting course for CourseID:101
+15:03:22,868  INFO CourseDaoOperation,main:183 - Getting course for CourseID:102
+15:03:22,873  INFO CourseDaoOperation,main:183 - Getting course for CourseID:103
+15:03:22,874  INFO CourseDaoOperation,main:183 - Getting course for CourseID:104
+15:03:22,877  INFO CourseDaoOperation,main:183 - Getting course for CourseID:107
+15:03:22,878  INFO CourseDaoOperation,main:183 - Getting course for CourseID:109
+15:11:53,031  INFO UserService,main:30 - Inside UserService: Authentication Started!
+15:11:53,044 DEBUG UserService,main:43 - Authentication Successful!
+15:11:57,856  INFO CourseDaoOperation,main:69 - Fetching all courses that the professor 100 teaches
+15:11:57,858  INFO CourseDaoOperation,main:81 - Fetched all courses
+15:11:57,859  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+15:11:57,861  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+15:11:57,863  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+15:11:57,864  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+15:11:57,865  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+15:11:57,866  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+15:11:57,867  INFO RegisteredCourseDaoOperation,main:41 - printEnrolledStudentInThatCourse started
+15:12:07,400  INFO CourseDaoOperation,main:43 - Fetching all the courses
+15:12:07,402  INFO CourseDaoOperation,main:57 - Fetched all the courses
+15:13:35,446  INFO UserService,main:30 - Inside UserService: Authentication Started!
+15:13:35,459 DEBUG UserService,main:43 - Authentication Successful!
+15:13:38,061  INFO CourseDaoOperation,main:43 - Fetching all the courses
+15:13:38,063  INFO CourseDaoOperation,main:57 - Fetched all the courses
+15:14:24,707  INFO CourseDaoOperation,main:114 - Allocating professor100to that coursek
+15:14:24,712  INFO CourseDaoOperation,main:125 - Professor 100 is allocated to the course+ k
+15:17:19,360  INFO UserService,main:30 - Inside UserService: Authentication Started!
+15:17:19,372 DEBUG UserService,main:43 - Authentication Successful!
+15:17:29,201  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+15:17:29,202 DEBUG UserService,main:81 - User Checked!
+15:19:02,301  INFO UserService,main:30 - Inside UserService: Authentication Started!
+15:19:02,311 DEBUG UserService,main:43 - Authentication Successful!
+15:19:07,200  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+15:19:07,201 DEBUG UserService,main:81 - User Checked!
+15:19:16,679  INFO UserService,main:69 - Inside UserService: In createNewPassword Functionality!
+15:19:16,729  INFO UserService,main:72 - Password Updated!
+17:05:01,990  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:05:02,005 DEBUG UserDaoOperation,main:178 - Student is approved
+17:05:13,144 DEBUG StudentDaoOperation,main:109 - student id is 0379fd
+17:05:17,334 ERROR StudentService,main:56 - Student not found : 0379fd
+17:05:17,489  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =4
+17:05:17,489  INFO CourseDaoOperation,main:107 - Fetched all courses
+17:08:15,377  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:08:15,380 DEBUG UserService,main:43 - Authentication Successful!
+17:08:24,815  INFO AdminService,main:48 - Approve all students function started
+17:08:24,821 ERROR AdminService,main:54 - No Student left for approval
+17:08:52,741  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:08:52,743 DEBUG UserDaoOperation,main:186 - student is not approved
+17:09:42,711  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:09:42,712 DEBUG UserService,main:43 - Authentication Successful!
+17:09:47,984  INFO AdminService,main:59 - Approve students One By One function started
+17:10:07,792  INFO AdminDaoOperation,main:111 - This student is approved!
+17:10:07,832  INFO AdminDaoOperation,main:122 - Student is approved!
+17:10:11,620  INFO AdminDaoOperation,main:111 - This student is approved!
+17:10:11,661  INFO AdminDaoOperation,main:122 - Student is approved!
+17:10:12,549  INFO AdminDaoOperation,main:111 - This student is approved!
+17:10:12,551  INFO AdminDaoOperation,main:122 - Student is approved!
+17:10:13,118  INFO AdminDaoOperation,main:111 - This student is approved!
+17:10:13,120  INFO AdminDaoOperation,main:122 - Student is approved!
+17:10:14,219  INFO AdminDaoOperation,main:111 - This student is approved!
+17:10:14,221  INFO AdminDaoOperation,main:122 - Student is approved!
+17:10:14,649  INFO AdminDaoOperation,main:111 - This student is approved!
+17:10:14,690  INFO AdminDaoOperation,main:122 - Student is approved!
+17:10:33,133  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:10:33,146 ERROR UserService,main:48 - User Not Found: aadarshcool@gmail.com
+17:11:04,073  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:11:04,074 ERROR UserService,main:48 - User Not Found: aadarshcool@gmail.com
+17:11:43,354  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:11:43,356 DEBUG UserDaoOperation,main:178 - Student is approved
+17:12:08,377 DEBUG StudentDaoOperation,main:109 - student id is 43c0d5
+17:12:10,022 ERROR StudentService,main:56 - Student not found : 43c0d5
+17:12:10,090  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+17:12:10,092  INFO CourseDaoOperation,main:107 - Fetched all courses
+17:16:33,526 DEBUG RegisteredCourseDaoOperation,main:208 - 4c5ba45b-e
+17:17:48,527  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:17:48,530 DEBUG UserDaoOperation,main:186 - student is not approved
+17:18:53,686  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:18:53,725 DEBUG UserService,main:43 - Authentication Successful!
+17:19:11,323  INFO AdminService,main:48 - Approve all students function started
+17:19:11,334 ERROR AdminService,main:54 - No Student left for approval
+17:19:23,647  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:19:23,648 DEBUG UserDaoOperation,main:186 - student is not approved
+17:19:43,708  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:19:43,710 DEBUG UserDaoOperation,main:186 - student is not approved
+17:20:00,382  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:20:00,383 DEBUG UserService,main:43 - Authentication Successful!
+17:20:04,640  INFO AdminService,main:59 - Approve students One By One function started
+17:20:05,923  INFO AdminDaoOperation,main:111 - This student is approved!
+17:20:05,962  INFO AdminDaoOperation,main:122 - Student is approved!
+17:20:22,976  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:20:22,978 DEBUG UserDaoOperation,main:178 - Student is approved
+17:20:25,117 DEBUG StudentDaoOperation,main:109 - student id is 20a8b7
+17:20:29,524 ERROR StudentService,main:56 - Student not found : 20a8b7
+17:20:29,527  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+17:20:29,529  INFO CourseDaoOperation,main:108 - Fetched all courses
+17:21:16,684 DEBUG RegisteredCourseDaoOperation,main:208 - b5a26c59-2
+17:22:37,541 DEBUG RegisteredCourseDaoOperation,main:208 - 7ecff36c-e
+17:25:34,447  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:25:34,461 ERROR UserService,main:48 - User Not Found: abcd@mail.com
+17:25:48,956  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:25:48,957 DEBUG UserDaoOperation,main:178 - Student is approved
+17:25:50,764 DEBUG StudentDaoOperation,main:109 - student id is 20a8b7
+17:25:55,239 ERROR StudentService,main:56 - Student not found : 20a8b7
+17:26:09,003 DEBUG StudentDaoOperation,main:109 - student id is 20a8b7
+17:26:41,512  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:26:41,513 DEBUG UserService,main:43 - Authentication Successful!
+17:26:49,497  INFO AdminService,main:59 - Approve students One By One function started
+17:26:54,041  INFO AdminDaoOperation,main:111 - This student is approved!
+17:26:54,080  INFO AdminDaoOperation,main:122 - Student is approved!
+17:27:09,709  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:27:09,710 DEBUG UserDaoOperation,main:178 - Student is approved
+17:27:16,676 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+17:27:18,152 ERROR StudentService,main:56 - Student not found : a83a5c
+17:27:18,155  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+17:27:18,159  INFO CourseDaoOperation,main:108 - Fetched all courses
+17:27:21,829 DEBUG RegisteredCourseDaoOperation,main:208 - dd0a1a18-1
+17:27:37,215 DEBUG RegisteredCourseDaoOperation,main:208 - 4dbfb496-0
+17:27:45,444 DEBUG RegisteredCourseDaoOperation,main:208 - 855ace5b-5
+17:27:47,342 DEBUG RegisteredCourseDaoOperation,main:208 - 3ee2e7e3-c
+17:27:49,416 DEBUG RegisteredCourseDaoOperation,main:208 - 265eb617-5
+17:27:52,472 DEBUG RegisteredCourseDaoOperation,main:208 - 483510bd-c
+17:28:47,488 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+17:31:56,265 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+17:33:28,690  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:33:28,703 ERROR UserService,main:48 - User Not Found: abc@gmail.com
+17:33:37,016  INFO UserService,main:30 - Inside UserService: Authentication Started!
+17:33:37,018 DEBUG UserDaoOperation,main:178 - Student is approved
+17:33:39,740 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+17:33:53,232 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+17:33:53,233  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+17:33:53,235  INFO CourseDaoOperation,main:108 - Fetched all courses
+17:33:57,029 DEBUG RegisteredCourseDaoOperation,main:208 - 009b911a-2
+17:34:02,614 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+17:34:02,615  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+17:34:02,617  INFO CourseDaoOperation,main:108 - Fetched all courses
+17:34:05,674 DEBUG RegisteredCourseDaoOperation,main:208 - db8089d8-e
+17:34:19,274 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+17:34:19,276  INFO GradeCardDaoOperation,main:102 - Creating gradeCard for student a83a5c semester 1
+17:34:19,315  INFO GradeCardDaoOperation,main:137 - Fetching gradeCard for Student a83a5c semester 1
+17:34:19,320  INFO StudentDaoOperation,main:168 - Getting student name for StudentID:a83a5c
+17:34:19,339  INFO CourseDaoOperation,main:186 - Getting course for CourseID:101
+17:34:19,345  INFO CourseDaoOperation,main:186 - Getting course for CourseID:105
+17:34:19,348  INFO CourseDaoOperation,main:186 - Getting course for CourseID:104
+17:34:19,349  INFO CourseDaoOperation,main:186 - Getting course for CourseID:106
+17:34:19,351  INFO CourseDaoOperation,main:186 - Getting course for CourseID:103
+17:34:19,352  INFO CourseDaoOperation,main:186 - Getting course for CourseID:newneew
+18:45:12,241  INFO UserService,main:30 - Inside UserService: Authentication Started!
+18:45:12,256 DEBUG UserDaoOperation,main:178 - Student is approved
+18:45:15,669 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:45:24,795 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:45:24,796  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+18:45:24,799  INFO CourseDaoOperation,main:108 - Fetched all courses
+18:45:35,066 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:46:06,677 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:46:06,678  INFO GradeCardDaoOperation,main:102 - Creating gradeCard for student a83a5c semester 1
+18:46:06,681  INFO GradeCardDaoOperation,main:137 - Fetching gradeCard for Student a83a5c semester 1
+18:46:06,686  INFO StudentDaoOperation,main:168 - Getting student name for StudentID:a83a5c
+18:46:06,698  INFO CourseDaoOperation,main:186 - Getting course for CourseID:101
+18:46:06,701  INFO CourseDaoOperation,main:186 - Getting course for CourseID:105
+18:46:06,703  INFO CourseDaoOperation,main:186 - Getting course for CourseID:104
+18:46:06,704  INFO CourseDaoOperation,main:186 - Getting course for CourseID:106
+18:46:06,705  INFO CourseDaoOperation,main:186 - Getting course for CourseID:103
+18:46:06,706  INFO CourseDaoOperation,main:186 - Getting course for CourseID:newneew
+18:50:05,210  INFO UserService,main:30 - Inside UserService: Authentication Started!
+18:50:05,224 DEBUG UserDaoOperation,main:178 - Student is approved
+18:50:09,861 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:50:09,862  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+18:50:09,865  INFO CourseDaoOperation,main:108 - Fetched all courses
+18:50:34,333 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:52:22,337  INFO UserService,main:30 - Inside UserService: Authentication Started!
+18:52:22,350 DEBUG UserDaoOperation,main:178 - Student is approved
+18:52:25,648 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:52:43,713 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+18:52:43,715  INFO GradeCardDaoOperation,main:102 - Creating gradeCard for student a83a5c semester 1
+18:52:43,720  INFO GradeCardDaoOperation,main:137 - Fetching gradeCard for Student a83a5c semester 1
+18:52:43,724  INFO StudentDaoOperation,main:168 - Getting student name for StudentID:a83a5c
+18:52:43,739  INFO CourseDaoOperation,main:186 - Getting course for CourseID:101
+18:52:43,741  INFO CourseDaoOperation,main:186 - Getting course for CourseID:105
+18:52:43,743  INFO CourseDaoOperation,main:186 - Getting course for CourseID:104
+18:52:43,745  INFO CourseDaoOperation,main:186 - Getting course for CourseID:106
+18:52:43,746  INFO CourseDaoOperation,main:186 - Getting course for CourseID:103
+18:52:43,747  INFO CourseDaoOperation,main:186 - Getting course for CourseID:newneew
+19:05:09,281  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:05:09,296 ERROR UserService,main:48 - User Not Found: abc@mail
+19:05:46,570  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:05:46,584 DEBUG UserDaoOperation,main:178 - Student is approved
+19:05:50,088 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+19:05:50,089  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+19:05:50,092  INFO CourseDaoOperation,main:108 - Fetched all courses
+19:16:55,691  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:16:55,700 DEBUG UserDaoOperation,main:178 - Student is approved
+19:17:00,142 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+19:17:13,954 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+19:17:29,026 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+19:17:35,434 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+19:17:35,435  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+19:17:35,437  INFO CourseDaoOperation,main:108 - Fetched all courses
+19:17:37,887  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:17:37,889  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:17:44,750 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+19:17:44,751  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+19:17:44,754  INFO CourseDaoOperation,main:108 - Fetched all courses
+19:17:50,589  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:17:50,591  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:17:50,709 DEBUG RegisteredCourseDaoOperation,main:208 - 27a302c7-8
+19:34:25,777  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:34:25,787 DEBUG UserDaoOperation,main:178 - Student is approved
+19:34:28,710 DEBUG StudentDaoOperation,main:109 - student id is a83a5c
+19:34:28,712  INFO GradeCardDaoOperation,main:102 - Creating gradeCard for student a83a5c semester 1
+19:34:28,714  INFO GradeCardDaoOperation,main:137 - Fetching gradeCard for Student a83a5c semester 1
+19:34:28,717  INFO CourseDaoOperation,main:186 - Getting course for CourseID:105
+19:34:28,740  INFO CourseDaoOperation,main:186 - Getting course for CourseID:108
+19:34:28,741  INFO CourseDaoOperation,main:186 - Getting course for CourseID:104
+19:34:28,742  INFO CourseDaoOperation,main:186 - Getting course for CourseID:106
+19:34:28,742  INFO CourseDaoOperation,main:186 - Getting course for CourseID:103
+19:34:28,744  INFO CourseDaoOperation,main:186 - Getting course for CourseID:newneew
+19:36:58,379  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:36:58,382 DEBUG UserService,main:43 - Authentication Successful!
+19:37:09,738  INFO AdminService,main:59 - Approve students One By One function started
+19:37:11,231  INFO AdminDaoOperation,main:111 - This student is approved!
+19:37:11,256  INFO AdminDaoOperation,main:122 - Student is approved!
+19:37:24,532  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:37:24,534 DEBUG UserDaoOperation,main:178 - Student is approved
+19:37:26,189 DEBUG StudentDaoOperation,main:109 - student id is cf2a1d
+19:37:27,533 ERROR StudentService,main:59 - Student not found : cf2a1d
+19:37:27,536  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+19:37:27,538  INFO CourseDaoOperation,main:108 - Fetched all courses
+19:37:34,293  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:37:34,295  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:37:34,298 DEBUG RegisteredCourseDaoOperation,main:208 - 11af9eb2-0
+19:37:38,095  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:37:38,096  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:37:42,388  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:37:42,390  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:37:42,393 DEBUG RegisteredCourseDaoOperation,main:208 - 72cf6000-7
+19:37:44,790  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:37:44,792  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:37:44,794 DEBUG RegisteredCourseDaoOperation,main:208 - c483132a-e
+19:37:46,428  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:37:46,429  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:37:46,431 DEBUG RegisteredCourseDaoOperation,main:208 - a71c0ef0-1
+19:37:48,607  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:37:48,608  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:37:48,610 DEBUG RegisteredCourseDaoOperation,main:208 - 8d7e2c1a-e
+19:37:50,442  INFO CourseDaoOperation,main:44 - Fetching all the courses
+19:37:50,443  INFO CourseDaoOperation,main:58 - Fetched all the courses
+19:37:50,445 DEBUG RegisteredCourseDaoOperation,main:208 - 3059bb35-3
+19:37:53,497 DEBUG StudentDaoOperation,main:109 - student id is cf2a1d
+19:37:53,499  INFO GradeCardDaoOperation,main:102 - Creating gradeCard for student cf2a1d semester 1
+19:37:53,501  INFO GradeCardDaoOperation,main:137 - Fetching gradeCard for Student cf2a1d semester 1
+19:37:53,504  INFO CourseDaoOperation,main:186 - Getting course for CourseID:100
+19:37:53,514  INFO CourseDaoOperation,main:186 - Getting course for CourseID:105
+19:37:53,515  INFO CourseDaoOperation,main:186 - Getting course for CourseID:101
+19:37:53,516  INFO CourseDaoOperation,main:186 - Getting course for CourseID:104
+19:37:53,517  INFO CourseDaoOperation,main:186 - Getting course for CourseID:103
+19:37:53,517  INFO CourseDaoOperation,main:186 - Getting course for CourseID:102
+19:39:13,673 DEBUG StudentDaoOperation,main:109 - student id is cf2a1d
+19:39:49,267  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:39:49,268 DEBUG UserService,main:43 - Authentication Successful!
+19:40:23,884  INFO AdminService,main:48 - Approve all students function started
+19:40:23,893 ERROR AdminService,main:54 - No Student left for approval
+19:40:35,604  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:40:35,606 DEBUG UserDaoOperation,main:186 - student is not approved
+19:42:05,171  INFO UserService,main:30 - Inside UserService: Authentication Started!
+19:42:05,173 DEBUG UserDaoOperation,main:186 - student is not approved
+20:04:59,273  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:04:59,284 DEBUG UserDaoOperation,main:186 - student is not approved
+20:05:19,308  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:05:19,309 DEBUG UserService,main:43 - Authentication Successful!
+20:05:27,038  INFO AdminService,main:48 - Approve all students function started
+20:05:27,048 ERROR AdminService,main:54 - No Student left for approval
+20:05:53,001  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:05:53,003 DEBUG UserDaoOperation,main:186 - student is not approved
+20:06:07,734  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:06:07,735 DEBUG UserService,main:43 - Authentication Successful!
+20:06:13,559  INFO AdminService,main:59 - Approve students One By One function started
+20:06:15,028  INFO AdminDaoOperation,main:111 - This student is approved!
+20:06:15,035  INFO AdminDaoOperation,main:122 - Student is approved!
+20:09:15,767  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:09:15,777 DEBUG UserService,main:43 - Authentication Successful!
+20:09:20,986  INFO AdminService,main:48 - Approve all students function started
+20:09:21,001  INFO AdminDaoOperation,main:93 - All Students are approved!
+20:09:21,001 ERROR AdminService,main:54 - No Student left for approval
+20:09:31,343  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:09:31,345 DEBUG UserDaoOperation,main:178 - Student is approved
+20:21:23,825 DEBUG StudentDaoOperation,main:109 - student id is a5612c
+20:21:31,773  INFO UserService,main:30 - Inside UserService: Authentication Started!
+20:21:31,774 DEBUG UserService,main:43 - Authentication Successful!
+20:21:35,510  INFO AdminService,main:48 - Approve all students function started
+20:21:35,524  INFO AdminDaoOperation,main:93 - All Students are approved!
+20:21:35,525 ERROR AdminService,main:54 - No Student left for approval
+21:25:00,151  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:25:00,161 DEBUG UserService,main:43 - Authentication Successful!
+21:27:30,924  INFO CourseService,main:36 - you are adding this courseMaths
+21:27:30,925  INFO CourseDaoOperation,main:44 - Fetching all the courses
+21:27:30,926  INFO CourseDaoOperation,main:58 - Fetched all the courses
+21:27:30,926  INFO CourseDaoOperation,main:138 - Adding course Maths to catalog
+21:27:30,942  INFO CourseDaoOperation,main:150 - Course is added to catalog
+21:39:58,172  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:39:58,182 DEBUG UserService,main:43 - Authentication Successful!
+21:40:10,165  INFO CourseService,main:36 - you are adding this courseMaths
+21:40:10,165  INFO CourseDaoOperation,main:44 - Fetching all the courses
+21:40:10,166  INFO CourseDaoOperation,main:58 - Fetched all the courses
+21:40:10,166  INFO CourseDaoOperation,main:138 - Adding course Maths to catalog
+21:40:10,181  INFO CourseDaoOperation,main:150 - Course is added to catalog
+21:42:34,377  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:42:34,378 DEBUG UserService,main:43 - Authentication Successful!
+21:42:39,907  INFO AdminService,main:49 - Approve all students function started
+21:42:39,920  INFO AdminDaoOperation,main:104 - All Students are approved!
+21:42:39,921 ERROR AdminService,main:56 - No Student left for approval
+21:42:52,304  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:42:52,306 DEBUG UserDaoOperation,main:177 - Student is approved
+21:42:57,856 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:42:57,857  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+21:42:57,858  INFO CourseDaoOperation,main:108 - Fetched all courses
+21:44:53,616 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:45:02,523 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:45:13,711  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:45:13,712 DEBUG UserService,main:43 - Authentication Successful!
+21:45:29,488  INFO CourseService,main:36 - you are adding this courseEnglish
+21:45:29,489  INFO CourseDaoOperation,main:44 - Fetching all the courses
+21:45:29,491  INFO CourseDaoOperation,main:58 - Fetched all the courses
+21:45:29,491  INFO CourseDaoOperation,main:138 - Adding course English to catalog
+21:45:29,505  INFO CourseDaoOperation,main:150 - Course is added to catalog
+21:45:48,973  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:45:48,975 DEBUG UserDaoOperation,main:177 - Student is approved
+21:45:51,679 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:45:51,680  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+21:45:51,682  INFO CourseDaoOperation,main:108 - Fetched all courses
+21:47:16,235  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:47:16,245 DEBUG UserDaoOperation,main:177 - Student is approved
+21:47:21,792 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:47:21,794  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+21:47:21,795  INFO CourseDaoOperation,main:109 - Fetched all courses
+21:47:35,273 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:47:48,670  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:47:48,671 DEBUG UserService,main:43 - Authentication Successful!
+21:48:08,177  INFO CourseService,main:36 - you are adding this coursePhysics
+21:48:08,178  INFO CourseDaoOperation,main:44 - Fetching all the courses
+21:48:08,180  INFO CourseDaoOperation,main:58 - Fetched all the courses
+21:48:08,180  INFO CourseDaoOperation,main:139 - Adding course Physics to catalog
+21:48:08,185  INFO CourseDaoOperation,main:151 - Course is added to catalog
+21:48:24,317  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:48:24,319 DEBUG UserDaoOperation,main:177 - Student is approved
+21:48:26,551 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:48:26,551  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+21:48:26,553  INFO CourseDaoOperation,main:109 - Fetched all courses
+21:50:29,241  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:50:29,250 DEBUG UserService,main:43 - Authentication Successful!
+21:50:46,556  INFO CourseService,main:36 - you are adding this courseBiology
+21:50:46,557  INFO CourseDaoOperation,main:44 - Fetching all the courses
+21:50:46,559  INFO CourseDaoOperation,main:58 - Fetched all the courses
+21:50:46,560  INFO CourseDaoOperation,main:139 - Adding course Biology to catalog
+21:50:46,574  INFO CourseDaoOperation,main:151 - Course is added to catalog
+21:51:19,259  INFO UserService,main:30 - Inside UserService: Authentication Started!
+21:51:19,261 DEBUG UserDaoOperation,main:177 - Student is approved
+21:51:23,127 DEBUG StudentDaoOperation,main:109 - student id is 714859
+21:51:23,128  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+21:51:23,129  INFO CourseDaoOperation,main:109 - Fetched all courses
+21:51:56,886 DEBUG StudentDaoOperation,main:109 - student id is 714859
+22:07:05,487  INFO UserService,main:30 - Inside UserService: Authentication Started!
+22:07:05,497 DEBUG UserService,main:43 - Authentication Successful!
+22:07:28,806  INFO CourseService,main:36 - you are adding this courseHindi
+22:07:28,807  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:07:28,820  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:07:28,820  INFO CourseDaoOperation,main:139 - Adding course Hindi to catalog
+22:07:28,825  INFO CourseDaoOperation,main:151 - Course is added to catalog
+22:07:41,210  INFO CourseService,main:36 - you are adding this courseEVS
+22:07:41,211  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:07:41,212  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:07:41,212  INFO CourseDaoOperation,main:139 - Adding course EVS to catalog
+22:07:41,225  INFO CourseDaoOperation,main:151 - Course is added to catalog
+22:07:53,779  INFO CourseService,main:36 - you are adding this courseChemistry
+22:07:53,779  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:07:53,780  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:07:53,780  INFO CourseDaoOperation,main:139 - Adding course Chemistry to catalog
+22:07:53,782  INFO CourseDaoOperation,main:151 - Course is added to catalog
+22:08:48,244  INFO UserService,main:30 - Inside UserService: Authentication Started!
+22:08:48,254 DEBUG UserDaoOperation,main:177 - Student is approved
+22:08:51,005 DEBUG StudentDaoOperation,main:109 - student id is 714859
+22:08:53,062 ERROR StudentService,main:59 - Student not found : 714859
+22:08:53,105  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+22:08:53,106  INFO CourseDaoOperation,main:109 - Fetched all courses
+22:14:33,054  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:14:33,056  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:14:33,061 DEBUG RegisteredCourseDaoOperation,main:208 - 75b6d113-f
+22:14:47,569  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:14:47,570  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:14:47,571 DEBUG RegisteredCourseDaoOperation,main:208 - 8c13f065-c
+22:15:02,705  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:15:02,706  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:15:02,707 DEBUG RegisteredCourseDaoOperation,main:208 - 6075c138-f
+22:15:21,624  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:15:21,626  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:15:21,627 DEBUG RegisteredCourseDaoOperation,main:208 - f5568c0d-1
+22:15:37,913  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:15:37,915  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:15:37,917 DEBUG RegisteredCourseDaoOperation,main:208 - 24dd35a8-e
+22:15:39,540  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:15:39,541  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:15:55,214  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:15:55,216  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:15:55,217 DEBUG RegisteredCourseDaoOperation,main:208 - 6cd5c0c2-c
+22:54:37,602 DEBUG StudentDaoOperation,main:109 - student id is 714859
+22:54:37,605  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+22:54:37,606  INFO CourseDaoOperation,main:109 - Fetched all courses
+22:54:46,387  INFO CourseDaoOperation,main:44 - Fetching all the courses
+22:54:46,388  INFO CourseDaoOperation,main:58 - Fetched all the courses
+22:55:04,234 DEBUG StudentDaoOperation,main:109 - student id is 714859
+22:55:13,248 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:00:32,253 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:00:32,266  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+23:00:32,267  INFO CourseDaoOperation,main:109 - Fetched all courses
+23:01:11,264 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:01:54,317  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:01:54,318 DEBUG UserService,main:43 - Authentication Successful!
+23:01:59,974  INFO AdminService,main:62 - Approve students One By One function started
+23:02:02,562  INFO AdminDaoOperation,main:122 - This student is approved!
+23:02:02,575  INFO AdminDaoOperation,main:133 - Student is approved!
+23:02:17,492  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:02:17,494 DEBUG UserDaoOperation,main:177 - Student is approved
+23:02:20,886 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:02:22,788 ERROR StudentService,main:59 - Student not found : 1de8a2
+23:02:22,792  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =2
+23:02:22,793  INFO CourseDaoOperation,main:109 - Fetched all courses
+23:02:39,773  INFO CourseDaoOperation,main:44 - Fetching all the courses
+23:02:39,775  INFO CourseDaoOperation,main:58 - Fetched all the courses
+23:02:39,777 DEBUG RegisteredCourseDaoOperation,main:208 - 718febdf-d
+23:02:42,175  INFO CourseDaoOperation,main:44 - Fetching all the courses
+23:02:42,176  INFO CourseDaoOperation,main:58 - Fetched all the courses
+23:02:58,704  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:02:58,718 DEBUG UserDaoOperation,main:177 - Student is approved
+23:03:01,962 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:04:03,217 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:04:03,218  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =2
+23:04:03,219  INFO CourseDaoOperation,main:109 - Fetched all courses
+23:04:06,462  INFO CourseDaoOperation,main:44 - Fetching all the courses
+23:04:06,465  INFO CourseDaoOperation,main:58 - Fetched all the courses
+23:04:19,046 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:04:19,047  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =2
+23:04:19,048  INFO CourseDaoOperation,main:109 - Fetched all courses
+23:04:23,177 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:04:59,691  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:04:59,700 DEBUG UserDaoOperation,main:177 - Student is approved
+23:05:03,548 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:05:16,379 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:05:16,382  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 1de8a2 semester 2
+23:05:16,402  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 1de8a2 semester 2
+23:05:16,409  INFO CourseDaoOperation,main:181 - Getting course for CourseID:a296b0
+23:05:36,122 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:05:39,103  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+23:05:39,126 DEBUG UserService,main:81 - User Checked!
+23:06:05,374 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:06:07,548  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+23:06:07,548 DEBUG UserService,main:81 - User Checked!
+23:06:31,924 DEBUG StudentDaoOperation,main:109 - student id is 1de8a2
+23:06:48,486  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+23:06:48,489 ERROR UserService,main:60 - Wrong Phone Number for Email: aadarsh@mail.com
+23:08:52,315  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:08:52,316 DEBUG UserService,main:43 - Authentication Successful!
+23:09:16,214  INFO AdminService,main:28 - add professor function started
+23:09:16,270  INFO AdminDaoOperation,main:77 - Professor added to DB
+23:09:45,597  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+23:09:45,599 DEBUG UserService,main:58 - User Found!
+23:10:00,363  INFO UserService,main:69 - Inside UserService: In createNewPassword Functionality!
+23:10:00,365  INFO UserService,main:72 - Password Updated!
+23:11:03,256  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+23:11:03,258 ERROR UserService,main:60 - Wrong Phone Number for Email: aadarsh@mail.com
+23:11:57,707  INFO UserService,main:54 - Inside UserService: In forgotPassword Functionality!
+23:11:57,707 DEBUG UserService,main:58 - User Found!
+23:12:17,485  INFO UserService,main:69 - Inside UserService: In createNewPassword Functionality!
+23:12:17,486  INFO UserService,main:72 - Password Updated!
+23:13:04,913  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:13:04,914 DEBUG UserDaoOperation,main:177 - Student is approved
+23:13:09,023 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:13:12,767  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+23:13:12,767 DEBUG UserService,main:81 - User Checked!
+23:14:05,622  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:14:05,630 ERROR UserService,main:46 - Wrong Password for Email: prof1@mail.com
+23:14:18,838  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:14:18,840 DEBUG UserService,main:43 - Authentication Successful!
+23:14:20,633  INFO CourseDaoOperation,main:70 - Fetching all courses that the professor 709ec0 teaches
+23:14:20,634  INFO CourseDaoOperation,main:82 - Fetched all courses
+23:14:29,035  INFO CourseDaoOperation,main:44 - Fetching all the courses
+23:14:29,037  INFO CourseDaoOperation,main:58 - Fetched all the courses
+23:14:44,904  INFO CourseDaoOperation,main:118 - Allocating professor709ec0to that course1c00aa
+23:14:49,709  INFO CourseDaoOperation,main:44 - Fetching all the courses
+23:14:49,710  INFO CourseDaoOperation,main:58 - Fetched all the courses
+23:14:57,138  INFO CourseDaoOperation,main:118 - Allocating professor709ec0to that course4ecc61
+23:15:00,876  INFO CourseDaoOperation,main:70 - Fetching all courses that the professor 709ec0 teaches
+23:15:00,878  INFO CourseDaoOperation,main:82 - Fetched all courses
+23:15:00,878  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+23:15:00,880  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+23:15:16,959  INFO CourseDaoOperation,main:70 - Fetching all courses that the professor 709ec0 teaches
+23:15:16,960  INFO CourseDaoOperation,main:82 - Fetched all courses
+23:15:16,961  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+23:15:16,966  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+23:15:26,413  INFO CourseDaoOperation,main:70 - Fetching all courses that the professor 709ec0 teaches
+23:15:26,414  INFO CourseDaoOperation,main:82 - Fetched all courses
+23:15:26,415  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+23:15:26,417  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+23:15:53,247  INFO CourseDaoOperation,main:70 - Fetching all courses that the professor 709ec0 teaches
+23:15:53,249  INFO CourseDaoOperation,main:82 - Fetched all courses
+23:17:12,505  INFO CourseDaoOperation,main:70 - Fetching all courses that the professor 709ec0 teaches
+23:17:12,506  INFO CourseDaoOperation,main:82 - Fetched all courses
+23:17:12,507  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+23:17:12,508  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+23:17:32,490  INFO CourseDaoOperation,main:70 - Fetching all courses that the professor 709ec0 teaches
+23:17:32,491  INFO CourseDaoOperation,main:82 - Fetched all courses
+23:17:56,607  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:17:56,608 ERROR UserService,main:46 - Wrong Password for Email: aadarsh@mail.com
+23:18:10,390  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:18:10,392 DEBUG UserDaoOperation,main:177 - Student is approved
+23:18:13,364 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:18:13,366  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+23:18:13,368  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+23:18:13,372  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+23:18:13,380  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+23:18:13,381  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+23:18:13,382  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+23:18:13,383  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+23:26:08,267 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:26:16,930  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:26:16,931 DEBUG UserService,main:43 - Authentication Successful!
+23:26:21,841  INFO AdminService,main:74 - Generate report card function started
+23:26:21,851 ERROR RegisteredCourseDaoOperation,main:118 - Error: No operations allowed after connection closed.
+23:26:44,320  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:26:44,321 DEBUG UserDaoOperation,main:177 - Student is approved
+23:26:50,029 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:26:50,030  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+23:26:50,030  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+23:26:50,043  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+23:26:50,053  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+23:26:50,054  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+23:26:50,055  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+23:26:50,056  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+23:28:31,248  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:28:31,261 DEBUG UserService,main:43 - Authentication Successful!
+23:28:43,376  INFO AdminService,main:74 - Generate report card function started
+23:29:23,754  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:29:23,756 DEBUG UserDaoOperation,main:177 - Student is approved
+23:29:26,851 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:29:26,853  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+23:29:26,868  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+23:29:26,871  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+23:29:26,884  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+23:29:26,885  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+23:29:26,887  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+23:29:26,888  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+23:31:43,713 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:31:43,714  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+23:31:43,715  INFO CourseDaoOperation,main:109 - Fetched all courses
+23:32:17,480 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:32:41,239  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+23:32:41,248 DEBUG UserService,main:81 - User Checked!
+23:34:58,531 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:35:00,751  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+23:35:00,751 DEBUG UserService,main:81 - User Checked!
+23:36:32,252 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:36:41,430  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:36:41,432 ERROR UserService,main:46 - Wrong Password for Email: prof1@mail.com
+23:36:49,572  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:36:49,573 DEBUG UserService,main:43 - Authentication Successful!
+23:36:58,467  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+23:36:58,468 DEBUG UserService,main:81 - User Checked!
+23:38:49,083  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:38:49,095 DEBUG UserService,main:43 - Authentication Successful!
+23:38:55,719  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+23:38:55,721 DEBUG UserService,main:81 - User Checked!
+23:39:10,287  INFO UserService,main:69 - Inside UserService: In createNewPassword Functionality!
+23:39:10,302  INFO UserService,main:72 - Password Updated!
+23:42:16,409  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:42:16,422 DEBUG UserDaoOperation,main:179 - Student is approved
+23:42:18,797 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:42:18,800  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+23:42:18,803  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+23:42:18,808  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+23:42:18,819  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+23:42:18,820  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+23:42:18,820  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+23:42:18,821  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+23:43:24,125  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:43:24,134 DEBUG UserDaoOperation,main:179 - Student is approved
+23:43:28,414 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:43:28,416  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+23:43:28,418  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+23:43:28,420  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+23:43:28,430  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+23:43:28,431  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+23:43:28,432  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+23:43:28,432  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+23:45:39,680 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:45:39,681  INFO CourseDaoOperation,main:94 - Fetching all the courses in the sem =1
+23:45:39,683  INFO CourseDaoOperation,main:109 - Fetched all courses
+23:48:49,752  INFO UserService,main:30 - Inside UserService: Authentication Started!
+23:48:49,766 DEBUG UserDaoOperation,main:179 - Student is approved
+23:48:53,101 DEBUG StudentDaoOperation,main:109 - student id is 714859
+23:48:53,102  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+23:48:53,104  INFO CourseDaoOperation,main:105 - Fetched all courses
+00:15:59,429  INFO UserService,main:30 - Inside UserService: Authentication Started!
+00:15:59,443 DEBUG UserDaoOperation,main:179 - Student is approved
+00:16:04,416 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:16:04,418  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+00:16:04,449  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+00:16:04,453  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+00:16:04,475  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+00:16:04,477  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+00:16:04,478  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+00:16:04,480  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+00:16:09,977 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:16:09,979  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+00:16:09,989 ERROR CourseDaoOperation,main:109 - Error message: Invalid value for getInt() - 'Hindi'
+00:17:23,489  INFO UserService,main:30 - Inside UserService: Authentication Started!
+00:17:23,503 DEBUG UserDaoOperation,main:179 - Student is approved
+00:17:26,019 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:17:26,020  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+00:17:26,022  INFO CourseDaoOperation,main:105 - Fetched all courses
+00:18:34,161  INFO UserService,main:30 - Inside UserService: Authentication Started!
+00:18:34,176 DEBUG UserDaoOperation,main:179 - Student is approved
+00:18:36,344 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:18:36,345  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+00:18:36,347  INFO CourseDaoOperation,main:105 - Fetched all courses
+00:19:11,507  INFO UserService,main:30 - Inside UserService: Authentication Started!
+00:19:11,521 DEBUG UserDaoOperation,main:179 - Student is approved
+00:19:12,946 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:19:12,947  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+00:19:12,949  INFO CourseDaoOperation,main:105 - Fetched all courses
+00:19:40,267 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:23:50,944  INFO UserService,main:30 - Inside UserService: Authentication Started!
+00:23:50,957 DEBUG UserDaoOperation,main:179 - Student is approved
+00:23:52,447 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:24:51,933  INFO UserService,main:30 - Inside UserService: Authentication Started!
+00:24:51,953 DEBUG UserDaoOperation,main:179 - Student is approved
+00:24:57,578 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:25:26,379  INFO UserService,main:30 - Inside UserService: Authentication Started!
+00:25:26,393 DEBUG UserDaoOperation,main:179 - Student is approved
+00:25:28,324 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:25:52,841 DEBUG StudentDaoOperation,main:109 - student id is 714859
+00:25:52,842  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+00:25:52,845  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+00:25:52,848  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+00:25:52,868  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+00:25:52,869  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+00:25:52,873  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+00:25:52,874  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+01:44:08,740 DEBUG StudentDaoOperation,main:109 - student id is 714859
+01:44:21,294  INFO UserService,main:30 - Inside UserService: Authentication Started!
+01:44:21,296 DEBUG UserService,main:43 - Authentication Successful!
+01:45:24,892  INFO UserService,main:30 - Inside UserService: Authentication Started!
+01:45:24,893 DEBUG UserDaoOperation,main:179 - Student is approved
+01:45:30,798 DEBUG StudentDaoOperation,main:109 - student id is 714859
+01:45:30,799  INFO PaymentDaoOperation,main:119 - Start of getListofpayment
+01:45:30,800 DEBUG PaymentDaoOperation,main:127 - 714859
+01:46:01,137 DEBUG PaymentDaoOperation,main:102 - response of update is 1
+11:19:11,228  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:19:11,231 DEBUG UserDaoOperation,main:187 - student is not approved
+11:19:26,984  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:19:26,984 DEBUG UserService,main:43 - Authentication Successful!
+11:19:41,369  INFO AdminService,main:49 - Approve all students function started
+11:19:41,383  INFO AdminDaoOperation,main:104 - All Students are approved!
+11:19:41,383 ERROR AdminService,main:56 - No Student left for approval
+11:19:59,035  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:19:59,037 DEBUG UserDaoOperation,main:179 - Student is approved
+11:20:26,151 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:20:28,749 ERROR StudentService,main:59 - Student not found : c8d43f
+11:20:28,751  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+11:20:28,754  INFO CourseDaoOperation,main:105 - Fetched all courses
+11:20:48,434  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:20:48,450  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:20:48,457 DEBUG RegisteredCourseDaoOperation,main:208 - 1dd068a0-7
+11:20:57,795  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:20:57,798  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:20:57,800 DEBUG RegisteredCourseDaoOperation,main:208 - c5b20c26-f
+11:21:03,191  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:21:03,192  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:21:03,193 DEBUG RegisteredCourseDaoOperation,main:208 - 94a5e0f3-1
+11:21:10,411  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:21:10,412  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:21:10,414 DEBUG RegisteredCourseDaoOperation,main:208 - f5524575-2
+11:21:18,327  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:21:18,328  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:21:18,329 DEBUG RegisteredCourseDaoOperation,main:208 - 19e33736-0
+11:21:32,828  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:21:32,829  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:21:32,831 DEBUG RegisteredCourseDaoOperation,main:208 - 06e9f24f-4
+11:21:52,694 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:22:22,555 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:22:22,556  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+11:22:22,558  INFO CourseDaoOperation,main:105 - Fetched all courses
+11:22:32,131  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:22:32,133  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:23:45,004  INFO UserService,main:30 - Inside UserService: Authentication Started!
+11:23:45,014 DEBUG UserDaoOperation,main:179 - Student is approved
+11:24:03,783 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:24:18,969 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:24:18,971  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+11:24:18,973  INFO CourseDaoOperation,main:105 - Fetched all courses
+11:24:30,108  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:24:30,110  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:24:45,277 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:24:45,279  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+11:24:45,280  INFO CourseDaoOperation,main:105 - Fetched all courses
+11:24:46,575  INFO CourseDaoOperation,main:40 - Fetching all the courses
+11:24:46,577  INFO CourseDaoOperation,main:54 - Fetched all the courses
+11:24:46,632 DEBUG RegisteredCourseDaoOperation,main:208 - 32c7bba7-f
+11:25:11,610 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:25:11,611  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+11:25:11,612  INFO CourseDaoOperation,main:105 - Fetched all courses
+11:25:24,710 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:25:24,711  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student c8d43f semester 1
+11:25:24,728  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student c8d43f semester 1
+11:25:24,733  INFO CourseDaoOperation,main:181 - Getting course for CourseID:ec39ea
+11:25:24,743  INFO CourseDaoOperation,main:181 - Getting course for CourseID:1c00aa
+11:25:24,744  INFO CourseDaoOperation,main:181 - Getting course for CourseID:dd225a
+11:25:24,745  INFO CourseDaoOperation,main:181 - Getting course for CourseID:75bb83
+11:25:24,746  INFO CourseDaoOperation,main:181 - Getting course for CourseID:4ecc61
+11:25:24,746  INFO CourseDaoOperation,main:181 - Getting course for CourseID:824f13
+11:25:50,293 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:25:50,293  INFO PaymentDaoOperation,main:119 - Start of getListofpayment
+11:25:50,295 DEBUG PaymentDaoOperation,main:130 - No payment found
+11:27:21,584 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+11:27:25,319  INFO UserService,main:77 - Inside UserService: In checkPasswordforEmail Functionality!
+11:27:25,331 DEBUG UserService,main:81 - User Checked!
+11:27:33,468  INFO UserService,main:69 - Inside UserService: In createNewPassword Functionality!
+11:27:33,482  INFO UserService,main:72 - Password Updated!
+12:54:28,551  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:54:28,566 DEBUG UserService,main:43 - Authentication Successful!
+12:55:30,559  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:55:30,571 DEBUG UserService,main:43 - Authentication Successful!
+12:56:31,072  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:56:31,073 ERROR UserService,main:46 - Wrong Password for Email: aadarsh@gmail.com
+12:56:42,995  INFO UserService,main:30 - Inside UserService: Authentication Started!
+12:56:42,997 DEBUG UserDaoOperation,main:179 - Student is approved
+12:57:15,003 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+12:57:15,003  INFO PaymentDaoOperation,main:119 - Start of getListofpayment
+12:57:15,004 DEBUG PaymentDaoOperation,main:127 - c8d43f
+12:57:36,300 DEBUG PaymentDaoOperation,main:102 - response of update is 1
+12:57:41,250 DEBUG StudentDaoOperation,main:109 - student id is c8d43f
+12:57:41,251  INFO PaymentDaoOperation,main:119 - Start of getListofpayment
+12:57:41,251 DEBUG PaymentDaoOperation,main:130 - No payment found
+13:07:14,817  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:07:14,826 DEBUG UserService,main:43 - Authentication Successful!
+13:07:20,998  INFO CourseDaoOperation,main:66 - Fetching all courses that the professor 709ec0 teaches
+13:07:21,000  INFO CourseDaoOperation,main:78 - Fetched all courses
+13:07:21,002  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+13:07:21,004  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+13:09:49,386  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:09:49,397 DEBUG UserService,main:43 - Authentication Successful!
+13:10:07,115  INFO CourseService,main:36 - you are adding this courseHindi
+13:10:07,115  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:10:07,116  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:10:07,117  INFO CourseDaoOperation,main:137 - Adding course Hindi to catalog
+13:10:07,121  INFO CourseDaoOperation,main:150 - Course is added to catalog
+13:10:20,829  INFO CourseService,main:36 - you are adding this courseEnglish
+13:10:20,829  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:10:20,831  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:10:20,831  INFO CourseDaoOperation,main:137 - Adding course English to catalog
+13:10:20,833  INFO CourseDaoOperation,main:150 - Course is added to catalog
+13:10:30,543  INFO CourseService,main:36 - you are adding this courseMaths
+13:10:30,543  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:10:30,544  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:10:30,545  INFO CourseDaoOperation,main:137 - Adding course Maths to catalog
+13:10:30,557  INFO CourseDaoOperation,main:150 - Course is added to catalog
+13:10:45,239  INFO CourseService,main:36 - you are adding this coursePhysics
+13:10:45,240  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:10:45,241  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:10:45,241  INFO CourseDaoOperation,main:137 - Adding course Physics to catalog
+13:10:45,243  INFO CourseDaoOperation,main:150 - Course is added to catalog
+13:10:56,003  INFO CourseService,main:36 - you are adding this courseSocial
+13:10:56,004  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:10:56,005  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:10:56,005  INFO CourseDaoOperation,main:137 - Adding course Social to catalog
+13:10:56,007  INFO CourseDaoOperation,main:150 - Course is added to catalog
+13:11:08,788  INFO CourseService,main:36 - you are adding this courseChemistry
+13:11:08,788  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:11:08,789  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:11:08,789  INFO CourseDaoOperation,main:137 - Adding course Chemistry to catalog
+13:11:08,790  INFO CourseDaoOperation,main:150 - Course is added to catalog
+13:11:28,309  INFO CourseService,main:36 - you are adding this courseBiology
+13:11:28,309  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:11:28,311  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:11:28,311  INFO CourseDaoOperation,main:137 - Adding course Biology to catalog
+13:11:28,324  INFO CourseDaoOperation,main:150 - Course is added to catalog
+13:16:51,620  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:16:51,630 DEBUG UserService,main:43 - Authentication Successful!
+13:16:57,258  INFO CourseDaoOperation,main:66 - Fetching all courses that the professor 709ec0 teaches
+13:16:57,259  INFO CourseDaoOperation,main:78 - Fetched all courses
+13:17:03,909  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:17:03,910  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:19:11,763  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:19:11,776 DEBUG UserService,main:43 - Authentication Successful!
+13:19:19,884  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:19:19,888  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:20:31,611  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:20:31,622 DEBUG UserService,main:43 - Authentication Successful!
+13:20:36,533  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:20:36,535  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:20:52,852  INFO CourseDaoOperation,main:114 - Allocating professor709ec0to that course10001
+13:20:56,036  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:20:56,037  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:20:59,917  INFO CourseDaoOperation,main:114 - Allocating professor709ec0to that course10003
+13:21:03,073  INFO CourseDaoOperation,main:66 - Fetching all courses that the professor 709ec0 teaches
+13:21:03,074  INFO CourseDaoOperation,main:78 - Fetched all courses
+13:21:03,075  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+13:21:03,077  INFO RegisteredCourseDaoOperation,main:42 - printEnrolledStudentInThatCourse started
+13:21:22,792  INFO CourseDaoOperation,main:66 - Fetching all courses that the professor 709ec0 teaches
+13:21:22,793  INFO CourseDaoOperation,main:78 - Fetched all courses
+13:21:22,794  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10001
+13:21:22,796  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10003
+13:23:01,912  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:23:01,913 ERROR UserService,main:46 - Wrong Password for Email: aadarsh@mail.com
+13:23:10,544  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:23:10,545 ERROR UserService,main:46 - Wrong Password for Email: aadarsh@mail.com
+13:23:39,926  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:23:39,930 DEBUG UserDaoOperation,main:179 - Student is approved
+13:23:47,854 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:23:52,200 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:23:52,202  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:23:52,203  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:03,473  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:24:03,474  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:24:03,523 DEBUG RegisteredCourseDaoOperation,main:208 - bad509d4-3
+13:24:07,251 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:24:07,252  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:24:07,253  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:09,399  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:24:09,400  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:24:09,402 DEBUG RegisteredCourseDaoOperation,main:208 - 0df0f301-a
+13:24:10,741 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:24:10,741  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:24:10,743  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:13,320  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:24:13,321  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:24:13,323 DEBUG RegisteredCourseDaoOperation,main:208 - 97cfb0bc-3
+13:24:21,478 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:24:21,478  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:24:21,480  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:23,125  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:24:23,126  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:24:23,127 DEBUG RegisteredCourseDaoOperation,main:208 - f43461fd-9
+13:24:25,594 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:24:25,595  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:24:25,596  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:27,228  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:24:27,229  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:24:27,230 DEBUG RegisteredCourseDaoOperation,main:208 - d7f20c85-a
+13:24:28,594 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:24:28,595  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:24:28,596  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:31,043  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:24:31,045  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:24:31,046 DEBUG RegisteredCourseDaoOperation,main:208 - 17d779c9-b
+13:24:32,595 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:24:32,596  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:24:32,597  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:35,347  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:24:35,348  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:24:46,291 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:24:46,292  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+13:24:46,293  INFO CourseDaoOperation,main:105 - Fetched all courses
+13:24:52,206 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:25:22,013 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:25:22,015  INFO GradeCardDaoOperation,main:96 - Creating gradeCard for student 714859 semester 1
+13:25:22,020  INFO GradeCardDaoOperation,main:131 - Fetching gradeCard for Student 714859 semester 1
+13:25:22,023  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10002
+13:25:22,033  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10006
+13:25:22,034  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10003
+13:25:22,034  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10001
+13:25:22,035  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10005
+13:25:22,036  INFO CourseDaoOperation,main:181 - Getting course for CourseID:10004
+13:25:35,408 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:25:35,409  INFO PaymentDaoOperation,main:119 - Start of getListofpayment
+13:25:35,410 DEBUG PaymentDaoOperation,main:127 - 714859
+13:25:42,161 DEBUG PaymentDaoOperation,main:102 - response of update is 2
+13:25:49,554 DEBUG StudentDaoOperation,main:109 - student id is 714859
+13:25:49,555  INFO PaymentDaoOperation,main:119 - Start of getListofpayment
+13:25:49,555 DEBUG PaymentDaoOperation,main:130 - No payment found
+13:27:26,014  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:27:26,027 DEBUG UserService,main:43 - Authentication Successful!
+13:27:36,933  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:27:36,935  INFO CourseDaoOperation,main:54 - Fetched all the courses
+13:28:08,938  INFO UserService,main:30 - Inside UserService: Authentication Started!
+13:28:08,949 DEBUG UserService,main:43 - Authentication Successful!
+13:28:16,510  INFO CourseDaoOperation,main:40 - Fetching all the courses
+13:28:16,512  INFO CourseDaoOperation,main:54 - Fetched all the courses
+14:31:02,275  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:31:02,278 DEBUG UserDaoOperation,main:187 - student is not approved
+14:31:15,862  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:31:15,864 DEBUG UserService,main:43 - Authentication Successful!
+14:31:28,479  INFO AdminService,main:49 - Approve all students function started
+14:31:28,494  INFO AdminDaoOperation,main:104 - All Students are approved!
+14:31:28,494 ERROR AdminService,main:56 - No Student left for approval
+14:31:46,342  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:31:46,344 DEBUG UserDaoOperation,main:179 - Student is approved
+14:31:59,274 DEBUG StudentDaoOperation,main:109 - student id is 39a309
+14:32:00,897 ERROR StudentService,main:59 - Student not found : 39a309
+14:32:00,900  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =1
+14:32:00,901  INFO CourseDaoOperation,main:105 - Fetched all courses
+14:32:10,144  INFO CourseDaoOperation,main:40 - Fetching all the courses
+14:32:10,149  INFO CourseDaoOperation,main:54 - Fetched all the courses
+14:32:10,155 DEBUG RegisteredCourseDaoOperation,main:208 - 98045e31-a
+14:32:11,816  INFO CourseDaoOperation,main:40 - Fetching all the courses
+14:32:11,817  INFO CourseDaoOperation,main:54 - Fetched all the courses
+14:32:11,820 DEBUG RegisteredCourseDaoOperation,main:208 - b5b59a22-5
+14:32:13,292  INFO CourseDaoOperation,main:40 - Fetching all the courses
+14:32:13,293  INFO CourseDaoOperation,main:54 - Fetched all the courses
+14:32:13,295 DEBUG RegisteredCourseDaoOperation,main:208 - ac271534-e
+14:32:14,660  INFO CourseDaoOperation,main:40 - Fetching all the courses
+14:32:14,661  INFO CourseDaoOperation,main:54 - Fetched all the courses
+14:32:14,662 DEBUG RegisteredCourseDaoOperation,main:208 - c1510491-0
+14:32:16,160  INFO CourseDaoOperation,main:40 - Fetching all the courses
+14:32:16,162  INFO CourseDaoOperation,main:54 - Fetched all the courses
+14:32:16,164 DEBUG RegisteredCourseDaoOperation,main:208 - 2ae85203-6
+14:32:18,667  INFO CourseDaoOperation,main:40 - Fetching all the courses
+14:32:18,668  INFO CourseDaoOperation,main:54 - Fetched all the courses
+14:32:18,669 DEBUG RegisteredCourseDaoOperation,main:208 - 9eda2271-2
+14:32:21,939 DEBUG StudentDaoOperation,main:109 - student id is 39a309
+14:32:27,630 ERROR StudentService,main:59 - Student not found : 39a309
+14:32:27,634  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =10007
+14:32:27,634  INFO CourseDaoOperation,main:105 - Fetched all courses
+14:32:54,174  INFO UserService,main:30 - Inside UserService: Authentication Started!
+14:32:54,184 DEBUG UserDaoOperation,main:179 - Student is approved
+14:32:57,208 DEBUG StudentDaoOperation,main:109 - student id is 39a309
+14:33:03,274 DEBUG StudentDaoOperation,main:109 - student id is 39a309
+14:33:03,275  INFO CourseDaoOperation,main:90 - Fetching all the courses in the sem =10007
+14:33:03,276  INFO CourseDaoOperation,main:105 - Fetched all courses

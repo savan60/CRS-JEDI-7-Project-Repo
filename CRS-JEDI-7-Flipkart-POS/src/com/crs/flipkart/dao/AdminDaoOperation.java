@@ -39,17 +39,29 @@ public class AdminDaoOperation implements AdminDaoInterface {
 	}
 	 
 	public boolean addProfessorToDB(Professor professor) throws UserAlreadyExistsException{
-		String profInsertQuery = SqlUtils.INSERT_PROFESSOR;
 		
-		int userQueryRes=0, profQueryRes=0;
+		// Checking if user already exists
+		try {
+			Connection conn = DBUtils.getConnection();
+			String sql = SqlUtils.GET_USER_BY_EMAIL;
+			PreparedStatement statement = (PreparedStatement) conn.prepareStatement(sql);
+			statement.setString(1,professor.getEmail());
+			ResultSet resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				throw new UserAlreadyExistsException(professor.getEmail());
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		String profInsertQuery = SqlUtils.INSERT_PROFESSOR;
+		int profQueryRes=0;
 		
 		// Adding info to User DB
 		
 		try {
 			UserDaoOperation userDaoOperation = new  UserDaoOperation();
 			userDaoOperation.addUser(professor);
-			
-//			System.out.print(userQueryRes+" ");
 
 			stmt = (PreparedStatement) conn.prepareStatement(profInsertQuery);
 			stmt.setString(1,professor.getUserId());
@@ -65,14 +77,13 @@ public class AdminDaoOperation implements AdminDaoInterface {
 				logger.info("Professor added to DB");
 				return true;
 			}
-			
+
 			return false;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		throw new UserAlreadyExistsException(professor.getEmail());
 		
+		return false;
 	}
 	 
 	 public void approveStudents(int count) throws NoStudentForApprovalException{
@@ -84,7 +95,7 @@ public class AdminDaoOperation implements AdminDaoInterface {
 		 
 			 if(count==1) {
 				 
-				 String sql = "UPDATE CRS.student SET isApproved=? WHERE isApproved = ?";
+				 String sql = "UPDATE CRS.student SET isApproved=? ";
 				 
 				 stmt = (PreparedStatement) conn.prepareStatement(sql);
 				 stmt.setBoolean(1,true);

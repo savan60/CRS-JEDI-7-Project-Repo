@@ -3,6 +3,8 @@
  */
 package com.crs.flipkart.exceptions;
 
+import com.crs.flipkart.constant.COLORCONSTANT;
+
 /**
  * @author parth
  *
@@ -14,6 +16,7 @@ public class CheckForSemesterRegistration extends Exception{
 	}
 	
 	public String getMessage() {
+		System.out.println(COLORCONSTANT.TEXT_RED);
 		return "Already registred for sem : " + sem;
 	}
 	

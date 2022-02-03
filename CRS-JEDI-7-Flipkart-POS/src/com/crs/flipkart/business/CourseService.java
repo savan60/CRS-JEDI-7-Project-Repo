@@ -32,14 +32,14 @@ public class CourseService implements CourseInterface {
 //		this.courses = courses;
 //	}
 
-	public boolean addCourse(String id,String subj,float duration ,float credits) {
+	public boolean addCourse(String id,String subj,float duration ,float credits,int sem) {
 		logger.info("you are adding this course"+subj);
 		ArrayList<Course> courses = CourseDaoOperation.getAllCourses();
 		for(int i=0;i<courses.size();i++){
 			if((courses.get(i)).getName().equals(subj))return false;	
 		}
 		try {
-			courseInterface.addCourToDB(id,subj,duration,credits);
+			courseInterface.addCourToDB(id,subj,duration,credits,sem);
 		} catch (CourseNotAddedException e) {
 			logger.error("Error message: "+e.getMessage());
 		}
@@ -50,7 +50,7 @@ public class CourseService implements CourseInterface {
 		logger.info("you are deleting this course"+id);
 		ArrayList<Course> listOfCourses = CourseDaoOperation.getAllCourses();
 		for(int i=0;i<listOfCourses.size();i++){
-			if((listOfCourses.get(i)).getName().equals(id)) {
+			if(((listOfCourses.get(i)).getCourseId()).equals(id)) {
 				try {
 					courseInterface.delCourse(id);
 				} catch (CourseNotDeletedException e) {

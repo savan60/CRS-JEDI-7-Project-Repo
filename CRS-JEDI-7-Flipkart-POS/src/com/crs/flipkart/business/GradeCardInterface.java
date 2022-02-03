@@ -3,6 +3,7 @@
  */
 package com.crs.flipkart.business;
 import com.crs.flipkart.bean.RegisteredCourse;
+import com.crs.flipkart.utils.ResultCard;
 
 import java.util.ArrayList;
 /**
@@ -12,6 +13,6 @@ import java.util.ArrayList;
 public interface GradeCardInterface {
 
 	
-	public void viewGradeCard(String studentID, int semester);
+	public ArrayList<ResultCard> viewGradeCard(String studentID, int semester);
 
 }

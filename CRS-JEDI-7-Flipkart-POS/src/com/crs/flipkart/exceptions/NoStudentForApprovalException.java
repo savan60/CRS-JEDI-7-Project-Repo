@@ -9,6 +9,6 @@ public class NoStudentForApprovalException extends Exception {
 	}
 	
 	public String getMsg(){
-	return "No Student left for approval";
+		return "No Student left for approval";
 	}
 }

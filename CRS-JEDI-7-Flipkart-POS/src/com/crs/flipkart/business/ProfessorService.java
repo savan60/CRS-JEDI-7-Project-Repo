@@ -10,6 +10,7 @@ import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.Professor;
 import com.crs.flipkart.bean.RegisteredCourse;
 import com.crs.flipkart.bean.Student;
+import com.crs.flipkart.constant.COLORCONSTANT;
 import com.crs.flipkart.dao.CourseDaoInterface;
 import com.crs.flipkart.dao.CourseDaoOperation;
 import com.crs.flipkart.dao.ProfessorDaoOperation;
@@ -44,9 +45,9 @@ public class ProfessorService implements ProfessorInterface {
 	}
 
 
-	public void addGrade(String professorId, float grade, String studentId, String courseId) {
+	public boolean addGrade(String professorId, float grade, String studentId, String courseId) {
 		boolean flag = false;
-		ArrayList<String> courseIds =courseInterface.fetchCourseIdFromProfessorId(professorId);
+		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
 		for (String cId : courseIds) {
 			if (cId.equals(courseId)) {
 				flag = true;
@@ -55,29 +56,34 @@ public class ProfessorService implements ProfessorInterface {
 		}
 
 		if (flag) {
-			regCourseService.submitGrade(courseId, studentId, grade);
+			if (regCourseService.submitGrade(courseId, studentId, grade))
+				return true;
 		} else {
+			System.out.println(COLORCONSTANT.TEXT_RED);
 			System.out.println("Professor " + professorId + " does not teach " + courseId + " course.");
 		}
+		return false;
 	}
 
-	public void addCourse(String professorId, String courseId) {
-		courseInterface.updateProfessorId(professorId, courseId);
+	public boolean addCourse(String professorId, String courseId) {
+		if (courseInterface.updateProfessorId(professorId, courseId))
+			return true;
+		return false;
 	}
 
-	public void viewCourse(String professorId) {
-
+	public HashMap<String, String> viewCourse(String professorId) {
+		HashMap<String, String> res=new HashMap<String, String>();
 		ArrayList<String> courseIds = courseInterface.fetchCourseIdFromProfessorId(professorId);
-		if(courseIds.isEmpty()) {
+		if (courseIds.isEmpty()) {
+			System.out.println(COLORCONSTANT.TEXT_RED);
 			System.out.println("No courses assigned to you");
-			return;
+			return res;
 		}
-		System.out.println("List of Courses:");
-		System.out.println("CourseId\tCourseName\tDuration\tCredits");
-		for(String courseId : courseIds) {
+		for (String courseId : courseIds) {
 			Course course = courseInterface.getCourseFromId(courseId);
-			System.out.println(course.getCourseId()+"\t"+course.getName()+"\t"+course.getDuration()+"\t"+course.getCredits());
+			res.put(courseId, course.getName());
 		}
+		return res;
 	}
 
 }
